@@ -4,12 +4,17 @@ public class Math {
     Developer: Benjamin Lee
     University ID: 230134175
     Function: This function takes two inputs as integers, the first number as the base and the second as the coefficient.
-        It then returns the base (x) raised to by a power of the coefficient (y).
+        It then returns the base (num1) raised to by a power of the coefficient (num2).
     */
-    int Power(int x, int y) {
-        return Math.pow(x,y)
+    public int Power(int num1, int num2) 
+    {
+        return Math.pow(num1,num2)
     }
     
+    public int mod(int num1, int num2)
+    {
+        return num1%num2;
+    }
     // Multiply Function (kamalpreet singh)
     public int multiply (int number1, int number2)
      {
