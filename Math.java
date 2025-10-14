@@ -10,7 +10,7 @@ public class Math {
     {
         return Math.pow(num1,num2)
     }
-    
+    //modulo function (Benjamin Lee)
     public int mod(int num1, int num2)
     {
         return num1%num2;
