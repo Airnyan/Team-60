@@ -9,4 +9,14 @@ public class Math {
     int Power(int x, int y) {
         return Math.pow(x,y)
     }
+    
+    // Multiply Function (kamalpreet singh)
+    public int multiply (int number1, int number2)
+     {
+        return number1 * number2;
+
+    }
+
+
+
 }
