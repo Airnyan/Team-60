@@ -31,7 +31,7 @@ public class Math {
         }
     }
 
-    //Add two Values (Ayomide)
+    //Add two Values  num1 + num2(Ayomide)
     public int add(int num1, int num2){
     return num1 + num2;
     }
