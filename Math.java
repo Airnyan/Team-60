@@ -36,4 +36,9 @@ public class Math {
     return num1 + num2;
     }
 
+    //Subtract two Values (Rehan)
+    public int Subtract(int num1, int num2) {
+       return num1 - num2;
+    }
+
 }
