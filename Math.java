@@ -15,12 +15,18 @@ public class Math {
     {
         return num1%num2;
     }
-    // Multiply Function (kamalpreet singh)
-    public int multiply (int number1, int number2)
-     {
-        return number1 * number2;
 
+
+    /********************************  
+    Developer: Kamalpreet Singh  
+    University ID: 240238746  
+    Function: This function takes two inputs as integers and returns their multiplication  
+    ********************************/ 
+    public int multiply (int number1, int number2)
+    {
+        return number1 * number2;
     }
+
 
     // Minimum of two values (Mihsan)
     public int min(int num1, int num2) {
