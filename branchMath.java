@@ -18,3 +18,12 @@ public class Math {
     }
 
 }
+
+// Minimum of two values (Mihsan)
+    public int min(int num1, int num2) {
+        if (num1 < num2) {
+            return num1;
+        } else-if {
+            return num2;
+        }
+    }
