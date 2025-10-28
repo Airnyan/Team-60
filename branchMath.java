@@ -32,3 +32,12 @@ public class Math {
 public int divide(int num1, int num2) {
     return num1 / num2;
 }
+
+/********************************
+Developer: Ayomide
+University ID: 240229917
+Function: This function takes two inputs as integers and returns the sum
+********************************/
+    public int add(int num1, int num2){
+    return num1 + num2;
+    }
