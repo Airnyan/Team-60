@@ -27,7 +27,7 @@ public class Math {
         }
     }
 
-    //Divide two values (Cherechi)
+    //Divide two values (Cherechi) test
 public int divide(int num1, int num2) {
     return num1 / num2;
 }
