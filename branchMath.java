@@ -17,7 +17,6 @@ public class Math {
         return num1%num2;
     }
 
-}
 
 // Minimum of two values (Mihsan)
     public int min(int num1, int num2) {
