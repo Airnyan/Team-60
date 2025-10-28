@@ -24,11 +24,10 @@ public class Math {
             return num1;
         } else-if {
             return num2;
-        } 
+        }
     }
- // Divide two values (Cherechi)
+
+    //Divide two values (Cherechi)
 public int divide(int num1, int num2) {
     return num1 / num2;
 }
-
-    }
