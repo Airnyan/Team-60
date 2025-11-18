@@ -1,3 +1,4 @@
+package Workshop;
 //Math Functions
 public class Math {
     /*
