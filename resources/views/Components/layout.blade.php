@@ -11,12 +11,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--title page-->
         <title>{{$title ?? 'Little GreenMan Store'}}</title>
-        <!--link to Bootstrap css file-->
-        <link rel="stylesheet" href="">
         <!--link to custom css style file--> 
         <link rel="stylesheet" href="">
         <!--link to tailwind files-->
-        <!--@vite(['resources/css/app.css', 'resources/js/app.js'])-->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body>
@@ -43,9 +41,20 @@
 
     <!--footer-->
     <footer>
-        <p>Simple Footer</p>
+        <br>
+        <br>
+        <p>Footer:</p>
         <p>Contact Information<br>
         <a href="mailto:customerservice@LittleGreenMen.com">customerservice@LittleGreenMen.com</a></p>
+
+        <div>
+            <p>Social Media Links</p>
+            <p><a href="#">Facebook</a></p>
+            <p><a href="#">Instagram</a></p>
+            <p><a href="#">Twitter</a></p>
+        </div>
+
+        <p>© 2025 Littel Green Men. All Rights Reserved</p>
     </footer>
 
 </html>
