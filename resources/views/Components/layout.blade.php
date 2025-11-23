@@ -36,9 +36,16 @@
          <!--space for the other pages's content. Implemented using balde.-->
         {{ $slot}}
 
-
         <!--java script connection-->
         <script src=""></script>
    </body>
+
+
+    <!--footer-->
+    <footer>
+        <p>Simple Footer</p>
+        <p>Contact Information<br>
+        <a href="mailto:customerservice@LittleGreenMen.com">customerservice@LittleGreenMen.com</a></p>
+    </footer>
 
 </html>
