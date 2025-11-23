@@ -1,46 +1,18 @@
-<!-- -->
-<!DOCTYPE html>
-<!--lang specifies the language of the content-->
-<html lang="en">
+{{-- 
+    NOTE:
+    You do not need to write any of the standard HTML code.
+    It is already written in the views/components/layout.blade.php file.
+    Just simply write your page content inside the <x-layout> tags.
+--}}
 
-    <!--head tag is a container for metadata-->
-    <head>
-        <!--encoding type-->
-        <meta charset="UTF-8">
-        <!--for proper scaling-->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--title page-->
-        <title>Homepage</title>
-        <!--Favicon-->
-        <link rel="icon" type="image/x-icon" href="">
-        <!--link to Bootstrap css file-->
-        <link rel="stylesheet" href="">
-        <!--link to custom css style file--> 
-        <link rel="stylesheet" href="">
-    </head>
+<x-layout>
 
-    <body>
-        <!--Heading-->
-        <h1>Homepage</h1>
+    <!--title page-->
+    <x-slot:title>
+        Home Page
+    </x-slot:title>
 
-        <!--Navbar-->
-        <header> 
-            <nav>
-                <a href="/">Home</a>
-                <a href="/shop">Shop</a>
-                <a href="/basket">Basket</a>
-                <a href="/customerSupport">Customer Support</a>
-                <a href="/aboutUs">About Us</a>
-                <a href="/login">Login</a>
-                <a href="/signUp">Login</a>
-            </nav>
-        </header>
+    <!--heading-->
+    <h1>Welcome to the Homepage</h1>
 
-
-
-
-        <!--java script connection-->
-        <script src=""></script>
-   </body>
-
-</html>
+</x-layout>
