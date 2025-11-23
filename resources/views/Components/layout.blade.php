@@ -19,19 +19,18 @@
 
     <body>
         <!--Navbar-->
-        <header> 
-            <nav>
-                <a href="/">Home</a>
-                <a href="/shop">Shop</a>
-                <a href="/basket">Basket</a>
-                <a href="/customerSupport">Customer Support</a>
-                <a href="/aboutUs">About Us</a>
-                <a href="/login">Login</a>
-                <a href="/signUp">Signup</a>
-            </nav>
-        </header>
+        <div class="navbar bg-base-100 shadow-sm">
+                <a class="btn btn-ghost text-lg" href="/">Home</a>
+                <a class="btn btn-ghost text-lg" href="/shop">Shop</a>
+                <a class="btn btn-ghost text-lg" href="/basket">Basket</a>
+                <a class="btn btn-ghost text-lg" href="/customerSupport">Customer Support</a>
+                <a class="btn btn-ghost text-lg" href="/aboutUs">About Us</a>
+                <a class="btn btn-ghost text-lg" href="/login">Login</a>
+                <a class="btn btn-ghost text-lg" href="/signUp">Signup</a>
+        </div>
 
          <!--space for the other pages's content. Implemented using balde.-->
+         <br>
         {{ $slot}}
 
         <!--java script connection-->
@@ -39,22 +38,30 @@
    </body>
 
 
-    <!--footer-->
-    <footer>
-        <br>
-        <br>
-        <p>Footer:</p>
-        <p>Contact Information<br>
-        <a href="mailto:customerservice@LittleGreenMen.com">customerservice@LittleGreenMen.com</a></p>
+    <!--footer -->
+    <br>
+    <br>
+    <br>
+    <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
+        <nav>
+            <h6 class="footer-title">Social Media Links</h6>
+            <a class="link link-hover" href="#">Facebook</a>
+            <a class="link link-hover" href="#">Twitter</a>
+            <a class="link link-hover" href="#">Instagram</a>
+        </nav>
+        <nav>
+            <h6 class="footer-title">Company</h6>
+            <a class="link link-hover" href="#">About us</a>
+            <a class="link link-hover" href="#">Contact</a>
+        </nav>
+        <nav>
+            <h6 class="footer-title">Legal</h6>
+            <a class="link link-hover" href="#">Terms of use</a>
+            <a class="link link-hover" href="#">Privacy policy</a>
+            <a class="link link-hover" href="#">Cookie policy</a>
+        </nav>
 
-        <div>
-            <p>Social Media Links</p>
-            <p><a href="#">Facebook</a></p>
-            <p><a href="#">Instagram</a></p>
-            <p><a href="#">Twitter</a></p>
-        </div>
 
-        <p>© 2025 Littel Green Men. All Rights Reserved</p>
     </footer>
 
 </html>
