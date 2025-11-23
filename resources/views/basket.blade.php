@@ -9,7 +9,7 @@
 
     <!--title page-->
     <x-slot:title>
-        Home Page
+        Basket Page
     </x-slot:title>
 
     <!--heading-->

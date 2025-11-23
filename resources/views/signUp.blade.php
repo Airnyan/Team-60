@@ -9,7 +9,7 @@
 
     <!--title page-->
     <x-slot:title>
-        Home Page
+        Signup Page
     </x-slot:title>
 
     <!--heading-->
