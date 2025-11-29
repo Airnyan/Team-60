@@ -26,6 +26,8 @@
             <div class="flex justify-between"> 
                 <!--logo-->
                 <a class="text-2xl font-bold text-[#00e205]" href="/">Logo</a>
+                <!--search box-->
+                <input type="text" placeholder="Search for our products here. . ." class="input input-bordered w-100 text-black " />
                 <!--nav items-->
                 <ul class ="flex justify-end items-center font-bold space-x-5 tracking-wide">
                     <a class="btn btn-ghost text-lg" href="/">Home</a>
