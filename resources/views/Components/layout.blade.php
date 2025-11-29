@@ -55,7 +55,8 @@
     <!--footer -->
     <footer class="bg-neutral text-white py-4 mt-4">
         <div class="container mx-auto">
-            <p>&copy; 2025 Little Green Men</p>
+            <p>Copyright &copy; 2025 Little Green Men</p>
+            <a href="#"> <img src="{{ asset('images/facebook.png') }}" alt="Logo" class="h-12 w-auto" /> </a>
         </div>
     </footer>
 
