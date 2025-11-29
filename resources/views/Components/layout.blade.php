@@ -11,6 +11,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--title page-->
         <title>{{$title ?? 'Little GreenMan Store'}}</title>
+        <!--link to Google Fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <!--link to custom css style file--> 
         <link rel="stylesheet" href="">
         <!--link to tailwind files-->
@@ -19,17 +21,23 @@
 
     <body>
         <!--Navbar-->
-        <div class="navbar bg-base-100 shadow-sm">
-                <a class="btn btn-ghost text-lg" href="/">Home</a>
-                <a class="btn btn-ghost text-lg" href="/shop">Shop</a>
-                <a class="btn btn-ghost text-lg" href="/basket">Basket</a>
-                <a class="btn btn-ghost text-lg" href="/customerSupport">Customer Support</a>
-                <a class="btn btn-ghost text-lg" href="/aboutUs">About Us</a>
-                <a class="btn btn-ghost text-lg" href="/login">Login</a>
-                <a class="btn btn-ghost text-lg" href="/signUp">Signup</a>
-        </div>
+        <header class="bg-neutral text-white py-4">
+            <div class="container mx-auto">       
+            <div class="flex justify-between"> 
+                <!--logo-->
+                <a class="text-2xl font-bold text-[#00e205]" href="/">Logo</a>
+                <!--nav items-->
+                <ul class ="flex justify-end items-center font-bold space-x-5 tracking-wide">
+                    <a class="btn btn-ghost text-lg" href="/">Home</a>
+                    <a class="btn btn-ghost text-lg" href="/shop">Shop</a>
+                    <a class="btn btn-ghost text-lg" href="/customerSupport">Help</a>
+                    <a class="btn btn-ghost text-lg" href="/aboutUs">About</a>
+                    <a class="btn btn-ghost text-lg" href="/login"> <span class="material-symbols-outlined">person</span> </a>
+                    <a class="btn btn-ghost text-lg" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
+                </ul>
+        </header>
 
-         <!--slot for the other pages's content. Implemented using balde and tailwind classes-->
+         <!--space for the page's content. Implemented using balde and tailwind classes-->
         <main class="container mx-auto px-4 min-h-screen pt-10">
         {{ $slot }}
         </main>
@@ -39,9 +47,6 @@
 
 
     <!--footer -->
-    <br>
-    <br>
-    <br>
     <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
         <nav>
             <h6 class="footer-title">Social Media Links</h6>
