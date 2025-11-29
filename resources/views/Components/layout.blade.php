@@ -29,12 +29,12 @@
                 <a class="btn btn-ghost text-lg" href="/signUp">Signup</a>
         </div>
 
-         <!--space for the other pages's content. Implemented using balde.-->
-         <br>
-        {{ $slot}}
+         <!--slot for the other pages's content. Implemented using balde and tailwind classes-->
+        <main class="container mx-auto px-4 min-h-screen pt-10">
+        {{ $slot }}
+        </main>
 
-        <!--java script connection-->
-        <script src=""></script>
+
    </body>
 
 
