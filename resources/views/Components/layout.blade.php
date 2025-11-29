@@ -25,7 +25,7 @@
             <div class="container mx-auto">       
             <div class="flex justify-between"> 
                 <!--logo-->
-                <a class="text-2xl font-bold text-[#00e205]" href="/">Logo</a>
+                <a href="/"> <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12 w-auto" /> </a>
                 <!--search box-->
                 <input type="text" placeholder="Search for our products here. . ." class="input input-bordered w-100 text-black " />
                 <!--nav items-->
