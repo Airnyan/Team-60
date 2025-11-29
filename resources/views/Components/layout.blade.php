@@ -54,9 +54,15 @@
 
     <!--footer -->
     <footer class="bg-neutral text-white py-4 mt-4">
-        <div class="container mx-auto">
+        <div class="container flex mx-auto items-center justify-between">
             <p>Copyright &copy; 2025 Little Green Men</p>
-            <a href="#"> <img src="{{ asset('images/facebook.png') }}" alt="Logo" class="h-12 w-auto" /> </a>
+            <div class="flex justify-end items-center space-x-5">
+                <a href="#"> <img src="{{ asset('images/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+                <a href="#"> <img src="{{ asset('images/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+                <a href="#"> <img src="{{ asset('images/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+                <a href="#"> <img src="{{ asset('images/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+            </div>
+            
         </div>
     </footer>
 
