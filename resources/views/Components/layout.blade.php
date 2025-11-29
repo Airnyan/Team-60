@@ -23,20 +23,24 @@
         <!--Navbar-->
         <header class="bg-neutral text-white py-4">
             <div class="container mx-auto">       
-            <div class="flex justify-between"> 
-                <!--logo-->
-                <a href="/"> <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12 w-auto" /> </a>
-                <!--search box-->
-                <input type="text" placeholder="Search for our products here. . ." class="input input-bordered w-100 text-black " />
-                <!--nav items-->
-                <ul class ="flex justify-end items-center font-bold space-x-5 tracking-wide">
-                    <a class="btn btn-ghost text-lg" href="/">Home</a>
-                    <a class="btn btn-ghost text-lg" href="/shop">Shop</a>
-                    <a class="btn btn-ghost text-lg" href="/customerSupport">Help</a>
-                    <a class="btn btn-ghost text-lg" href="/aboutUs">About</a>
-                    <a class="btn btn-ghost text-lg" href="/login"> <span class="material-symbols-outlined">person</span> </a>
-                    <a class="btn btn-ghost text-lg" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
-                </ul>
+                <div class="flex justify-between"> 
+                    <div class="flex items-center gap-5">
+                        <!--logo-->
+                        <a href="/"> <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12 w-auto" /> </a>
+                        <!--search box-->
+                        <input type="text" placeholder="Search for our products here. . ." class="input input-bordered w-80 text-black " />
+                    </div>
+                    <!--nav items-->
+                    <ul class ="flex justify-end items-center font-bold space-x-5 tracking-wide">
+                        <a class="btn btn-ghost text-lg" href="/">Home</a>
+                        <a class="btn btn-ghost text-lg" href="/shop">Shop</a>
+                        <a class="btn btn-ghost text-lg" href="/customerSupport">Help</a>
+                        <a class="btn btn-ghost text-lg" href="/aboutUs">About</a>
+                        <a class="btn btn-ghost text-lg" href="/login"> <span class="material-symbols-outlined">person</span> </a>
+                        <a class="btn btn-ghost text-lg" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
+                    </ul>
+                </div>
+            </div>
         </header>
 
          <!--space for the page's content. Implemented using balde and tailwind classes-->
