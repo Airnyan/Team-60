@@ -23,7 +23,7 @@
         <!--Navbar-->
         <header class="bg-neutral text-white py-4">
             <div class="container mx-auto">       
-                <div class="flex justify-between"> 
+                <div class="flex justify-between">
                     <div class="flex items-center gap-5">
                         <!--logo-->
                         <a href="/"> <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12 w-auto" /> </a>
@@ -53,26 +53,10 @@
 
 
     <!--footer -->
-    <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
-        <nav>
-            <h6 class="footer-title">Social Media Links</h6>
-            <a class="link link-hover" href="#">Facebook</a>
-            <a class="link link-hover" href="#">Twitter</a>
-            <a class="link link-hover" href="#">Instagram</a>
-        </nav>
-        <nav>
-            <h6 class="footer-title">Company</h6>
-            <a class="link link-hover" href="#">About us</a>
-            <a class="link link-hover" href="#">Contact</a>
-        </nav>
-        <nav>
-            <h6 class="footer-title">Legal</h6>
-            <a class="link link-hover" href="#">Terms of use</a>
-            <a class="link link-hover" href="#">Privacy policy</a>
-            <a class="link link-hover" href="#">Cookie policy</a>
-        </nav>
-
-
+    <footer class="bg-neutral text-white py-4 mt-4">
+        <div class="container mx-auto">
+            <p>&copy; 2025 Little Green Men</p>
+        </div>
     </footer>
 
 </html>
