@@ -23,7 +23,22 @@
 
         <h1 class="basket-title">Your Basket</h1>
 
-        <!-- d -->
+        <!-- basket items (on the left) -->
+        <div class="basket-items">
+
+                <!-- template item (Backend will duplicate this) -->
+                <div class="basket-item-template">
+                    <div class="item-image"></div>
+
+                    <div class="item-details">
+                    <h3 class="item-name">Product Name</h3>
+                    <p class="item-size">Size: --</p>
+                    <p class="item-quantity">Quantity: --</p>
+                    <p class="item-price">£0.00</p>
+                    </div>
+                </div>
+
+            </div>
 
     </div>
 
