@@ -14,7 +14,7 @@
 
     
     <!--Hero Section-->
-    <div class="hero bg-base-200 h-100 border border-gray-300 shadow-sm">
+    <div class="hero bg-base-200 h-100 border border-gray-300 shadow-sm mb-2">
     <div class="hero-content text-center">
         <div class="max-w-md">
         <h1 class="text-5xl font-bold">Hi there!</h1>
@@ -28,13 +28,39 @@
     </div>
     </div>
 
-    <!--Section Heading-->
+    <!--Heading-->
     <div class="bg-neutral text-white py-4 text-center text-4xl font-bold mb-2"> 
         <h1>FAQS SECTION</h1>
     </div>
 
-    <!--FAQs-->
-    
+    <!--FAQs Section-->
+    <div class="border border-gray-300 shadow-sm"> 
+        <!--FAQs Question 1-->
+        <div class="collapse bg-base-100 border border-base-300">
+            <input type="radio" name="my-accordion-1" checked="checked" />
+            <div class="collapse-title font-semibold">How do I create an account?</div>
+            <div class="collapse-content text-sm">Click on the account icon at the right-hand side of the navbar and then follow the registration process.</div>
+        </div>
+        <!--FAQs Question 2-->
+        <div class="collapse bg-base-100 border border-base-300">
+            <input type="radio" name="my-accordion-1" checked="checked" />
+            <div class="collapse-title font-semibold">Do you ship internationally?</div>
+            <div class="collapse-content text-sm">Unfortunately we don't ship outside the UK at the moment. However you may use third party proxy shipment to buy our products.</div>
+        </div>
+        <!--FAQs Question 3-->
+        <div class="collapse bg-base-100 border border-base-300">
+            <input type="radio" name="my-accordion-1" checked="checked" />
+            <div class="collapse-title font-semibold">What are your customer service opening hours?</div>
+            <div class="collapse-content text-sm">Our customer service team is available from Monday to Saturday from 9 am to 4 pm. However, you can always contact us through the email form and we will get back to you in less than three working days.</div>
+        </div>
+        <!--FAQs Question 4-->
+        <div class="collapse bg-base-100 border border-base-300">
+            <input type="radio" name="my-accordion-1" checked="checked" />
+            <div class="collapse-title font-semibold">The item I want to buy is out of stock. When will it be restocked?</div>
+            <div class="collapse-content text-sm">We regularly restock our inventory every few months unless the item was for limited period.</div>
+        </div>
+
+    </div>
 
 
 </x-layout>
