@@ -23,6 +23,8 @@
 
         <h1 class="basket-title">Your Basket</h1>
 
+        <div class="basket-container">
+
         <!-- basket items (on the left) -->
         <div class="basket-items">
 
@@ -61,6 +63,8 @@
             </div>
 
             <button class="checkout-btn">Checkout</button>
+
+        </div>
 
         </div>
 
