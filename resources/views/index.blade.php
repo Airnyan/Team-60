@@ -58,7 +58,7 @@
                 <a href="#"> <img src="{{ asset('images/grid1.png') }}" alt="product" /> </a>
             </figure>
             <div class="bg-neutral card-body items-center py-2 rounded-b-sm">
-                <p class="font-bold text-lg text-white">ALIEN MATRIX TEE</p>
+                <p class="font-bold text-lg text-white">MATRIX TEE</p>
             </div>
         </div>
 
@@ -68,7 +68,7 @@
                 <a href="#"> <img src="{{ asset('images/grid2.png') }}" alt="product" /> </a>
             </figure>
             <div class="bg-neutral card-body items-center py-2 rounded-b-sm">
-                <p class="font-bold text-lg text-white">ALIEN BATTLE TEE</p>
+                <p class="font-bold text-lg text-white">BATTLE TEE</p>
             </div>
         </div>
 
@@ -78,7 +78,7 @@
                 <a href="#"> <img src="{{ asset('images/grid3.png') }}" alt="product" /> </a>
             </figure>
             <div class="bg-neutral card-body items-center py-2 rounded-b-sm">
-                <p class="font-bold text-lg text-white">ALIEN BATTLE TEE</p>
+                <p class="font-bold text-lg text-white">BATTLE TEE</p>
             </div>
         </div>
 
