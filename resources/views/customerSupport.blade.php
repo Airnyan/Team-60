@@ -26,6 +26,15 @@
         </p>
     </div>
     </div>
+    </div>
+
+    <!--Section Heading-->
+    <div class="bg-neutral text-white py-4 text-center text-4xl font-bold mb-2"> 
+        <h1>FAQS SECTION</h1>
+    </div>
+
+    <!--FAQs-->
+    
 
 
 </x-layout>

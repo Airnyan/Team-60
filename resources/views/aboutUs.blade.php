@@ -12,7 +12,29 @@
         About Page
     </x-slot:title>
 
-    <!--heading-->
-    <h1>Welcome to the about us page</h1>
+    <!--Hero Section-->
+    <div class="hero bg-base-200 h-100 border border-gray-300 shadow-sm">
+    <div class="hero-content text-center">
+        <div class="max-w-md">
+        <h1 class="text-5xl font-bold">About Us!</h1>
+        <p class="py-6 text-lg">
+            Care to learn about our company? 
+        </p>
+        <p class="text-lg">
+            Please see the section below highlighting our company ambitions!
+        </p>
+    </div>
+    </div>
+    </div>
+
+    <!--Section Heading-->
+    <div class="bg-neutral text-white py-4 text-center text-4xl font-bold mb-2"> 
+        <h1>SECTION</h1>
+    </div>
+
+    <!--FAQs-->
+    
+
+
 
 </x-layout>
