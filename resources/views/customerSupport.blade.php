@@ -34,7 +34,7 @@
     </div>
 
     <!--FAQs Section-->
-    <div class="border border-gray-300 shadow-sm"> 
+    <div class="border border-gray-300 shadow-sm mb-2"> 
         <!--FAQs Question 1-->
         <div class="collapse bg-base-100 border border-base-300">
             <input type="radio" name="my-accordion-1" checked="checked" />
@@ -59,8 +59,70 @@
             <div class="collapse-title font-semibold">The item I want to buy is out of stock. When will it be restocked?</div>
             <div class="collapse-content text-sm">We regularly restock our inventory every few months unless the item was for limited period.</div>
         </div>
-
     </div>
+
+    <!--Heading-->
+    <div class="bg-neutral text-white py-4 text-center text-4xl font-bold"> 
+        <h1>CONTACT FORM</h1>
+    </div>
+
+    <!--Form-->
+
+    <!--Input Field 1-->
+    <fieldset class="fieldset">
+        <legend class="fieldset-legend text-lg">Name</legend>
+        <input type="text" class="input w-full" placeholder="Type your name here" required/>
+    </fieldset>
+
+    <!--Input Field 2-->
+    <fieldset class="fieldset">
+        <legend class="fieldset-legend text-lg">Email</legend>
+        <input type="email" class="input w-full" placeholder="Type your email here" required/>
+    </fieldset>
+
+    <!--Input Field 3-->
+    <fieldset class="fieldset">
+        <legend class="fieldset-legend text-lg">Mobile Number</legend>
+        <input type="text" class="input w-full" placeholder="Type your mobile number here" />
+        <p class="label text-base">(Optional)</p>
+    </fieldset>
+
+    <!--Input Field 4-->
+    <fieldset class="fieldset">
+        <legend class="fieldset-legend text-lg">Order Number</legend>
+        <input type="text" class="input w-full" placeholder="Type your order number here" required/>
+    </fieldset>
+
+    <!--Input Field 5-->
+    <fieldset class="fieldset">
+        <legend class="fieldset-legend text-lg">Message</legend>
+        <input type="text" class="input w-full" placeholder="Type your message here" required/>
+    </fieldset>
+
+    
+    <!--Testing-->
+    <label class="input validator">
+    <input type="email" placeholder="mail@site.com" required />
+    </label>
+    <div class="validator-hint hidden">Enter valid email address</div>
+
+
+
+
+
+
+
+
+
+    <!--Submit Button-->
+    <button class="btn btn-neutral mt-4 mb-4">Submit</button>
+
+    <!--Successfull Submission Message-->
+    <div class="mb-2 mt-2 font-bold">
+        <p>Thank you for contacting us. We will soon reach out to you as soon as possible. Please keep a look at your emails and your spam folder.</p>
+    </div>
+
+
 
 
 </x-layout>
