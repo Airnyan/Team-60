@@ -29,11 +29,12 @@
         <div class="basket-items">
 
             <!-- template item (Backend will duplicate this) -->
+             <!-- template is used to show the items in the basket -->
             <div class="basket-item-template">
                 <div class="item-image"></div>
 
                 <div class="item-details">
-                <h3 class="item-name">Product Name</h3>
+                <h3 class="item-name">Product Name (Template)</h3>
                 <p class="item-size">Size: --</p>
                 <p class="item-quantity">Quantity: --</p>
                 <p class="item-price">£0.00</p>
