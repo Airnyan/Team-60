@@ -60,3 +60,49 @@ body {
   font-size: 14px;
 }
 
+
+
+/*
+  3. checkout summary (on the right)
+*/
+
+.basket-summary {
+  flex: 1;
+  border: 1px solid #00ff66;
+  padding: 20px;
+  height: fit-content;
+}
+
+.basket-summary h2 {
+  margin-top: 0;
+  color: #00ff66;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.summary-line.total {
+  font-weight: bold;
+  font-size: 18px;
+  border-top: 1px solid #222;
+  padding-top: 15px;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 15px;
+  background: #00ff66;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.checkout-btn:hover {
+  background: #00cc52;
+}
