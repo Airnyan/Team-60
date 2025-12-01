@@ -26,19 +26,43 @@
         <!-- basket items (on the left) -->
         <div class="basket-items">
 
-                <!-- template item (Backend will duplicate this) -->
-                <div class="basket-item-template">
-                    <div class="item-image"></div>
+            <!-- template item (Backend will duplicate this) -->
+            <div class="basket-item-template">
+                <div class="item-image"></div>
 
-                    <div class="item-details">
-                    <h3 class="item-name">Product Name</h3>
-                    <p class="item-size">Size: --</p>
-                    <p class="item-quantity">Quantity: --</p>
-                    <p class="item-price">£0.00</p>
-                    </div>
+                <div class="item-details">
+                <h3 class="item-name">Product Name</h3>
+                <p class="item-size">Size: --</p>
+                <p class="item-quantity">Quantity: --</p>
+                <p class="item-price">£0.00</p>
                 </div>
-
             </div>
+
+        </div>
+
+        <!-- checkout summary -->
+        <div class="basket-summary">
+
+            <h2>Order Summary</h2>
+
+            <div class="summary-line">
+                <span>Subtotal</span>
+                <span id="subtotal">£0.00</span>
+            </div>
+
+            <div class="summary-line">
+                <span>Shipping</span>
+                <span id="shipping">£0.00</span>
+            </div>
+
+            <div class="summary-line total">
+                <span>Total</span>
+                <span id="total">£0.00</span>
+            </div>
+
+            <button class="checkout-btn">Checkout</button>
+
+        </div>
 
     </div>
 
