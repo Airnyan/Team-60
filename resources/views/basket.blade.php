@@ -6,19 +6,16 @@
 --}}
 
 <x-layout>
+    <!--connection to the basket css file-->
+    @vite('resources/css/basket.css')
 
     <!--title page-->
     <x-slot:title>
         Basket Page
     </x-slot:title>
 
-    <!--heading-->
-    <h1>Welcome to the basket page</h1>
 
     <!-- basket page code -->
-
-    <link rel="stylesheet" href="../css/basket.css">
-
     <div class="basket-page">
 
         <h1 class="basket-title">Your Basket</h1>
