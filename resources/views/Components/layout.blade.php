@@ -11,6 +11,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--title page-->
         <title>{{$title ?? 'Little GreenMan Store'}}</title>
+        <!--link to Google Fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <!--link to custom css style file--> 
         <link rel="stylesheet" href="">
         <!--link to tailwind files-->
@@ -19,49 +21,52 @@
 
     <body>
         <!--Navbar-->
-        <div class="navbar bg-base-100 shadow-sm">
-                <a class="btn btn-ghost text-lg" href="/">Home</a>
-                <a class="btn btn-ghost text-lg" href="/shop">Shop</a>
-                <a class="btn btn-ghost text-lg" href="/basket">Basket</a>
-                <a class="btn btn-ghost text-lg" href="/customerSupport">Customer Support</a>
-                <a class="btn btn-ghost text-lg" href="/aboutUs">About Us</a>
-                <a class="btn btn-ghost text-lg" href="/login">Login</a>
-                <a class="btn btn-ghost text-lg" href="/signUp">Signup</a>
-        </div>
+        <header class="bg-neutral text-white py-4">
+            <div class="container mx-auto">       
+                <div class="flex justify-between">
+                    <!--nav items on the left-->
+                    <div class="flex items-center gap-5">
+                        <!--logo-->
+                        <a href="/"> <img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-12 w-auto" /> </a>
+                        <h1 class="font-bold text-xl">LITTLE GREEN MEN</h1>
+                        <!--search box-->
+                        <!-- <input type="text" placeholder="Search for our products here. . ." class="input input-bordered w-80 text-neutral" /> -->
+                    </div>
+                    <!--nav items on the right-->
+                    <ul class ="flex justify-end items-center font-bold space-x-5 tracking-wide">
+                        <a class="btn btn-ghost text-lg" href="/">HOME</a>
+                        <a class="btn btn-ghost text-lg" href="/shop">SHOP</a>
+                        <a class="btn btn-ghost text-lg" href="/customerSupport">HELP</a>
+                        <a class="btn btn-ghost text-lg" href="/aboutUs">ABOUT</a>
+                        <a class="btn btn-ghost text-lg" href="/login"> <span class="material-symbols-outlined">person</span> </a>
+                        <a class="btn btn-ghost text-lg" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
+                    </ul>
+                </div>
+            </div>
+        </header>
 
-         <!--space for the other pages's content. Implemented using balde.-->
-         <br>
-        {{ $slot}}
+         <!--space for the page's content. Implemented using balde and tailwind classes-->
+        <main class="container mx-auto px-4 min-h-screen pt-10">
+        {{ $slot }}
+        </main>
 
-        <!--java script connection-->
-        <script src=""></script>
+
    </body>
 
 
     <!--footer -->
-    <br>
-    <br>
-    <br>
-    <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
-        <nav>
-            <h6 class="footer-title">Social Media Links</h6>
-            <a class="link link-hover" href="#">Facebook</a>
-            <a class="link link-hover" href="#">Twitter</a>
-            <a class="link link-hover" href="#">Instagram</a>
-        </nav>
-        <nav>
-            <h6 class="footer-title">Company</h6>
-            <a class="link link-hover" href="#">About us</a>
-            <a class="link link-hover" href="#">Contact</a>
-        </nav>
-        <nav>
-            <h6 class="footer-title">Legal</h6>
-            <a class="link link-hover" href="#">Terms of use</a>
-            <a class="link link-hover" href="#">Privacy policy</a>
-            <a class="link link-hover" href="#">Cookie policy</a>
-        </nav>
+    <footer class="bg-neutral text-white py-4 mt-4">
+        <div class="container flex mx-auto items-center justify-between">
+            <p>Copyright&copy; 2025 Little Green Men. All rights reserved.</p>
 
-
+            <div class="flex justify-end items-center space-x-5">
+                <a href="#"> <img src="{{ asset('images/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+                <a href="#"> <img src="{{ asset('images/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+                <a href="#"> <img src="{{ asset('images/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+                <a href="#"> <img src="{{ asset('images/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+            </div>
+            
+        </div>
     </footer>
 
 </html>
