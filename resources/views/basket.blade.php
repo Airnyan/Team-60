@@ -62,7 +62,16 @@
                 <span>Total</span>
                 <span id="total">£0.00</span>
             </div>
+     <form class="address-form">
+         <h3>Shipping Address</h3>
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Address Line 1" required>
+        <input type="text" placeholder="Address Line 2 (optional)">
+        <input type="text" placeholder="City" required>
+        <input type="text" placeholder="Postcode / ZIP" required>
+        <input type="text" placeholder="Country" required>
 
+    </form> 
             <button class="checkout-btn">Checkout</button>
 
         </div>
