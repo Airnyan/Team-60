@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('addresses', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('address_line_1');
+            $table->string('address_line_2');
+            $table->string('postcode',12);
+            $table->timestamps();
+        });
+
+        Schema::table('users', function(Blueprint $table) {
+            $table->foreign('address_id')->references('id')->on('addresses');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('addresses');
+        Schema::table('users', function(Blueprint $table) {
+            $table->dropForeign('address_id');
+        });
+    }
+};
