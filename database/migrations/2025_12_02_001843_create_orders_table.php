@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('address_id')->constrained('addresses');
             
-            $table->dateTime('orderDate');
+            $table->dateTime('order_date');
             $table->enum('status', ['Pending', 'Fufilled', 'Awaiting Payment', 'Cancelled'])->default('Pending');
             $table->timestamps();
         });

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('product_types', function (Blueprint $table) {
             $table->id();
-            $table->string('typeName', 100);
+            $table->string('type_name', 100);
             $table->timestamps();
         });
 
@@ -23,11 +23,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_type_id')->constrained();
 
-            $table->string('productName');
+            $table->string('product_name');
             $table->text('description');
             $table->decimal('price', 10, 2);
             $table->decimal('discounted_price', 10, 2);
-            $table->integer('currentStock');
+            $table->integer('current_stock');
             $table->timestamps();
         });
     }
