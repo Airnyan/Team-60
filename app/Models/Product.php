@@ -21,4 +21,13 @@ class Product extends Model
     public function basket_product() {
         return $this->belongsToMany(Basket::class, 'basket_products', 'basket_id', 'product_id');
     }
+
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'size',
+        'product_type_id',
+        'image'
+    ];
 }
