@@ -9,4 +9,12 @@ class address extends Model
 {
     /** @use HasFactory<\Database\Factories\AddressFactory> */
     use HasFactory;
+
+    public function user() {
+        return $this->hasMany(User::class);
+    }
+
+    public function order() {
+        return $this->hasMany(Order::class);
+    }
 }
