@@ -38,6 +38,17 @@
                 <p class="item-size">Size: --</p>
                 <p class="item-quantity">Quantity: --</p>
                 <p class="item-price">£0.00</p>
+
+                <!-- Quantity controls -->
+                    <div class="quantity-controls">
+                        <button class="qty-btn minus">-</button>
+                        <span class="qty-number">1</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </div>
+
+                <div class="item-total">
+                    £0.00 
                 </div>
             </div>
 
