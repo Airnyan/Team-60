@@ -11,6 +11,7 @@
         Shop Page
     </x-slot:title>
 
+    @vite('resources/css/styles.css')
 
     <div class="page">
         <header class="page-header">
