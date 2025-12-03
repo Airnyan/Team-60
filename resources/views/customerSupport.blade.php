@@ -75,6 +75,7 @@
         @csrf <fieldset class="fieldset">
             <legend class="fieldset-legend text-lg">Name</legend>
             <input 
+                name="name"
                 type="text" 
                 required
                 class="w-full input validator" 
@@ -91,6 +92,7 @@
         <fieldset class="fieldset">
             <legend class="fieldset-legend text-lg">Email</legend>
             <input 
+                name="email"
                 type="email" 
                 class="input w-full validator" 
                 placeholder="Type your email here" 
@@ -103,6 +105,7 @@
         <fieldset class="fieldset">
             <legend class="fieldset-legend text-lg">Mobile Number</legend>
             <input 
+                name="mobile_number"
                 type="tel" 
                 class="input w-full validator" 
                 placeholder="Type your mobile number here" 
@@ -119,6 +122,7 @@
         <fieldset class="fieldset">
             <legend class="fieldset-legend text-lg">Order Number</legend>
             <input 
+                name="order_number"
                 type="text" 
                 class="input w-full validator" 
                 placeholder="Type your order number here" 
@@ -135,6 +139,7 @@
         <fieldset class="fieldset">
             <legend class="fieldset-legend text-lg">Message</legend>
             <textarea 
+                name="message"
                 class="textarea w-full h-20 validator" 
                 placeholder="Type your message here" 
                 required></textarea>
