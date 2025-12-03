@@ -76,12 +76,12 @@
             required
             class="w-full input validator" 
             placeholder="Type your name here" 
-            pattern="[A-Za-z]*"
+            pattern="[A-Za-z\s]+"
             minlength="1"
             maxlength="30"
             title="Only letters"   
         />
-        <p class="validator-hint">Enter a valid name. Cannot contain special characters or numbers.</p>
+        <p class="validator-hint hidden">Enter a valid name. Cannot contain special characters or numbers.</p>
     </fieldset>
 
     <!--Input Field 2-->
@@ -93,7 +93,7 @@
             placeholder="Type your email here" 
             required
         />
-        <p class="validator-hint hidden">Enter valid email address</p>
+        <p class="validator-hint hidden">Enter valid email address. Acceptable format: mail@site.com</p>
     </fieldset>
 
     <!--Input Field 3-->
@@ -109,7 +109,7 @@
             title="Must be 11 digits"
         />
         <p class="label text-base">(Optional)</p>
-        <p class="validator-hint">Must be 11 digits and in this format 07123456789</p>
+        <p class="validator-hint hidden">Must be 11 digits. Acceptable format: 07123456789</p>
     </fieldset>
 
     <!--Input Field 4-->
@@ -117,21 +117,25 @@
         <legend class="fieldset-legend text-lg">Order Number</legend>
         <input 
             type="text" 
-            class="input w-full" 
+            class="input w-full validator" 
             placeholder="Type your order number here" 
             required
             pattern="[0-9]*"
             minlength="5"
             maxlength="5"
-            title="Must be 5 digits"
+            title="Must be 5 digits long"
         />
-        <p class="validator-hint">Must be 5 digits</p>
+        <p class="validator-hint hidden">Must be 5 digits long</p>
     </fieldset>
 
     <!--Input Field 5-->
     <fieldset class="fieldset">
         <legend class="fieldset-legend text-lg">Message</legend>
-        <input type="text" class="input w-full" placeholder="Type your message here" required/>
+        <textarea 
+            class="textarea w-full h-20 validator" 
+            placeholder="Type your message here" 
+            required>
+        </textarea>
     </fieldset>
 
 
