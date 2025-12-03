@@ -11,8 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contact_form__messages', function (Blueprint $table) {
-            
+        Schema::create('contact_form_messages', function (Blueprint $table) {            
             // Table ID column
             $table->id();
 

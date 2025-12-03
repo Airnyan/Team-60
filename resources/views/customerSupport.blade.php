@@ -61,87 +61,91 @@
         </div>
     </div>
 
+
     <!--Heading-->
     <div class="bg-neutral text-white py-4 text-center text-4xl font-bold"> 
         <h1>CONTACT FORM</h1>
     </div>
 
+
     <!--Form-->
 
     <!--Input Field 1-->
-    <fieldset class="fieldset">
-        <legend class="fieldset-legend text-lg">Name</legend>
-        <input 
-            type="text" 
-            required
-            class="w-full input validator" 
-            placeholder="Type your name here" 
-            pattern="[A-Za-z\s]+"
-            minlength="1"
-            maxlength="30"
-            title="Only letters"   
-        />
-        <p class="validator-hint hidden">Enter a valid name. Cannot contain special characters or numbers.</p>
-    </fieldset>
+    <form action="/contact-submit" method="POST">
+        @csrf <fieldset class="fieldset">
+            <legend class="fieldset-legend text-lg">Name</legend>
+            <input 
+                type="text" 
+                required
+                class="w-full input validator" 
+                placeholder="Type your name here" 
+                pattern="[A-Za-z\s]+"
+                minlength="1"
+                maxlength="30"
+                title="Only letters"   
+            />
+            <p class="validator-hint hidden">Enter a valid name. Cannot contain special characters or numbers.</p>
+        </fieldset>
 
-    <!--Input Field 2-->
-    <fieldset class="fieldset">
-        <legend class="fieldset-legend text-lg">Email</legend>
-        <input 
-            type="email" 
-            class="input w-full validator" 
-            placeholder="Type your email here" 
-            required
-        />
-        <p class="validator-hint hidden">Enter valid email address. Acceptable format: mail@site.com</p>
-    </fieldset>
+        <!--Input Field 2-->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend text-lg">Email</legend>
+            <input 
+                type="email" 
+                class="input w-full validator" 
+                placeholder="Type your email here" 
+                required
+            />
+            <p class="validator-hint hidden">Enter valid email address. Acceptable format: mail@site.com</p>
+        </fieldset>
 
-    <!--Input Field 3-->
-    <fieldset class="fieldset">
-        <legend class="fieldset-legend text-lg">Mobile Number</legend>
-        <input 
-            type="tel" 
-            class="input w-full validator" 
-            placeholder="Type your mobile number here" 
-            pattern="[0-9]*"
-            minlength="11"
-            maxlength="11"
-            title="Must be 11 digits"
-        />
-        <p class="label text-base">(Optional)</p>
-        <p class="validator-hint hidden">Must be 11 digits. Acceptable format: 07123456789</p>
-    </fieldset>
+        <!--Input Field 3-->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend text-lg">Mobile Number</legend>
+            <input 
+                type="tel" 
+                class="input w-full validator" 
+                placeholder="Type your mobile number here" 
+                pattern="[0-9]*"
+                minlength="11"
+                maxlength="11"
+                title="Must be 11 digits"
+            />
+            <p class="label text-base">(Optional)</p>
+            <p class="validator-hint hidden">Must be 11 digits. Acceptable format: 07123456789</p>
+        </fieldset>
 
-    <!--Input Field 4-->
-    <fieldset class="fieldset">
-        <legend class="fieldset-legend text-lg">Order Number</legend>
-        <input 
-            type="text" 
-            class="input w-full validator" 
-            placeholder="Type your order number here" 
-            required
-            pattern="[0-9]*"
-            minlength="5"
-            maxlength="5"
-            title="Must be 5 digits long"
-        />
-        <p class="validator-hint hidden">Must be 5 digits long</p>
-    </fieldset>
+        <!--Input Field 4-->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend text-lg">Order Number</legend>
+            <input 
+                type="text" 
+                class="input w-full validator" 
+                placeholder="Type your order number here" 
+                required
+                pattern="[0-9]*"
+                minlength="5"
+                maxlength="5"
+                title="Must be 5 digits long"
+            />
+            <p class="validator-hint hidden">Must be 5 digits long</p>
+        </fieldset>
 
-    <!--Input Field 5-->
-    <fieldset class="fieldset">
-        <legend class="fieldset-legend text-lg">Message</legend>
-        <textarea 
-            class="textarea w-full h-20 validator" 
-            placeholder="Type your message here" 
-            required></textarea>
-    </fieldset>
-
-
+        <!--Input Field 5-->
+        <fieldset class="fieldset">
+            <legend class="fieldset-legend text-lg">Message</legend>
+            <textarea 
+                class="textarea w-full h-20 validator" 
+                placeholder="Type your message here" 
+                required></textarea>
+        </fieldset>
 
 
-    <!--Submit Button-->
-    <button class="btn btn-neutral text-white mt-4 mb-4">Submit</button>
+
+        <!--Submit Button-->
+        <button class="btn btn-neutral text-white mt-4 mb-4">Submit</button>
+
+    </form>
 
     <!--Successfull Submission Message-->
     <div class="mb-2 mt-2 font-bold">
