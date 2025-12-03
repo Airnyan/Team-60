@@ -71,7 +71,7 @@
     <!--Form-->
 
     <!--Input Field 1-->
-    <form action="/contact-submit" method="POST">
+    <form action="/contact-submit" method="POST" >
         @csrf <fieldset class="fieldset">
             <legend class="fieldset-legend text-lg">Name</legend>
             <input 
