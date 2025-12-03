@@ -134,8 +134,7 @@
         <textarea 
             class="textarea w-full h-20 validator" 
             placeholder="Type your message here" 
-            required>
-        </textarea>
+            required></textarea>
     </fieldset>
 
 
