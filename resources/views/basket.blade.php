@@ -80,7 +80,9 @@
         <input type="text" placeholder="Country" required>
 
     </form> 
-            <button class="checkout-btn">Checkout</button>
+    <a href="/checkout">
+        <button class="checkout-btn">Checkout</button>
+    </a>
 
         </div>
 
