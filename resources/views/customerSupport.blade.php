@@ -132,7 +132,7 @@
                 maxlength="5"
                 title="Must be 5 digits long"
             />
-            <p class="validator-hint hidden">Must be 5 digits long</p>
+            <p class="validator-hint hidden">Must be 5 digits long. Cannot contain letters or special characters.</p>
         </fieldset>
 
         <!--Input Field 5-->
@@ -153,9 +153,16 @@
     </form>
 
     <!--Successfull Submission Message-->
-    <div class="mb-2 mt-2 font-bold">
-        <p>Thank you for contacting us. We will reach out to you as soon as possible. Please keep a look at your emails and your spam folder.</p>
+    <!--Check the controller for any issues-->
+    @if(session()->has("message"))
+
+    <div role="alert" class="alert alert-success font-bold">
+        {{session()->get("message")}}
     </div>
+
+    @endif
+
+
 
 
 

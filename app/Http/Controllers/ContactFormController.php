@@ -13,6 +13,8 @@ class ContactFormController extends Controller
         
         ContactForm::create($data);
 
-        return back();
+
+        // Refresh the page and show success message
+        return back()->with("message","Thank you for contacting us. We will reach out to you as soon as possible. Please keep a look at your emails and your spam folder.");
     }
 }
