@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactFormController;
 
 Route::get('/', function () {
     return view('index');
@@ -29,3 +30,5 @@ Route::get('shop', function () {
 Route::get('signUp', function () {
     return view('signUp');
 });
+
+Route::post('/contact-submit', [ContactFormController::class, 'submit']);
