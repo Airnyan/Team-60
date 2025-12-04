@@ -23,6 +23,10 @@ class LoginController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
+
+            if (Auth::user()->is_admin) {
+            return redirect('/admin-dashboard');
+        }
             return redirect('/'); // Redirect to HOME page after login
         }
 
