@@ -17,7 +17,7 @@ class BasketFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => \app\Models\User::factory()
         ];
     }
 }
