@@ -39,10 +39,17 @@ Route::get('/reset-password/{token}', [PasswordResetController::class, 'showRese
 
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])->name('password.update');
 
+Route::get('/admin-dashboard', function() {
+    return view('admin.dashboard');
+})->middleware('auth');
+
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout');
+
+
 Route::get('shop', function () {
     return view('shop');
 });
 
-Route::get('signUp', function () {
-    return view('signUp');
-});
+
