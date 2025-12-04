@@ -21,6 +21,10 @@ Route::get('customerSupport', function () {
     return view('customerSupport');
 });
 
+Route::get('checkout', function () {
+    return view('checkout');
+});
+
 Route::get('/signUp', [RegisterController::class, 'showForm'])->name('register.form');
 
 Route::post('/signUp', [RegisterController::class, 'register'])->name('register.submit');
