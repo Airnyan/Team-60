@@ -35,6 +35,17 @@
                 <p class="item-size">Size: --</p>
                 <p class="item-quantity">Quantity: --</p>
                 <p class="item-price">£0.00</p>
+
+                <!-- Quantity controls -->
+                    <div class="quantity-controls">
+                        <button class="qty-btn minus">-</button>
+                        <span class="qty-number">1</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </div>
+
+                <div class="item-total">
+                    £0.00 
                 </div>
             </div>
 
@@ -59,7 +70,16 @@
                 <span>Total</span>
                 <span id="total">£0.00</span>
             </div>
+     <form class="address-form">
+         <h3>Shipping Address</h3>
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Address Line 1" required>
+        <input type="text" placeholder="Address Line 2 (optional)">
+        <input type="text" placeholder="City" required>
+        <input type="text" placeholder="Postcode / ZIP" required>
+        <input type="text" placeholder="Country" required>
 
+    </form> 
             <button class="checkout-btn">Checkout</button>
 
         </div>
