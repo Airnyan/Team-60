@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-<<<<<<< HEAD
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
 
@@ -22,8 +21,7 @@ class Product extends Model
     public function basket_product() {
         return $this->belongsToMany(Basket::class, 'basket_products', 'basket_id', 'product_id');
     }
-=======
-    use HasFactory;
+    
 
     protected $fillable = [
         'name',
@@ -33,5 +31,4 @@ class Product extends Model
         'category',
         'image',
     ];
->>>>>>> d4618f42e4be1d59bbad24f92d81d093c21ac94f
 }

@@ -1,6 +1,5 @@
-@extends('Components.layout')
+<x-layout>
 
-@section('content')
 <div class="container mx-auto py-10 text-white">
 
     <!-- PAGE TITLE -->
@@ -79,4 +78,5 @@
     </table>
 
 </div>
-@endsection
+</x-layout>
+

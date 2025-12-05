@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="">
         <!--link to tailwind files-->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
     </head>
 
     <body>
@@ -38,7 +39,37 @@
                         <a class="btn btn-ghost text-lg" href="/shop">SHOP</a>
                         <a class="btn btn-ghost text-lg" href="/customerSupport">HELP</a>
                         <a class="btn btn-ghost text-lg" href="/aboutUs">ABOUT</a>
-                        <a class="btn btn-ghost text-lg" href="/login"> <span class="material-symbols-outlined">person</span> </a>
+                        <!-- Admin Panel Icon — only visible for admin users -->
+                        @auth
+                            @if(auth()->user()->is_admin == 1)
+                                <a href="{{ route('admin.products') }}"
+                                class="btn btn-outline btn-success flex items-center gap-2">
+                                    <span class="material-symbols-outlined">dashboard</span>
+                                    Admin
+</a>
+                            @endif
+                        @endauth
+
+                        <!-- Account Icon -->
+                        @guest
+                            <a class="btn btn-ghost text-lg" href="/login">
+                                <span class="material-symbols-outlined">person</span>
+                            </a>
+                        @endguest
+
+                        @auth
+                            <div class="flex items-center gap-3">
+                                <span class="text-green-400">Hi, {{ auth()->user()->name }}</span>
+
+                                <!-- Logout Button -->
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-ghost text-lg">
+                                        <span class="material-symbols-outlined">logout</span>
+                                    </button>
+                                </form>
+                            </div>
+                        @endauth
                         <a class="btn btn-ghost text-lg" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
                     </ul>
                 </div>
