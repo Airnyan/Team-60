@@ -20,11 +20,12 @@ Route::get('aboutUs', function () {
 
 Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
 
-Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.store');
+Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.add');
 
 Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.checkout');
 
 Route::post('/basket/update/{product_id}', [BasketController::class, 'update'])->name('basket.update');
+
 // Route::get('/checkout', [BasketController::class, 'checkout'])
 //     ->middleware('auth')
 //     ->name('checkout');
@@ -37,9 +38,7 @@ Route::get('login', function () {
     return view('login');
 })->name('login');
 
-Route::get('shop', function () {
-    return view('shop');
-});
+Route::get('shop', [ProductController::class, 'show'])->name('shop');
 
 // Authentication Routes 
 Route::get('register', function () {

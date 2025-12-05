@@ -40,4 +40,9 @@ class ProductController extends Controller
             'search' => $search,
         ]);
     }
+
+    public function show() {
+        $products = Product::all();
+        return view('shop', compact('products'));
+    }
 }
