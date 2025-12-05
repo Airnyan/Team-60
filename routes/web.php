@@ -16,6 +16,9 @@ Route::get('aboutUs', function () {
 });
 
 Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
+Route::get('/checkout', [BasketController::class, 'checkout'])
+    ->middleware('auth')
+    ->name('checkout');
 
 Route::get('customerSupport', function () {
     return view('customerSupport');
