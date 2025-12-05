@@ -9,17 +9,20 @@
 @vite('resources/css/login-style.css')
     <!--title page-->
     <x-slot:title>
-        Forgot Password
+        Register
     </x-slot:title>
     <div class="wrapper">
-        <form action="sendPasswordReset.blade.php">
-            <h1>Forgot your Password?</h1>
-            <h3>Enter your email for a link to reset it!</h3>
+        <form action="">
+            <h1>Register</h1>
             <div class="input-box">
                 <input type="email" placeholder="Email" required>
                 <i class='bx  bx-user'></i> 
             </div>
-            <button type="submit" class="btn">Send</button>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+                <i class='bx  bx-lock'></i> 
+            </div>
+            <button type="submit" class="btn">Login</button>
         </form>
     </div>
 

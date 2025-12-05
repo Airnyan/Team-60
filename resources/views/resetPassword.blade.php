@@ -6,13 +6,25 @@
 --}}
 
 <x-layout>
-
+@vite('resources/css/login-style.css')
     <!--title page-->
     <x-slot:title>
-        Reset Password Page
+        Reset Password
     </x-slot:title>
+    <div class="wrapper">
+        <form action="">
+            <h1>Reset Password?</h1>
+            <h3>Enter a new password below.</h3>
+            <div class="input-box">
+                <input type="text" placeholder="Enter a new password." required>
+                <i class='bx  bx-lock'></i> 
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Enter it again!" required>
+                <i class='bx  bx-lock'></i> 
+            </div>
+            <button type="submit" class="btn">Reset</button>
+        </form>
+    </div>
 
-    <!--heading-->
-    <h1>Reset Password</h1>
-
-</x-layout>
+    </x-layout>
