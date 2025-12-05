@@ -20,6 +20,8 @@ Route::get('aboutUs', function () {
 
 Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
 
+Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.store');
+
 Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.checkout');
 
 Route::get('/checkout', [BasketController::class, 'checkout'])
