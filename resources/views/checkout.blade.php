@@ -1,61 +1,88 @@
 <x-layout>
-    <x-slot:title>
-        Checkout
-    </x-slot:title>
+    @vite('resources/css/basket.css')
 
-    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-8">
+    <x-slot:title>Checkout</x-slot:title>
 
-        <h1 class="text-3xl font-bold mb-6 text-center">Checkout</h1>
+    <div class="basket-page">
 
-        <!-- Order placed message -->
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-            <p class="font-semibold">Thanks for placing your order!</p>
-            <p>Your order details are shown below.</p>
-        </div>
+        <h1 class="basket-title">Checkout</h1>
 
-        <!-- Order Summary Section -->
-        <div class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Order Summary</h2>
+        <div class="basket-container">
 
-            <div class="bg-gray-100 p-4 rounded-lg">
+            <!-- LEFT SIDE — ORDER ITEMS -->
+            <div class="basket-items">
 
-                <div class="flex justify-between py-2 border-b">
-                    <span class="font-medium">Items Total:</span>
-                    <span>£0.00</span>
-                </div>
+                <h2 class="text-green-400 text-xl mb-4">Order Items</h2>
 
-                <div class="flex justify-between py-2 border-b">
-                    <span class="font-medium">Shipping:</span>
-                    <span>£0.00</span>
-                </div>
+                @foreach ($products as $item)
+                    <div class="basket-item-template">
 
-                <div class="flex justify-between py-3 text-xl font-bold">
-                    <span>Total:</span>
-                    <span>£0.00</span>
-                </div>
+                        <div class="item-image">
+                            <img src="{{ asset('images/' . $item->product->image) }}" class="w-full h-full object-cover">
+                        </div>
+
+                        <div class="item-details">
+                            <h3 class="item-name">{{ $item->product->product_name }}</h3>
+                            <p class="item-size">Size: {{ $item->product->size }}</p>
+                            <p class="item-price">Price: £{{ $item->product->price }}</p>
+
+                            <div class="quantity-controls">
+                                <span class="qty-number">x {{ $item->quantity }}</span>
+                            </div>
+                        </div>
+
+                        <div class="item-total">
+                            £{{ $item->product->price * $item->quantity }}
+                        </div>
+
+                    </div>
+                @endforeach
 
             </div>
-        </div>
 
-        <!-- Shipping address (static dummy for now) -->
-        <div class="mb-8">
-            <h2 class="text-2xl font-semibold mb-3">Shipping Address</h2>
 
-            <div class="bg-gray-100 p-4 rounded-lg">
-                <p class="font-medium">John Doe</p>
-                <p>123 Example Street</p>
-                <p>Birmingham</p>
-                <p>B1 2AB</p>
-                <p>United Kingdom</p>
+
+            <!-- RIGHT SIDE — SUMMARY + ADDRESS -->
+            <div class="basket-summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-line">
+                    <span>Items Total</span>
+                    <span>£{{ $total }}</span>
+                </div>
+
+                <div class="summary-line">
+                    <span>Shipping</span>
+                    <span>£0.00</span>
+                </div>
+
+                <div class="summary-line total">
+                    <span>Total</span>
+                    <span>£{{ $total }}</span>
+                </div>
+
+
+                <!-- ADDRESS FORM -->
+                <form class="address-form mt-4">
+                    <h3 class="text-white">Shipping Address</h3>
+
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="text" placeholder="Address Line 1" required>
+                    <input type="text" placeholder="Address Line 2 (Optional)">
+                    <input type="text" placeholder="City" required>
+                    <input type="text" placeholder="Postcode / ZIP" required>
+                    <input type="text" placeholder="Country" required>
+                </form>
+
+                <a href="/" class="checkout-btn mt-4 text-center block">
+                    Place Order
+                </a>
+
             </div>
-        </div>
 
-        <!-- Confirmation message -->
-        <div class="text-center">
-            <a href="/" class="btn btn-primary text-white w-full md:w-1/2">
-                Return to Home
-            </a>
         </div>
 
     </div>
+
 </x-layout>
