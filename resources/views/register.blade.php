@@ -9,11 +9,11 @@
 @vite('resources/css/login-style.css')
     <!--title page-->
     <x-slot:title>
-        Login
+        Register
     </x-slot:title>
     <div class="wrapper">
         <form action="">
-            <h1>Login</h1>
+            <h1>Register</h1>
             <div class="input-box">
                 <input type="email" placeholder="Email" required>
                 <i class='bx  bx-user'></i> 
@@ -22,14 +22,7 @@
                 <input type="password" placeholder="Password" required>
                 <i class='bx  bx-lock'></i> 
             </div>
-            <div class="remember-forgot">
-                <label><input type="checkbox">Remember Me</label>
-                <a href="/forgotPassword">Forgot Password?</a>
-            </div>
             <button type="submit" class="btn">Login</button>
-            <div class="register-link">
-                <a href="/register">Don't have an account?</a>
-            </div>
         </form>
     </div>
 
