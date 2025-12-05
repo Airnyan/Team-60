@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <!--lang specifies the language of the content-->
 <html lang="en">
-
+<link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
     <!--head tag is a container for metadata-->
     <head>
         <!--encoding type-->

@@ -31,4 +31,20 @@ Route::get('signUp', function () {
     return view('signUp');
 });
 
+Route::get('register', function () {
+    return view('register');
+});
+
+Route::get('forgotPassword', function () {
+    return view('forgotPassword');
+});
+
+Route::get('resetPassword', function () {
+    return view('resetPassword');
+});
+
+Route::get('login', function () {
+    return view('login');
+});
+
 Route::post('/contact-submit', [ContactFormController::class, 'submit']);
