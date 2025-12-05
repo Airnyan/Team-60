@@ -1,4 +1,4 @@
-codes this im sure {{-- 
+{{-- 
     NOTE:
     Standard HTML & layout are already handled by views/components/layout.blade.php
     Just put your page content inside the <x-layout> tags.
