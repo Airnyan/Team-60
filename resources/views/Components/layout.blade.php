@@ -1,0 +1,72 @@
+<!-- -->
+<!DOCTYPE html>
+<!--lang specifies the language of the content-->
+<html lang="en">
+<link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <!--head tag is a container for metadata-->
+    <head>
+        <!--encoding type-->
+        <meta charset="UTF-8">
+        <!--for proper scaling-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--title page-->
+        <title>{{$title ?? 'Little GreenMan Store'}}</title>
+        <!--link to Google Fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <!--link to custom css style file--> 
+        <link rel="stylesheet" href="">
+        <!--link to tailwind files-->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+
+    <body>
+        <!--Navbar-->
+        <header class="bg-neutral text-white py-4">
+            <div class="container mx-auto">       
+                <div class="flex justify-between">
+                    <!--nav items on the left-->
+                    <div class="flex items-center gap-5">
+                        <!--logo-->
+                        <a href="/"> <img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-12 w-auto" /> </a>
+                        <h1 class="font-bold text-xl">LITTLE GREEN MEN</h1>
+                        <!--search box-->
+                        <!-- <input type="text" placeholder="Search for our products here. . ." class="input input-bordered w-80 text-neutral" /> -->
+                    </div>
+                    <!--nav items on the right-->
+                    <ul class ="flex justify-end items-center font-bold space-x-5 tracking-wide">
+                        <a class="btn btn-ghost text-lg" href="/">HOME</a>
+                        <a class="btn btn-ghost text-lg" href="/shop">SHOP</a>
+                        <a class="btn btn-ghost text-lg" href="/customerSupport">HELP</a>
+                        <a class="btn btn-ghost text-lg" href="/aboutUs">ABOUT</a>
+                        <a class="btn btn-ghost text-lg" href="/login"> <span class="material-symbols-outlined">person</span> </a>
+                        <a class="btn btn-ghost text-lg" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+         <!--space for the page's content. Implemented using balde and tailwind classes-->
+        <main class="container mx-auto px-4 min-h-screen pt-10">
+        {{ $slot }}
+        </main>
+
+
+   </body>
+
+
+    <!--footer -->
+    <footer class="bg-neutral text-white py-4 mt-4">
+        <div class="container flex mx-auto items-center justify-between">
+            <p>Copyright&copy; 2025 Little Green Men. All rights reserved.</p>
+
+            <div class="flex justify-end items-center space-x-5">
+                <a href="https://www.facebook.com/"> <img src="{{ asset('images/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+                <a href="https://www.tiktok.com/en-GB/"> <img src="{{ asset('images/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+                <a href="https://www.instagram.com/"> <img src="{{ asset('images/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+                <a href="https://x.com/"> <img src="{{ asset('images/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+            </div>
+            
+        </div>
+    </footer>
+
+</html>
