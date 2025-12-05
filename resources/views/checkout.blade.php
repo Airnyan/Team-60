@@ -1,3 +1,4 @@
+{{-- Checkout Page --}}
 <x-layout>
     @vite('resources/css/basket.css')
 
@@ -5,34 +6,37 @@
 
     <div class="basket-page">
 
-        <h1 class="basket-title">Checkout</h1>
+        <h1 class="basket-title">Order Placed Successfully</h1>
+
+        <!-- Success Message -->
+        <div class="bg-green-600 text-black p-4 rounded mb-6 font-bold text-lg">
+            ✅ Thank you! Your order has been placed successfully.
+        </div>
 
         <div class="basket-container">
 
-            <!-- LEFT SIDE — ORDER ITEMS -->
+            <!-- LEFT SIDE: Order Items -->
             <div class="basket-items">
 
-                <h2 class="text-green-400 text-xl mb-4">Order Items</h2>
+                <h2 class="text-green-400 text-xl mb-4">Items in your order</h2>
 
                 @foreach ($products as $item)
                     <div class="basket-item-template">
 
                         <div class="item-image">
-                            <img src="{{ asset('images/' . $item->product->image) }}" class="w-full h-full object-cover">
+                            <img src="{{ asset('images/' . $item->product->image) }}" 
+                                 style="width:100%; height:100%; object-fit:cover;">
                         </div>
 
                         <div class="item-details">
-                            <h3 class="item-name">{{ $item->product->product_name }}</h3>
+                            <h3 class="item-name">{{ $item->product->name }}</h3>
                             <p class="item-size">Size: {{ $item->product->size }}</p>
+                            <p class="item-quantity">Quantity: {{ $item->quantity }}</p>
                             <p class="item-price">Price: £{{ $item->product->price }}</p>
-
-                            <div class="quantity-controls">
-                                <span class="qty-number">x {{ $item->quantity }}</span>
-                            </div>
                         </div>
 
                         <div class="item-total">
-                            £{{ $item->product->price * $item->quantity }}
+                            £{{ $item->quantity * $item->product->price }}
                         </div>
 
                     </div>
@@ -40,15 +44,13 @@
 
             </div>
 
-
-
-            <!-- RIGHT SIDE — SUMMARY + ADDRESS -->
+            <!-- RIGHT SIDE: Summary -->
             <div class="basket-summary">
 
                 <h2>Order Summary</h2>
 
                 <div class="summary-line">
-                    <span>Items Total</span>
+                    <span>Subtotal</span>
                     <span>£{{ $total }}</span>
                 </div>
 
@@ -62,27 +64,13 @@
                     <span>£{{ $total }}</span>
                 </div>
 
-
-                <!-- ADDRESS FORM -->
-                <form class="address-form mt-4">
-                    <h3 class="text-white">Shipping Address</h3>
-
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="text" placeholder="Address Line 1" required>
-                    <input type="text" placeholder="Address Line 2 (Optional)">
-                    <input type="text" placeholder="City" required>
-                    <input type="text" placeholder="Postcode / ZIP" required>
-                    <input type="text" placeholder="Country" required>
-                </form>
-
-                <a href="/" class="checkout-btn mt-4 text-center block">
-                    Place Order
+                <a href="/" class="checkout-btn" style="text-align:center; display:block;">
+                    Return Home
                 </a>
 
             </div>
 
         </div>
-
     </div>
 
 </x-layout>
