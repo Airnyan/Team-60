@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use app\Models\Order;
+use app\Models\Product;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OrderProduct>
  */
@@ -17,8 +18,8 @@ class OrderProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => \app\Models\Order::factory(),
-            'product_id' => \app\Models\Product::factory(),
+            'order_id' => fn ($order) =>$order['order_id'] ?? Order::factory(),
+            'product_id' => fn ($product) =>$product['product_id'] ?? Product::factory(),
             'quantity' => fake()->numberBetween(1,10),
         ];
     }
