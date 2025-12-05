@@ -73,19 +73,14 @@
                 <span>Total</span>
                 <span id="total">£0.00</span>
             </div>
-     <form class="address-form">
-         <h3>Shipping Address</h3>
-        <input type="text" placeholder="Full Name" required>
-        <input type="text" placeholder="Address Line 1" required>
-        <input type="text" placeholder="Address Line 2 (optional)">
-        <input type="text" placeholder="City" required>
-        <input type="text" placeholder="Postcode / ZIP" required>
-        <input type="text" placeholder="Country" required>
-
-    </form> 
+            <h3>Shipping Address</h3>
             <form action="{{ route('basket.checkout') }}" method="POST">
                 @csrf
-            <button class="checkout-btn">Checkout</button>
+
+                    <input type="text" name="address1" placeholder="Address Line 1" value="{{ old('address1')}}" required>
+                    <input type="text" name="address2" placeholder="Address Line 2" value="{{ old('address2')}}"required>
+                    <input type="text" name="postcode" placeholder="Postcode / ZIP" value="{{ old('postcode')}}"required>
+                <button class="checkout-btn" type = "submit">Checkout</button>
             </form>
         </div>
 

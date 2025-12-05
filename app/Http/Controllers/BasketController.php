@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Basket;
 use App\Models\BasketProduct;
 use App\Models\User;
@@ -121,16 +122,29 @@ class BasketController extends Controller
         return redirect()->back()->with('success', 'Basket emptied.');
     }
 
-    public function checkout() {
+    public function checkout(Request $request) {
         // $user = User::find(16); //Test Instance
         $user = Auth::user();
 
         $basket = Basket::where('user_id', $user->id)->first();
 
+        $validated = request()->validate([
+            'address1' => 'required|string|max:255',
+            'address2' => 'required|string|max:255',
+            'postcode' => 'required|string|max:20',
+        ]);
+        $address = Address::create([
+            'user_id' => $user->id,
+            'address_line_1' => $validated['address1'],
+            'address_line_2' => $validated['address2'],
+            'postcode' => $validated['postcode'],
+        ]);
+
+
         $products = $basket->basket_product;
         $order = Order::create([
             'user_id' => $user->id,
-            'address_id' => $user->address_id,
+            'address_id' => $address->id,
             'order_date' => now(),
             'status' => 'Pending',
         ]);

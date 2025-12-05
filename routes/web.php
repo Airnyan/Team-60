@@ -24,9 +24,9 @@ Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.sto
 
 Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.checkout');
 
-Route::get('/checkout', [BasketController::class, 'checkout'])
-    ->middleware('auth')
-    ->name('checkout');
+// Route::get('/checkout', [BasketController::class, 'checkout'])
+//     ->middleware('auth')
+//     ->name('checkout');
 
 Route::get('customerSupport', function () {
     return view('customerSupport');
