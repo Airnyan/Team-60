@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordResetController;
@@ -16,11 +17,20 @@ Route::get('/', function () {
 Route::get('aboutUs', function () {
     return view('aboutUs');
 });
-Route::get('basket', function () {
-    return view('basket');
-});
+
+Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
+
 Route::get('customerSupport', function () {
     return view('customerSupport');
+});
+
+Route::get('shop', function () {
+    return view('shop');
+});
+
+// Authentication Routes 
+Route::get('register', function () {
+    return view('register');
 });
 
 Route::get('/signUp', [RegisterController::class, 'showForm'])->name('register.form');
@@ -40,14 +50,6 @@ Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'
 Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
 
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])->name('password.update');
-
-
-Route::get('shop', function () {
-    return view('shop');
-});
-
-
-
 
 
 Route::post('/contact-submit', [ContactFormController::class, 'submit']);

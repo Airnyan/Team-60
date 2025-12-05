@@ -11,7 +11,7 @@ class Product extends Model
     use HasFactory;
 
     public function orders() {
-        return $this->belongsToMany(Order::class, 'order_product', 'order_id', 'product_id');
+        return $this->hasMany(OrderProduct::class);
     }
 
     public function product_type() {
@@ -19,9 +19,8 @@ class Product extends Model
     }
 
     public function basket_product() {
-        return $this->belongsToMany(Basket::class, 'basket_products', 'basket_id', 'product_id');
+        return $this->hasMany(BasketProduct::class);
     }
-    
 
     protected $fillable = [
         'name',
@@ -29,6 +28,7 @@ class Product extends Model
         'price',
         'size',
         'category',
-        'image',
+        'product_type_id',
+        'image'
     ];
 }
