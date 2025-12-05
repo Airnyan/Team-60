@@ -163,7 +163,7 @@
                 colors: ["White", "Neutral"],
                 isNew: true,
                 image:
-                    "https://images.pexels.com/photos/955870/pexels-photo-955870.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "{{ asset('images/grid1.png') }}"
             },
             {
                 id: 2,
@@ -175,7 +175,7 @@
                 colors: ["Black"],
                 isNew: true,
                 image:
-                    "https://images.pexels.com/photos/6311579/pexels-photo-6311579.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "{{ asset('images/grid2.png') }}"
             },
             {
                 id: 3,
@@ -187,7 +187,7 @@
                 colors: ["Neutral"],
                 isNew: false,
                 image:
-                    "https://images.pexels.com/photos/7671165/pexels-photo-7671165.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "{{ asset('images/grid3.png') }}"
             },
             {
                 id: 4,
@@ -199,7 +199,7 @@
                 colors: ["Denim"],
                 isNew: true,
                 image:
-                    "https://images.pexels.com/photos/6311651/pexels-photo-6311651.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "{{ asset('images/grid4.png') }}"
             },
             {
                 id: 5,
@@ -211,7 +211,7 @@
                 colors: ["Neutral", "Black"],
                 isNew: false,
                 image:
-                    "https://images.pexels.com/photos/3738085/pexels-photo-3738085.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "{{ asset('images/grid1.png') }}"
             },
             {
                 id: 6,
@@ -223,7 +223,7 @@
                 colors: ["Black", "White"],
                 isNew: true,
                 image:
-                    "https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg?auto=compress&cs=tinysrgb&w=800"
+                   "{{ asset('images/grid2.png') }}"
             },
             {
                 id: 7,
@@ -235,7 +235,7 @@
                 colors: ["Neutral"],
                 isNew: true,
                 image:
-                    "https://images.pexels.com/photos/1404220/pexels-photo-1404220.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "{{ asset('images/grid3.png') }}"
             },
             {
                 id: 8,
@@ -247,7 +247,7 @@
                 colors: ["Black"],
                 isNew: false,
                 image:
-                    "https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=800"
+                   "{{ asset('images/grid4.png') }}"
             },
             {
                 id: 9,
@@ -259,7 +259,7 @@
                 colors: ["White"],
                 isNew: false,
                 image:
-                    "https://images.pexels.com/photos/10026491/pexels-photo-10026491.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    "{{ asset('images/grid1.png') }}"
             }
         ];
 
