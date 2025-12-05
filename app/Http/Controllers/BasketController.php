@@ -19,7 +19,9 @@ class BasketController extends Controller
     {
         $user = User::find(16); //Test Instance
         //$user = Auth::user(); //grabs current user
-
+        if(!$user) {
+            return redirect()->route('login')->with('error', 'Please log in.');
+        }
         $basket = Basket::with('basket_product')->where('user_id', $user->id)->first();
 
         // dd($basket); //Dumps data to debug
@@ -33,6 +35,9 @@ class BasketController extends Controller
     {
         $user = User::find(16); //Test Instance
         //$user = Auth::user(); //grabs current user
+        if(!$user) {
+            return redirect()->route('login')->with('error', 'Please log in.');
+        }
         $product = Product::findOrfail($request->product_id);
 
         $basket = Basket::where('user_id', $user->id)->first();
