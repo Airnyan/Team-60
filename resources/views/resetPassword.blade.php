@@ -6,25 +6,45 @@
 --}}
 
 <x-layout>
-@vite('resources/css/login-style.css')
-    <!--title page-->
+    @vite('resources/css/login-style.css')
+
     <x-slot:title>
         Reset Password
     </x-slot:title>
+
     <div class="wrapper">
-        <form action="">
-            <h1>Reset Password?</h1>
+        <form action="{{ route('password.update') }}" method="POST">
+            @csrf
+
+            <h1>Reset Password</h1>
             <h3>Enter a new password below.</h3>
+
+            <!-- Pass token -->
+            <input type="hidden" name="token" value="{{ $token }}">
+
             <div class="input-box">
-                <input type="text" placeholder="Enter a new password." required>
-                <i class='bx  bx-lock'></i> 
+                <input type="email" name="email" placeholder="Email" required>
+                <i class='bx bx-user'></i>
             </div>
+
             <div class="input-box">
-                <input type="text" placeholder="Enter it again!" required>
-                <i class='bx  bx-lock'></i> 
+                <input type="password" name="password" placeholder="New password" required>
+                <i class='bx bx-lock'></i>
             </div>
+
+            <div class="input-box">
+                <input type="password" name="password_confirmation" placeholder="Confirm password" required>
+                <i class='bx bx-lock'></i>
+            </div>
+
+            @if ($errors->any())
+                <p style="color:red; font-size:14px;">
+                    {{ $errors->first() }}
+                </p>
+            @endif
+
             <button type="submit" class="btn">Reset</button>
         </form>
     </div>
+</x-layout>
 
-    </x-layout>

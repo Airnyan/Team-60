@@ -3,7 +3,7 @@
         Admin - Manage Products
     </x-slot:title>
 
-    <div class="container mx-auto py-10 text-white">
+<div class="container mx-auto py-10 text-white">
 
         <h1 class="text-3xl font-bold mb-6 text-green-400">Admin – Manage Products</h1>
 
@@ -67,5 +67,6 @@
             </tbody>
         </table>
 
-    </div>
+</div>
 </x-layout>
+
