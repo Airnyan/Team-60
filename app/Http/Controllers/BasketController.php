@@ -6,6 +6,7 @@ use App\Models\Basket;
 use App\Models\BasketProduct;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Order;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +18,8 @@ class BasketController extends Controller
      */
     public function index()
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
         if(!$user) {
             return redirect()->route('login')->with('error', 'Please log in.');
         }
@@ -68,8 +69,9 @@ class BasketController extends Controller
      */
     public function update(Request $request, $product_id)
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
+
         $basket = Basket::where('user_id', $user->id)->first();
         if (! $basket) {
             $basket = Basket::create(['user_id' => $user->id]);
@@ -87,8 +89,8 @@ class BasketController extends Controller
      */
     public function destroy($product_id)
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
 
         $basket = Basket::where('user_id', $user->id)->first();
         if (! $basket) {
@@ -106,8 +108,8 @@ class BasketController extends Controller
      */
     public function clear()
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
 
         $basket = Basket::where('user_id', $user->id)->first();
 
@@ -117,17 +119,26 @@ class BasketController extends Controller
     }
 
     public function checkout() {
-        $user = User::find(16); //Test Instance
+        // $user = User::find(16); //Test Instance
         $user = Auth::user();
 
         $basket = Basket::where('user_id', $user->id)->first();
 
         $products = $basket->basket_product;
+        $order = Order::create([
+            'user_id' => $user->id,
+            'status' => 'Pending',
+        ]);
         $total = 0;
         foreach($products as $product) {
             $total += $product->price * $product->quantity;
+            $order->order_product()->create([
+                'product_id' => $product->product_id,
+                'quantity' => $product->quantity,
+                'price' => $product->price,
+            ]);
         }
-
-        return view('checkout', compact('basket','products', 'total'));
+        $basket->basket_product()->delete();
+        return view('checkout', compact('order', 'total'));
     }
 }
