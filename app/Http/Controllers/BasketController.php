@@ -7,6 +7,7 @@ use App\Models\BasketProduct;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
+use DateTime;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,9 @@ class BasketController extends Controller
             return redirect()->route('login')->with('error', 'Please log in.');
         }
         $basket = Basket::with('basket_product')->where('user_id', $user->id)->first();
-
+        if (! $basket) {
+            $basket = Basket::create(['user_id' => $user->id]);
+        };
         // dd($basket); //Dumps data to debug
         return view('basket', compact('basket'));
     }
@@ -127,18 +130,20 @@ class BasketController extends Controller
         $products = $basket->basket_product;
         $order = Order::create([
             'user_id' => $user->id,
+            'address_id' => $user->address_id,
+            'order_date' => now(),
             'status' => 'Pending',
         ]);
         $total = 0;
         foreach($products as $product) {
             $total += $product->price * $product->quantity;
-            $order->order_product()->create([
+            $order -> products()->create([
+                'order_id' => $order->id,
                 'product_id' => $product->product_id,
                 'quantity' => $product->quantity,
-                'price' => $product->price,
             ]);
         }
         $basket->basket_product()->delete();
-        return view('checkout', compact('order', 'total'));
+        return view('checkout', compact('order', 'products', 'total'));
     }
 }

@@ -83,8 +83,10 @@
         <input type="text" placeholder="Country" required>
 
     </form> 
+            <form action="{{ route('basket.checkout') }}" method="POST">
+                @csrf
             <button class="checkout-btn">Checkout</button>
-
+            </form>
         </div>
 
         </div>
