@@ -27,7 +27,6 @@
                     <th class="p-3 border border-green-500">Image</th>
                     <th class="p-3 border border-green-500">ID</th>
                     <th class="p-3 border border-green-500">Name</th>
-                    <th class="p-3 border border-green-500">Category</th>
                     <th class="p-3 border border-green-500">Price</th>
                 </tr>
             </thead>
@@ -52,10 +51,6 @@
                             {{ $product->name }}
                         </td>
 
-                        <td class="p-3 border border-green-500 text-white">
-                            {{ $product->category }}
-                        </td>
-
                         <td class="p-3 border border-green-500 text-green-400 font-bold">
                             £{{ $product->price }}
                         </td>
@@ -64,7 +59,7 @@
 
                 @empty
                     <tr>
-                        <td colspan="5" class="p-4 text-center text-gray-400">
+                        <td colspan="4" class="p-4 text-center text-gray-400">
                             No products found.
                         </td>
                     </tr>
