@@ -24,6 +24,7 @@ Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.sto
 
 Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.checkout');
 
+Route::post('/basket/update/{product_id}', [BasketController::class, 'update'])->name('basket.update');
 // Route::get('/checkout', [BasketController::class, 'checkout'])
 //     ->middleware('auth')
 //     ->name('checkout');

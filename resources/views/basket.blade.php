@@ -41,9 +41,15 @@
 
                         <!-- Quantity controls -->
                             <div class="quantity-controls">
-                                <button class="qty-btn minus">-</button>
+                                <form action="{{ route('basket.update', $basket_product->product->id) }}" method="POST">
+                                    @csrf
+                                <button type="submit" name="change" value="-1" class="qty-btn minus">-</button>
+                                </form>
                                 <span class="qty-number">{{$basket_product->quantity}}</span>
-                                <button class="qty-btn plus">+</button>
+                                <form action="{{ route('basket.update', $basket_product->product->id) }}" method="POST">
+                                    @csrf
+                                <button type="submit" name="change" value="1" class="qty-btn plus">+</button>
+                                </form>
                             </div>
                         </div>
 

@@ -80,9 +80,9 @@ class BasketController extends Controller
         if (! $basket) {
             $basket = Basket::create(['user_id' => $user->id]);
         }
-
+        $change = (int) $request->input('change', 0);
         $basketproduct = BasketProduct::where('basket_id', $basket->id)->where('product_id', $product_id)->first();
-        $basketproduct->quantity = $request->quantity;
+        $basketproduct->quantity += $change;
         $basketproduct->save();
 
         return redirect()->back()->with('success', 'Quantity changed.');
