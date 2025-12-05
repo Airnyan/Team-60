@@ -3,8 +3,9 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use app\Models\Order;
-use app\Models\Product;
+use App\Models\Order;
+use App\Models\OrderProduct;
+use App\Models\Product;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\OrderProduct>
  */
@@ -18,9 +19,21 @@ class OrderProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => fn ($order) =>$order['order_id'] ?? Order::factory(),
-            'product_id' => fn ($product) =>$product['product_id'] ?? Product::factory(),
+            'order_id' => null,
+            'product_id' => null,
             'quantity' => fake()->numberBetween(1,10),
         ];
+    }
+
+    public function configure()
+    {
+        return parent::configure()->afterMaking(function (OrderProduct $orderProduct) {
+            if(!$orderProduct->order_id) {
+                $orderProduct->order_id = Order::factory()->create()->id;
+            }
+            if(!$orderProduct->product_id) {
+                $orderProduct->product_id =  Product::factory()->create()->id;
+            }
+        });
     }
 }
