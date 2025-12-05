@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactFormController;
 
@@ -11,9 +12,7 @@ Route::get('aboutUs', function () {
     return view('aboutUs');
 });
 
-Route::get('basket', function () {
-    return view('basket');
-});
+Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
 
 Route::get('customerSupport', function () {
     return view('customerSupport');
