@@ -20,9 +20,11 @@ Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
 Route::get('customerSupport', function () {
     return view('customerSupport');
 });
+
 Route::get('login', function () {
     return view('login');
-});
+})->name('login');
+
 Route::get('shop', function () {
     return view('shop');
 });
