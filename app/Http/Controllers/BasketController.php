@@ -38,14 +38,15 @@ class BasketController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
         if(!$user) {
             return redirect()->route('login')->with('error', 'Please log in.');
         }
         $product = Product::findOrfail($request->product_id);
 
         $basket = Basket::where('user_id', $user->id)->first();
+        // dd($user,$basket,$product);
         if (! $basket) {
             $basket = Basket::create(['user_id' => $user->id]);
         }
@@ -56,12 +57,14 @@ class BasketController extends Controller
             BasketProduct::create([
             'basket_id' => $basket->id,
             'product_id' => $product->id,
-            'quantity' => $request->quantity,
-            'price' => $product->price
+            // 'quantity' => $request->quantity,
+            'price' => $product->price,
+            'quantity' => 1,
             ]);
         }
         else {
-            $basketproduct-> quantity += $request->quantity;
+            // $basketproduct-> quantity += $request->quantity;
+            $basketproduct-> quantity += 1;
             $basketproduct->save();
         }
 

@@ -118,29 +118,29 @@
                 <div id="productsGrid" class="products-grid" aria-live="polite">
                     @foreach($products as $product)
                         @php
-                            $sizes = is_array($product->sizes) ? $product->sizes : json_decode($product->sizes ?? '[]', true);
-                            $colors = is_array($product->colors) ? $product->colors : json_decode($product->colors ?? '[]', true);
-                            $image = $product->image_url ? asset($product->image_url) : asset('images/grid1.png');
+                            $sizes = is_array($product->size) ? $product->size : json_decode($product->size ?? '[]', true);
+                            // $colors = is_array($product->colors) ? $product->colors : json_decode($product->colors ?? '[]', true);
+                            $image = $product->image ? asset($product->image) : asset('images/grid1.png');
                         @endphp
 
                         <article
                             class="product-card"
-                            data-name="{{ strtolower($product->name) }}"
-                            data-slug="{{ strtolower($product->slug) }}"
-                            data-category="{{ $product->category }}"
+                            data-name="{{ strtolower($product->product_name) }}"
+                            {{-- data-slug="{{ strtolower($product->slug) }}" --}}
+                            data-category="{{ $product->product_type->type_name }}"
                             data-price="{{ $product->price }}"
                             data-sizes='@json($sizes)'
-                            data-colors='@json($colors)'
+                            {{-- data-colors='@json($colors)' --}}
                         >
                             <div class="product-media">
-                                <img src="{{ $image }}" alt="{{ $product->name }}" />
-                                @if($product->is_new)
+                                <img src="{{ $image }}" alt="{{ $product->product_name }}" />
+                                {{-- @if($product->is_new)
                                     <div class="badge">NEW ARRIVAL</div>
-                                @endif
+                                @endif --}}
                             </div>
 
                             <div class="product-info">
-                                <p class="product-name">{{ $product->name }}</p>
+                                <p class="product-name">{{ $product->product_name }}</p>
                                 <p class="product-price">£{{ number_format($product->price, 2) }}</p>
 
                                 <form action="{{ route('basket.add', $product) }}" method="POST">
