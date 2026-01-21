@@ -24,21 +24,35 @@
 
         <!-- basket items (on the left) -->
         <div class="basket-items">
+                {{-- Loops through each basket item --}}
+                @foreach ($basket->basket_product as $basket_product)
+                    
+                    <!-- template item (Backend will duplicate this) -->
+                    <!-- template is used to show the items in the basket -->
+                    {{-- Linked basket items to template --}}
+                    <div class="basket-item-template">
+                        <div class="item-image"><img src="{{$basket_product->product->image}}"></div>
 
-            <!-- template item (Backend will duplicate this) -->
-             <!-- template is used to show the items in the basket -->
-            <div class="basket-item-template">
-                <div class="item-image"></div>
+                        <div class="item-details">
+                        <h3 class="item-name">{{$basket_product->product->product_name}}</h3>
+                        <p class="item-size">Size: {{$basket_product->product->size}}</p>
+                        {{-- <p class="item-quantity">Quantity: {{$basket_product->quantity}}</p> --}}
+                        <p class="item-price">Price: £{{$basket_product->product->price}}</p>
 
-                <div class="item-details">
-                <h3 class="item-name">Product Name (Template)</h3>
-                <p class="item-size">Size: --</p>
-                <p class="item-quantity">Quantity: --</p>
-                <p class="item-price">£0.00</p>
-                </div>
+                        <!-- Quantity controls -->
+                            <div class="quantity-controls">
+                                <button class="qty-btn minus">-</button>
+                                <span class="qty-number">{{$basket_product->quantity}}</span>
+                                <button class="qty-btn plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="item-total">
+                            £{{($basket_product->quantity * $basket_product->product->price)}}
+                        </div>
+                    </div>
+                @endforeach
             </div>
-
-        </div>
 
         <!-- checkout summary -->
         <div class="basket-summary">
@@ -59,7 +73,16 @@
                 <span>Total</span>
                 <span id="total">£0.00</span>
             </div>
+     <form class="address-form">
+         <h3>Shipping Address</h3>
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Address Line 1" required>
+        <input type="text" placeholder="Address Line 2 (optional)">
+        <input type="text" placeholder="City" required>
+        <input type="text" placeholder="Postcode / ZIP" required>
+        <input type="text" placeholder="Country" required>
 
+    </form> 
             <button class="checkout-btn">Checkout</button>
 
         </div>

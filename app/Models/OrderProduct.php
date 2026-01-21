@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BasketProduct extends Model
+class OrderProduct extends Model
 {
-    /** @use HasFactory<\Database\Factories\UserAccessabilityFactory> */
+    /** @use HasFactory<\Database\Factories\OrderProductFactory> */
     use HasFactory;
-    
-    public function basket() {
-        return $this->belongsTo(Basket::class);
+
+    public function order() {
+        return $this->belongsTo(Order::class);
     }
 
     public function product() {

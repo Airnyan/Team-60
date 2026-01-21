@@ -11,7 +11,7 @@ class Basket extends Model
     use HasFactory;
     
     public function basket_product() {
-        return $this->belongsToMany(Product::class, 'basket_products', 'product_id', 'basket_id');
+        return $this->hasmany(BasketProduct::class);
     }
 
     public function user() {

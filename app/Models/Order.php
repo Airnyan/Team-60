@@ -18,6 +18,6 @@ class Order extends Model
         return $this->belongsTo(Address::class);
     }
     public function products() {
-        return $this->belongsToMany(Product::class, 'order_product', 'product_id', 'order_id');
+        return $this->hasMany(OrderProduct::class);
     }
 }
