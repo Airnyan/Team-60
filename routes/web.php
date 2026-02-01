@@ -20,7 +20,7 @@ Route::get('aboutUs', function () {
 
 Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
 
-Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.add');
+Route::post('/basket/add/{product_id}', [BasketController::class, 'store'])->name('basket.add');
 
 Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.checkout');
 
