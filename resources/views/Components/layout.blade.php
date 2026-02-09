@@ -89,19 +89,32 @@
         <!--Chatbot (Work-In-Progress) -->
 
         <!--Chat Window-->
-        <div class="card w-100 bg-base-100 shadow-sm fixed bottom-5 right-10">
+        <div class="card w-96 bg-base-100 shadow-sm fixed bottom-5 right-10">
             <!--Chat Header-->
-            <div class="navbar shadow-sm">
-                <p class="font-semibold text-lg">ChatBot</p>
-            </div>
+            <div class="navbar justify-between shadow-sm rounded-t">    
+                <div class="flex justify-between gap-5 items-center mx-4">
+                    <!--Chatbot Avatar--> 
+                    <div class="chat-image avatar">
+                        <div class="w-10 rounded-full ring-2 ring-slate-200"><img alt="Chatbot Avatar" src="{{ asset('images/chatbot.png') }}" /></div>
+                    </div>
+                    <!--Heading-->
+                    <p class="font-semibold text-lg">ChudBot</p>
+                </div>
+                <!--Close Button-->
+                <div class="card-actions mx-4">
+                <button class="btn btn-square btn-sm">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                </div>
+            </div> 
 
             <!--Chat History-->
-            <div class="card-body">
-                <!--Chatbot Agent--> 
+            <div class="card-body h-80 overflow-y-auto">
+            <!--Chatbot Agent--> 
                 <div class="chat chat-start">
                     <!--Chatbot Avatar--> 
                     <div class="chat-image avatar">
-                        <div class="w-10 rounded-full border"><img alt="Chatbot Avatar" src="{{ asset('images/chatbot.png') }}" /></div>
+                        <div class="w-10 rounded-full ring-2 ring-slate-200"><img alt="Chatbot Avatar" src="{{ asset('images/chatbot.png') }}" /></div>
                     </div>
                     <!--Chatbot's Chat Bubble-->
                     <div class="chat-bubble">How can I help you today?</div>
@@ -111,22 +124,26 @@
                 <div class="chat chat-end">
                     <!--User Avatar-->
                     <div class="chat-image avatar">
-                        <div class="w-10 rounded-full border"><img alt="Chatbot Avatar" src="{{ asset('images/user.png') }}" /></div>
+                        <div class="w-10 rounded-full ring-2 ring-slate-200"><img alt="Chatbot Avatar" src="{{ asset('images/user.png') }}" /></div>
                     </div>
                     <!--User's Chat Bubble-->
                     <div class="chat-bubble">I hate you!</div>
                 </div>
             </div>
 
-
-
-
-
+            <!--Chatbot Footer-->
+            <div class="p-2 join">
+                <!--Text Area-->
+                <input type="text" class="input join-item w-full " placeholder="Type your message here" />
+                <!--Send Button-->
+                <button class="btn btn-square btn-md join-item">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
         </div>
         
         
-
-            
+        
         <!--Chat Button-->    
         <div class="fixed bottom-5 right-10"> 
             <label class="btn btn-circle swap swap-rotate">
@@ -138,9 +155,6 @@
                 <span class="swap-on fill-current material-symbols-outlined">chat_bubble_off</span>
             </label>
         </div>
-
-
-
 
 
 
