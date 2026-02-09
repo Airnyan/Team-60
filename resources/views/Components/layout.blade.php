@@ -88,9 +88,47 @@
 
         <!--Chatbot (Work-In-Progress) -->
 
+        <!--Chat Window-->
+        <div class="card w-100 bg-base-100 shadow-sm fixed bottom-5 right-10">
+            <!--Chat Header-->
+            <div class="navbar shadow-sm">
+                <p class="font-semibold text-lg">ChatBot</p>
+            </div>
 
-        <!--Chat Button-->
-        <div class="fixed bottom-5 right-10">
+            <!--Chat History-->
+            <div class="card-body">
+                <!--Chatbot Agent--> 
+                <div class="chat chat-start">
+                    <!--Chatbot Avatar--> 
+                    <div class="chat-image avatar">
+                        <div class="w-10 rounded-full border"><img alt="Chatbot Avatar" src="{{ asset('images/chatbot.png') }}" /></div>
+                    </div>
+                    <!--Chatbot's Chat Bubble-->
+                    <div class="chat-bubble">How can I help you today?</div>
+                </div>
+
+                <!--User--> 
+                <div class="chat chat-end">
+                    <!--User Avatar-->
+                    <div class="chat-image avatar">
+                        <div class="w-10 rounded-full border"><img alt="Chatbot Avatar" src="{{ asset('images/user.png') }}" /></div>
+                    </div>
+                    <!--User's Chat Bubble-->
+                    <div class="chat-bubble">I hate you!</div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        
+        
+
+            
+        <!--Chat Button-->    
+        <div class="fixed bottom-5 right-10"> 
             <label class="btn btn-circle swap swap-rotate">
                 <!-- this hidden checkbox controls the state -->
                 <input type="checkbox" />
