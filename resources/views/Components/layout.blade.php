@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--title page-->
         <title>{{$title ?? 'Little GreenMan Store'}}</title>
-        <!--link to Google Fonts-->
+        <!--link to Google Material Icons-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <!--link to custom css style file--> 
         <link rel="stylesheet" href="">
@@ -82,7 +82,33 @@
         </main>
 
 
-   </body>
+        
+
+        
+
+        <!--Chatbot (Work-In-Progress) -->
+
+
+        <!--Chat Button-->
+        <div class="fixed bottom-5 right-10">
+            <label class="btn btn-circle swap swap-rotate">
+                <!-- this hidden checkbox controls the state -->
+                <input type="checkbox" />
+                <!-- Open icon -->
+                <span class="swap-off fill-current material-symbols-outlined">chat</span>
+                <!-- Close icon -->
+                <span class="swap-on fill-current material-symbols-outlined">chat_bubble_off</span>
+            </label>
+        </div>
+
+
+
+
+
+
+    </body>
+
+
 
 
     <!--footer -->
