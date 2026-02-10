@@ -89,7 +89,8 @@
         <!--Chatbot (Work-In-Progress) -->
 
         <!--Chat Window-->
-        <div class="card w-96 bg-base-100 shadow-sm fixed bottom-5 right-10">
+        <div class="card w-96 bg-base-100 shadow-sm fixed bottom-5 right-25">
+
             <!--Chat Header-->
             <div class="navbar justify-between shadow-sm rounded-t">    
                 <div class="flex justify-between gap-5 items-center mx-4">
@@ -140,13 +141,13 @@
                     <span class="material-symbols-outlined">send</span>
                 </button>
             </div>
+
         </div>
-        
         
         
         <!--Chat Button-->    
         <div class="fixed bottom-5 right-10"> 
-            <label class="btn btn-circle swap swap-rotate">
+            <label class="btn btn-circle btn-lg swap swap-rotate">
                 <!-- this hidden checkbox controls the state -->
                 <input type="checkbox" />
                 <!-- Open icon -->
@@ -155,6 +156,12 @@
                 <span class="swap-on fill-current material-symbols-outlined">chat_bubble_off</span>
             </label>
         </div>
+
+
+
+
+
+
 
 
 
