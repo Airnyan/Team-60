@@ -13,9 +13,9 @@ class ProductController extends Controller
         $search = $request->input('search');
 
         $products = Product::when($search, function ($q) use ($search) {
-            return $q->where('name', 'LIKE', "%{$search}%")
-                     ->orWhere('description', 'LIKE', "%{$search}%")
-                     ->orWhere('category', 'LIKE', "%{$search}%");
+            return $q->where('product_name', 'LIKE', "%{$search}%")
+                     ->orWhere('description', 'LIKE', "%{$search}%");
+                     
         })->get();
 
         return view('products', [
@@ -30,9 +30,9 @@ class ProductController extends Controller
         $search = $request->input('search');
 
         $products = Product::when($search, function ($q) use ($search) {
-            return $q->where('name', 'LIKE', "%{$search}%")
-                     ->orWhere('description', 'LIKE', "%{$search}%")
-                     ->orWhere('category', 'LIKE', "%{$search}%");
+            return $q->where('product_name', 'LIKE', "%{$search}%")
+                     ->orWhere('description', 'LIKE', "%{$search}%");
+                     
         })->get();
 
         return view('admin.products', [

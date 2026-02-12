@@ -1,4 +1,6 @@
 <!-- -->
+@props(['title' => 'Little GreenMan Store'])
+
 <!DOCTYPE html>
 <!--lang specifies the language of the content-->
 <html lang="en">
@@ -10,14 +12,15 @@
         <!--for proper scaling-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--title page-->
-        <title>{{$title ?? 'Little GreenMan Store'}}</title>
+        <title>{{$title}}</title>
         <!--link to Google Fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <!--link to custom css style file--> 
         <link rel="stylesheet" href="">
         <!--link to tailwind files-->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     </head>
 
     <body>
@@ -41,8 +44,8 @@
                         <a class="btn btn-ghost text-lg" href="/aboutUs">ABOUT</a>
                         <!-- Admin Panel Icon — only visible for admin users -->
                         @auth
-                            @if(auth()->user()->is_admin == 1)
-                                <a href="{{ route('admin.products') }}"
+                            @if(auth()->user()->isAdmin())
+                                <a href="{{ route('admin.dashboard') }}"
                                 class="btn btn-outline btn-success flex items-center gap-2">
                                     <span class="material-symbols-outlined">dashboard</span>
                                     Admin

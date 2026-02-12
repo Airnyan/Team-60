@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -7,6 +7,7 @@ use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminProductController;
 
 // Home page
 Route::get('/', function () {
@@ -33,10 +34,6 @@ Route::post('/basket/update/{product_id}', [BasketController::class, 'update'])-
 Route::get('customerSupport', function () {
     return view('customerSupport');
 });
-
-Route::get('login', function () {
-    return view('login');
-})->name('login');
 
 Route::get('shop', [ProductController::class, 'show'])->name('shop');
 
@@ -68,7 +65,45 @@ Route::post('/contact-submit', [ContactFormController::class, 'submit']);
 // Product Search Routes
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 
+Route::middleware('auth')->prefix('admin')->group(function () {
 
-Route::get('/admin/products', [ProductController::class, 'adminIndex'])
-    ->name('admin.products')
-    ->middleware('auth');  
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+    /*
+    | PRODUCTS (ADMIN + SUPER ADMIN)
+    */
+    Route::middleware('can:isAdmin')->group(function () {
+        Route::get('/products', [ProductController::class, 'adminIndex'])->name('admin.products');
+        Route::get('/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
+        Route::post('/products', [AdminProductController::class, 'store'])->name('admin.products.store');
+        Route::get('/products/{product}/edit', [AdminProductController::class, 'edit'])->name('admin.products.edit');
+        Route::put('/products/{product}', [AdminProductController::class, 'update'])->name('admin.products.update');
+        Route::delete('/products/{product}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
+    });
+
+    /*
+    | USERS (SUPER ADMIN ONLY)
+    */
+    Route::middleware('can:isSuperAdmin')->group(function () {
+        Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
+        Route::patch('/users/{user}/role', [AdminUserController::class, 'updateRole'])->name('admin.users.role');
+        Route::patch('/users/{user}/make-admin', [AdminUserController::class, 'makeAdmin'])->name('admin.users.makeAdmin');
+        Route::patch('/users/{user}/remove-admin', [AdminUserController::class, 'removeAdmin'])->name('admin.users.removeAdmin');
+        Route::get('/users/dashboard', [AdminUserController::class, 'dashboard'])->name('admin.users.dashboard');
+        //Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+        //Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
+        Route::post('/users/{user}/reset-password', [AdminUserController::class, 'sendReset'])->name('admin.users.reset');
+        
+        });
+
+        Route::middleware('can:isAdmin')->group(function () {
+        Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+        Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
+        Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+        Route::get('/users/index', [AdminUserController::class, 'indexUser'])->name('admin.users.indexuser');
+    });
+
+});
+
