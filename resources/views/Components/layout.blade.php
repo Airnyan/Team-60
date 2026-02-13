@@ -109,8 +109,7 @@
         </div>
 
         <!--Chat Body-->
-        <div id="chatBody">
-        <div class="card-body h-80 overflow-y-auto">
+        <div id="chatBody" class="card-body h-80 overflow-y-auto">
             <!--Agent-->
             <div class="chat chat-start">
                 <!--Chatbot Avatar-->
@@ -133,7 +132,6 @@
                 <!--User's Chat Bubble-->
                 <div class="chat-bubble">I hate you!</div>
             </div>
-        </div>
         </div>
         
         <!--Chatbot Footer-->
