@@ -1,3 +1,5 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 // Button to show/hide chat window
 const chatButton = document.getElementById("chatButton");
@@ -14,12 +16,41 @@ chatButton.addEventListener("click", event => {
 });
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// Button close the chat window (Inside the chat-window header)
+// Button to close the chat window (Inside the chat-window header)
 const innerCloseChatButton = document.getElementById("innerCloseChatButton");
     // Simliar logic to previous button
     innerCloseChatButton.addEventListener("click", event =>{
-        // Although toggle is not necessary here but it works so less work for me :)
+        // Although toggle function is not necessary here but it works so less work for me :)
         chatWindow.classList.toggle("hidden");
 });
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Main Chatbot Body
+// Declaring variables 
+const chatBody = document.getElementById("chatBody"); // Fixed the typo here
+const txtInput = document.getElementById("txtInput");
+const send = document.getElementById("send");
+
+// Event listener for send message button with an function
+send.addEventListener("click",()=>renderUserMessage());
+
+// Function for rendering messages
+const renderUserMessage = () =>{
+    const userInput= txtInput.value;
+    renderMessageEle(userInput);
+};
+
+// Function for rendering message elements
+const renderMessageEle = (txt)=> {
+    const messageEle = document.createElement("div");
+    const txtNode=document.createTextNode(txt);
+    messageEle.classList.add("user-message");
+    messageEle.append(txtNode);
+    chatBody.append(messageEle);
+};

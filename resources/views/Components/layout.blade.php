@@ -83,11 +83,7 @@
     </main>
 
 
-
-
-
-
-    <!--Chatbot (Work-In-Progress) -->
+    <!-------------------------------Chatbot (Work-In-Progress)------------------------------>
 
     <!--Chat Window-->
     <div id="chatWindow" class="hidden">
@@ -113,6 +109,7 @@
         </div>
 
         <!--Chat Body-->
+        <div id="chatBody">
         <div class="card-body h-80 overflow-y-auto">
             <!--Agent-->
             <div class="chat chat-start">
@@ -137,15 +134,18 @@
                 <div class="chat-bubble">I hate you!</div>
             </div>
         </div>
+        </div>
         
         <!--Chatbot Footer-->
         <div class="p-2 join">
             <!--Text Area-->
-            <input type="text" class="input join-item w-full " placeholder="Type your message here" />
+            <input type="text" id="txtInput" class="input join-item w-full " placeholder="Type your message here" />
             <!--Send Button-->
-            <button class="btn btn-square btn-md join-item">
-                <span class="material-symbols-outlined">send</span>
-            </button>
+            <div>
+                <button id="send" class="btn btn-square btn-md join-item">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
         </div>
     </div>
     </div>
@@ -162,7 +162,7 @@
         </label>
     </div>
 
-
+<!-------------------------------Chatbot (Work-In-Progress)------------------------------>
 
 
 </body>
