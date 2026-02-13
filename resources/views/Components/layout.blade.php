@@ -105,7 +105,7 @@
             <p class="font-semibold text-lg">ChudBot</p>
         </div>
         <!--Close Button-->
-        <div class="card-actions mx-4">
+        <div id="innerCloseChatButton" class="card-actions mx-4">
             <button class="btn btn-square btn-sm">
                 <span class="material-symbols-outlined">close</span>
             </button>
