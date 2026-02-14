@@ -17,7 +17,7 @@
     <!--link to custom css style file-->
     <link rel="stylesheet" href="">
     <!--link to tailwind files-->
-    @vite(['resources/css/app.css', 'resources/js/app.js','resources/js/chatbot.js'])
+    @vite(['resources/css/app.css', 'resources/js/response.js', 'resources/js/app.js','resources/js/chatbot.js'])
 
 </head>
 
@@ -119,18 +119,7 @@
                     </div>
                 </div>
                 <!--Chatbot's Chat Bubble-->
-                <div class="chat-bubble">How can I help you today?</div>
-            </div>
-            <!--User-->
-            <div class="chat chat-end">
-                <!--User Avatar-->
-                <div class="chat-image avatar">
-                    <div class="w-10 rounded-full ring-2 ring-slate-200">
-                        <img alt="Chatbot Avatar" src="{{ asset('images/user.png') }}" />
-                    </div>
-                </div>
-                <!--User's Chat Bubble-->
-                <div class="chat-bubble">I hate you!</div>
+                <div class="chat-bubble">Yo wagwan, my G?</div>
             </div>
         </div>
         

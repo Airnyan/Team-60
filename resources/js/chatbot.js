@@ -51,24 +51,68 @@ txtInput.addEventListener("keyup",(event)=>{
 // Function for rendering messages
 const renderUserMessage = () =>{
     const userInput= txtInput.value;
-    renderMessageEle(userInput);
+    renderMessageEle(userInput,"user");
     // Clear the user message after sending
     txtInput.value="";
+    // Chatbot wait before responding
+    setTimeout(() => {
+        renderChatbotResponse(userInput,"bot");
+        setScrollPosition();
+    }, 600);
 };
 
-// Function for rendering message elements
-const renderMessageEle = (txt)=> {
+// Function for rendering chatbot messages 
+const renderChatbotResponse = (userInput) => {
+    const res = getChatbotResponse(userInput);
+    renderMessageEle(res);
+};
+
+
+// Function for rendering user messages 
+const renderMessageEle = (txt, type) => {
     const messageEle = document.createElement("div");
-    // Adding Diasyui classes here
-    messageEle.classList.add("chat", "chat-end");
-    // Using innerHtml for nested html code
-    messageEle.innerHTML = 
-        // This code is same as the one used for the mock up earlier
-       `<div class="chat-image avatar">
+
+    if(type !== "user") {
+        messageEle.classList.add("chat", "chat-start");
+        // Html code copy pasted from the mock version
+        // JS literal
+        messageEle.innerHTML =`
+        <div class="chat-image avatar">
             <div class="w-10 rounded-full ring-2 ring-slate-200">
-                <img alt="User Avatar" src="/images/user.png" />
+                <img alt="Chatbot Avatar" src="/images/chatbot.png" />
             </div>
         </div>
-        <div class="chat-bubble">${txt}</div>`;
-    chatBody.append(messageEle);
+        <div class="chat-bubble">${txt}</div>
+        `;}
+
+     else {
+        messageEle.classList.add("chat", "chat-end");
+        // Html code copy pasted from the mock version
+        // JS literal
+        messageEle.innerHTML =`
+        <div class="chat-image avatar">
+                <div class="w-10 rounded-full ring-2 ring-slate-200">
+                    <img src="/images/user.png" />
+                </div>
+            </div>
+            <div class="chat-bubble">${txt}</div>
+        `;}
+
+        chatBody.append(messageEle);
+    };
+
+
+// Chatbot response functionality 
+const getChatbotResponse = (userInput) => {
+    return responseObj[userInput] == undefined
+    ? "Please try something else"
+    : responseObj[userInput];
+};
+
+
+// Auto scroll the chat
+const setScrollPosition = () => {
+    if (chatBody.scrollHeight > 0) {
+        chatBody.scrollTop = chatBody.scrollHeight; 
+    }
 };
