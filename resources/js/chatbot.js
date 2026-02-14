@@ -28,11 +28,10 @@ const innerCloseChatButton = document.getElementById("innerCloseChatButton");
 
 
 // Main Chatbot Body
-// Declaring variables 
 const chatBody = document.getElementById("chatBody"); 
 const txtInput = document.getElementById("txtInput");
 const send = document.getElementById("send");
-
+const loadIcon = document.getElementById("loadIcon");
 
 // Event listener for send message button
 send.addEventListener("click",()=>renderUserMessage());
@@ -52,10 +51,14 @@ const renderUserMessage = () =>{
     // Clear the user message after sending
     txtInput.value="";
     // Chatbot wait before responding
+    // Loading Icon
+    chatBody.append(loadIcon);
+    toggleLoading(false);
     setTimeout(() => {
         renderChatbotResponse(userInput,"bot");
         setScrollPosition();
-    }, 600);
+        toggleLoading(true);
+    }, 800);
 };
 
 // Function for rendering chatbot messages 
@@ -98,6 +101,7 @@ const renderMessageEle = (txt, type) => {
         chatBody.append(messageEle);
     };
 
+    const toggleLoading=(show)=>loadIcon.classList.toggle("hidden",show);
  
 
 

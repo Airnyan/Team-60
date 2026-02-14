@@ -83,8 +83,6 @@
     </main>
 
 
-    <!-------------------------------Chatbot (Work-In-Progress)------------------------------>
-
     <!--Chat Window-->
     <div id="chatWindow" class="hidden">
     <div class="card w-96 bg-base-100 shadow-sm fixed bottom-5 right-25">
@@ -110,6 +108,9 @@
 
         <!--Chat Body-->
         <div id="chatBody" class="card-body h-80 overflow-y-scroll overflow-hidden">
+            <!--loading icon-->
+            <span id="loadIcon" class="loading loading-dots loading-xl hidden"></span>
+
             <!--Agent-->
             <div class="chat chat-start">
                 <!--Chatbot Avatar-->
@@ -121,8 +122,11 @@
                 <!--Chatbot's Chat Bubble-->
                 <div class="chat-bubble">Yo wagwan, my G?</div>
             </div>
+ 
         </div>
         
+
+
         <!--Chatbot Footer-->
         <div class="p-2 join">
             <!--Text Area-->
@@ -149,7 +153,6 @@
         </label>
     </div>
 
-<!-------------------------------Chatbot (Work-In-Progress)------------------------------>
 
 
 </body>
