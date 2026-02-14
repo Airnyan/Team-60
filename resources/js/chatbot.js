@@ -10,6 +10,7 @@ chatButton.addEventListener("click", event => {
         // It checks if the list contains the word "hidden".
         // If yes it removes, if no it adds it.
     chatWindow.classList.toggle("hidden");
+    txtInput.focus();
 });
 
 
@@ -38,7 +39,7 @@ send.addEventListener("click",()=>renderUserMessage());
 
 // Event listener for sending messages by pressing Enter key
 txtInput.addEventListener("keyup",(event)=>{
-    if (event.keyCode === 13){
+    if (event.code === "Enter"){
         renderUserMessage();
     }
 });
@@ -97,13 +98,71 @@ const renderMessageEle = (txt, type) => {
         chatBody.append(messageEle);
     };
 
+ 
+
+
 
 // Chatbot response functionality 
 const getChatbotResponse = (userInput) => {
-    return responseObj[userInput] == undefined
-    ? "Please try something else"
-    : responseObj[userInput];
+    // Filter user message
+    let text = userInput.toLowerCase().replace(/[^\w\s\d]/gi, "");
+    // Response logic
+    if (text.includes("hello") || text.includes("hi") || text.includes("hola") || text.includes("hey") ) {
+        return "Hi there!";
+    }
+    if (text.includes("how are you") || text.includes("how are things") ) {
+        return "Pretty well, how are you?";
+    }
+    if (text.includes("what is going on") || text.includes("what is up") ) {
+        return "Nothing much";
+    }
+    if (text.includes("happy") || text.includes("good") || text.includes("well") ) {
+        return "Glad to hear it";
+    }
+    if (text.includes("bad") || text.includes("bored") || text.includes("sad") ) {
+        return "Idk man, what do you want me do?";
+    }
+    if (text.includes("fuck") || text.includes("asshole") || text.includes("shutup")|| text.includes("clanker") ) {
+        return "Bruh, what did I ever do to you????? 😭😭😭😭";
+    }    
+    if (text.includes("thanks") || text.includes("thank you")) {
+        return "You're welcome";
+    }
+    if (text.includes("bye") || text.includes("good bye") || text.includes("goodbye") ) {
+        return "See you later :)";
+    }
+    if (text.includes("contact") || text.includes("form") || text.includes("human")|| text.includes("agent")|| text.includes("support")) {
+        return "Please head over to our Help page, and use the contact form to reach our customer service team.";
+    }
+    if (text.includes("help") ) {
+        return "I would be glad to assist you with any issues you have.<br><br> Please simply type a keyword related to your problem.<br><br> If you need additional support, please reach out to our customer support team, and they will be able to help you. ";
+    }    
+    if (text.includes("faq") || text.includes("question") || text.includes("common") ) {
+        return "Please head over to our Help page, the FAQ section covers most commonly asked questions!";
+    }    
+    if (text.includes("about") || text.includes("history") || text.includes("motto") ) {
+        return "Please head over to our About page, to learn more about our company.";
+    }
+    if (text.includes("links") || text.includes("social") || text.includes("media") || text.includes("facebook")|| text.includes("tiktok")|| text.includes("instagram")) {
+        return "Our social media links can accessed in the footer at the very bottom of the page.";
+    }        
+    if (text.includes("account") || text.includes("profile") || text.includes("personal") || text.includes("details") ) {
+        return "Please head over to your Account page, to manage your profile and other related details.";
+    }
+    if (text.includes("order") || text.includes("status") || text.includes("track") || text.includes("history") || text.includes("shipping") || text.includes("delivery") ) {
+        return "To track the status of your order or view your full order history, please head to your account page.";
+    } 
+     /*
+    if (text.includes("") || text.includes("") || text.includes("") ) {
+        return "Response Needed";
+    }
+    */ 
+    else {
+        return "Sorry, I didn't quite understand that. <br><br> Please try typing a keyword related to your problem.<br><br>If you need additional support, please reach out to our customer support team, and they will be able to help you.";
+    }
+
 };
+
 
 
 // Auto scroll the chat
