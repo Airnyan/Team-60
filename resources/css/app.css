@@ -9,3 +9,41 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+
+/* Animation for the chatbot */
+
+.user-message {
+    transform: translate(50%);
+    opacity:0;
+    animation: fade-in-right 0.3s ease-in-out both;
+}
+
+@keyframes fade-in-right  {
+    0%{
+        transform: translate(50%);
+        opacity:0;
+    }
+    100%{
+        transform: translate(0%);
+        opacity:1;
+    }    
+}
+
+.chatbot-message {
+    transform: translate(-50%);
+    opacity:0;
+    animation: fade-in-left 0.3s ease-in-out both;
+
+}
+
+@keyframes fade-in-left  {
+    0%{
+        transform: translate(-50%);
+        opacity:0;
+    }
+    100%{
+        transform: translate(0%);
+        opacity:1;
+    }    
+}

@@ -109,7 +109,7 @@
         </div>
 
         <!--Chat Body-->
-        <div id="chatBody" class="card-body h-80 overflow-y-auto">
+        <div id="chatBody" class="card-body h-80 overflow-y-scroll overflow-hidden">
             <!--Agent-->
             <div class="chat chat-start">
                 <!--Chatbot Avatar-->

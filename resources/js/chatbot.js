@@ -1,6 +1,3 @@
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 // Button to show/hide chat window
 const chatButton = document.getElementById("chatButton");
 const chatWindow = document.getElementById("chatWindow");
@@ -16,7 +13,6 @@ chatButton.addEventListener("click", event => {
 });
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 // Button to close the chat window (Inside the chat-window header)
@@ -28,14 +24,14 @@ const innerCloseChatButton = document.getElementById("innerCloseChatButton");
 });
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 // Main Chatbot Body
 // Declaring variables 
-const chatBody = document.getElementById("chatBody"); // Fixed the typo here
+const chatBody = document.getElementById("chatBody"); 
 const txtInput = document.getElementById("txtInput");
 const send = document.getElementById("send");
+
 
 // Event listener for send message button
 send.addEventListener("click",()=>renderUserMessage());
@@ -73,7 +69,7 @@ const renderMessageEle = (txt, type) => {
     const messageEle = document.createElement("div");
 
     if(type !== "user") {
-        messageEle.classList.add("chat", "chat-start");
+        messageEle.classList.add("chat", "chat-start", "chatbot-message");
         // Html code copy pasted from the mock version
         // JS literal
         messageEle.innerHTML =`
@@ -86,7 +82,7 @@ const renderMessageEle = (txt, type) => {
         `;}
 
      else {
-        messageEle.classList.add("chat", "chat-end");
+        messageEle.classList.add("chat", "chat-end", "user-message");
         // Html code copy pasted from the mock version
         // JS literal
         messageEle.innerHTML =`
