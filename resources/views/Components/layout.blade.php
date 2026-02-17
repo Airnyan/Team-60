@@ -122,15 +122,12 @@
                 <!--Chatbot's Chat Bubble-->
                 <div class="chat-bubble">Yo wagwan, my G?</div>
             </div>
- 
         </div>
         
-
-
         <!--Chatbot Footer-->
         <div class="p-2 join">
             <!--Text Area-->
-            <input type="text" id="txtInput" class="input join-item w-full " placeholder="Type your message here" />
+            <input autocomplete="off" type="text" id="txtInput" class="input join-item w-full " placeholder="Type your message here" />
             <!--Send Button-->
             <div>
                 <button id="send" class="btn btn-square btn-md join-item">

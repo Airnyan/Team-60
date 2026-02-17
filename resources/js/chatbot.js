@@ -114,7 +114,7 @@ const getChatbotResponse = (userInput) => {
     if (text.includes("hello") || text.includes("hi") || text.includes("hola") || text.includes("hey") ) {
         return "Hi there!";
     }
-    if (text.includes("how are you") || text.includes("how are things") ) {
+    if (text.includes("how are you") || text.includes("how are things")|| text.includes("how are u") ) {
         return "Pretty well, how are you?";
     }
     if (text.includes("what is going on") || text.includes("what is up") ) {
@@ -127,12 +127,12 @@ const getChatbotResponse = (userInput) => {
         return "Idk man, what do you want me do?";
     }
     if (text.includes("fuck") || text.includes("asshole") || text.includes("shutup")|| text.includes("clanker") ) {
-        return "Bruh, what did I ever do to you????? 😭😭😭😭";
+        return "You are such a meany!!! 😭😭😭";
     }    
     if (text.includes("thanks") || text.includes("thank you")) {
         return "You're welcome";
     }
-    if (text.includes("bye") || text.includes("good bye") || text.includes("goodbye") ) {
+    if (text.includes("bye") || text.includes("good bye") || text.includes("goodbye") || text.includes("stop") ) {
         return "See you later :)";
     }
     if (text.includes("contact") || text.includes("form") || text.includes("human")|| text.includes("agent")|| text.includes("support")) {
@@ -155,7 +155,10 @@ const getChatbotResponse = (userInput) => {
     }
     if (text.includes("order") || text.includes("status") || text.includes("track") || text.includes("history") || text.includes("shipping") || text.includes("delivery") ) {
         return "To track the status of your order or view your full order history, please head to your account page.";
-    } 
+    }
+    if (text.includes("chudbot")) {
+        return "Don't day that man, it hurts my feelings 😭😭😭😭";
+    }     
      /*
     if (text.includes("") || text.includes("") || text.includes("") ) {
         return "Response Needed";
