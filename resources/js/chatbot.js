@@ -90,12 +90,8 @@ const renderMessageEle = (txt, type) => {
         // Html code copy pasted from the mock version
         // JS literal
         messageEle.innerHTML =`
-        <div class="chat-image avatar">
-                <div class="w-10 rounded-full ring-2 ring-slate-200">
-                    <img src="/images/user.png" />
-                </div>
-            </div>
-            <div class="chat-bubble">${txt}</div>
+
+            <div class="chat-bubble chat-bubble-success">${txt}</div>
         `;}
 
         chatBody.append(messageEle);

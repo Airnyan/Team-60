@@ -87,20 +87,20 @@
     <div id="chatWindow" class="hidden">
     <div class="card w-96 bg-base-100 shadow-sm fixed bottom-5 right-25">
         <!--Chat Header-->
-        <div class="navbar justify-between shadow-sm rounded-t">
+        <div class="navbar bg-success justify-between rounded-t">
         <div class="flex justify-between gap-5 items-center mx-4">
             <!--Chatbot Avatar-->
             <div class="chat-image avatar">
-                <div class="w-10 rounded-full ring-2 ring-slate-200">
-                    <img alt="Chatbot Avatar" src="{{ asset('images/chatbot.png') }}" />
+                <div class="w-10 rounded-full">
+                    <img alt="Chatbot Avatar" src="{{ asset('images/chatbot.jpg') }}" />
                 </div>
             </div>
             <!--Heading-->
-            <p class="font-semibold text-lg">ChudBot</p>
+            <p class="text-base-100 font-semibold text-lg">ChudBot</p>
         </div>
         <!--Close Button-->
-        <div id="innerCloseChatButton" class="card-actions mx-4">
-            <button class="btn btn-square btn-sm">
+        <div id="innerCloseChatButton" class="card-actions mx-4 ">
+            <button class="btn btn-square btn-sm btn-neutral">
                 <span class="material-symbols-outlined">close</span>
             </button>
         </div>    
@@ -110,12 +110,11 @@
         <div id="chatBody" class="card-body h-80 overflow-y-scroll overflow-hidden">
             <!--loading icon-->
             <span id="loadIcon" class="loading loading-dots loading-xl hidden"></span>
-
             <!--Agent-->
             <div class="chat chat-start">
                 <!--Chatbot Avatar-->
                 <div class="chat-image avatar">
-                    <div class="w-10 rounded-full ring-2 ring-slate-200">
+                    <div class="w-10 rounded-full">
                         <img alt="Chatbot Avatar" src="{{ asset('images/chatbot.png') }}" />
                     </div>
                 </div>
