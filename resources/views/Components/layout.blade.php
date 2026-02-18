@@ -29,7 +29,7 @@
                 <div class="flex items-center gap-5">
                     <!--logo-->
                     <div class="">
-                        <a class="btn btn-ghost text-lg" href="/">
+                        <a class="btn btn-ghost text-lg btn-primary" href="/">
                             <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
                             <span>LOGO</span>
                         </a>
