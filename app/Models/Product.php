@@ -23,12 +23,14 @@ class Product extends Model
     }
 
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'size',
-        'category',
-        'product_type_id',
-        'image'
-    ];
+    'product_type_id',
+    'product_name',
+    'description',
+    'price',
+    'discounted_price',
+    'current_stock',
+    'size',
+    'image',
+];
+
 }

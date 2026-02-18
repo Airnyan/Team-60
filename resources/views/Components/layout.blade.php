@@ -1,4 +1,6 @@
 <!-- -->
+@props(['title' => 'Little GreenMan Store'])
+
 <!DOCTYPE html>
 <!--lang specifies the language of the content-->
 <html lang="en" data-theme="mytheme">
