@@ -1,10 +1,9 @@
 <!-- -->
 <!DOCTYPE html>
 <!--lang specifies the language of the content-->
-<html lang="en">
+<html lang="en" data-theme="mytheme">
 <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
 <!--head tag is a container for metadata-->
-
 <head>
     <!--encoding type-->
     <meta charset="UTF-8">
@@ -23,16 +22,19 @@
 
 <body>
     <!--Navbar-->
-    <header class="bg-neutral text-white py-4">
+    <header class="bg-neutral text-neutral-content py-4">
         <div class="container mx-auto">
             <div class="flex justify-between">
                 <!--nav items on the left-->
                 <div class="flex items-center gap-5">
                     <!--logo-->
-                    <a href="/"> <img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-12 w-auto" /> </a>
-                    <h1 class="font-bold text-xl">LITTLE GREEN MEN</h1>
+                    <div class="">
+                        <a class="btn btn-ghost text-lg" href="/">
+                            <img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />
+                            <span>LITTLE GREEN MEN</span>
+                        </a>
+                    </div>
                     <!--search box-->
-                    <!-- <input type="text" placeholder="Search for our products here. . ." class="input input-bordered w-80 text-neutral" /> -->
                 </div>
                 <!--nav items on the right-->
                 <ul class="flex justify-end items-center font-bold space-x-5 tracking-wide">
@@ -60,7 +62,7 @@
 
                     @auth
                     <div class="flex items-center gap-3">
-                        <span class="text-green-400">Hi, {{ auth()->user()->name }}</span>
+                        <span class="text-success">Hi, {{ auth()->user()->name }}</span>
 
                         <!-- Logout Button -->
                         <form action="{{ route('logout') }}" method="POST">
@@ -85,7 +87,7 @@
 
     <!--Chat Window-->
     <div id="chatWindow" class="hidden">
-    <div class="card w-96 bg-neutral-content shadow-sm fixed bottom-5 right-25 rounded-2xl overflow-hidden">
+    <div class="card w-96 bg-base-100 shadow-sm fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-300">
         <!--Chat Header-->
         <div class="navbar bg-success justify-between rounded-t">
         <div class="flex justify-between gap-5 items-center mx-4">
@@ -96,7 +98,7 @@
                 </div>
             </div>
             <!--Heading-->
-            <p class="text-base-100 font-semibold text-lg">ChudBot</p>
+            <p class="text-success-content font-semibold text-lg">ChudBot</p>
             </div>
             <!--Top Right Header Items-->
             <div class="flex items-center">
@@ -106,7 +108,7 @@
                 </div> 
                 <!--Close Button-->
                 <div id="innerMinimiseChatButton" class="card-actions mx-4">
-                    <span class="material-symbols-outlined text-white hover:bg-white/40 rounded-sm">close</span>
+                    <span class="material-symbols-outlined text-success-content hover:bg-success-content/20 rounded-sm">close</span>
                 </div>
             </div>      
         </div>
@@ -162,7 +164,7 @@
 
 
 <!--footer -->
-<footer class="bg-neutral text-white py-4 mt-4">
+<footer class="bg-neutral text-neutral-content py-4 mt-4 border-t border-base-300">
     <div class="container flex mx-auto items-center justify-between">
         <p>Copyright&copy; 2025 Little Green Men. All rights reserved.</p>
 

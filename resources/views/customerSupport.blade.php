@@ -14,7 +14,7 @@
 
     
     <!--Hero Section-->
-    <div class="hero bg-base-200 h-100 border border-gray-300 shadow-sm mb-2">
+    <div class="hero bg-base-200 h-100 border border-base-300 shadow-sm mb-2">
     <div class="hero-content text-center">
         <div class="max-w-md">
         <h1 class="text-5xl font-bold">Hi there!</h1>
@@ -29,12 +29,12 @@
     </div>
 
     <!--Heading-->
-    <div class="bg-neutral text-white py-4 text-center text-4xl font-bold mb-2"> 
+    <div class="bg-neutral text-neutral-content py-4 text-center text-4xl font-bold mb-2"> 
         <h1>FAQS SECTION</h1>
     </div>
 
     <!--FAQs Section-->
-    <div class="border border-gray-300 shadow-sm mb-2"> 
+    <div class="border border-base-300 shadow-sm mb-2"> 
         <!--FAQs Question 1-->
         <div class="collapse bg-base-100 border border-base-300">
             <input type="radio" name="my-accordion-1" checked="checked" />
@@ -63,7 +63,7 @@
 
 
     <!--Heading-->
-    <div class="bg-neutral text-white py-4 text-center text-4xl font-bold"> 
+    <div class="bg-neutral text-neutral-content  py-4 text-center text-4xl font-bold"> 
         <h1>CONTACT FORM</h1>
     </div>
 
@@ -148,7 +148,7 @@
 
 
         <!--Submit Button-->
-        <button class="btn btn-neutral text-white mt-4 mb-4">Submit</button>
+        <button class="btn btn-neutral text-neutral-content mt-4 mb-4">Submit</button>
 
     </form>
 
@@ -156,7 +156,7 @@
     <!--Check the controller for any issues-->
     @if(session()->has("message"))
 
-    <div role="alert" class="alert alert-success font-bold">
+    <div role="alert" class="alert alert-success text-success-content font-bold">
         {{session()->get("message")}}
     </div>
 
