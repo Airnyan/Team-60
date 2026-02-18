@@ -85,25 +85,30 @@
 
     <!--Chat Window-->
     <div id="chatWindow" class="hidden">
-    <div class="card w-96 bg-base-100 shadow-sm fixed bottom-5 right-25">
+    <div class="card w-96 bg-neutral-content shadow-sm fixed bottom-5 right-25 rounded-2xl overflow-hidden">
         <!--Chat Header-->
         <div class="navbar bg-success justify-between rounded-t">
         <div class="flex justify-between gap-5 items-center mx-4">
             <!--Chatbot Avatar-->
             <div class="chat-image avatar">
                 <div class="w-10 rounded-full">
-                    <img alt="Chatbot Avatar" src="{{ asset('images/chatbot.jpg') }}" />
+                    <img alt="Chatbot Avatar" src="{{ asset('images/chatbot2.png') }}" />
                 </div>
             </div>
             <!--Heading-->
             <p class="text-base-100 font-semibold text-lg">ChudBot</p>
-        </div>
-        <!--Close Button-->
-        <div id="innerCloseChatButton" class="card-actions mx-4 ">
-            <button class="btn btn-square btn-sm btn-neutral">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>    
+            </div>
+            <!--Top Right Header Items-->
+            <div class="flex items-center">
+                <!--Close Button-->
+                <div id="innerCloseChatButton" class="card-actions">
+                    <img alt="Mimisise Icon" src="{{ asset('images/minimise.png') }}" class=" hover:bg-white/40 rounded-sm" />
+                </div> 
+                <!--Close Button-->
+                <div id="innerMinimiseChatButton" class="card-actions mx-4">
+                    <span class="material-symbols-outlined text-white hover:bg-white/40 rounded-sm">close</span>
+                </div>
+            </div>      
         </div>
 
         <!--Chat Body-->
@@ -119,14 +124,14 @@
                     </div>
                 </div>
                 <!--Chatbot's Chat Bubble-->
-                <div class="chat-bubble">Yo wagwan, my G?</div>
+                <div class="chat-bubble font-semibold">Hi there, how can I help you today?</div>
             </div>
         </div>
         
         <!--Chatbot Footer-->
         <div class="p-2 join">
             <!--Text Area-->
-            <input autocomplete="off" type="text" id="txtInput" class="input join-item w-full " placeholder="Type your message here" />
+            <input autocomplete="off" type="text" id="txtInput" class="input join-item w-full font-semibold" placeholder="Type your message here" />
             <!--Send Button-->
             <div>
                 <button id="send" class="btn btn-square btn-md join-item">

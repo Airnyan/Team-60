@@ -1,8 +1,7 @@
-// Button to show/hide chat window
 const chatButton = document.getElementById("chatButton");
 const chatWindow = document.getElementById("chatWindow");
 
-// Event listener for the button
+// Event listener for the main button to show/hide chat window
 // (e) is same as "event". Both are variable name for an event object.
 chatButton.addEventListener("click", event => {
     // ClassList returns the list of classes assoicated with the element
@@ -13,14 +12,17 @@ chatButton.addEventListener("click", event => {
     txtInput.focus();
 });
 
-
-
-
-// Button to close the chat window (Inside the chat-window header)
+// To close the chatwindow (using the button inside the header)
 const innerCloseChatButton = document.getElementById("innerCloseChatButton");
     // Simliar logic to previous button
     innerCloseChatButton.addEventListener("click", event =>{
         // Although toggle function is not necessary here but it works so less work for me :)
+        chatWindow.classList.toggle("hidden");
+});
+
+// To minimise the chatwindow (using the button inside the header)
+const innerMinimiseChatButton = document.getElementById("innerMinimiseChatButton");
+    innerMinimiseChatButton.addEventListener("click", event =>{
         chatWindow.classList.toggle("hidden");
 });
 
@@ -82,7 +84,7 @@ const renderMessageEle = (txt, type) => {
                 <img alt="Chatbot Avatar" src="/images/chatbot.png" />
             </div>
         </div>
-        <div class="chat-bubble">${txt}</div>
+        <div class="chat-bubble font-semibold">${txt}</div>
         `;}
 
      else {
@@ -90,8 +92,7 @@ const renderMessageEle = (txt, type) => {
         // Html code copy pasted from the mock version
         // JS literal
         messageEle.innerHTML =`
-
-            <div class="chat-bubble chat-bubble-success">${txt}</div>
+            <div class="chat-bubble chat-bubble-success font-semibold text-base-100">${txt}</div>
         `;}
 
         chatBody.append(messageEle);
