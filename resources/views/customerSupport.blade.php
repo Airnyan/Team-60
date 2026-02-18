@@ -14,7 +14,7 @@
 
     
     <!--Hero Section-->
-    <div class="hero bg-base-200 h-100 border border-gray-300 shadow-sm mb-2">
+    <div class="hero bg-base-300 h-100 border border-base-300 shadow-sm mb-2  rounded-2xl">
     <div class="hero-content text-center">
         <div class="max-w-md">
         <h1 class="text-5xl font-bold">Hi there!</h1>
@@ -29,63 +29,74 @@
     </div>
 
     <!--Heading-->
-    <div class="bg-neutral text-white py-4 text-center text-4xl font-bold mb-2"> 
+    <div class=" text-neutral-content py-4 text-4xl font-bold mb-2"> 
         <h1>FAQS SECTION</h1>
     </div>
 
     <!--FAQs Section-->
-    <div class="border border-gray-300 shadow-sm mb-2"> 
+    <div class="flex flex-col gap-2 mb-2">
         <!--FAQs Question 1-->
-        <div class="collapse bg-base-100 border border-base-300">
-            <input type="radio" name="my-accordion-1" checked="checked" />
+        <div class="collapse collapse-arrow bg-base-300 border border-base-200">
+            <input type="radio" name="my-accordion-2" checked="checked" />
             <div class="collapse-title font-semibold">How do I create an account?</div>
             <div class="collapse-content text-sm">Click on the account icon at the right-hand side of the navbar and then follow the registration process.</div>
         </div>
         <!--FAQs Question 2-->
-        <div class="collapse bg-base-100 border border-base-300">
-            <input type="radio" name="my-accordion-1" checked="checked" />
-            <div class="collapse-title font-semibold">Do you ship internationally?</div>
-            <div class="collapse-content text-sm">Unfortunately we don't ship outside the UK at the moment. However you may use third party proxy shipment to buy our products.</div>
+        <div class="collapse collapse-arrow bg-base-300  border border-base-200">
+            <input type="radio" name="my-accordion-2" />
+            <div class="collapse-title font-semibold">I forgot my password. What should I do?</div>
+            <div class="collapse-content text-sm">Click on "Forgot Password" on the login page and follow the instructions.</div>
         </div>
         <!--FAQs Question 3-->
-        <div class="collapse bg-base-100 border border-base-300">
-            <input type="radio" name="my-accordion-1" checked="checked" />
-            <div class="collapse-title font-semibold">What are your customer service opening hours?</div>
-            <div class="collapse-content text-sm">Our customer service team is available from Monday to Saturday from 9 am to 4 pm. However, you can always contact us through the email form and we will get back to you in less than three working days.</div>
+        <div class="collapse collapse-arrow bg-base-300  border border-base-200">
+            <input type="radio" name="my-accordion-2" />
+            <div class="collapse-title font-semibold">How do I update my profile information?</div>
+            <div class="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make changes.</div>
         </div>
         <!--FAQs Question 4-->
-        <div class="collapse bg-base-100 border border-base-300">
-            <input type="radio" name="my-accordion-1" checked="checked" />
-            <div class="collapse-title font-semibold">The item I want to buy is out of stock. When will it be restocked?</div>
-            <div class="collapse-content text-sm">We regularly restock our inventory every few months unless the item was for limited period.</div>
+        <div class="collapse collapse-arrow bg-base-300  border border-base-200">
+            <input type="radio" name="my-accordion-2" />
+            <div class="collapse-title font-semibold">How to contact the customer service?</div>
+            <div class="collapse-content text-sm">Fill out the form below and our customer service team will reach out to you soon.</div>
+        </div>
+        <!--FAQs Question 5-->
+        <div class="collapse collapse-arrow bg-base-300  border border-base-200">
+            <input type="radio" name="my-accordion-2" />
+            <div class="collapse-title font-semibold">How to track my order?</div>
+            <div class="collapse-content text-sm">To track the status of your order, please head to your account page.</div>
+        </div>
+        <!--FAQs Question 6-->
+        <div class="collapse collapse-arrow bg-base-300  border border-base-200">
+            <input type="radio" name="my-accordion-2" />
+            <div class="collapse-title font-semibold">Do you ship internationally?</div>
+            <div class="collapse-content text-sm">Unfortunately we don't ship outside the UK at the moment. However you may use third party proxy shipment to buy our products.</div>
         </div>
     </div>
 
 
     <!--Heading-->
-    <div class="bg-neutral text-white py-4 text-center text-4xl font-bold"> 
+    <div class="text-neutral-content  py-4 text-4xl font-bold"> 
         <h1>CONTACT FORM</h1>
     </div>
 
 
     <!--Form-->
-
     <!--Input Field 1-->
     <form action="/contact-submit" method="POST" >
         @csrf <fieldset class="fieldset">
-            <legend class="fieldset-legend text-lg">Name</legend>
+            <legend class="fieldset-legend text-lg ">Name</legend>
             <input 
                 name="name"
                 type="text" 
                 required
-                class="w-full input validator" 
+                class="w-full input validator bg-base-300" 
                 placeholder="Type your name here" 
                 pattern="[A-Za-z\s]+"
                 minlength="1"
                 maxlength="30"
                 title="Only letters"   
             />
-            <p class="validator-hint hidden">Enter a valid name. Cannot contain special characters or numbers.</p>
+            <p class="validator-hint hidden text-neutral-content">Enter a valid name. Cannot contain special characters or numbers.</p>
         </fieldset>
 
         <!--Input Field 2-->
@@ -94,7 +105,7 @@
             <input 
                 name="email"
                 type="email" 
-                class="input w-full validator" 
+                class="input w-full validator bg-base-300" 
                 placeholder="Type your email here" 
                 required
             />
@@ -107,7 +118,7 @@
             <input 
                 name="mobile_number"
                 type="tel" 
-                class="input w-full validator" 
+                class="input w-full validator bg-base-300" 
                 placeholder="Type your mobile number here" 
                 pattern="[0-9]*"
                 minlength="11"
@@ -124,7 +135,7 @@
             <input 
                 name="order_number"
                 type="text" 
-                class="input w-full validator" 
+                class="input w-full validator bg-base-300" 
                 placeholder="Type your order number here" 
                 required
                 pattern="[0-9]*"
@@ -140,7 +151,7 @@
             <legend class="fieldset-legend text-lg">Message</legend>
             <textarea 
                 name="message"
-                class="textarea w-full h-20 validator" 
+                class="textarea w-full h-20 validator bg-base-300" 
                 placeholder="Type your message here" 
                 required></textarea>
         </fieldset>
@@ -148,7 +159,7 @@
 
 
         <!--Submit Button-->
-        <button class="btn btn-neutral text-white mt-4 mb-4">Submit</button>
+        <button class="btn btn-neutral text-neutral-content mt-4 mb-4">Submit</button>
 
     </form>
 
@@ -156,7 +167,7 @@
     <!--Check the controller for any issues-->
     @if(session()->has("message"))
 
-    <div role="alert" class="alert alert-success font-bold">
+    <div role="alert" class="alert alert-success text-success-content font-bold">
         {{session()->get("message")}}
     </div>
 
