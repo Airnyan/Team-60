@@ -7,7 +7,7 @@
     </x-slot:title>
 
     <!--Carousel-->
-    <div class="carousel w-full border border-base-300 shadow-sm mb-10 rounded-2xl">
+    <div class="carousel w-full border border-base-300 shadow-sm mb-5 rounded-2xl">
     <div id="slide1" class="carousel-item relative w-full">
         <a href="/shop"> <img src="{{ asset('images/slide1.png') }}" class="w-full block" /></a>
         <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -38,8 +38,8 @@
     </div>
     </div>
 
-    <!--latest release section-->
-    <div class="bg-neutral text-neutral-content py-4 text-center text-4xl font-bold mb-10"> 
+    <!--Heading-->
+    <div class="text-neutral-content py-4 text-4xl font-bold mb-2"> 
         <h1>LATEST DROPS</h1>
     </div>
     
@@ -51,7 +51,7 @@
             <figure>
                 <a href="/shop"> <img src="{{ asset('images/grid1.png') }}" alt="product" /> </a>
             </figure>
-            <div class="bg-neutral card-body items-center py-2 rounded-b-sm text-neutral-content">
+            <div class="bg-base-300 card-body items-center py-2 rounded-b-sm text-neutral-content">
                 <p class="font-bold text-lg">MATRIX TEE</p>
             </div>
         </div>
@@ -61,7 +61,7 @@
             <figure>
                 <a href="/shop"> <img src="{{ asset('images/grid2.png') }}" alt="product" /> </a>
             </figure>
-            <div class="bg-neutral card-body items-center py-2 rounded-b-sm text-neutral-content">
+            <div class="bg-base-300 card-body items-center py-2 rounded-b-sm text-neutral-content">
                 <p class="font-bold text-lg">BATTLE TEE</p>
             </div>
         </div>
@@ -71,7 +71,7 @@
             <figure>
                 <a href="/shop"> <img src="{{ asset('images/grid3.png') }}" alt="product" /> </a>
             </figure>
-            <div class="bg-neutral card-body items-center py-2 rounded-b-sm text-neutral-content">
+            <div class="bg-base-300 card-body items-center py-2 rounded-b-sm text-neutral-content">
                 <p class="font-bold text-lg">BATTLE TEE</p>
             </div>
         </div>

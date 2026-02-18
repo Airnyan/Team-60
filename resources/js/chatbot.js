@@ -80,7 +80,7 @@ const renderMessageEle = (txt, type) => {
         // JS literal
         messageEle.innerHTML =`
         <div class="chat-image avatar">
-            <div class="w-10 rounded-full ring-2 ring-base-300">
+            <div class="w-10 rounded-full">
                 <img alt="Chatbot Avatar" src="/images/chatbot.png" />
             </div>
         </div>
@@ -92,7 +92,7 @@ const renderMessageEle = (txt, type) => {
         // Html code copy pasted from the mock version
         // JS literal
         messageEle.innerHTML =`
-            <div class="chat-bubble chat-bubble-success font-semibold text-primary-content">${txt}</div>
+            <div class="chat-bubble chat-bubble-primary font-semibold text-primary-content">${txt}</div>
         `;}
 
         chatBody.append(messageEle);
@@ -132,7 +132,7 @@ const getChatbotResponse = (userInput) => {
     if (text.includes("bye") || text.includes("good bye") || text.includes("goodbye") || text.includes("stop") ) {
         return "See you later :)";
     }
-    if (text.includes("contact") || text.includes("form") || text.includes("human")|| text.includes("agent")|| text.includes("support")) {
+    if (text.includes("contact") || text.includes("form") || text.includes("human")|| text.includes("agent")|| text.includes("support")|| text.includes("customer")) {
         return "Please head over to our Help page, and use the contact form to reach our customer service team.";
     }
     if (text.includes("help") ) {

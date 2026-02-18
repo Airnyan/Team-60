@@ -20,9 +20,9 @@
 
 </head>
 
-<body>
+<body class="bg-base-200">
     <!--Navbar-->
-    <header class="bg-neutral text-neutral-content py-4">
+    <header class="bg-base-100 text-neutral-content py-4">
         <div class="container mx-auto">
             <div class="flex justify-between">
                 <!--nav items on the left-->
@@ -31,7 +31,7 @@
                     <div class="">
                         <a class="btn btn-ghost text-lg" href="/">
                             <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
-                            <span>LITTLE GREEN MEN</span>
+                            <span>LOGO</span>
                         </a>
                     </div>
                     <!--search box-->
@@ -86,10 +86,10 @@
 
 
     <!--Chat Window-->
-    <div id="chatWindow" class="hidden">
-    <div class="card w-96 bg-base-100 shadow-sm fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-300">
+    <div id="chatWindow" class="hidden ">
+    <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-100">
         <!--Chat Header-->
-        <div class="navbar bg-neutral justify-between rounded-t">
+        <div class="navbar bg-base-100 justify-between rounded-t">
         <div class="flex justify-between gap-5 items-center mx-4">
             <!--Chatbot Avatar-->
             <div class="chat-image avatar">
@@ -104,11 +104,11 @@
             <div class="flex items-center">
                 <!--Close Button-->
                 <div id="innerCloseChatButton" class="card-actions">
-                    <img alt="Mimisise Icon" src="{{ asset('images/minimise.png') }}" class="  hover:bg-neutral-content/20 rounded-sm" />
+                    <img alt="Mimisise Icon" src="{{ asset('images/minimise.png') }}" class="  hover:bg-primary/40 rounded-sm" />
                 </div> 
                 <!--Close Button-->
-                <div id="innerMinimiseChatButton" class="card-actions mx-4">
-                    <span class="material-symbols-outlined text-neutral-content hover:bg-neutral-content/20 rounded-sm">close</span>
+                <div id="innerMinimiseChatButton" class="card-actions mx-4 ">
+                    <img alt="Close Icon" src="{{ asset('images/close.png') }}" class="  hover:bg-primary/40 rounded-sm" />
                 </div>
             </div>      
         </div>
@@ -131,12 +131,12 @@
         </div>
         
         <!--Chatbot Footer-->
-        <div class="p-2 join">
+        <div class="p-2 join ">
             <!--Text Area-->
-            <input autocomplete="off" type="text" id="txtInput" class="input join-item w-full font-semibold" placeholder="Type your message here" />
+            <input autocomplete="off" type="text" id="txtInput" class="input join-item w-full font-semibold bg-base-300 border-base-100" placeholder="Type your message here" />
             <!--Send Button-->
             <div>
-                <button id="send" class="btn btn-square btn-md join-item">
+                <button id="send" class="btn btn-square btn-md join-item bg-base-300 border-base-100">
                     <span class="material-symbols-outlined">send</span>
                 </button>
             </div>
@@ -146,7 +146,7 @@
 
     <!--Chat Button-->
     <div class="fixed bottom-5 right-10">
-        <label class="btn btn-circle btn-lg swap swap-rotate">
+        <label class="btn btn-circle btn-lg swap swap-rotate bg-base-300 border-base-100">
             <!-- this hidden checkbox controls the state -->
             <input id="chatButton" type="checkbox"/>
             <!-- Open icon -->
@@ -164,7 +164,7 @@
 
 
 <!--footer -->
-<footer class="bg-neutral text-neutral-content py-4 mt-4 border-t border-base-300">
+<footer class="bg-base-100 text-neutral-content py-4 mt-4 ">
     <div class="container flex mx-auto items-center justify-between">
         <p>Copyright&copy; 2025 Little Green Men. All rights reserved.</p>
 
