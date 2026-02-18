@@ -30,7 +30,7 @@
                     <!--logo-->
                     <div class="">
                         <a class="btn btn-ghost text-lg" href="/">
-                            <img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />
+                            <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
                             <span>LITTLE GREEN MEN</span>
                         </a>
                     </div>
@@ -89,7 +89,7 @@
     <div id="chatWindow" class="hidden">
     <div class="card w-96 bg-base-100 shadow-sm fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-300">
         <!--Chat Header-->
-        <div class="navbar bg-success justify-between rounded-t">
+        <div class="navbar bg-neutral justify-between rounded-t">
         <div class="flex justify-between gap-5 items-center mx-4">
             <!--Chatbot Avatar-->
             <div class="chat-image avatar">
@@ -98,17 +98,17 @@
                 </div>
             </div>
             <!--Heading-->
-            <p class="text-success-content font-semibold text-lg">ChudBot</p>
+            <p class="text-neutral-content font-semibold text-lg">ChudBot</p>
             </div>
             <!--Top Right Header Items-->
             <div class="flex items-center">
                 <!--Close Button-->
                 <div id="innerCloseChatButton" class="card-actions">
-                    <img alt="Mimisise Icon" src="{{ asset('images/minimise.png') }}" class=" hover:bg-white/40 rounded-sm" />
+                    <img alt="Mimisise Icon" src="{{ asset('images/minimise.png') }}" class="  hover:bg-neutral-content/20 rounded-sm" />
                 </div> 
                 <!--Close Button-->
                 <div id="innerMinimiseChatButton" class="card-actions mx-4">
-                    <span class="material-symbols-outlined text-success-content hover:bg-success-content/20 rounded-sm">close</span>
+                    <span class="material-symbols-outlined text-neutral-content hover:bg-neutral-content/20 rounded-sm">close</span>
                 </div>
             </div>      
         </div>
