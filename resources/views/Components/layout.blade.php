@@ -46,8 +46,8 @@
                     <a class="btn btn-ghost text-lg" href="/aboutUs">ABOUT</a>
                     <!-- Admin Panel Icon — only visible for admin users -->
                     @auth
-                    @if(auth()->user()->is_admin == 1)
-                    <a href="{{ route('admin.products') }}"
+                    @if((in_array(Auth::user()->role, ['admin', 'super_admin'])))
+                    <a href="{{ route('admin.dashboard') }}"
                         class="btn btn-outline btn-success flex items-center gap-2">
                         <span class="material-symbols-outlined">dashboard</span>
                         Admin
