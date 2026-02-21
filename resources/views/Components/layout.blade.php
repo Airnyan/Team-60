@@ -26,7 +26,7 @@
     <!--Navbar-->
     <header class="bg-base-100 text-neutral-content py-4">
         <div class="container mx-auto">
-            <div class="flex justify-between">
+            <div class="flex flex-wrap justify-center sm:justify-between">
                 <!--nav items on the left-->
                 <div class="flex items-center gap-5">
                     <!--logo-->
@@ -36,10 +36,9 @@
                             <span>LOGO</span>
                         </a>
                     </div>
-                    <!--search box-->
                 </div>
                 <!--nav items on the right-->
-                <ul class="flex justify-end items-center font-bold space-x-5 tracking-wide">
+                <ul class="flex flex-wrap justify-center sm:justify-between items-center font-bold space-x-5 tracking-wide">
                     <a class="btn btn-ghost text-lg" href="/">HOME</a>
                     <a class="btn btn-ghost text-lg" href="/shop">SHOP</a>
                     <a class="btn btn-ghost text-lg" href="/customerSupport">HELP</a>

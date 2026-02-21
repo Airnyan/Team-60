@@ -44,9 +44,8 @@
     </div>
     
 
-    <!--grid-->
-    <div class="flex justify-between gap-2 mb-12">
-
+    <!--Grid-->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12 justify-items-center">
         <!--product-->
         <div class="cursor-pointer">
             <!--Image-->
@@ -57,7 +56,7 @@
             </div>
             <!--Body-->
             <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
-                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <h2 class="text-base-content ">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
                     <!--Rating-->
@@ -75,14 +74,14 @@
         <!--product-->
         <div class="cursor-pointer">
             <!--Image-->
-            <div class=" max-w-60 shadow-xl rounded-2xl hover-3d overflow-hidden">
+            <div class="max-w-60 shadow-xl rounded-2xl hover-3d overflow-hidden">
                 <figure class="">
                     <a href="/shop"> <img src="{{ asset('images/grid2.png') }}" alt="product" /> </a>
                 </figure>
             </div>
             <!--Body-->
             <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
-                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <h2 class="text-base-content ">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
                     <!--Rating-->
@@ -107,7 +106,7 @@
             </div>
             <!--Body-->
             <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
-                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <h2 class="text-base-content ">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
                     <!--Rating-->
@@ -132,7 +131,7 @@
             </div>
             <!--Body-->
             <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
-                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <h2 class="text-base-content ">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
                     <!--Rating-->
@@ -157,7 +156,7 @@
             </div>
             <!--Body-->
             <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
-                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <h2 class="text-base-content ">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
                     <!--Rating-->
