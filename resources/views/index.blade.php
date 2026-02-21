@@ -39,7 +39,7 @@
     </div>
 
     <!--Heading-->
-    <div class="text-neutral-content py-4 text-4xl font-bold mb-2"> 
+    <div class="text-neutral-content py-4 text-4xl font-bold mb-2 "> 
         <h1>LATEST DROPS</h1>
     </div>
     
@@ -56,7 +56,7 @@
                 </figure>
             </div>
             <!--Body-->
-            <div class="flex flex-col mt-2 px-1">
+            <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
                 <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
@@ -81,7 +81,7 @@
                 </figure>
             </div>
             <!--Body-->
-            <div class="flex flex-col mt-2 px-1">
+            <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
                 <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
@@ -106,7 +106,7 @@
                 </figure>
             </div>
             <!--Body-->
-            <div class="flex flex-col mt-2 px-1">
+            <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
                 <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
@@ -131,7 +131,7 @@
                 </figure>
             </div>
             <!--Body-->
-            <div class="flex flex-col mt-2 px-1">
+            <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
                 <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
@@ -156,7 +156,7 @@
                 </figure>
             </div>
             <!--Body-->
-            <div class="flex flex-col mt-2 px-1">
+            <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto bg-base-300 rounded-2xl hover:bg-base-300/40">
                 <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
                 <div class="flex justify-between items-center">
                     <p class="text-base-content font-semibold mt-1">£25</p>
