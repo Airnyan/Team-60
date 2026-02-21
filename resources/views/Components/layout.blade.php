@@ -15,8 +15,10 @@
     <title>{{$title ?? 'Little GreenMan Store'}}</title>
     <!--link to Google Material Icons-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <!--link to custom css style file-->
-    <link rel="stylesheet" href="">
+    <!--link to Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!--link to tailwind files-->
     @vite(['resources/css/app.css', 'resources/js/response.js', 'resources/js/app.js','resources/js/chatbot.js'])
 
@@ -31,9 +33,9 @@
                 <div class="flex items-center gap-5">
                     <!--logo-->
                     <div class="">
-                        <a class="btn btn-ghost text-lg btn-primary" href="/">
+                        <a class="btn btn-ghost text-xl btn-primary" href="/">
                             <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
-                            <span>LOGO</span>
+                            <span style="font-family: 'Exo 2';">LITTLE GREEN MAN</span>
                         </a>
                     </div>
                 </div>
@@ -164,18 +166,21 @@
 
 
 
-<!--footer -->
-<footer class="bg-base-100 text-neutral-content py-4 mt-4 ">
+<!-- New footer-->
+<footer class="footer sm:footer-horizontal bg-base-100 text-neutral-content items-center p-4">
     <div class="container flex mx-auto items-center justify-between">
-        <p>Copyright&copy; 2025 Little Green Men. All rights reserved.</p>
-
-        <div class="flex justify-end items-center space-x-5">
+        <!--Logo-->
+        <aside class="grid-flow-col items-center">
+            <span class="text-lg" style="font-family: 'Exo 2';">LITTLE GREEN MAN</span>
+            <p>Copyright© 2026 - All right reserved</p>
+        </aside>
+        <!--Social Links-->
+        <nav class="flex justify-end items-center space-x-5">
             <a href="https://www.facebook.com/"> <img src="{{ asset('images/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
             <a href="https://www.tiktok.com/en-GB/"> <img src="{{ asset('images/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
             <a href="https://www.instagram.com/"> <img src="{{ asset('images/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
             <a href="https://x.com/"> <img src="{{ asset('images/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
-        </div>
-
+        </nav>
     </div>
 </footer>
 
