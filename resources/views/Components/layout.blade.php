@@ -33,7 +33,7 @@
                 <div class="flex items-center gap-5">
                     <!--logo-->
                     <div class="">
-                        <a class="btn btn-ghost text-xl btn-primary" href="/">
+                        <a class="btn btn-primary btn-ghost text-xl" href="/">
                             <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
                             <span style="font-family: 'Exo 2';">LITTLE GREEN MAN</span>
                         </a>
@@ -65,7 +65,7 @@
 
                     @auth
                     <div class="flex items-center gap-3">
-                        <span class="text-success">Hi, {{ auth()->user()->name }}</span>
+                        <span class="text-primary">Hi, {{ auth()->user()->name }}</span>
 
                         <!-- Logout Button -->
                         <form action="{{ route('logout') }}" method="POST">
