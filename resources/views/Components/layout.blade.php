@@ -30,11 +30,11 @@
         <div class="container mx-auto">
             <div class="flex flex-wrap justify-center sm:justify-between">
                 <!--nav items on the left-->
-                <div class="flex items-center gap-5">
+                <div class="flex items-center">
                     <!--logo-->
-                    <div class="">
+                    <div class="flex flex-wrap items-center gap-1">
+                        <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
                         <a class="btn btn-primary btn-ghost text-xl" href="/">
-                            <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
                             <span style="font-family: 'Exo 2';">LITTLE GREEN MAN</span>
                         </a>
                     </div>
@@ -148,7 +148,7 @@
     </div>
 
     <!--Chat Button-->
-    <div class="fixed bottom-5 right-10">
+    <div class="fixed bottom-5 right-10 hover-3d">
         <label class="btn btn-circle btn-lg swap swap-rotate bg-base-300 border-base-100">
             <!-- this hidden checkbox controls the state -->
             <input id="chatButton" type="checkbox"/>
