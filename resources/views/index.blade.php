@@ -45,34 +45,130 @@
     
 
     <!--grid-->
-    <div class="flex justify-between gap-5 mb-10">
+    <div class="flex justify-between gap-2 mb-12">
+
         <!--product-->
-        <div class="card bg-base-100 w-96 shadow-sm border-base-300">
-            <figure>
-                <a href="/shop"> <img src="{{ asset('images/grid1.png') }}" alt="product" /> </a>
-            </figure>
-            <div class="bg-base-300 card-body items-center py-2 rounded-b-sm text-neutral-content">
-                <p class="font-bold text-lg">MATRIX TEE</p>
+        <div class="cursor-pointer">
+            <!--Image-->
+            <div class=" max-w-60 shadow-xl rounded-2xl hover-3d overflow-hidden">
+                <figure class="">
+                    <a href="/shop"> <img src="{{ asset('images/grid1.png') }}" alt="product" /> </a>
+                </figure>
+            </div>
+            <!--Body-->
+            <div class="flex flex-col mt-2 px-1">
+                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <div class="flex justify-between items-center">
+                    <p class="text-base-content font-semibold mt-1">£25</p>
+                    <!--Rating-->
+                    <div class="rating rating-xs">
+                        <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!--product-->
-        <div class="card bg-base-100 w-96 shadow-sm border-base-300">
-            <figure>
-                <a href="/shop"> <img src="{{ asset('images/grid2.png') }}" alt="product" /> </a>
-            </figure>
-            <div class="bg-base-300 card-body items-center py-2 rounded-b-sm text-neutral-content">
-                <p class="font-bold text-lg">BATTLE TEE</p>
+        <div class="cursor-pointer">
+            <!--Image-->
+            <div class=" max-w-60 shadow-xl rounded-2xl hover-3d overflow-hidden">
+                <figure class="">
+                    <a href="/shop"> <img src="{{ asset('images/grid2.png') }}" alt="product" /> </a>
+                </figure>
+            </div>
+            <!--Body-->
+            <div class="flex flex-col mt-2 px-1">
+                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <div class="flex justify-between items-center">
+                    <p class="text-base-content font-semibold mt-1">£25</p>
+                    <!--Rating-->
+                    <div class="rating rating-xs">
+                        <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="3 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="4 star" aria-current="true"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!--product-->
-        <div class="card bg-base-100 w-96 shadow-sm border-base-300">
-            <figure>
-                <a href="/shop"> <img src="{{ asset('images/grid3.png') }}" alt="product" /> </a>
-            </figure>
-            <div class="bg-base-300 card-body items-center py-2 rounded-b-sm text-neutral-content">
-                <p class="font-bold text-lg">BATTLE TEE</p>
+        <div class="cursor-pointer">
+            <!--Image-->
+            <div class=" max-w-60 shadow-xl rounded-2xl hover-3d overflow-hidden">
+                <figure class="">
+                    <a href="/shop"> <img src="{{ asset('images/grid4.png') }}" alt="product" /> </a>
+                </figure>
+            </div>
+            <!--Body-->
+            <div class="flex flex-col mt-2 px-1">
+                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <div class="flex justify-between items-center">
+                    <p class="text-base-content font-semibold mt-1">£25</p>
+                    <!--Rating-->
+                    <div class="rating rating-xs">
+                        <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="3 star" ></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="5 star" aria-current="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--product-->
+        <div class="cursor-pointer">
+            <!--Image-->
+            <div class=" max-w-60 shadow-xl rounded-2xl hover-3d overflow-hidden">
+                <figure class="">
+                    <a href="/shop"> <img src="{{ asset('images/grid3.png') }}" alt="product" /> </a>
+                </figure>
+            </div>
+            <!--Body-->
+            <div class="flex flex-col mt-2 px-1">
+                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <div class="flex justify-between items-center">
+                    <p class="text-base-content font-semibold mt-1">£25</p>
+                    <!--Rating-->
+                    <div class="rating rating-xs">
+                        <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="2 star" aria-current="true"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="3 star" ></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="5 star" ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--product-->
+        <div class="cursor-pointer">
+            <!--Image-->
+            <div class=" max-w-60 shadow-xl rounded-2xl hover-3d overflow-hidden">
+                <figure class="">
+                    <a href="/shop"> <img src="{{ asset('images/grid4.png') }}" alt="product" /> </a>
+                </figure>
+            </div>
+            <!--Body-->
+            <div class="flex flex-col mt-2 px-1">
+                <h2 class="text-base-content font-medium">Matrrix Classic Tee</h2>
+                <div class="flex justify-between items-center">
+                    <p class="text-base-content font-semibold mt-1">£25</p>
+                    <!--Rating-->
+                    <div class="rating rating-xs">
+                        <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="2 star" ></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="3 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
+                        <div class="mask mask-star-2 bg-primary" aria-label="5 star" aria-current="true"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
