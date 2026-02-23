@@ -7,53 +7,53 @@
     </x-slot:title>
 
     <!--Carousel-->
-    <div class="carousel w-full">
-    <div id="slide1" class="carousel-item relative w-full">
-        <a href="/shop" class="block w-full"> 
-            <img src="{{ asset('images/slide3.png') }}" alt="product" class="w-full"/> 
-        </a>
-        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-        <a href="#slide4" class="btn btn-circle btn-primary">❮</a>
-        <a href="#slide2" class="btn btn-circle btn-primary">❯</a>
+    <div class="hover-3d">
+        <div class="carousel w-full rounded-md shadow-2xl border border-base-100">
+        <div id="slide1" class="carousel-item relative w-full">
+            <a href="/shop" class="block w-full"> 
+                <img src="{{ asset('images/slide3.png') }}" alt="product" class="w-full"/> 
+            </a>
+            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide4" class="btn btn-circle btn-primary">❮</a>
+            <a href="#slide2" class="btn btn-circle btn-primary">❯</a>
+            </div>
         </div>
-    </div>
-    <div id="slide2" class="carousel-item relative w-full">
-        <a href="/shop" class="block w-full"> 
-            <img src="{{ asset('images/slide1.png') }}" alt="product" class="w-full"/> 
-        </a>
-        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-        <a href="#slide1" class="btn btn-circle btn-primary">❮</a>
-        <a href="#slide3" class="btn btn-circle btn-primary">❯</a>
+        <div id="slide2" class="carousel-item relative w-full">
+            <a href="/shop" class="block w-full"> 
+                <img src="{{ asset('images/slide1.png') }}" alt="product" class="w-full"/> 
+            </a>
+            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide1" class="btn btn-circle btn-primary">❮</a>
+            <a href="#slide3" class="btn btn-circle btn-primary">❯</a>
+            </div>
         </div>
-    </div>
-    <div id="slide3" class="carousel-item relative w-full">
-        <a href="/shop" class="block w-full"> 
-            <img src="{{ asset('images/slide2.png') }}" alt="product" class="w-full"/> 
-        </a>
-        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-        <a href="#slide2" class="btn btn-circle btn-primary">❮</a>
-        <a href="#slide4" class="btn btn-circle btn-primary">❯</a>
+        <div id="slide3" class="carousel-item relative w-full">
+            <a href="/shop" class="block w-full"> 
+                <img src="{{ asset('images/slide2.png') }}" alt="product" class="w-full"/> 
+            </a>
+            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide2" class="btn btn-circle btn-primary">❮</a>
+            <a href="#slide4" class="btn btn-circle btn-primary">❯</a>
+            </div>
         </div>
-    </div>
-    <div id="slide4" class="carousel-item relative w-full">
-        <a href="/shop" class="block w-full"> 
-            <img src="{{ asset('images/slide4.png') }}" alt="product" class="w-full"/> 
-        </a>
-        <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-        <a href="#slide3" class="btn btn-circle btn-primary">❮</a>
-        <a href="#slide1" class="btn btn-circle btn-primary">❯</a>
+        <div id="slide4" class="carousel-item relative w-full">
+            <a href="/shop" class="block w-full"> 
+                <img src="{{ asset('images/slide4.png') }}" alt="product" class="w-full"/> 
+            </a>
+            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide3" class="btn btn-circle btn-primary">❮</a>
+            <a href="#slide1" class="btn btn-circle btn-primary">❯</a>
+            </div>
         </div>
-    </div>
-    </div>
+        </div>
+    </div>    
 
 
     <!--Content Wrapper-->
     <div class="container mx-auto px-4">
 
         <!--Heading-->
-        <div class="text-neutral-content py-4 text-4xl font-bold mb-2"> 
-            <h1 class="rounded-2xl">LATEST DROPS</h1>
-        </div>
+        <h3 class="text-3xl text-neutral-content py-4 mb-2 font-semibold">LATEST DROPS</h3>
         
         <!--Grid-->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12 justify-items-center">
@@ -83,6 +83,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- 8 empty divs needed for the 3D effect -->
+                <div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div><div></div>
             </div>        
 
         <!--product-->
@@ -212,9 +215,7 @@
         
 
         <!--Heading-->
-        <div class="text-neutral-content py-4 text-4xl font-bold mb-2"> 
-            <h1 class="rounded-2xl">FLASH SALE</h1>
-        </div>
+        <h3 class="text-3xl text-neutral-content py-4 mb-2 font-semibold">FLASH SALE</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12 justify-items-center">
             <!--product-->
