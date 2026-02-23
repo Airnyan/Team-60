@@ -9,7 +9,8 @@
 @vite('resources/css/login-style.css')
 
 <x-slot:title> Register </x-slot:title>
-
+<!--Content Wrapper-->
+<div class="container mx-auto px-4 pt-10"> 
 <div class="wrapper">
     <form action="{{ route('register.submit') }}" method="POST">
         @csrf
@@ -57,5 +58,5 @@
         </div>
     </form>
 </div>
-
+</div>
 </x-layout>

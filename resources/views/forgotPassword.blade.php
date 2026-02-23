@@ -12,6 +12,8 @@
         Forgot Password
     </x-slot:title>
 
+    <!--Content Wrapper-->
+    <div class="container mx-auto px-4 pt-10">
     <div class="wrapper">
         <form action="{{ route('password.email') }}" method="POST">
             @csrf
@@ -34,5 +36,6 @@
 
             <button type="submit" class="btn">Send</button>
         </form>
+    </div>
     </div>
 </x-layout>

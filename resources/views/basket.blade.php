@@ -14,7 +14,8 @@
         Basket Page
     </x-slot:title>
 
-
+    <!--Content Wrapper-->
+    <div class="container mx-auto px-4 pt-10">
     <!-- basket page code -->
     <div class="basket-page">
 
@@ -93,5 +94,5 @@
         </div>
 
     </div>
-
+    </div>
 </x-layout>

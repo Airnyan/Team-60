@@ -83,13 +83,13 @@
     </header>
 
     <!--space for the page's content. Implemented using balde and tailwind classes-->
-    <main class="container mx-auto px-4 min-h-screen pt-10">
+    <main class="min-h-screen">
         {{ $slot }}
     </main>
 
 
     <!--Chat Window-->
-    <div id="chatWindow" class="hidden ">
+    <div id="chatWindow" class="hidden">
     <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-100">
         <!--Chat Header-->
         <div class="navbar bg-base-100 justify-between rounded-t">
