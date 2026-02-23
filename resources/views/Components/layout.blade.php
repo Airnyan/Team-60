@@ -96,8 +96,8 @@
         <div class="flex justify-between gap-5 items-center mx-4">
             <!--Chatbot Avatar-->
             <div class="chat-image avatar">
-                <div class="w-10 rounded-full">
-                    <img alt="Chatbot Avatar" src="{{ asset('images/chatbot2.png') }}" />
+                <div class="w-10 rounded-full border">
+                    <img alt="Chatbot Avatar" src="{{ asset('images/chatbot.png') }}" />
                 </div>
             </div>
             <!--Heading-->
@@ -149,7 +149,7 @@
 
     <!--Chat Button-->
     <div class="fixed bottom-5 right-10 hover-3d">
-        <label class="btn btn-circle btn-lg swap swap-rotate bg-base-300 border-base-100">
+        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
             <!-- this hidden checkbox controls the state -->
             <input id="chatButton" type="checkbox"/>
             <!-- Open icon -->
@@ -170,16 +170,18 @@
 <footer class="footer sm:footer-horizontal bg-base-100 text-neutral-content items-center p-4">
     <div class="container flex mx-auto items-center justify-between">
         <!--Logo-->
-        <aside class="grid-flow-col items-center">
-            <span class="text-lg" style="font-family: 'Exo 2';">LITTLE GREEN MAN</span>
-            <p>Copyright© 2026 - All right reserved</p>
-        </aside>
+        <div class="hover-3d">
+            <aside class="grid-flow-col items-center">
+                <span class="text-lg" style="font-family: 'Exo 2';">LITTLE GREEN MAN</span>
+                <p>Copyright© 2026 - All right reserved</p>
+            </aside>
+        </div>
         <!--Social Links-->
         <nav class="flex justify-end items-center space-x-5">
-            <a href="https://www.facebook.com/"> <img src="{{ asset('images/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
-            <a href="https://www.tiktok.com/en-GB/"> <img src="{{ asset('images/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
-            <a href="https://www.instagram.com/"> <img src="{{ asset('images/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
-            <a href="https://x.com/"> <img src="{{ asset('images/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+            <div class="hover-3d"> <a href="https://www.facebook.com/"> <img src="{{ asset('images/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://www.tiktok.com/en-GB/"> <img src="{{ asset('images/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://www.instagram.com/"> <img src="{{ asset('images/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://x.com/"> <img src="{{ asset('images/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
         </nav>
     </div>
 </footer>

@@ -7,7 +7,7 @@
     </x-slot:title>
 
     <!--Carousel-->
-    <div class="hover-3d">
+    <div class="hover-3d mb-10">
         <div class="carousel w-full rounded-md shadow-2xl border border-base-100">
         <div id="slide1" class="carousel-item relative w-full">
             <a href="/shop" class="block w-full"> 
