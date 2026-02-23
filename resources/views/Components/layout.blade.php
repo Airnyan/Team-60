@@ -58,7 +58,7 @@
 
                     <!-- Account Icon -->
                     @guest
-                    <a class="btn btn-ghost text-lg" href="/login">
+                    <a class="btn btn-ghost text-lg btn-primary" href="/login">
                         <span class="material-symbols-outlined">person</span>
                     </a>
                     @endguest
@@ -70,13 +70,13 @@
                         <!-- Logout Button -->
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button class="btn btn-ghost text-lg">
+                            <button class="btn btn-ghost text-lg btn-primary">
                                 <span class="material-symbols-outlined">logout</span>
                             </button>
                         </form>
                     </div>
                     @endauth
-                    <a class="btn btn-ghost text-lg" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
+                    <a class="btn btn-ghost text-lg btn-primary" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
                 </ul>
             </div>
         </div>
