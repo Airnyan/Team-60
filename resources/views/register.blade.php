@@ -11,19 +11,21 @@
     <x-slot:title>
         Register
     </x-slot:title>
-    <div class="wrapper">
-        <form action="">
-            <h1>Register</h1>
-            <div class="input-box">
-                <input type="email" placeholder="Email" required>
-                <i class='bx  bx-user'></i> 
-            </div>
-            <div class="input-box">
-                <input type="password" placeholder="Password" required>
-                <i class='bx  bx-lock'></i> 
-            </div>
-            <button type="submit" class="btn">Login</button>
-        </form>
+    <!--Content Wrapper-->
+    <div class="container mx-auto px-4 pt-10">
+        <div class="wrapper">
+            <form action="">
+                <h1>Register</h1>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" required>
+                    <i class='bx  bx-user'></i> 
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                    <i class='bx  bx-lock'></i> 
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
     </div>
-
     </x-layout>

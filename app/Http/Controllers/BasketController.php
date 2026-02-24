@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Basket;
 use App\Models\BasketProduct;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Order;
+use DateTime;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,11 +20,15 @@ class BasketController extends Controller
      */
     public function index()
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
-
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
+        if(!$user) {
+            return redirect()->route('login')->with('error', 'Please log in.');
+        }
         $basket = Basket::with('basket_product')->where('user_id', $user->id)->first();
-
+        if (! $basket) {
+            $basket = Basket::create(['user_id' => $user->id]);
+        };
         // dd($basket); //Dumps data to debug
         return view('basket', compact('basket'));
     }
@@ -33,6 +40,9 @@ class BasketController extends Controller
     {
         $user = User::find(16); //Test Instance
         //$user = Auth::user(); //grabs current user
+        if(!$user) {
+            return redirect()->route('login')->with('error', 'Please log in.');
+        }
         $product = Product::findOrfail($request->product_id);
 
         $basket = Basket::where('user_id', $user->id)->first();
@@ -63,15 +73,16 @@ class BasketController extends Controller
      */
     public function update(Request $request, $product_id)
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
+
         $basket = Basket::where('user_id', $user->id)->first();
         if (! $basket) {
             $basket = Basket::create(['user_id' => $user->id]);
         }
-
+        $change = (int) $request->input('change', 0);
         $basketproduct = BasketProduct::where('basket_id', $basket->id)->where('product_id', $product_id)->first();
-        $basketproduct->quantity = $request->quantity;
+        $basketproduct->quantity += $change;
         $basketproduct->save();
 
         return redirect()->back()->with('success', 'Quantity changed.');
@@ -82,8 +93,8 @@ class BasketController extends Controller
      */
     public function destroy($product_id)
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
 
         $basket = Basket::where('user_id', $user->id)->first();
         if (! $basket) {
@@ -101,8 +112,8 @@ class BasketController extends Controller
      */
     public function clear()
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
 
         $basket = Basket::where('user_id', $user->id)->first();
 
@@ -111,18 +122,42 @@ class BasketController extends Controller
         return redirect()->back()->with('success', 'Basket emptied.');
     }
 
-    public function checkout() {
-        $user = User::find(16); //Test Instance
+    public function checkout(Request $request) {
+        // $user = User::find(16); //Test Instance
         $user = Auth::user();
 
         $basket = Basket::where('user_id', $user->id)->first();
 
+        $validated = request()->validate([
+            'address1' => 'required|string|max:255',
+            'address2' => 'required|string|max:255',
+            'postcode' => 'required|string|max:20',
+        ]);
+        $address = Address::create([
+            'user_id' => $user->id,
+            'address_line_1' => $validated['address1'],
+            'address_line_2' => $validated['address2'],
+            'postcode' => $validated['postcode'],
+        ]);
+
+
         $products = $basket->basket_product;
+        $order = Order::create([
+            'user_id' => $user->id,
+            'address_id' => $address->id,
+            'order_date' => now(),
+            'status' => 'Pending',
+        ]);
         $total = 0;
         foreach($products as $product) {
             $total += $product->price * $product->quantity;
+            $order -> products()->create([
+                'order_id' => $order->id,
+                'product_id' => $product->product_id,
+                'quantity' => $product->quantity,
+            ]);
         }
-
-        return view('checkout', compact('basket','products', 'total'));
+        $basket->basket_product()->delete();
+        return view('checkout', compact('order', 'products', 'total'));
     }
 }

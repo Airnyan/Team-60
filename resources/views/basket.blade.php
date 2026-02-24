@@ -14,7 +14,8 @@
         Basket Page
     </x-slot:title>
 
-
+    <!--Content Wrapper-->
+    <div class="container mx-auto px-4 pt-10">
     <!-- basket page code -->
     <div class="basket-page">
 
@@ -41,9 +42,15 @@
 
                         <!-- Quantity controls -->
                             <div class="quantity-controls">
-                                <button class="qty-btn minus">-</button>
+                                <form action="{{ route('basket.update', $basket_product->product->id) }}" method="POST">
+                                    @csrf
+                                <button type="submit" name="change" value="-1" class="qty-btn minus">-</button>
+                                </form>
                                 <span class="qty-number">{{$basket_product->quantity}}</span>
-                                <button class="qty-btn plus">+</button>
+                                <form action="{{ route('basket.update', $basket_product->product->id) }}" method="POST">
+                                    @csrf
+                                <button type="submit" name="change" value="1" class="qty-btn plus">+</button>
+                                </form>
                             </div>
                         </div>
 
@@ -73,22 +80,19 @@
                 <span>Total</span>
                 <span id="total">£0.00</span>
             </div>
-     <form class="address-form">
-         <h3>Shipping Address</h3>
-        <input type="text" placeholder="Full Name" required>
-        <input type="text" placeholder="Address Line 1" required>
-        <input type="text" placeholder="Address Line 2 (optional)">
-        <input type="text" placeholder="City" required>
-        <input type="text" placeholder="Postcode / ZIP" required>
-        <input type="text" placeholder="Country" required>
+            <h3>Shipping Address</h3>
+            <form action="{{ route('basket.checkout') }}" method="POST">
+                @csrf
 
-    </form> 
-            <button class="checkout-btn">Checkout</button>
-
+                    <input type="text" name="address1" placeholder="Address Line 1" value="{{ old('address1')}}" required>
+                    <input type="text" name="address2" placeholder="Address Line 2" value="{{ old('address2')}}"required>
+                    <input type="text" name="postcode" placeholder="Postcode / ZIP" value="{{ old('postcode')}}"required>
+                <button class="checkout-btn" type = "submit">Checkout</button>
+            </form>
         </div>
 
         </div>
 
     </div>
-
+    </div>
 </x-layout>

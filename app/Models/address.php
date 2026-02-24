@@ -9,7 +9,11 @@ class Address extends Model
 {
     /** @use HasFactory<\Database\Factories\AddressFactory> */
     use HasFactory;
-
+    protected $fillable = [
+        'address_line_1',
+        'address_line_2',
+        'postcode',
+    ];
     public function user() {
         return $this->hasMany(User::class);
     }

@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             ProductTypeSeeder::class,
             ProductSeeder::class,
             AddressSeeder::class,
-            BasketSeeder::class,
-            OrderSeeder::class
+            //BasketSeeder::class,
+            //OrderSeeder::class
         ]);
         // User::factory()->create([
         //     'name' => 'Test User',

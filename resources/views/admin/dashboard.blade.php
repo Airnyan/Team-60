@@ -1,0 +1,66 @@
+<x-layout>
+    <x-slot:title>
+        Admin – Dashboard
+    </x-slot:title>
+
+    <div class="container mx-auto py-10 text-white">
+
+        <h1 class="text-3xl font-bold text-green-400 mb-8">
+            Admin Dashboard
+        </h1>
+
+        <p class="mb-10 text-green-300">
+            Welcome back, {{ auth()->user()->name }}.  
+            Use the panel below to manage the system.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Manage Products -->
+            <a href="{{ route('admin.products') }}"
+               class="bg-black border border-green-500 rounded-lg p-6 hover:bg-gray-900 transition">
+                <h2 class="text-xl font-bold text-green-400 mb-2">
+                    Manage Products
+                </h2>
+                <p class="text-green-300">
+                    View, edit, and manage store products.
+                </p>
+            </a>
+
+            <!-- Edit Users (Admins + Super Admins) -->
+            <a href="{{ route('admin.users.indexuser') }}"
+               class="bg-black border border-green-500 rounded-lg p-6 hover:bg-gray-900 transition">
+                <h2 class="text-xl font-bold text-green-400 mb-2">
+                    Edit User Details
+                </h2>
+                <p class="text-green-300">
+                    Edit customer accounts and reset passwords.
+                </p>
+            </a>
+
+            <!-- Super Admin Only -->
+            @if(auth()->user()->role === 'super_admin')
+            <a href="{{ route('admin.users') }}"
+               class="bg-black border border-purple-500 rounded-lg p-6 hover:bg-gray-900 transition">
+                <h2 class="text-xl font-bold text-purple-400 mb-2">
+                    Manage Admin Roles
+                </h2>
+                <p class="text-green-300">
+                    Promote or demote administrators.
+                </p>
+            </a>
+            @else
+            <div class="bg-black border border-green-500 rounded-lg p-6 opacity-50 cursor-not-allowed">
+                <h2 class="text-xl font-bold text-green-400 mb-2">
+                    Manage Admin Roles
+                </h2>
+                <p class="text-green-300">
+                    Super Admin only.
+                </p>
+            </div>
+            @endif
+
+        </div>
+
+    </div>
+</x-layout>
