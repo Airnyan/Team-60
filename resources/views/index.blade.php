@@ -64,14 +64,14 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/grid2.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[0]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
                     <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">Matrrix Classic Tee</h2>
+                        <h2 class="text-base-content ">{{$homepage[0]->product_name}}</h2>
                         <div class="flex justify-between items-center">
-                            <p class="text-base-content font-semibold mt-1">£25</p>
+                            <p class="text-base-content font-semibold mt-1">£{{$homepage[0]->price}}</p>
                             <!--Rating-->
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
@@ -88,21 +88,52 @@
                 <div></div><div></div><div></div><div></div>
             </div>        
 
-        <!--product-->
+            <!--product-->
             <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
                 <!--Container For 3D Effect-->
                 <div class="rounded-2xl bg-base-300">
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/grid3.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[1]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
                     <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">Matrrix Classic Tee</h2>
+                        <h2 class="text-base-content ">{{$homepage[1]->product_name}}</h2>
                         <div class="flex justify-between items-center">
-                            <p class="text-base-content font-semibold mt-1">£25</p>
+                            <p class="text-base-content font-semibold mt-1">£{{$homepage[1]->price}}</p>
+                            <!--Rating-->
+                            <div class="rating rating-xs">
+                                <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 8 empty divs needed for the 3D effect -->
+                <div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div><div></div>
+            </div>   
+
+            <!--product-->
+            <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
+                <!--Container For 3D Effect-->
+                <div class="rounded-2xl bg-base-300">
+                    <!--Image-->
+                    <div class="rounded-t-2xl overflow-hidden">
+                        <figure class="">
+                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[2]->image) }}" alt="product"/> </a>
+                        </figure>
+                    </div>
+                    <!--Body-->
+                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
+                        <h2 class="text-base-content ">{{$homepage[2]->product_name}}</h2>
+                        <div class="flex justify-between items-center">
+                            <p class="text-base-content font-semibold mt-1">£{{$homepage[2]->price}}</p>
                             <!--Rating-->
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
@@ -126,14 +157,14 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/grid4.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[3]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
                     <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">Matrrix Classic Tee</h2>
+                        <h2 class="text-base-content ">{{$homepage[3]->product_name}}</h2>
                         <div class="flex justify-between items-center">
-                            <p class="text-base-content font-semibold mt-1">£25</p>
+                            <p class="text-base-content font-semibold mt-1">£{{$homepage[3]->price}}</p>
                             <!--Rating-->
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
@@ -148,7 +179,7 @@
                 <!-- 8 empty divs needed for the 3D effect -->
                 <div></div><div></div><div></div><div></div>
                 <div></div><div></div><div></div><div></div>
-            </div>  
+            </div>   
 
             <!--product-->
             <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
@@ -157,45 +188,14 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/grid2.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[3]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
                     <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">Matrrix Classic Tee</h2>
+                        <h2 class="text-base-content ">{{$homepage[3]->product_name}}</h2>
                         <div class="flex justify-between items-center">
-                            <p class="text-base-content font-semibold mt-1">£25</p>
-                            <!--Rating-->
-                            <div class="rating rating-xs">
-                                <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 8 empty divs needed for the 3D effect -->
-                <div></div><div></div><div></div><div></div>
-                <div></div><div></div><div></div><div></div>
-            </div>  
-
-            <!--product-->
-            <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
-                <!--Container For 3D Effect-->
-                <div class="rounded-2xl bg-base-300">
-                    <!--Image-->
-                    <div class="rounded-t-2xl overflow-hidden">
-                        <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/grid3.png') }}" alt="product"/> </a>
-                        </figure>
-                    </div>
-                    <!--Body-->
-                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">Matrrix Classic Tee</h2>
-                        <div class="flex justify-between items-center">
-                            <p class="text-base-content font-semibold mt-1">£25</p>
+                            <p class="text-base-content font-semibold mt-1">£{{$homepage[3]->price}}</p>
                             <!--Rating-->
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
@@ -218,42 +218,7 @@
         <h3 class="text-3xl text-neutral-content py-4 mb-2 font-semibold">FLASH SALE</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12 justify-items-center">
-            <!--product-->
-            <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
-                <!--Container For 3D Effect-->
-                <div class="rounded-2xl bg-base-300">
-                    <!--Image-->
-                    <div class="rounded-t-2xl overflow-hidden">
-                        <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/grid1.png') }}" alt="product"/> </a>
-                        </figure>
-                    </div>
-                    <!--Body-->
-                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">Matrrix Classic Tee</h2>
-                        <div class="flex justify-between items-center">
-                            <div class="flex gap-2">
-                            <p class="text-base-content font-semibold mt-1 line-through">£25</p>
-                            <p class="text-base-content font-semibold mt-1">£12</p>
-                            </div>
-                            <!--Rating-->
-                            <div class="rating rating-xs">
-                                <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 8 empty divs needed for the 3D effect -->
-                <div></div><div></div><div></div><div></div>
-                <div></div><div></div><div></div><div></div>
-            </div>
-
-
-
+            
             <!--product-->
             <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
                 <!--Container For 3D Effect-->
@@ -288,6 +253,8 @@
                 <div></div><div></div><div></div><div></div>
             </div>
 
+
+            
 
 
 
