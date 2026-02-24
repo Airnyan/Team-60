@@ -13,7 +13,7 @@ class AdminUserController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.users.dashboard');
+        return view('admin.dashboard');
     }
     public function index()
     {
@@ -55,7 +55,7 @@ public function update(Request $request, User $user)
 
     $user->update($data);
 
-    return redirect()->route('admin.users')->with('success', 'User updated successfully');
+    return redirect()->route('admin.users.indexuser')->with('success', 'User updated successfully');
 }
 
     public function makeAdmin(User $user)
