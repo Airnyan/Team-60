@@ -11,7 +11,7 @@
         <div class="carousel w-full rounded-md shadow-2xl border border-base-100">
         <div id="slide1" class="carousel-item relative w-full">
             <a href="/shop" class="block w-full"> 
-                <img src="{{ asset('images/slide3.png') }}" alt="product" class="w-full"/> 
+                <img src="{{ asset('images/slides/slide3.png') }}" alt="product" class="w-full"/> 
             </a>
             <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
             <a href="#slide4" class="btn btn-circle btn-primary">❮</a>
@@ -20,7 +20,7 @@
         </div>
         <div id="slide2" class="carousel-item relative w-full">
             <a href="/shop" class="block w-full"> 
-                <img src="{{ asset('images/slide1.png') }}" alt="product" class="w-full"/> 
+                <img src="{{ asset('images/slides/slide1.png') }}" alt="product" class="w-full"/> 
             </a>
             <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
             <a href="#slide1" class="btn btn-circle btn-primary">❮</a>
@@ -29,7 +29,7 @@
         </div>
         <div id="slide3" class="carousel-item relative w-full">
             <a href="/shop" class="block w-full"> 
-                <img src="{{ asset('images/slide2.png') }}" alt="product" class="w-full"/> 
+                <img src="{{ asset('images/slides/slide2.png') }}" alt="product" class="w-full"/> 
             </a>
             <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
             <a href="#slide2" class="btn btn-circle btn-primary">❮</a>
@@ -38,7 +38,7 @@
         </div>
         <div id="slide4" class="carousel-item relative w-full">
             <a href="/shop" class="block w-full"> 
-                <img src="{{ asset('images/slide4.png') }}" alt="product" class="w-full"/> 
+                <img src="{{ asset('images/slides/slide4.png') }}" alt="product" class="w-full"/> 
             </a>
             <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
             <a href="#slide3" class="btn btn-circle btn-primary">❮</a>
@@ -64,7 +64,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/grid2.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/grid2.png') }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -95,7 +95,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/grid3.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/grid3.png') }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -126,7 +126,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/grid4.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/grid4.png') }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -157,7 +157,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/grid2.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/grid2.png') }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -188,7 +188,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/grid3.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/grid3.png') }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -225,7 +225,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/grid1.png') }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset('images/items/grid1.png') }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -251,6 +251,50 @@
                 <div></div><div></div><div></div><div></div>
                 <div></div><div></div><div></div><div></div>
             </div>
+
+
+
+            <!--product-->
+            <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
+                <!--Container For 3D Effect-->
+                <div class="rounded-2xl bg-base-300">
+                    <!--Image-->
+                    <div class="rounded-t-2xl overflow-hidden">
+                        <figure class="">
+                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[0]->image) }}" alt="product"/> </a>
+                        </figure>
+                    </div>
+                    <!--Body-->
+                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
+                        <h2 class="text-base-content ">{{$homepage[0]->product_name}}</h2>
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-2">
+                            <p class="text-base-content font-semibold mt-1 line-through">£{{$homepage[0]->price}}</p>
+                            <p class="text-base-content font-semibold mt-1">£{{$homepage[0]->discounted_price}}</p>
+                            </div>
+                            <!--Rating-->
+                            <div class="rating rating-xs">
+                                <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 8 empty divs needed for the 3D effect -->
+                <div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div><div></div>
+            </div>
+
+
+
+
+            
         </div>
     </div>
+
+    
+
 </x-layout>

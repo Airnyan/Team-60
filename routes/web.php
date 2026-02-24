@@ -11,7 +11,9 @@ use App\Http\Controllers\AdminProductController;
 
 // Home page
 Route::get('/', function () {
-    return view('index');
+    // Updated the route to fetech data first
+    $homepage = \App\Models\Product::all(); 
+    return view('index', ['homepage' => $homepage]);
 });
 
 // Static pages
@@ -107,3 +109,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 });
 
+
+
+// Homepage Items
+Route::get('homepage',[App\Http\Controllers\ProductController::class,'homepage']);

@@ -107,11 +107,11 @@
             <div class="flex items-center">
                 <!--Close Button-->
                 <div id="innerCloseChatButton" class="card-actions">
-                    <img alt="Mimisise Icon" src="{{ asset('images/minimise.png') }}" class="  hover:bg-primary/40 rounded-sm" />
+                    <img alt="Mimisise Icon" src="{{ asset('images/icons/minimise.png') }}" class="  hover:bg-primary/40 rounded-sm" />
                 </div> 
                 <!--Close Button-->
                 <div id="innerMinimiseChatButton" class="card-actions mx-4 ">
-                    <img alt="Close Icon" src="{{ asset('images/close.png') }}" class="  hover:bg-primary/40 rounded-sm" />
+                    <img alt="Close Icon" src="{{ asset('images/icons/close.png') }}" class="  hover:bg-primary/40 rounded-sm" />
                 </div>
             </div>      
         </div>
@@ -178,10 +178,10 @@
         </div>
         <!--Social Links-->
         <nav class="flex justify-end items-center space-x-5">
-            <div class="hover-3d"> <a href="https://www.facebook.com/"> <img src="{{ asset('images/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
-            <div class="hover-3d"> <a href="https://www.tiktok.com/en-GB/"> <img src="{{ asset('images/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
-            <div class="hover-3d"> <a href="https://www.instagram.com/"> <img src="{{ asset('images/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
-            <div class="hover-3d"> <a href="https://x.com/"> <img src="{{ asset('images/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://www.facebook.com/"> <img src="{{ asset('images/icons/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://www.tiktok.com/en-GB/"> <img src="{{ asset('images/icons/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://www.instagram.com/"> <img src="{{ asset('images/icons/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://x.com/"> <img src="{{ asset('images/icons/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
         </nav>
     </div>
 </footer>

@@ -45,4 +45,21 @@ class ProductController extends Controller
         $products = Product::all();
         return view('shop', compact('products'));
     }
+
+
+
+    // Homepage Items
+    function homepage(){
+
+        //Stores data in this variable    
+        $homepage = Product::all();
+
+        return view('index', compact('homepage'));
+    
+    }
+
+
 }
+
+
+
