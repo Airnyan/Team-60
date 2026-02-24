@@ -40,7 +40,11 @@
     --depth: 0;
     --noise: 0;  
         }
+    
 
+    body {
+        font-family: 'Inter', sans-serif;
+    }
 
 
 

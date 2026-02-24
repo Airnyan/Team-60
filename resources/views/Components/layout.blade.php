@@ -15,8 +15,10 @@
     <title>{{$title ?? 'Little GreenMan Store'}}</title>
     <!--link to Google Material Icons-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <!--link to custom css style file-->
-    <link rel="stylesheet" href="">
+    <!--link to Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!--link to tailwind files-->
     @vite(['resources/css/app.css', 'resources/js/response.js', 'resources/js/app.js','resources/js/chatbot.js'])
 
@@ -26,20 +28,19 @@
     <!--Navbar-->
     <header class="bg-base-100 text-neutral-content py-4">
         <div class="container mx-auto">
-            <div class="flex justify-between">
+            <div class="flex flex-wrap justify-center sm:justify-between">
                 <!--nav items on the left-->
-                <div class="flex items-center gap-5">
+                <div class="flex items-center">
                     <!--logo-->
-                    <div class="">
-                        <a class="btn btn-ghost text-lg btn-primary" href="/">
-                            <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
-                            <span>LOGO</span>
+                    <div class="flex flex-wrap items-center gap-1">
+                        <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
+                        <a class="btn btn-primary btn-ghost text-xl" href="/">
+                            <span style="font-family: 'Exo 2';">LITTLE GREEN MAN</span>
                         </a>
                     </div>
-                    <!--search box-->
                 </div>
                 <!--nav items on the right-->
-                <ul class="flex justify-end items-center font-bold space-x-5 tracking-wide">
+                <ul class="flex flex-wrap justify-center sm:justify-between items-center font-bold space-x-5 tracking-wide">
                     <a class="btn btn-ghost text-lg" href="/">HOME</a>
                     <a class="btn btn-ghost text-lg" href="/shop">SHOP</a>
                     <a class="btn btn-ghost text-lg" href="/customerSupport">HELP</a>
@@ -57,46 +58,46 @@
 
                     <!-- Account Icon -->
                     @guest
-                    <a class="btn btn-ghost text-lg" href="/login">
+                    <a class="btn btn-ghost text-lg btn-primary" href="/login">
                         <span class="material-symbols-outlined">person</span>
                     </a>
                     @endguest
 
                     @auth
                     <div class="flex items-center gap-3">
-                        <span class="text-success">Hi, {{ auth()->user()->name }}</span>
+                        <span class="text-primary">Hi, {{ auth()->user()->name }}</span>
 
                         <!-- Logout Button -->
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button class="btn btn-ghost text-lg">
+                            <button class="btn btn-ghost text-lg btn-primary">
                                 <span class="material-symbols-outlined">logout</span>
                             </button>
                         </form>
                     </div>
                     @endauth
-                    <a class="btn btn-ghost text-lg" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
+                    <a class="btn btn-ghost text-lg btn-primary" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
                 </ul>
             </div>
         </div>
     </header>
 
     <!--space for the page's content. Implemented using balde and tailwind classes-->
-    <main class="container mx-auto px-4 min-h-screen pt-10">
+    <main class="min-h-screen">
         {{ $slot }}
     </main>
 
 
     <!--Chat Window-->
-    <div id="chatWindow" class="hidden ">
+    <div id="chatWindow" class="hidden">
     <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-100">
         <!--Chat Header-->
         <div class="navbar bg-base-100 justify-between rounded-t">
         <div class="flex justify-between gap-5 items-center mx-4">
             <!--Chatbot Avatar-->
             <div class="chat-image avatar">
-                <div class="w-10 rounded-full">
-                    <img alt="Chatbot Avatar" src="{{ asset('images/chatbot2.png') }}" />
+                <div class="w-10 rounded-full border">
+                    <img alt="Chatbot Avatar" src="{{ asset('images/chatbot.png') }}" />
                 </div>
             </div>
             <!--Heading-->
@@ -106,11 +107,11 @@
             <div class="flex items-center">
                 <!--Close Button-->
                 <div id="innerCloseChatButton" class="card-actions">
-                    <img alt="Mimisise Icon" src="{{ asset('images/minimise.png') }}" class="  hover:bg-primary/40 rounded-sm" />
+                    <img alt="Mimisise Icon" src="{{ asset('images/icons/minimise.png') }}" class="  hover:bg-primary/40 rounded-sm" />
                 </div> 
                 <!--Close Button-->
                 <div id="innerMinimiseChatButton" class="card-actions mx-4 ">
-                    <img alt="Close Icon" src="{{ asset('images/close.png') }}" class="  hover:bg-primary/40 rounded-sm" />
+                    <img alt="Close Icon" src="{{ asset('images/icons/close.png') }}" class="  hover:bg-primary/40 rounded-sm" />
                 </div>
             </div>      
         </div>
@@ -147,8 +148,8 @@
     </div>
 
     <!--Chat Button-->
-    <div class="fixed bottom-5 right-10">
-        <label class="btn btn-circle btn-lg swap swap-rotate bg-base-300 border-base-100">
+    <div class="fixed bottom-5 right-10 hover-3d">
+        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
             <!-- this hidden checkbox controls the state -->
             <input id="chatButton" type="checkbox"/>
             <!-- Open icon -->
@@ -165,18 +166,23 @@
 
 
 
-<!--footer -->
-<footer class="bg-base-100 text-neutral-content py-4 mt-4 ">
+<!-- New footer-->
+<footer class="footer sm:footer-horizontal bg-base-100 text-neutral-content items-center p-4">
     <div class="container flex mx-auto items-center justify-between">
-        <p>Copyright&copy; 2025 Little Green Men. All rights reserved.</p>
-
-        <div class="flex justify-end items-center space-x-5">
-            <a href="https://www.facebook.com/"> <img src="{{ asset('images/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
-            <a href="https://www.tiktok.com/en-GB/"> <img src="{{ asset('images/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
-            <a href="https://www.instagram.com/"> <img src="{{ asset('images/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
-            <a href="https://x.com/"> <img src="{{ asset('images/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a>
+        <!--Logo-->
+        <div class="hover-3d">
+            <aside class="grid-flow-col items-center">
+                <span class="text-lg" style="font-family: 'Exo 2';">LITTLE GREEN MAN</span>
+                <p>Copyright© 2026 - All right reserved</p>
+            </aside>
         </div>
-
+        <!--Social Links-->
+        <nav class="flex justify-end items-center space-x-5">
+            <div class="hover-3d"> <a href="https://www.facebook.com/"> <img src="{{ asset('images/icons/facebook.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://www.tiktok.com/en-GB/"> <img src="{{ asset('images/icons/tiktok.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://www.instagram.com/"> <img src="{{ asset('images/icons/instagram.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+            <div class="hover-3d"> <a href="https://x.com/"> <img src="{{ asset('images/icons/x.png') }}" alt="social media links" class="h-10 w-auto" /> </a> </div>
+        </nav>
     </div>
 </footer>
 

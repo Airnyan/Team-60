@@ -52,14 +52,17 @@ const renderUserMessage = () =>{
     renderMessageEle(userInput,"user");
     // Clear the user message after sending
     txtInput.value="";
+    setScrollPosition();
     // Chatbot wait before responding
     // Loading Icon
     chatBody.append(loadIcon);
     toggleLoading(false);
+    setScrollPosition();
+    
     setTimeout(() => {
         renderChatbotResponse(userInput,"bot");
-        setScrollPosition();
         toggleLoading(true);
+        setScrollPosition();
     }, 800);
 };
 

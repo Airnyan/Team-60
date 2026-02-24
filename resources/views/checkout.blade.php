@@ -3,7 +3,8 @@
     @vite('resources/css/basket.css')
 
     <x-slot:title>Checkout</x-slot:title>
-
+    <!--Content Wrapper-->
+    <div class="container mx-auto px-4 pt-10">
     <div class="basket-page">
 
         <h1 class="basket-title">Order Placed Successfully</h1>
@@ -72,5 +73,5 @@
 
         </div>
     </div>
-
+    </div>
 </x-layout>

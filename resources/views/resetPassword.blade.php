@@ -11,7 +11,8 @@
     <x-slot:title>
         Reset Password
     </x-slot:title>
-
+    <!--Content Wrapper-->
+    <div class="container mx-auto px-4 pt-10">
     <div class="wrapper">
         <form action="{{ route('password.update') }}" method="POST">
             @csrf
@@ -46,5 +47,6 @@
             <button type="submit" class="btn">Reset</button>
         </form>
     </div>
+</div>
 </x-layout>
 
