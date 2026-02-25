@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\ProfileController;
 
 // Home page
 Route::get('/', function () {
@@ -109,7 +110,12 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 });
 
+// Profile Page 
+Route::middleware(['auth'])->group(function () {
 
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+});
 
 // Homepage Items
 Route::get('homepage',[App\Http\Controllers\ProductController::class,'homepage']);

@@ -2,11 +2,11 @@
 
     <h1 class="profile-title">Profile Settings</h1>
 
-    <!-- @if(session('success'))
+    @if(session('success'))
         <div class="success-message">
             {{ session('success') }}
         </div>
-    @endif -->
+    @endif
 
     <div class="profile-container">
 
