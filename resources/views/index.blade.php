@@ -64,7 +64,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[0]->image) }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset( $homepage[0]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -95,7 +95,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[1]->image) }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset( $homepage[1]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -126,7 +126,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[2]->image) }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset( $homepage[2]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -157,7 +157,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[3]->image) }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset( $homepage[3]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -188,7 +188,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[3]->image) }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset( $homepage[3]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
@@ -226,7 +226,7 @@
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset('images/items/' . $homepage[0]->image) }}" alt="product"/> </a>
+                            <a href="/shop"> <img src="{{ asset( $homepage[0]->image) }}" alt="product"/> </a>
                         </figure>
                     </div>
                     <!--Body-->
