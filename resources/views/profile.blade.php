@@ -35,7 +35,7 @@
 
         </div>
 
-        <!-- RIGHT SIDE -->
+         RIGHT SIDE 
         <div class="profile-danger-section">
 
             <h2>Danger Zone</h2>
