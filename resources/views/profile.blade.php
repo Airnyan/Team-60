@@ -35,20 +35,31 @@
 
         </div>
 
-         RIGHT SIDE 
-        <div class="profile-danger-section">
+         <!-- RIGHT SIDE -->
+        <div class="profile-account-section">
 
-            <h2>Danger Zone</h2>
+            <h2 class="section-title">Account Management</h2>
+            <p class="section-description">
+                Manage critical account actions. Please proceed with caution.
+            </p>
 
-            <form action="{{ route('profile.delete') }}" method="POST"
-                  onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
-                @csrf
-                @method('DELETE')
+            <div class="account-danger-box">
+                <h3>Delete Account</h3>
+                <p class="danger-text">
+                    Permanently delete your account and all associated data. 
+                    This action cannot be undone.
+                </p>
 
-                <button type="submit" class="delete-btn">
-                    Delete Account
-                </button>
-            </form>
+                <form action="{{ route('profile.delete') }}" method="POST"
+                      onsubmit="return confirm('Are you sure you want to permanently delete your account? This action cannot be undone.');">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="delete-btn">
+                        Delete Account
+                    </button>
+                </form>
+            </div>
 
         </div>
 
