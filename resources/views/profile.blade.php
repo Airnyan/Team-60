@@ -43,23 +43,23 @@
                 Manage critical account actions. Please proceed with caution.
             </p>
 
-            <div class="account-danger-box">
+            <div class="account-action-box">
                 <h3>Delete Account</h3>
-                <p class="danger-text">
-                    Permanently delete your account and all associated data. 
-                    This action cannot be undone.
+                <p class="action-text">
+                    Deleting your account will permanently remove all associated data. 
+                    This action is irreversible.
                 </p>
 
                 <form action="{{ route('profile.delete') }}" method="POST"
-                      onsubmit="return confirm('Are you sure you want to permanently delete your account? This action cannot be undone.');">
-                    @csrf
-                    @method('DELETE')
+                    onsubmit="return confirm('Are you sure you want to permanently delete your account? This action is irreversible.');">
+                @csrf
+                @method('DELETE')
 
-                    <button type="submit" class="delete-btn">
-                        Delete Account
-                    </button>
-                </form>
-            </div>
+                <button type="submit" class="delete-btn">
+                    Delete Account
+                </button>
+            </form>
+        </div>
 
         </div>
 
