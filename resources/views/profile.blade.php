@@ -1,10 +1,14 @@
 <x-layout>
 
+    <x-slot:title>
+        Profile Page
+    </x-slot:title>
+
+@vite('resources/css/styles.css')
+@vite('resources/css/profile.css')
+
 <div class="profile-page">
     
-@vite('resources/css/styles.css')
-<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-
     <h1 class="profile-title">Profile Settings</h1>
 
     @if(session('success'))
