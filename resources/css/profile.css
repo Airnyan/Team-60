@@ -34,4 +34,48 @@ body{
     margin-bottom: 20px;
 }
 
+/* ----------------------------- */
+/* FORM STYLING */
+/* ----------------------------- */
+
+label{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #1a1d24;
+    color: white;
+}
+
+input:focus{
+    outline: none;
+    border-color: #00ff88;
+}
+
+
+/* Save button */
+
+.save-btn{
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    background-color: #00ff88;
+    color: black;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.save-btn:hover{
+    background-color: #00cc6a;
+}
+
+
 
