@@ -3,6 +3,7 @@
 <div class="profile-page">
     
 @vite('resources/css/styles.css')
+<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 
     <h1 class="profile-title">Profile Settings</h1>
 
