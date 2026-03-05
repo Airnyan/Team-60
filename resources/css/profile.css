@@ -128,5 +128,15 @@ input:focus{
     background-color: #cc0000;
 }
 
+/* ----------------------------- */
+/* MOBILE RESPONSIVE */
+/* ----------------------------- */
 
+@media (max-width: 900px){
+
+    .profile-container{
+        flex-direction: column;
+    }
+
+}
 
