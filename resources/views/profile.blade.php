@@ -1,4 +1,8 @@
+<x-layout>
+
 <div class="profile-page">
+    
+@vite('resources/css/styles.css')
 
     <h1 class="profile-title">Profile Settings</h1>
 
@@ -66,3 +70,5 @@
     </div>
 
 </div>
+
+</x-layout>
