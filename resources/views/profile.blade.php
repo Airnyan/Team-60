@@ -1,5 +1,14 @@
-<div class="profile-page">
+<x-layout>
 
+    <x-slot:title>
+        Profile Page
+    </x-slot:title>
+
+@vite('resources/css/styles.css')
+@vite('resources/css/profile.css')
+
+<div class="profile-page">
+    
     <h1 class="profile-title">Profile Settings</h1>
 
     @if(session('success'))
@@ -66,3 +75,5 @@
     </div>
 
 </div>
+
+</x-layout>

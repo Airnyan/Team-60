@@ -55,7 +55,7 @@
                     </a>
                     @endif
                     @endauth
-
+                    
                     <!-- Account Icon -->
                     @guest
                     <a class="btn btn-ghost text-lg btn-primary" href="/login">
@@ -64,18 +64,39 @@
                     @endguest
 
                     @auth
-                    <div class="flex items-center gap-3">
-                        <span class="text-primary">Hi, {{ auth()->user()->name }}</span>
+                    <div class="dropdown dropdown-end">
 
-                        <!-- Logout Button -->
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button class="btn btn-ghost text-lg btn-primary">
-                                <span class="material-symbols-outlined">logout</span>
-                            </button>
-                        </form>
+                        <!-- Avatar Circle -->
+                        <div tabindex="0" role="button" 
+                            class="btn btn-ghost btn-circle avatar bg-green-500 text-white font-bold">
+                            
+                            {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                        </div>
+
+                        <!-- Dropdown Menu -->
+                        <ul tabindex="0"
+                            class="dropdown-content menu bg-base-100 text-white rounded-box z-[1] mt-3 w-40 p-2 shadow">
+
+                            <li>
+                                <a href="{{ route('profile') }}">
+                                    Profile Page
+                                </a>
+                            </li>
+
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit">
+                                        Logout
+                                    </button>
+                                </form>
+                            </li>
+
+                        </ul>
+
                     </div>
                     @endauth
+
                     <a class="btn btn-ghost text-lg btn-primary" href="/basket"> <span class="material-symbols-outlined">shopping_cart</span> </a>
                 </ul>
             </div>
