@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Validation\Rules\Password;
 use App\Http\Controllers\Controller;   
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;    
+
 
 class ProfileController extends Controller
 {
@@ -35,6 +38,21 @@ class ProfileController extends Controller
         return back()->with('success', 'Profile updated successfully!');
     }
 
+    
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required','current_password'],
+            'password' => ['required','confirmed', Password::min(8)],
+        ]);
+
+        $user = Auth::user();
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return back()->with('success','Password updated successfully.');
+    }
     public function destroy()
     {
         $user = Auth::user();

@@ -101,6 +101,14 @@ input:focus{
     background-color: #1a0f0f;
 }
 
+.account-password-box{
+    border: 1px solid #333333;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #16191f;
+    margin-bottom: 20px;
+}
+
 .account-action-box h3{
     color: #ff4d4d;
     margin-bottom: 10px;
@@ -112,6 +120,23 @@ input:focus{
     color: #ddd;
 }
 
+/* Update Password button */
+
+.update-password-btn{
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    background-color: #00ff88;
+    color: black;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.update-password-btn:hover{
+    background-color: #00cc6a;
+}
 
 /* Delete button */
 
@@ -129,6 +154,8 @@ input:focus{
 .delete-btn:hover{
     background-color: #cc0000;
 }
+
+
 
 /* ----------------------------- */
 /* MOBILE RESPONSIVE */

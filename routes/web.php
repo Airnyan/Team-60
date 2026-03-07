@@ -38,7 +38,8 @@ Route::get('customerSupport', function () {
     return view('customerSupport');
 });
 
-Route::get('shop', [ProductController::class, 'show'])->name('shop');
+
+Route::get('shop', [ProductController::class, 'index'])->name('shop');
 
 // Authentication Routes 
 Route::get('register', function () {
@@ -120,6 +121,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/profile/delete', [ProfileController::class, 'destroy'])
         ->name('profile.delete');
+
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])
+    ->name('profile.password.update');
 
 });
 

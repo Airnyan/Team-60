@@ -17,7 +17,7 @@
         </div>
     @endif
 
-    <div class="profile-container">
+    <div class="profile-container grid grid-cols-1 lg:grid-cols-2 gap-10">
 
         <!-- LEFT SIDE -->
         <div class="profile-form-section">
@@ -51,6 +51,45 @@
             <p class="section-description">
                 Manage critical account actions. Please proceed with caution.
             </p>
+
+            <div class="account-password-box">
+
+                <h3>Change Password</h3>
+
+                <p class="action-text">
+                    Update your account password for better security.
+                </p>
+
+                <form action="{{ route('profile.password.update') }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    <label>Current Password</label>
+                    <input type="password" name="current_password" required>
+
+                    @error('current_password')
+                        <p style="color:red">{{ $message }}</p>
+                    @enderror
+
+
+                    <label>New Password</label>
+                    <input type="password" name="password" required>
+
+                    @error('password')
+                        <p style="color:red">{{ $message }}</p>
+                    @enderror
+
+
+                    <label>Confirm New Password</label>
+                    <input type="password" name="password_confirmation" required>
+
+                    <button type="submit" class="update-password-btn" >
+                        Update Password
+                    </button>
+
+                </form>
+
+            </div>
 
             <div class="account-action-box">
                 <h3>Delete Account</h3>
