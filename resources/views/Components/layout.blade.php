@@ -111,7 +111,7 @@
 
     <!--Chat Window-->
     <div id="chatWindow" class="hidden">
-    <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-100">
+    <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-100 z-50">
         <!--Chat Header-->
         <div class="navbar bg-base-100 justify-between rounded-t">
         <div class="flex justify-between gap-5 items-center mx-4">
@@ -169,7 +169,7 @@
     </div>
 
     <!--Chat Button-->
-    <div class="fixed bottom-5 right-10 hover-3d">
+    <div class="fixed bottom-5 right-10 hover-3d z-50">
         <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
             <!-- this hidden checkbox controls the state -->
             <input id="chatButton" type="checkbox"/>
