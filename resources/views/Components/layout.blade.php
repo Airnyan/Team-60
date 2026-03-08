@@ -20,11 +20,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!--link to tailwind files-->
-    @vite(['resources/css/app.css', 'resources/js/response.js', 'resources/js/app.js','resources/js/chatbot.js'])
+    @vite(['resources/css/app.css', 'resources/js/response.js', 'resources/js/app.js','resources/js/chatbot.js', 'resources/js/accessibility.js'])
 
 </head>
 
-<body class="bg-base-200">
+<body id="body" class="bg-base-200">
     <!--Navbar-->
     <header class="bg-base-100 text-neutral-content py-4">
         <div class="container mx-auto">
@@ -182,13 +182,63 @@
 
 
 
+
+
+
+
+
+    <!--Accessibilty Button-->
+    <div class="fixed bottom-5 left-10 hover-3d z-50">
+        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
+            <!-- this hidden checkbox controls the state -->
+            <input id="accessibiltyButton" type="checkbox"/>
+            <!-- Open icon -->
+            <span class="swap-off fill-current material-symbols-outlined">accessibility</span>
+            <!-- Close icon -->
+            <span class="swap-on fill-current material-symbols-outlined">close</span>
+        </label>
+    </div>
+
+    <!--Accessibilty Menu-->
+    <div id="accessibiltyWindow" class="hidden">
+
+        <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 left-25 rounded-2xl overflow-hidden border border-base-100 z-50">
+            <!--Chat Header-->
+            <div class="navbar bg-base-100 justify-between rounded-t">
+            <div class="flex justify-between gap-5 items-center mx-4">
+                <!--Heading-->
+                <p class="text-neutral-content font-semibold text-lg">Accessibility Features</p>
+                </div>
+                <!--Top Right Header Items-->
+                <div class="flex items-center">
+                    <!--Close Button-->
+                    <div id="headerCloseButton" class="card-actions mx-4 ">
+                        <img alt="Close Icon" src="{{ asset('images/icons/close.png') }}" class="  hover:bg-primary/40 rounded-sm" />
+                    </div>
+                </div>      
+            </div>
+
+            <!--Chat Body-->
+            <div class="card-body h-80 overflow-y-scroll overflow-hidden">
+                
+                <button id="largeTextButton" class="btn bg-primary text-base-100">Large Text</button>
+                <button id="fontChangeButton" class="btn bg-primary text-base-100">Dyslexia Friendly Font</button>
+            </div>
+
+
+
+        </div> 
+    </div>
+
+
+
 </body>
 
 
 
 
 <!-- New footer-->
-<footer class="footer sm:footer-horizontal bg-base-100 text-neutral-content items-center p-4">
+<footer id="footer" class="footer sm:footer-horizontal bg-base-100 text-neutral-content items-center p-4">
     <div class="container flex mx-auto items-center justify-between">
         <!--Logo-->
         <div class="hover-3d">
