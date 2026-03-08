@@ -25,7 +25,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid1.png' 
+            'image' => 'images/items/grid1.png'
         ]);
 
         Product::create([
@@ -36,7 +36,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid2.png'
+            'image' => 'images/items/grid2.png'
         ]);
 
         Product::create([
@@ -47,7 +47,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid3.png'
+            'image' => 'images/items/grid3.png'
         ]);
 
         Product::create([
@@ -58,7 +58,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid4.png'
+            'image' => 'images/items/grid4.png'
         ]);
 
         Product::create([
@@ -69,7 +69,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid5.png'
+            'image' => 'images/items/grid5.png'
         ]);
 
         Product::create([
@@ -80,7 +80,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid6.png'
+            'image' => 'images/items/grid6.png'
         ]);
 
         Product::create([
@@ -91,7 +91,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid7.png'
+            'image' => 'images/items/grid7.png'
         ]);
 
         Product::create([
@@ -102,7 +102,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid8.png'
+            'image' => 'images/items/grid8.png'
         ]);
         
         Product::create([
@@ -113,7 +113,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid9.png'
+            'image' => 'images/items/grid9.png'
         ]);
 
         Product::create([
@@ -124,7 +124,7 @@ public function run(): void
             'discounted_price' => 12.00,
             'current_stock' => 10,
             'size' => 'S',
-            'image' => 'grid10.png'
+            'image' => 'images/items/grid10.png'
         ]);
 
     }
