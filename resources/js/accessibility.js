@@ -26,18 +26,18 @@ largeTextButton.addEventListener("click", event => {
 
     // Using the localStorage JS object to store font size
     if (htmltag.classList.contains("text-[120%]")) {
-        // localStorage.setItem('keyName', 'value')
-        localStorage.setItem('textSize', 'large');
+        // localStorage.setItem("keyName", "value")
+        localStorage.setItem("largeTextSize", "yes");
     } 
     // If not selected remove the key
     else {
-        localStorage.removeItem('textSize');
+        localStorage.removeItem("largeTextSize");
     }
 
 });
 
-// Checks if the localStroage has "large" value to apply it on every page
-if (localStorage.getItem('textSize') === 'large') {
+// Checks if the localStroage has "yes" value to apply it on every page
+if (localStorage.getItem("largeTextSize") === "yes") {
     htmltag.classList.add("text-[120%]");
     largeTextButton.checked = true;
 }
@@ -50,18 +50,18 @@ fontChangeButton.addEventListener("click", event => {
 
     // Using the localStorage JS object to store font size
     if (htmltag.classList.contains("dyslexia-font")) {
-        // localStorage.setItem('keyName', 'value')
-        localStorage.setItem('fontChange', 'yes');
+        // localStorage.setItem("keyName", "value")
+        localStorage.setItem("fontChange", "yes");
     } 
     // If not selected remove the key
     else {
-        localStorage.removeItem('fontChange');
+        localStorage.removeItem("fontChange");
     }
 
 });
 
-// Checks if the localStroage has "large" value to apply it on every page
-if (localStorage.getItem('fontChange') === 'yes') {
+// Checks if the localStroage has "yes" value to apply it on every page
+if (localStorage.getItem("fontChange") === "yes") {
     htmltag.classList.add("dyslexia-font");
     fontChangeButton.checked = true;
 }
@@ -74,18 +74,18 @@ spacingButton.addEventListener("click", event => {
 
     // Using the localStorage JS object to store text spacing
     if (htmltag.classList.contains("tracking-[0.1em]")) {
-        // localStorage.setItem('keyName', 'value')
-        localStorage.setItem('textSpacing', 'yes');
+        // localStorage.setItem("keyName", "value")
+        localStorage.setItem("textSpacing", "yes");
     } 
     // If not selected remove the key
     else {
-        localStorage.removeItem('textSpacing');
+        localStorage.removeItem("textSpacing");
     }
 
 });
 
 // Checks if the localStroage has "yes" value to apply it on every page
-if (localStorage.getItem('textSpacing') === 'yes') {
+if (localStorage.getItem("textSpacing") === "yes") {
     htmltag.classList.add("tracking-[0.1em]");
     spacingButton.checked = true;
 }
@@ -94,17 +94,21 @@ if (localStorage.getItem('textSpacing') === 'yes') {
 contrastButton.addEventListener("change", event => {
 
     if (contrastButton.checked) {
-        // localStorage.setItem('keyName', 'value')
-        localStorage.setItem('highContrast', 'yes');
+        // localStorage.setItem("keyName", "value")
+        localStorage.setItem("highContrast", "yes");
     } 
     // If not selected remove the key
     else {
-        localStorage.removeItem('highContrast');
+        localStorage.removeItem("highContrast");
     }
 
 });
 
 // Checks if the localStorage has "yes" value to apply it on every page
-if (localStorage.getItem('highContrast') === 'yes') {
+if (localStorage.getItem("highContrast") === "yes") {
     contrastButton.checked = true;
 }
+
+
+
+
