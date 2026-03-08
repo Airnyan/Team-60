@@ -17,9 +17,7 @@ headerCloseButton.addEventListener("click", event =>{
 });
 
 
-
-
-
+// LARGE TEXT BUTTON
 // Apply tailwind class to the html tag
 largeTextButton.addEventListener("click", event => {
     htmltag.classList.toggle("text-[120%]");

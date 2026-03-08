@@ -41,15 +41,15 @@
                 </div>
                 <!--nav items on the right-->
                 <ul class="flex flex-wrap justify-center sm:justify-between items-center font-bold space-x-5 tracking-wide">
-                    <a class="btn btn-ghost text-lg" href="/">HOME</a>
-                    <a class="btn btn-ghost text-lg" href="/shop">SHOP</a>
-                    <a class="btn btn-ghost text-lg" href="/customerSupport">HELP</a>
-                    <a class="btn btn-ghost text-lg" href="/aboutUs">ABOUT</a>
+                    <a class="btn btn-ghost text-lg hover:bg-base-300" href="/">HOME</a>
+                    <a class="btn btn-ghost text-lg hover:bg-base-300" href="/shop">SHOP</a>
+                    <a class="btn btn-ghost text-lg hover:bg-base-300" href="/customerSupport">HELP</a>
+                    <a class="btn btn-ghost text-lg hover:bg-base-300" href="/aboutUs">ABOUT</a>
                     <!-- Admin Panel Icon — only visible for admin users -->
                     @auth
                     @if((in_array(Auth::user()->role, ['admin', 'super_admin'])))
                     <a href="{{ route('admin.dashboard') }}"
-                        class="btn btn-outline btn-success flex items-center gap-2">
+                        class="btn btn-outline flex items-center gap-2 btn-primary">
                         <span class="material-symbols-outlined">dashboard</span>
                         Admin
                     </a>
@@ -218,11 +218,13 @@
                 </div>      
             </div>
 
-            <!--Chat Body-->
+            <!--Window Body-->
             <div class="card-body h-80 overflow-y-scroll overflow-hidden">
                 
                 <button id="largeTextButton" class="btn bg-primary text-base-100">Large Text</button>
                 <button id="fontChangeButton" class="btn bg-primary text-base-100">Dyslexia Friendly Font</button>
+                <input type="checkbox" aria-label="Checkbox" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
+
             </div>
 
 
