@@ -221,10 +221,9 @@
             <div class="card-body h-80 overflow-y-scroll overflow-hidden">
 
                 <input id="largeTextButton"  type="checkbox" aria-label="Large Text" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
-                
-                <input id="fontChangeButton"  type="checkbox" aria-label="Dyslexia Friendly" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
-
-
+                <input id="fontChangeButton"  type="checkbox" aria-label="Dyslexia Friendly Font" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
+                <input id="spacingButton" type="checkbox" aria-label="Text Spacing" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
+                <input id="contrastButton" type="checkbox" value="high-contrast" aria-label="High Contrast" class="theme-controller btn bg-base-300 checked:bg-primary checked:text-base-100" />
             </div>
 
 
