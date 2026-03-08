@@ -37,6 +37,32 @@ largeTextButton.addEventListener("click", event => {
 // Checks if the localStroage has "large" value to apply it on every page
 if (localStorage.getItem('textSize') === 'large') {
     htmltag.classList.add("text-[120%]");
+    largeTextButton.checked = true;
 }
+
+
+// FONT CHANGE BUTTON
+// Apply tailwind class to the html tag
+fontChangeButton.addEventListener("click", event => {
+    htmltag.classList.toggle("dyslexia-font");
+
+    // Using the localStorage JS object to store font size
+    if (htmltag.classList.contains("dyslexia-font")) {
+        // localStorage.setItem('keyName', 'value')
+        localStorage.setItem('fontChange', 'yes');
+    } 
+    // If not selected remove the key
+    else {
+        localStorage.removeItem('fontChange');
+    }
+
+});
+
+// Checks if the localStroage has "large" value to apply it on every page
+if (localStorage.getItem('fontChange') === 'yes') {
+    htmltag.classList.add("dyslexia-font");
+    fontChangeButton.checked = true;
+}
+
 
 

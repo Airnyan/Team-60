@@ -46,7 +46,10 @@
         font-family: 'Inter', sans-serif;
     }
 
-
+    /* Accessiblity Features */
+    html.dyslexia-font * {
+    font-family: 'Lexend';
+}
 
 
 

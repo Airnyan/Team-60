@@ -18,8 +18,7 @@
     <!--link to Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!--link to tailwind files-->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:wght@300;400;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">    <!--link to tailwind files-->
     @vite(['resources/css/app.css', 'resources/js/response.js', 'resources/js/app.js','resources/js/chatbot.js', 'resources/js/accessibility.js'])
 
 </head>
@@ -220,10 +219,11 @@
 
             <!--Window Body-->
             <div class="card-body h-80 overflow-y-scroll overflow-hidden">
+
+                <input id="largeTextButton"  type="checkbox" aria-label="Large Text" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
                 
-                <button id="largeTextButton" class="btn bg-primary text-base-100">Large Text</button>
-                <button id="fontChangeButton" class="btn bg-primary text-base-100">Dyslexia Friendly Font</button>
-                <input type="checkbox" aria-label="Checkbox" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
+                <input id="fontChangeButton"  type="checkbox" aria-label="Dyslexia Friendly" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
+
 
             </div>
 
