@@ -247,14 +247,14 @@
                     <label class="btn h-24 bg-base-300 has-checked:bg-primary has-checked:text-base-100 flex flex-col gap-4">
                         <span class="material-symbols-outlined">invert_colors</span>   
                         High Contrast
-                        <input id="contrastButton" type="checkbox" class="hidden" />
+                        <input id="contrastButton" type="checkbox" value="high-contrast"  class="hidden theme-controller" />
                     </label>
                     <!--"has" css property can look into the child element-->
                     <label class="btn h-24 bg-base-300 has-checked:bg-primary has-checked:text-base-100 flex flex-col gap-4">
                         <span class="material-symbols-outlined">arrow_selector_tool</span>   
                         Big Cursor
                         <input id="mousetButton" type="checkbox" class="hidden" />
-                    </label>
+                    </label>                    
                 </div>
             </div>
 
