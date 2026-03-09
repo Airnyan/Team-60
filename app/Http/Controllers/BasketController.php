@@ -38,8 +38,8 @@ class BasketController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
         if(!$user) {
             return redirect()->route('login')->with('error', 'Please log in.');
         }
@@ -56,7 +56,8 @@ class BasketController extends Controller
             BasketProduct::create([
             'basket_id' => $basket->id,
             'product_id' => $product->id,
-            'quantity' => $request->quantity,
+            // 'quantity' => $request->quantity, //Quantity should be editable in the shop menu, currently is not.  
+            'quantity' => 1,
             'price' => $product->price
             ]);
         }
