@@ -26,14 +26,20 @@
             cursor: url("{{ asset('images/icons/cursor.png') }}"), auto;
         }
         body#body {
-            background-image: url("{{ asset('images/bg5.png') }}");
+            background-image: url("{{ asset('images/bg.png') }}");
+        }
+        header#nav-header {
+        background-image: url("{{ asset('images/navbar.jpg') }}");
+        }
+        footer#footer {
+            background-image: url("{{ asset('images/navbar.jpg') }}");
         }
     </style>
 </head>
 
 <body id="body" class="bg-base-200 bg-cover bg-center bg-no-repeat bg-fixed">
     <!--Navbar-->
-    <header class="bg-base-100 text-neutral-content py-4">
+    <header id="nav-header" class="bg-base-100 text-neutral-content py-4 border-3 border-base-300 shadow-2xl">
         <div class="container mx-auto">
             <div class="flex flex-wrap justify-center sm:justify-between">
                 <!--nav items on the left-->
@@ -286,7 +292,7 @@
 
 
 <!-- New footer-->
-<footer id="footer" class="footer sm:footer-horizontal bg-base-100 text-neutral-content items-center p-4">
+<footer id="footer" class="footer sm:footer-horizontal bg-base-100 text-neutral-content items-center p-4 border-3 border-base-300 shadow-2xl">
     <div class="container flex mx-auto items-center justify-between">
         <!--Logo-->
         <div class="hover-3d">
