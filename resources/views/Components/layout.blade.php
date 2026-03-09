@@ -223,12 +223,39 @@
             </div>
 
             <!--Window Body-->
-            <div class="card-body h-80 overflow-y-scroll overflow-hidden">
-                <input id="largeTextButton"  type="checkbox" aria-label="Large Text" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
-                <input id="fontChangeButton"  type="checkbox" aria-label="Dyslexia Friendly Font" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
-                <input id="spacingButton" type="checkbox" aria-label="Text Spacing" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
-                <input id="contrastButton" type="checkbox" value="high-contrast" aria-label="High Contrast" class="theme-controller btn bg-base-300 checked:bg-primary checked:text-base-100" />
-                <input id="mousetButton" type="checkbox" aria-label="Big Cursor" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
+            <div class="card-body h-100 overflow-y-scroll overflow-hidden">
+                <div class="grid grid-cols-2 gap-8">
+                    <!--"has" css property can look into the child element-->
+                    <label class="btn h-24 bg-base-300 has-checked:bg-primary has-checked:text-base-100 flex flex-col gap-4">
+                        <span class="material-symbols-outlined">text_increase</span>   
+                        Large Text
+                        <input id="largeTextButton" type="checkbox" class="hidden" />
+                    </label>
+                    <!--"has" css property can look into the child element-->
+                    <label class="btn h-24 bg-base-300 has-checked:bg-primary has-checked:text-base-100 flex flex-col gap-2">
+                        <span class="material-symbols-outlined">font_download</span>   
+                        Dyslexia Friendly Font
+                        <input id="fontChangeButton" type="checkbox" class="hidden" />
+                    </label>
+                    <!--"has" css property can look into the child element-->
+                    <label class="btn h-24 bg-base-300 has-checked:bg-primary has-checked:text-base-100 flex flex-col gap-4">
+                        <span class="material-symbols-outlined">format_letter_spacing</span>   
+                        Text Spacing
+                        <input id="spacingButton" type="checkbox" class="hidden" />
+                    </label>                    
+                    <!--"has" css property can look into the child element-->
+                    <label class="btn h-24 bg-base-300 has-checked:bg-primary has-checked:text-base-100 flex flex-col gap-4">
+                        <span class="material-symbols-outlined">invert_colors</span>   
+                        High Contrast
+                        <input id="contrastButton" type="checkbox" class="hidden" />
+                    </label>
+                    <!--"has" css property can look into the child element-->
+                    <label class="btn h-24 bg-base-300 has-checked:bg-primary has-checked:text-base-100 flex flex-col gap-4">
+                        <span class="material-symbols-outlined">arrow_selector_tool</span>   
+                        Big Cursor
+                        <input id="mousetButton" type="checkbox" class="hidden" />
+                    </label>
+                </div>
             </div>
 
 
