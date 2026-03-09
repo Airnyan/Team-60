@@ -5,6 +5,7 @@ const largeTextButton = document.getElementById("largeTextButton");
 const fontChangeButton = document.getElementById("fontChangeButton");
 const spacingButton = document.getElementById("spacingButton");
 const contrastButton = document.getElementById("contrastButton");
+const mousetButton = document.getElementById("mousetButton");
 const htmltag = document.documentElement;
 
 
@@ -111,4 +112,23 @@ if (localStorage.getItem("highContrast") === "yes") {
 
 
 
+// BIG CURSOR BUTTON
+mousetButton.addEventListener("click", event => {
+    htmltag.classList.toggle("big-cursor");
 
+    // Using the localStorage JS object to store cursor state
+    if (htmltag.classList.contains("big-cursor")) {
+        // localStorage.setItem("keyName", "value")
+        localStorage.setItem("largeCursor", "yes");
+    } 
+    // If not selected remove the key
+    else {
+        localStorage.removeItem("largeCursor");
+    }
+});
+
+// Checks if the localStorage has "yes" value to apply it on every page
+if (localStorage.getItem("largeCursor") === "yes") {
+    htmltag.classList.add("big-cursor");
+    mousetButton.checked = true;
+}

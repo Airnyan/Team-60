@@ -20,7 +20,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:wght@300;400;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">    <!--link to tailwind files-->
     @vite(['resources/css/app.css', 'resources/js/response.js', 'resources/js/app.js','resources/js/chatbot.js', 'resources/js/accessibility.js'])
-
+    <!--css code for the accessiblity mouse-->
+    <style>
+        html.big-cursor * {
+            cursor: url("{{ asset('images/icons/cursor.png') }}"), auto;
+        }
+    </style>
 </head>
 
 <body id="body" class="bg-base-200">
@@ -219,11 +224,11 @@
 
             <!--Window Body-->
             <div class="card-body h-80 overflow-y-scroll overflow-hidden">
-
                 <input id="largeTextButton"  type="checkbox" aria-label="Large Text" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
                 <input id="fontChangeButton"  type="checkbox" aria-label="Dyslexia Friendly Font" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
                 <input id="spacingButton" type="checkbox" aria-label="Text Spacing" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
                 <input id="contrastButton" type="checkbox" value="high-contrast" aria-label="High Contrast" class="theme-controller btn bg-base-300 checked:bg-primary checked:text-base-100" />
+                <input id="mousetButton" type="checkbox" aria-label="Big Cursor" class="btn bg-base-300 checked:bg-primary checked:text-base-100" />
             </div>
 
 
