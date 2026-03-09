@@ -28,56 +28,30 @@
             </div>
 
             {{-- Product Type --}}
-            <label class="block text-green-400 font-semibold mb-2">
-                Product Type
-            </label>
-
-            <div class="space-y-2 text-green-300">
-
-                <label class="flex items-center gap-2">
-                    <input type="radio"
-                        name="product_type_id"
-                        value="1"
-                        {{ old('product_type_id', $product->product_type_id) == 1 ? 'checked' : '' }}>
-                    T-Shirt
+            <div>
+                <label class="block text-green-400 mb-1 font-semibold">
+                    Product Type
                 </label>
 
-                <label class="flex items-center gap-2">
-                    <input type="radio"
-                        name="product_type_id"
-                        value="2"
-                        {{ old('product_type_id', $product->product_type_id) == 2 ? 'checked' : '' }}>
-                    Hoodie
-                </label>
+                <select name="product_type_id"
+                    class="w-full px-4 py-2 bg-black border border-green-500 text-green-300 rounded">
 
-                <label class="flex items-center gap-2">
-                    <input type="radio"
-                        name="product_type_id"
-                        value="3"
-                        {{ old('product_type_id', $product->product_type_id) == 3 ? 'checked' : '' }}>
-                    Tracksuit
-                </label>
+                    @foreach($types as $type)
 
-                <label class="flex items-center gap-2">
-                    <input type="radio"
-                        name="product_type_id"
-                        value="4"
-                        {{ old('product_type_id', $product->product_type_id) == 4 ? 'checked' : '' }}>
-                    Hat
-                </label>
+                        <option value="{{ $type->id }}"
+                            {{ old('product_type_id', $product->product_type_id) == $type->id ? 'selected' : '' }}>
 
-                <label class="flex items-center gap-2">
-                    <input type="radio"
-                        name="product_type_id"
-                        value="5"
-                        {{ old('product_type_id', $product->product_type_id) == 5 ? 'checked' : '' }}>
-                    Poster
-                </label>
+                            {{ $type->type_name }}
 
+                        </option>
+
+                    @endforeach
+
+                </select>
             </div>
 
             @error('product_type_id')
-                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
 
 

@@ -17,8 +17,9 @@ class AdminProductController extends Controller
     }
     public function edit(Product $product)
     {
-        
-        return view('admin.products.edit', compact('product'));
+    $types = ProductType::all();
+
+    return view('admin.products.edit', compact('product','types'));
     }
 
     public function destroy(Product $product)
@@ -54,9 +55,9 @@ class AdminProductController extends Controller
         $file = $request->file('image');
         $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-        $file->move(public_path('images'), $filename);
+        $file->move(public_path('images/items'), $filename);
 
-        $validated['image'] = 'images/' . $filename;
+        $validated['image'] = 'images/items/' . $filename;
     }
 
     $product->update($validated);
@@ -82,8 +83,8 @@ public function store(Request $request)
     
     if ($request->hasFile('image')) {
         $imageName = time() . '_' . $request->image->getClientOriginalName();
-        $request->image->move(public_path('images'), $imageName);
-        $validated['image'] = $imageName;
+        $request->image->move(public_path('images/items'), $imageName);
+        $validated['image'] =  'images/items/' . $imageName;
     }
 
     Product::create($validated);

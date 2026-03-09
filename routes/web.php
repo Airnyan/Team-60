@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Route;
@@ -8,11 +9,14 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
-use App\Http\Controllers\OrderController; // ✅ ADDED
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
 
 // Home page
 Route::get('/', function () {
-    return view('index');
+    // Updated the route to fetch data first
+    $homepage = \App\Models\Product::all(); 
+    return view('index', ['homepage' => $homepage]);
 });
 
 // Static pages
@@ -28,15 +32,11 @@ Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.ch
 
 Route::post('/basket/update/{product_id}', [BasketController::class, 'update'])->name('basket.update');
 
-// Route::get('/checkout', [BasketController::class, 'checkout'])
-//     ->middleware('auth')
-//     ->name('checkout');
-
 Route::get('customerSupport', function () {
     return view('customerSupport');
 });
 
-Route::get('shop', [ProductController::class, 'show'])->name('shop');
+Route::get('shop', [ProductController::class, 'index'])->name('shop');
 
 // Authentication Routes
 Route::get('register', function () {
@@ -68,7 +68,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products');
 
 
 // ==========================
-// ✅ USER: Order History/Status
+// USER: Order History/Status
 // ==========================
 Route::get('/orders', [OrderController::class, 'index'])
     ->middleware('auth')
@@ -83,7 +83,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     })->name('admin.dashboard');
 
     /*
-    | ✅ ORDERS (ADMIN + SUPER ADMIN)  ← ADDED SECTION
+    | ORDERS (ADMIN + SUPER ADMIN)
     */
     Route::middleware('can:isAdmin')->group(function () {
         Route::get('/orders', [OrderController::class, 'adminIndex'])->name('admin.orders');
@@ -111,8 +111,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::patch('/users/{user}/make-admin', [AdminUserController::class, 'makeAdmin'])->name('admin.users.makeAdmin');
         Route::patch('/users/{user}/remove-admin', [AdminUserController::class, 'removeAdmin'])->name('admin.users.removeAdmin');
         Route::get('/users/dashboard', [AdminUserController::class, 'dashboard'])->name('admin.users.dashboard');
-        //Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
-        //Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
         Route::post('/users/{user}/reset-password', [AdminUserController::class, 'sendReset'])->name('admin.users.reset');
     });
 
@@ -125,3 +123,22 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 });
 
+
+// Profile Page
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+    Route::post('/profile/update', [ProfileController::class, 'update'])
+        ->name('profile.update');
+
+    Route::delete('/profile/delete', [ProfileController::class, 'destroy'])
+        ->name('profile.delete');
+
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])
+        ->name('profile.password.update');
+
+});
+
+// Homepage Items
+Route::get('homepage',[App\Http\Controllers\ProductController::class,'homepage']);
