@@ -28,7 +28,7 @@
     </style>
 </head>
 
-<body id="body" class="bg-base-200">
+<body id="body" class="bg-base-200 bg-cover bg-center bg-no-repeat bg-fixed" style="background-image: url('{{ asset('images/bg5.png') }}');">
     <!--Navbar-->
     <header class="bg-base-100 text-neutral-content py-4">
         <div class="container mx-auto">
@@ -185,7 +185,7 @@
     </div>
 
     <!--Chat Button-->
-    <div class="fixed bottom-5 right-10 hover-3d z-50">
+    <div class="fixed bottom-5 right-3 hover-3d z-50">
         <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
             <!-- this hidden checkbox controls the state -->
             <input id="chatButton" type="checkbox"/>
@@ -204,7 +204,7 @@
 
 
     <!--Accessibilty Button-->
-    <div class="fixed bottom-5 left-10 hover-3d z-50">
+    <div class="fixed bottom-5 left-3 hover-3d z-50">
         <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
             <!-- this hidden checkbox controls the state -->
             <input id="accessibiltyButton" type="checkbox"/>
