@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\BasketController;
 use Illuminate\Support\Facades\Route;
@@ -8,11 +9,12 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 
 // Home page
 Route::get('/', function () {
-    // Updated the route to fetech data first
+    // Updated the route to fetch data first
     $homepage = \App\Models\Product::all(); 
     return view('index', ['homepage' => $homepage]);
 });
@@ -30,18 +32,13 @@ Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.ch
 
 Route::post('/basket/update/{product_id}', [BasketController::class, 'update'])->name('basket.update');
 
-// Route::get('/checkout', [BasketController::class, 'checkout'])
-//     ->middleware('auth')
-//     ->name('checkout');
-
 Route::get('customerSupport', function () {
     return view('customerSupport');
 });
 
-
 Route::get('shop', [ProductController::class, 'index'])->name('shop');
 
-// Authentication Routes 
+// Authentication Routes
 Route::get('register', function () {
     return view('register');
 });
@@ -64,16 +61,34 @@ Route::get('/reset-password/{token}', [PasswordResetController::class, 'showRese
 
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])->name('password.update');
 
-
 Route::post('/contact-submit', [ContactFormController::class, 'submit']);
+
 // Product Search Routes
 Route::get('/products', [ProductController::class, 'index'])->name('products');
+
+
+// ==========================
+// USER: Order History/Status
+// ==========================
+Route::get('/orders', [OrderController::class, 'index'])
+    ->middleware('auth')
+    ->name('orders.index');
+
+
 
 Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    /*
+    | ORDERS (ADMIN + SUPER ADMIN)
+    */
+    Route::middleware('can:isAdmin')->group(function () {
+        Route::get('/orders', [OrderController::class, 'adminIndex'])->name('admin.orders');
+        Route::post('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.status');
+    });
 
     /*
     | PRODUCTS (ADMIN + SUPER ADMIN)
@@ -96,13 +111,10 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::patch('/users/{user}/make-admin', [AdminUserController::class, 'makeAdmin'])->name('admin.users.makeAdmin');
         Route::patch('/users/{user}/remove-admin', [AdminUserController::class, 'removeAdmin'])->name('admin.users.removeAdmin');
         Route::get('/users/dashboard', [AdminUserController::class, 'dashboard'])->name('admin.users.dashboard');
-        //Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
-        //Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
         Route::post('/users/{user}/reset-password', [AdminUserController::class, 'sendReset'])->name('admin.users.reset');
-        
-        });
+    });
 
-        Route::middleware('can:isAdmin')->group(function () {
+    Route::middleware('can:isAdmin')->group(function () {
         Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
         Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
         Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
@@ -111,7 +123,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 });
 
-// Profile Page 
+
+// Profile Page
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
@@ -123,7 +136,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('profile.delete');
 
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])
-    ->name('profile.password.update');
+        ->name('profile.password.update');
 
 });
 
