@@ -46,9 +46,21 @@
                 <!--nav items on the right-->
                 <ul class="flex flex-wrap justify-center sm:justify-between items-center font-bold space-x-5 tracking-wide">
                     <a class="btn btn-ghost text-lg hover:bg-base-300" href="/">HOME</a>
-                    <a class="btn btn-ghost text-lg hover:bg-base-300" href="/shop">SHOP</a>
+                    <!--dropdown menu for shop page-->
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost text-lg hover:bg-base-300 m-1">SHOP</div>
+                        <ul tabindex="-1" class="dropdown-content menu bg-base-200 rounded-box z-1 mt-5 w-52 p-2 shadow-sm">
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Main Page</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">T-shirt</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Hoodie</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Tracksuit</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Hat</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Poster</a></li>
+                        </ul>
+                    </div>
                     <a class="btn btn-ghost text-lg hover:bg-base-300" href="/customerSupport">HELP</a>
                     <a class="btn btn-ghost text-lg hover:bg-base-300" href="/aboutUs">ABOUT</a>
+
                     <!-- Admin Panel Icon — only visible for admin users -->
                     @auth
                     @if((in_array(Auth::user()->role, ['admin', 'super_admin'])))
