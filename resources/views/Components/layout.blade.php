@@ -138,7 +138,7 @@
                 </div>
             </div>
             <!--Heading-->
-            <p class="text-neutral-content font-semibold text-lg">ChudBot</p>
+            <p class="text-neutral-content font-semibold text-lg">ChatBot</p>
             </div>
             <!--Top Right Header Items-->
             <div class="flex items-center">
