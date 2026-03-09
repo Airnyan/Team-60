@@ -25,10 +25,13 @@
         html.big-cursor * {
             cursor: url("{{ asset('images/icons/cursor.png') }}"), auto;
         }
+        body#body {
+            background-image: url("{{ asset('images/bg5.png') }}");
+        }
     </style>
 </head>
 
-<body id="body" class="bg-base-200 bg-cover bg-center bg-no-repeat bg-fixed" style="background-image: url('{{ asset('images/bg5.png') }}');">
+<body id="body" class="bg-base-200 bg-cover bg-center bg-no-repeat bg-fixed">
     <!--Navbar-->
     <header class="bg-base-100 text-neutral-content py-4">
         <div class="container mx-auto">
@@ -91,7 +94,7 @@
 
                         <!-- Dropdown Menu -->
                         <ul tabindex="0"
-                            class="dropdown-content menu bg-base-100 text-white rounded-box z-[1] mt-3 w-40 p-2 shadow">
+                            class="dropdown-content menu bg-base-100 text-white rounded-box z-1 mt-3 w-40 p-2 shadow">
 
                             <li>
                                 <a href="{{ route('profile') }}">
