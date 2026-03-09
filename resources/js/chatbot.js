@@ -136,36 +136,42 @@ const getChatbotResponse = (userInput) => {
         return "See you later :)";
     }
     if (text.includes("contact") || text.includes("form") || text.includes("human")|| text.includes("agent")|| text.includes("support")|| text.includes("customer")) {
-        return "Please head over to our Help page, and use the contact form to reach our customer service team.";
+        return "Please head over to our <a class='link link-primary' href='/customerSupport'>Help page</a>, and use the contact form to reach our customer service team.";
     }
     if (text.includes("help") ) {
-        return "I would be glad to assist you with any issues you have.<br><br> Please simply type a keyword related to your problem.<br><br> If you need additional support, please reach out to our customer support team, and they will be able to help you. ";
+        return "I would be glad to assist you with any issues you have.<br><br> Please simply type a keyword related to your problem.<br><br> If you need additional support, please reach out to our <a class='link link-primary' href='/customerSupport'>customer support team</a>, and they will be able to help you. ";
     }    
     if (text.includes("faq") || text.includes("question") || text.includes("common") ) {
-        return "Please head over to our Help page, the FAQ section covers most commonly asked questions!";
+        return "Please head over to our <a class='link link-primary' href='/customerSupport'>Help page</a>, the FAQ section covers most commonly asked questions!";
     }    
     if (text.includes("about") || text.includes("history") || text.includes("motto") ) {
-        return "Please head over to our About page, to learn more about our company.";
+        return "Please head over to our <a class='link link-primary' href='/aboutUs'>About page</a>, to learn more about our company.";
     }
     if (text.includes("links") || text.includes("social") || text.includes("media") || text.includes("facebook")|| text.includes("tiktok")|| text.includes("instagram")) {
         return "Our social media links can accessed in the footer at the very bottom of the page.";
     }        
     if (text.includes("account") || text.includes("profile") || text.includes("personal") || text.includes("details") ) {
-        return "Please head over to your Account page, to manage your profile and other related details.";
+        return "Please head over to your <a class='link link-primary' href='/profile'>Account page</a>, to manage your profile and other related details.";
     }
     if (text.includes("order") || text.includes("status") || text.includes("track") || text.includes("history") || text.includes("shipping") || text.includes("delivery") ) {
-        return "To track the status of your order or view your full order history, please head to your account page.";
+        return "To track the status of your order or view your full order history, please head to your <a class='link link-primary' href='/profile'>Account page</a>.";
     }
     if (text.includes("chudbot")) {
         return "Don't day that man, it hurts my feelings 😭😭😭😭";
-    }     
+    }
+    if (text.includes("product") || text.includes("item") || text.includes("clothes") || text.includes("buy") || text.includes("sell")) {
+        return "To know about our products simply click on the shop page in the navbar and select the category of the product you desire. If unsure, simply go to the <a class='link link-primary' href='/shop'>main shopping page</a>.";
+    }
+    if (text.includes("stock") || text.includes("inventory") || text.includes("available") || text.includes("sold out") || text.includes("restock")) {
+        return "For each individual item, their stock levels can be found when you go to the <a class='link link-primary' href='/shop'>shop page</a> and click on the item itself, it should display the stock level alongside other relevant information.";
+    }    
      /*
     if (text.includes("") || text.includes("") || text.includes("") ) {
         return "Response Needed";
     }
     */ 
     else {
-        return "Sorry, I didn't quite understand that. <br><br> Please try typing a keyword related to your problem.<br><br>If you need additional support, please reach out to our customer support team, and they will be able to help you.";
+        return "Sorry, I didn't quite understand that. <br><br> Please try typing a keyword related to your problem.<br><br>If you need additional support, please reach out to our <a class='link link-primary' href='/customerSupport'>customer support team</a>, and they will be able to help you.";
     }
 
 };
