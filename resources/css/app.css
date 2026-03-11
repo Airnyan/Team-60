@@ -84,11 +84,11 @@
 
     /* Accessiblity Features */
     html.dyslexia-font * {
-    font-family: 'Lexend';
+    font-family: 'OpenDyslexic' !important;
     }
 
     html.dyslexia-font .material-symbols-outlined {
-    font-family: 'Material Symbols Outlined';
+    font-family: 'Material Symbols Outlined' !important;
     }
 
 

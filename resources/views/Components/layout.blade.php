@@ -34,6 +34,12 @@
         footer#footer {
             background-image: url("{{ asset('images/navbar.jpg') }}");
         }
+        @font-face {
+            font-family: 'OpenDyslexic';
+            src: url("fonts/OpenDyslexic-Regular.otf") format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
     </style>
 </head>
 
