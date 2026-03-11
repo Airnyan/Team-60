@@ -136,7 +136,7 @@
 
     <!--Chat Window-->
     <div id="chatWindow" class="hidden">
-    <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-100 z-50">
+    <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 right-25 rounded-2xl overflow-hidden border-3 border-base-300 z-50">
         <!--Chat Header-->
         <div class="navbar bg-base-100 justify-between rounded-t">
         <div class="flex justify-between gap-5 items-center mx-4">
@@ -163,7 +163,7 @@
         </div>
 
         <!--Chat Body-->
-        <div id="chatBody" class="card-body h-80 overflow-y-scroll overflow-hidden">
+        <div id="chatBody" class="card-body h-85 overflow-y-scroll overflow-hidden">
             <!--loading icon-->
             <span id="loadIcon" class="loading loading-dots loading-xl hidden"></span>
             <!--Agent-->
@@ -194,8 +194,8 @@
     </div>
 
     <!--Chat Button-->
-    <div class="fixed bottom-5 right-3 hover-3d z-50">
-        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
+    <div class="fixed bottom-5 right-1 hover-3d z-50">
+        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate border-2 border-base-200">
             <!-- this hidden checkbox controls the state -->
             <input id="chatButton" type="checkbox"/>
             <!-- Open icon -->
@@ -213,8 +213,8 @@
 
 
     <!--Accessibilty Button-->
-    <div class="fixed bottom-5 left-3 hover-3d z-50">
-        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
+    <div class="fixed bottom-5 left-1 hover-3d z-50">
+        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate border-2 border-base-200">
             <!-- this hidden checkbox controls the state -->
             <input id="accessibiltyButton" type="checkbox"/>
             <!-- Open icon -->
@@ -227,7 +227,7 @@
     <!--Accessibilty Menu-->
     <div id="accessibiltyWindow" class="hidden">
 
-        <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 left-25 rounded-2xl overflow-hidden border border-base-100 z-50">
+        <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 left-25 rounded-2xl overflow-hidden border-3 border-base-300 z-50">
             <!--Chat Header-->
             <div class="navbar bg-base-100 justify-between rounded-t">
             <div class="flex justify-between gap-5 items-center mx-4">
