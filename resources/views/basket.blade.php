@@ -17,7 +17,7 @@
     <!--Content Wrapper-->
     <div class="container mx-auto px-4 pt-10">
     <!-- basket page code -->
-    <div class="basket-page">
+    <div class="basket-page bg-black rounded-2xl">
 
         <h1 class="basket-title">Your Basket</h1>
 
