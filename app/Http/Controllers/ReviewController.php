@@ -21,7 +21,7 @@ class ReviewController extends Controller
     ]);
 
     \App\Models\Review::create([
-        'Product_ID' => 1,
+        'Product_ID' => $request->input('product_id'),
         'User_ID'    => auth()->id(),
         'Review'     => $request->input('review'),
         'Rating'     => 5,

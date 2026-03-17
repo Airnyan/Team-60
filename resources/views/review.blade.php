@@ -10,10 +10,12 @@
                 <h1 class="text-2xl font-bold">Leave a review!</h1>
                 
                 <form action="/submit-review" method="POST">
-                    @csrf 
+                    @csrf
+
+                    <input type="hidden" name="product_id" value="1">
                     
                     <div class="form-group" style="margin: 20px 0;">
-                        <textarea id="review_text" name="review" class="form-control" rows="5" placeholder="Write your thoughts here..." style="width: 100%; border-radius: 8px; padding: 10px; color: black;"></textarea>
+                        <textarea id="review_text" name="review" class="form-control" rows="5" placeholder="Write your thoughts here..." style="width: 100%; border-radius: 8px; padding: 10px; color: white;"></textarea>
                     </div>
 
                     <button type="submit" class="btn" style="width: 100%;">Submit Review</button> 
