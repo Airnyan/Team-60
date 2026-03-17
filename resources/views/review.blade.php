@@ -15,6 +15,14 @@
                     <input type="hidden" name="product_id" value="1">
                     
                     <div class="form-group" style="margin: 20px 0;">
+                        <label style="display: block; margin-bottom: 10px;">Your Rating:</label>
+                        <div class="rating rating-lg">
+                            <input type="radio" name="rating" value="1" class="mask mask-star-2 bg-green-500" checked />
+                            <input type="radio" name="rating" value="2" class="mask mask-star-2 bg-green-500" />
+                            <input type="radio" name="rating" value="3" class="mask mask-star-2 bg-green-500" />
+                            <input type="radio" name="rating" value="4" class="mask mask-star-2 bg-green-500" />
+                            <input type="radio" name="rating" value="5" class="mask mask-star-2 bg-green-500" />
+                            </div>
                         <textarea id="review_text" name="review" class="form-control" rows="5" placeholder="Write your thoughts here..." style="width: 100%; border-radius: 8px; padding: 10px; color: white;"></textarea>
                     </div>
 
