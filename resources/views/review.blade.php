@@ -36,7 +36,7 @@
             @foreach($reviews as $review)
                 <div class="bg-base-300 border border-base-300 p-6 rounded-xl mb-4 text-neutral-content">
                     <div class="flex justify-between items-center mb-2">
-                        <span class="font-bold text-green-500 text-lg">User #{{ $review->user_id }}</span>
+                        <span class="font-bold text-green-500 text-lg">{{ $review->user->name }}</span>
                         
                         <div class="rating rating-sm">
                             @for($i = 1; $i <= 5; $i++)
