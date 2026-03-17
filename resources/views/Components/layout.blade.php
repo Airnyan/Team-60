@@ -65,12 +65,13 @@
                     <div class="dropdown">
                         <div tabindex="0" role="button" class="btn btn-ghost text-lg hover:bg-base-300 m-1">SHOP</div>
                         <ul tabindex="-1" class="dropdown-content menu bg-base-200 rounded-box z-1 mt-5 w-52 p-2 shadow-sm">
+                            
                             <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Main Page</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">T-shirt</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Hoodie</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Tracksuit</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Hat</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Poster</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=1">T-shirt</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=2">Hoodie</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=3">Tracksuit</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=4">Hat</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=5">Poster</a></li>
                         </ul>
                     </div>
                     <a class="btn btn-ghost text-lg hover:bg-base-300" href="/customerSupport">HELP</a>
@@ -113,7 +114,11 @@
                                     Profile Page
                                 </a>
                             </li>
-
+                            <li>
+                                <a href="{{ route('orders.index') }}">
+                                    My Orders
+                                </a>
+                            </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
