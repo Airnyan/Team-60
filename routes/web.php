@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 
 // Home page
 Route::get('/', function () {
@@ -142,3 +143,9 @@ Route::middleware(['auth'])->group(function () {
 
 // Homepage Items
 Route::get('homepage',[App\Http\Controllers\ProductController::class,'homepage']);
+
+// Review page
+Route::get('/review', [ReviewController::class, 'showReview']);
+
+// This catches the form submission
+Route::post('/submit-review', [ReviewController::class, 'store']);
