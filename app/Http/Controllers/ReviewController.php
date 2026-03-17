@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 class ReviewController extends Controller
 {
     // Show review page
-    public function showReview()
-    {
-        return view('review');
-    }
+public function showReview()
+{
+    $reviews = \App\Models\Review::latest()->get();
+    return view('review', compact('reviews'));
+}
 
     public function store(Request $request)
 {
