@@ -139,6 +139,7 @@ class BasketController extends Controller
             'postcode' => 'required|string|max:20',
         ]);
         $address = Address::create([
+            'user_id' => $user->id,
             'address_line_1' => $validated['address1'],
             'address_line_2' => $validated['address2'],
             'postcode' => $validated['postcode'],
