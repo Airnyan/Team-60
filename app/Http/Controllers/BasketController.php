@@ -84,6 +84,10 @@ class BasketController extends Controller
         $change = (int) $request->input('change', 0);
         $basketproduct = BasketProduct::where('basket_id', $basket->id)->where('variant_id', $variant_id)->first();
         $basketproduct->quantity += $change;
+        if($basketproduct->quantity < 1) {
+            $basketproduct->delete();
+            return redirect()->back()->with('success', 'Product Deleted.');
+        }
         $basketproduct->save();
 
         return redirect()->back()->with('success', 'Quantity changed.');
