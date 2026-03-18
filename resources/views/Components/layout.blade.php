@@ -34,6 +34,12 @@
         footer#footer {
             background-image: url("{{ asset('images/navbar.jpg') }}");
         }
+        @font-face {
+            font-family: 'OpenDyslexic';
+            src: url("fonts/OpenDyslexic-Regular.otf") format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
     </style>
 </head>
 
@@ -59,12 +65,13 @@
                     <div class="dropdown">
                         <div tabindex="0" role="button" class="btn btn-ghost text-lg hover:bg-base-300 m-1">SHOP</div>
                         <ul tabindex="-1" class="dropdown-content menu bg-base-200 rounded-box z-1 mt-5 w-52 p-2 shadow-sm">
+                            
                             <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Main Page</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">T-shirt</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Hoodie</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Tracksuit</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Hat</a></li>
-                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop">Poster</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=1">T-shirt</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=2">Hoodie</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=3">Tracksuit</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=4">Hat</a></li>
+                            <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=5">Poster</a></li>
                         </ul>
                     </div>
                     <a class="btn btn-ghost text-lg hover:bg-base-300" href="/customerSupport">HELP</a>
@@ -107,7 +114,11 @@
                                     Profile Page
                                 </a>
                             </li>
-
+                            <li>
+                                <a href="{{ route('orders.index') }}">
+                                    My Orders
+                                </a>
+                            </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
@@ -136,7 +147,7 @@
 
     <!--Chat Window-->
     <div id="chatWindow" class="hidden">
-    <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 right-25 rounded-2xl overflow-hidden border border-base-100 z-50">
+    <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 right-25 rounded-2xl overflow-hidden border-3 border-base-300 z-50">
         <!--Chat Header-->
         <div class="navbar bg-base-100 justify-between rounded-t">
         <div class="flex justify-between gap-5 items-center mx-4">
@@ -163,7 +174,7 @@
         </div>
 
         <!--Chat Body-->
-        <div id="chatBody" class="card-body h-80 overflow-y-scroll overflow-hidden">
+        <div id="chatBody" class="card-body h-85 overflow-y-scroll overflow-hidden">
             <!--loading icon-->
             <span id="loadIcon" class="loading loading-dots loading-xl hidden"></span>
             <!--Agent-->
@@ -194,8 +205,8 @@
     </div>
 
     <!--Chat Button-->
-    <div class="fixed bottom-5 right-3 hover-3d z-50">
-        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
+    <div class="fixed bottom-5 right-1 hover-3d z-50">
+        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate border-2 border-base-200">
             <!-- this hidden checkbox controls the state -->
             <input id="chatButton" type="checkbox"/>
             <!-- Open icon -->
@@ -213,8 +224,8 @@
 
 
     <!--Accessibilty Button-->
-    <div class="fixed bottom-5 left-3 hover-3d z-50">
-        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate">
+    <div class="fixed bottom-5 left-1 hover-3d z-50">
+        <label class="btn btn-circle btn-lg btn-primary swap swap-rotate border-2 border-base-200">
             <!-- this hidden checkbox controls the state -->
             <input id="accessibiltyButton" type="checkbox"/>
             <!-- Open icon -->
@@ -227,7 +238,7 @@
     <!--Accessibilty Menu-->
     <div id="accessibiltyWindow" class="hidden">
 
-        <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 left-25 rounded-2xl overflow-hidden border border-base-100 z-50">
+        <div class="card w-96 bg-base-200 shadow-md fixed bottom-5 left-25 rounded-2xl overflow-hidden border-3 border-base-300 z-50">
             <!--Chat Header-->
             <div class="navbar bg-base-100 justify-between rounded-t">
             <div class="flex justify-between gap-5 items-center mx-4">

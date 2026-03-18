@@ -26,8 +26,13 @@
         </div>
 
         <!--Heading-->
-        <h3 class="text-3xl text-neutral-content py-4 mb-2 font-semibold mt-8">WHO WE ARE!</h3>
+        <div class="hover-3d"> 
+            <div class="mb-4 mt-4 inline-flex items-center justify-center rounded-3xl bg-base-300 h-16 w-64">
+                <h3 class="text-3xl text-neutral-content font-semibold">WHO WE ARE!</h3>
+            </div>
+        </div>
 
+        
 
         <!--TextArea-->
         <div class="hover-3d">

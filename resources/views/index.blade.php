@@ -54,8 +54,12 @@
     <div class="container mx-auto px-4">
 
         <!--Heading-->
-        <h3 class="text-3xl text-neutral-content py-4 mb-2 font-semibold">LATEST DROPS</h3>
-        
+        <div class="hover-3d"> 
+            <div class="mb-4 inline-flex items-center justify-center rounded-3xl bg-base-300 h-16 w-64">
+                <h3 class="text-3xl text-neutral-content font-semibold">LATEST DROPS</h3>
+            </div>
+        </div>    
+
         <!--Grid-->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12 justify-items-center">
             <!--product-->
@@ -216,7 +220,11 @@
         
 
         <!--Heading-->
-        <h3 class="text-3xl text-neutral-content py-4 mb-2 font-semibold">FLASH SALE</h3>
+        <div class="hover-3d"> 
+            <div class="mb-4 inline-flex items-center justify-center rounded-3xl bg-base-300 h-16 w-54">
+                <h3 class="text-3xl text-neutral-content font-semibold">FLASH SALE</h3>
+            </div>
+        </div>    
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12 justify-items-center">
             

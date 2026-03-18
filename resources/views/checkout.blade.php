@@ -5,7 +5,7 @@
     <x-slot:title>Checkout</x-slot:title>
     <!--Content Wrapper-->
     <div class="container mx-auto px-4 pt-10">
-    <div class="basket-page">
+    <div class="basket-page bg-black rounded-2xl">
 
         <h1 class="basket-title">Order Placed Successfully</h1>
 
