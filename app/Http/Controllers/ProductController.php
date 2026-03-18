@@ -1,65 +1,78 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductVariant;
 
 class ProductController extends Controller
 {
-    // Public products page (shop search)
+    // ================= SHOP =================
     public function index(Request $request)
     {
-        $search = $request->input('search');
+        $products = Product::with('variants')->get();
 
-        $products = Product::when($search, function ($q) use ($search) {
-            return $q->where('product_name', 'LIKE', "%{$search}%")
-                     ->orWhere('description', 'LIKE', "%{$search}%");
-                     
-        })->get();
-
-        return view('products', [
-            'products' => $products,
-            'search' => $search,
-        ]);
-    }
-
-    // Admin product list + search
-    public function adminIndex(Request $request)
-    {
-        $search = $request->input('search');
-
-        $products = Product::when($search, function ($q) use ($search) {
-            return $q->where('product_name', 'LIKE', "%{$search}%")
-                     ->orWhere('description', 'LIKE', "%{$search}%");
-                     
-        })->get();
-
-        return view('admin.products', [
-            'products' => $products,
-            'search' => $search,
-        ]);
-    }
-
-    public function show() {
-        $products = Product::all();
         return view('shop', compact('products'));
     }
 
+    // ================= PRODUCT PAGE =================
+    public function show($id)
+    {
+        $product = Product::with('variants')->findOrFail($id);
 
-
-    // Homepage Items
-    function homepage(){
-
-        //Stores data in this variable    
-        $homepage = Product::all();
-
-        return view('index', compact('homepage'));
-    
+        return view('product.show', compact('product'));
     }
 
+    // ================= ADMIN LIST =================
+    public function adminIndex()
+    {
+        $products = Product::with('variants')->get();
 
+        return view('admin.products', compact('products'));
+    }
+
+    // ================= CREATE PRODUCT =================
+    public function create()
+    {
+        return view('admin.products.create');
+    }
+
+    public function store(Request $request)
+    {
+        Product::create([
+            'product_name' => $request->product_name,
+            'description' => $request->description,
+            'image' => $request->image,
+        ]);
+
+        return redirect()->route('admin.products');
+    }
+
+    // ================= EDIT PRODUCT =================
+    public function edit(Product $product)
+    {
+        $product->load('variants');
+
+        return view('admin.products.edit', compact('product'));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $product->update([
+            'product_name' => $request->product_name,
+            'description' => $request->description,
+            'image' => $request->image,
+        ]);
+
+        return back();
+    }
+
+    // ================= DELETE PRODUCT =================
+    public function destroy(Product $product)
+    {
+        $product->variants()->delete();
+        $product->delete();
+
+        return back();
+    }
 }
-
-
-

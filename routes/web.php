@@ -11,7 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\VariantController;
 // Home page
 Route::get('/', function () {
     // Updated the route to fetch data first
@@ -36,8 +36,16 @@ Route::get('customerSupport', function () {
     return view('customerSupport');
 });
 
-Route::get('shop', [ProductController::class, 'index'])->name('shop');
+Route::get('/shop', [ProductController::class, 'index'])->name('products');
 
+Route::get('/product/{id}', [ProductController::class, 'show'])
+    ->name('product.show');
+
+// VARIANTS
+Route::get('/admin/products/{product}/variants/create', [VariantController::class, 'create'])->name('admin.variants.create');
+Route::post('/admin/products/{product}/variants', [VariantController::class, 'store'])->name('admin.variants.store');
+
+Route::delete('/admin/variants/{variant}', [VariantController::class, 'destroy'])->name('admin.variants.destroy');
 // Authentication Routes
 Route::get('register', function () {
     return view('register');
