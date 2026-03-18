@@ -25,19 +25,19 @@
                     <div class="basket-item-template">
 
                         <div class="item-image">
-                            <img src="{{ asset('images/' . $item->product->image) }}" 
+                            <img src="{{ asset('images/' . $item->variant->product->image) }}" 
                                  style="width:100%; height:100%; object-fit:cover;">
                         </div>
 
                         <div class="item-details">
-                            <h3 class="item-name">{{ $item->product->name }}</h3>
-                            <p class="item-size">Size: {{ $item->product->size }}</p>
+                            <h3 class="item-name">{{ $item->variant->product->name }}</h3>
+                            <p class="item-size">Size: {{ $item->variant->size }}</p>
                             <p class="item-quantity">Quantity: {{ $item->quantity }}</p>
-                            <p class="item-price">Price: £{{ $item->product->price }}</p>
+                            <p class="item-price">Price: £{{ $item->variant->price }}</p>
                         </div>
 
                         <div class="item-total">
-                            £{{ $item->quantity * $item->product->price }}
+                            £{{ $item->quantity * $item->variant->price }}
                         </div>
 
                     </div>

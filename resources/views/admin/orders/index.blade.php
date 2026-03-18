@@ -36,7 +36,7 @@ Current Status: {{ $order->status }}
 @foreach($order->products as $line)
 
 <li>
-{{ $line->product->product_name ?? 'Product' }}
+{{ $line->product->variant_name ?? 'Product' }}
 (Qty: {{ $line->quantity ?? 1 }})
 </li>
 
