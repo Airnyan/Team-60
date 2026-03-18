@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@plugin "daisyui" { themes: mytheme, light, dark; }
+@plugin "daisyui" { themes: mytheme, light, dark, high-contrast;; }
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -41,10 +41,57 @@
     --noise: 0;  
         }
     
+@plugin "daisyui/theme" {
+        name: "high-contrast";
+        default: false;
+        prefersdark: true;
+        color-scheme: "dark";
+        --color-base-100: #000000;
+        --color-base-200: #1a1a1a; 
+        --color-base-300: #262626; 
+        --color-base-content: #ffff00;
+        --color-primary: #ffff00;
+        --color-primary-content: #000000;
+        --color-secondary: #ffff00;
+        --color-secondary-content: #000000;
+        --color-accent: #ffff00;
+        --color-accent-content: #000000;
+        --color-neutral: #000000;
+        --color-neutral-content: #ffff00;
+        --color-info: #00ffff; 
+        --color-info-content: #000000;
+        --color-success: #00ff00; 
+        --color-success-content: #000000;
+        --color-warning: #ffff00;
+        --color-warning-content: #000000;
+        --color-error: #ff0000; 
+        --color-error-content: #000000;
+        --radius-selector: 0.5rem;
+        --radius-field: 0.25rem;
+        --radius-box: 0.5rem;
+        --size-selector: 0.25rem;
+        --size-field: 0.25rem;
+        --border: 2px;
+        --depth: 0;
+        --noise: 0;
+    }
+
 
     body {
         font-family: 'Inter', sans-serif;
     }
+
+
+    /* Accessiblity Features */
+    html.dyslexia-font * {
+    font-family: 'OpenDyslexic' !important;
+    }
+
+    html.dyslexia-font .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined' !important;
+    }
+
+
 
 
 
