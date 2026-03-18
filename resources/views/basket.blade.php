@@ -35,10 +35,10 @@
                         <div class="item-image"><img src="{{$basket_product->variant->product->image}}"></div>
 
                         <div class="item-details">
-                        <h3 class="item-name">{{$basket_product->variant->product->product_name}}</h3>
-                        <p class="item-size">Size: {{$basket_product->variant->size}}</p>
+                        <h3 class="variant-name">{{$basket_product->variant->product->product_name}}</h3>
+                        <p class="size">Size: {{$basket_product->variant->size}}</p>
                         {{-- <p class="item-quantity">Quantity: {{$basket_product->quantity}}</p> --}}
-                        <p class="item-price">Price: £{{$basket_product->variant->price}}</p>
+                        <p class="price">Price: £{{$basket_product->variant->price}}</p>
 
                         <!-- Quantity controls -->
                             <div class="quantity-controls">
@@ -78,7 +78,7 @@
 
             <div class="summary-line total">
                 <span>Total</span>
-                <span id="total">£0.00</span>
+                <span id="total">£{{ number_format($total, 2) }}</span>
             </div>
             <h3>Shipping Address</h3>
             <form action="{{ route('basket.checkout') }}" method="POST">

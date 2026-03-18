@@ -20,19 +20,29 @@ class BasketController extends Controller
      * Displays basket page.
      */
     public function index()
-    {
-        // $user = User::find(16); //Test Instance
-        $user = Auth::user(); //grabs current user
-        if(!$user) {
-            return redirect()->route('login')->with('error', 'Please log in.');
-        }
-        $basket = Basket::with('basket_product')->where('user_id', $user->id)->first();
-        if (! $basket) {
-            $basket = Basket::create(['user_id' => $user->id]);
-        };
-        // dd($basket); //Dumps data to debug
-        return view('basket', compact('basket'));
+{
+    $user = Auth::user(); 
+    if(!$user) {
+        return redirect()->route('login')->with('error', 'Please log in.');
     }
+
+    // Load the basket with its products
+    $basket = Basket::with('basket_product')->where('user_id', $user->id)->first();
+
+    if (! $basket) {
+        $basket = Basket::create(['user_id' => $user->id]);
+    };
+
+    // --- ADD THIS CALCULATION ---
+    $total = 0;
+    foreach($basket->basket_product as $product) {
+        $total += $product->price * $product->quantity;
+    }
+    // ----------------------------
+
+    // Add 'total' to the compact function
+    return view('basket', compact('basket', 'total'));
+}
 
     /**
      * Adds a new item to the basket.
