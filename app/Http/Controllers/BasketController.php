@@ -161,6 +161,8 @@ class BasketController extends Controller
                 'quantity' => $product->quantity,
             ]);
         }
+        $order -> total = $total;
+        $order -> save();
         $basket->basket_product()->delete();
         return view('checkout', compact('order', 'products', 'total'));
     }
