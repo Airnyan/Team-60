@@ -22,7 +22,7 @@
                             <input type="radio" name="rating" value="4" class="mask mask-star-2 bg-green-500" checked />
                             <input type="radio" name="rating" value="5" class="mask mask-star-2 bg-green-500" />
                         </div>
-                        <textarea id="review_text" name="review" class="form-control" rows="5" placeholder="Write your thoughts here..." style="width: 100%; border-radius: 8px; padding: 10px; color: white; background: rgba(0,0,0,0.2);"></textarea>
+                        <textarea id="review_text" name="review" class="form-control mt-5" rows="5" placeholder="Write your thoughts here..." style="width: 100%; border-radius: 8px; padding: 10px; color: white; background: rgba(0,0,0,0.2);"></textarea>
                     </div>
 
                     @auth
