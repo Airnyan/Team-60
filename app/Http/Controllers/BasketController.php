@@ -22,6 +22,7 @@ class BasketController extends Controller
     public function index()
 {
     $user = Auth::user();
+
     if(!$user) {
         return redirect()->route('login');
     }
@@ -136,6 +137,11 @@ class BasketController extends Controller
 public function checkout(Request $request) 
 {
     $user = Auth::user();
+
+    // NEW: Check if both address types were submitted
+    if ($request->filled('address_id') && $request->filled('address1')) {
+        return redirect()->back()->with('error', 'Please either select a saved address OR enter a new one, not both.');
+    }
     
     // 1. Get the basket and eager-load the product/variant data
     $basket = Basket::where('user_id', $user->id)->first();

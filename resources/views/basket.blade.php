@@ -80,9 +80,16 @@
                 <span>Total</span>
                 <span id="total">£{{ number_format($total, 2) }}</span>
             </div>
-            <h3>Shipping Address</h3>
-            <form action="{{ route('basket.checkout') }}" method="POST">
-                @csrf
+            
+            @if(session('error'))
+            <div class="bg-red-600 text-white p-3 rounded mb-4">
+            {{ session('error') }}
+        </div>
+        @endif
+
+        <h3>Shipping Address</h3>
+        <form action="{{ route('basket.checkout') }}" method="POST">
+        @csrf
                 
                 @if($savedAddresses->count() > 0)
                 <div class="form-group mb-4">
