@@ -32,22 +32,22 @@
                     <!-- template is used to show the items in the basket -->
                     {{-- Linked basket items to template --}}
                     <div class="basket-item-template">
-                        <div class="item-image"><img src="{{$basket_product->product->image}}"></div>
+                        <div class="item-image"><img src="{{$basket_product->variant->product->image}}"></div>
 
                         <div class="item-details">
-                        <h3 class="item-name">{{$basket_product->product->product_name}}</h3>
-                        <p class="item-size">Size: {{$basket_product->product->size}}</p>
+                        <h3 class="item-name">{{$basket_product->variant->product->product_name}}</h3>
+                        <p class="item-size">Size: {{$basket_product->variant->size}}</p>
                         {{-- <p class="item-quantity">Quantity: {{$basket_product->quantity}}</p> --}}
-                        <p class="item-price">Price: £{{$basket_product->product->price}}</p>
+                        <p class="item-price">Price: £{{$basket_product->variant->price}}</p>
 
                         <!-- Quantity controls -->
                             <div class="quantity-controls">
-                                <form action="{{ route('basket.update', $basket_product->product->id) }}" method="POST">
+                                <form action="{{ route('basket.update', $basket_product->variant->id) }}" method="POST">
                                     @csrf
                                 <button type="submit" name="change" value="-1" class="qty-btn minus">-</button>
                                 </form>
                                 <span class="qty-number">{{$basket_product->quantity}}</span>
-                                <form action="{{ route('basket.update', $basket_product->product->id) }}" method="POST">
+                                <form action="{{ route('basket.update', $basket_product->variant->id) }}" method="POST">
                                     @csrf
                                 <button type="submit" name="change" value="1" class="qty-btn plus">+</button>
                                 </form>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="item-total">
-                            £{{($basket_product->quantity * $basket_product->product->price)}}
+                            £{{($basket_product->quantity * $basket_product->variant->price)}}
                         </div>
                     </div>
                 @endforeach
