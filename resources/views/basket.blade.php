@@ -83,12 +83,30 @@
             <h3>Shipping Address</h3>
             <form action="{{ route('basket.checkout') }}" method="POST">
                 @csrf
+                
+                @if($savedAddresses->count() > 0)
+                <div class="form-group mb-4">
+                    <label class="block mb-2">Choose a saved address:</label>
+                    <select name="address_id" class="select select-bordered w-full">
+                        <option value="">-- Use a new address --</option>
+                        @foreach($savedAddresses as $addr)
+                            <option value="{{ $addr->id }}">
+                                {{ $addr->address_line_1 }}, {{ $addr->postcode }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+    @endif
 
-                    <input type="text" name="address1" placeholder="Address Line 1" value="{{ old('address1')}}" required>
-                    <input type="text" name="address2" placeholder="Address Line 2" value="{{ old('address2')}}"required>
-                    <input type="text" name="postcode" placeholder="Postcode / ZIP" value="{{ old('postcode')}}"required>
-                <button class="checkout-btn" type = "submit">Checkout</button>
-            </form>
+    <div id="new-address-fields">
+        <p class="text-sm mb-2 italic">Or enter new details:</p>
+        <input type="text" name="address1" placeholder="Address Line 1" class="input input-bordered w-full mb-2">
+        <input type="text" name="address2" placeholder="Address Line 2" class="input input-bordered w-full mb-2">
+        <input type="text" name="postcode" placeholder="Postcode" class="input input-bordered w-full mb-4">
+    </div>
+
+    <button type="submit" class="btn btn-primary w-full">Place Order</button>
+</form>
         </div>
 
         </div>
