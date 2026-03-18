@@ -14,6 +14,12 @@
             Use the panel below to manage the system.
         </p>
 
+        <!-- Alert For Ben-->
+        <div role="alert" class="alert alert-error mb-5">
+            <span class="material-symbols-outlined">warning</span>
+            <span>Low Stock!!</span>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             <!-- Manage Products -->
