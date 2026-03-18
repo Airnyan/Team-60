@@ -25,7 +25,17 @@
                         <textarea id="review_text" name="review" class="form-control" rows="5" placeholder="Write your thoughts here..." style="width: 100%; border-radius: 8px; padding: 10px; color: white; background: rgba(0,0,0,0.2);"></textarea>
                     </div>
 
-                    <button type="submit" class="btn" style="width: 100%;">Submit Review</button> 
+                    @auth
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Submit Review
+                    </button>
+                    @endauth
+                    
+                    @guest
+                    <a href="{{ route('login') }}" class="btn btn-outline" style="width: 100%; text-align: center;">
+                        Log in to review
+                    </a>
+                    @endguest
                 </form>
             </div>
         </div>   
