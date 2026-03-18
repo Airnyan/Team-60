@@ -11,7 +11,7 @@ class BasketProduct extends Model
     use HasFactory;
     protected $fillable = [
         'basket_id',
-        'product_id',
+        'variant_id',
         'quantity',
         'price'
     ];
@@ -19,8 +19,8 @@ class BasketProduct extends Model
         return $this->belongsTo(Basket::class);
     }
 
-    public function product() {
-        return $this->belongsTo(Product::class);
+    public function variant() {
+        return $this->belongsTo(ProductVariant::class);
     }
 
 }

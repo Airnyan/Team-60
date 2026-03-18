@@ -145,7 +145,7 @@
 
                                 <form action="{{ route('basket.add') }}" method="POST">
                                     @csrf
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}"/>
+                                    <input type="hidden" name="variant_id" value="{{ $product->id }}"/>
                                     <button type="submit" class="add-to-basket-button">
                                         Add to basket
                                     </button>

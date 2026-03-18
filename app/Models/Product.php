@@ -9,7 +9,7 @@ class Product extends Model
 {
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
-
+    
     public function orders() {
         return $this->hasMany(OrderProduct::class);
     }
@@ -21,7 +21,10 @@ class Product extends Model
     public function basket_product() {
         return $this->hasMany(BasketProduct::class);
     }
-
+    public function variants()
+    {
+        return $this->hasMany(ProductVariant::class);
+    }
     protected $fillable = [
     'product_type_id',
     'product_name',
