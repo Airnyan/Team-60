@@ -68,7 +68,7 @@
 
             <div class="summary-line">
                 <span>Subtotal</span>
-                <span id="subtotal">£0.00</span>
+                <span id="total">£{{ number_format($total, 2) }}</span>
             </div>
 
             <div class="summary-line">
