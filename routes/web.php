@@ -31,6 +31,7 @@ Route::get('aboutUs', function () {
     return view('aboutUs');
 });
 
+
 Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
 
 Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.add');
@@ -125,6 +126,11 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
         Route::get('/users/index', [AdminUserController::class, 'indexUser'])->name('admin.users.indexuser');
     });
+
+    /*
+    | Route for Reports
+    */
+    Route::get('/reports', [AdminDashboardController::class, 'reports'])->name('admin.reports');
 
 });
 

@@ -67,6 +67,20 @@
             </a>
             </div>
 
+            <!-- Reports-->
+            <div class="hover-3d">
+            <a href="{{ route('admin.reports') }}"
+               class="bg-black border border-green-500 rounded-lg p-6 hover:bg-gray-900 transition">
+                <h2 class="text-xl font-bold text-green-400 mb-2">
+                    Report
+                </h2>
+                <p class="text-green-300">
+                    View and generate reports.
+                </p>
+            </a>
+            </div>
+
+
             <!-- Super Admin Only -->
             @if(auth()->user()->role === 'super_admin')
             <div class="hover-3d">
@@ -90,6 +104,8 @@
                 </p>
             </div>
             @endif
+
+
 
         </div>
 
