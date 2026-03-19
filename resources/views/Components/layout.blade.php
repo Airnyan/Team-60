@@ -47,7 +47,7 @@
     <!--Navbar-->
     <header id="nav-header" class="bg-base-100 text-neutral-content py-4 border-3 border-base-300 shadow-2xl">
         <div class="container mx-auto">
-            <div class="flex flex-col xl:flex-row flex-wrap justify-center xl:justify-between items-center gap-4">
+            <div class="flex flex-col lg:flex-row flex-wrap justify-center lg:justify-between items-center gap-4">
                 <!--nav items on the left-->
                 <div class="flex items-center">
                     <!--logo-->
