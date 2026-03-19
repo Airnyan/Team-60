@@ -31,14 +31,62 @@ class OrderController extends Controller
 
     // ADMIN: Update order status
     public function updateStatus(Request $request, Order $order)
-    {
-        $validated = $request->validate([
-            'status' => ['required', 'in:Pending,Awaiting Payment,Fufilled,Cancelled'],
-        ]);
+{
+    $request->validate([
+        'status' => 'required|in:Pending,Shipped,Delivered,Cancelled,Returned',
+    ]);
 
-        $order->status = $validated['status'];
-        $order->save();
+    switch ($request->status) {
+        case 'Pending':
+            $order->status = 'Pending';
+            break;
 
-        return back()->with('success', 'Order status updated successfully.');
+        case 'Shipped':
+            $order->status = 'Shipped';
+
+            foreach ($order->products as $orderProduct) {
+                $product = $orderProduct->product;
+
+                if ($product) {
+                    $product->reserved_stock = max(0, $product->reserved_stock - $orderProduct->quantity);
+                    $product->save();
+                }
+            }
+            break;
+
+        case 'Delivered':
+            $order->status = 'Delivered';
+            break;
+
+        case 'Cancelled':
+            $order->status = 'Cancelled';
+
+            foreach ($order->products as $orderProduct) {
+                $product = $orderProduct->product;
+
+                if ($product) {
+                    $product->reserved_stock += $orderProduct->quantity;
+                    $product->save();
+                }
+            }
+            break;
+
+        case 'Returned':
+            $order->status = 'Returned';
+
+            foreach ($order->products as $orderProduct) {
+                $product = $orderProduct->product;
+
+                if ($product) {
+                    $product->stock += $orderProduct->quantity;
+                    $product->save();
+                }
+            }
+            break;
     }
+
+    $order->save();
+
+    return redirect()->back()->with('success', 'Order status updated successfully.');
+}
 }

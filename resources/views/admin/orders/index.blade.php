@@ -62,26 +62,17 @@ Status: {{ $order->status }}
 
 <form method="POST" action="{{ route('admin.orders.status', $order) }}">
 @csrf
+@method('PUT')
 
 <div class="flex items-center gap-4">
 
 <select name="status" class="bg-white text-black p-2 rounded">
 
-<option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>
-Pending
-</option>
-
-<option value="Awaiting Payment" {{ $order->status == 'Awaiting Payment' ? 'selected' : '' }}>
-Awaiting Payment
-</option>
-
-<option value="Fufilled" {{ $order->status == 'Fufilled' ? 'selected' : '' }}>
-Fulfilled
-</option>
-
-<option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>
-Cancelled
-</option>
+<option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+<option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
+<option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
+<option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+<option value="Returned" {{ $order->status == 'Returned' ? 'selected' : '' }}>Returned</option>
 
 </select>
 
