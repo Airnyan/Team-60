@@ -11,18 +11,28 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\VariantController;
+
 // Home page
 Route::get('/', function () {
     // Updated the route to fetch data first
     $homepage = \App\Models\Product::all(); 
     return view('index', ['homepage' => $homepage]);
 });
+// VARIANTS
+Route::get('/admin/products/{product}/variants/create', [VariantController::class, 'create'])->name('admin.variants.create');
+Route::post('/admin/products/{product}/variants', [VariantController::class, 'store'])->name('admin.variants.store');
+Route::get('/admin/variants/{variant}/edit', [VariantController::class, 'edit'])->name('admin.variants.edit');
+Route::put('/admin/variants/{variant}', [VariantController::class, 'update'])->name('admin.variants.update');
+
+Route::delete('/admin/variants/{variant}', [VariantController::class, 'destroy'])->name('admin.variants.destroy');
 
 // Static pages
 Route::get('aboutUs', function () {
     return view('aboutUs');
 });
+
 
 Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
 
@@ -86,9 +96,7 @@ Route::get('/orders', [OrderController::class, 'index'])
 
 Route::middleware('auth')->prefix('admin')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     /*
     | ORDERS (ADMIN + SUPER ADMIN)
@@ -128,6 +136,11 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
         Route::get('/users/index', [AdminUserController::class, 'indexUser'])->name('admin.users.indexuser');
     });
+
+    /*
+    | Route for Reports
+    */
+    Route::get('/reports', [AdminDashboardController::class, 'reports'])->name('admin.reports');
 
 });
 

@@ -36,6 +36,15 @@
                    required
                    class="w-full bg-gray-900 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-green-500">
         </div>
+        {{-- DISCOUNTED PRICE --}}
+        <div>
+            <label class="block text-sm mb-1 text-gray-300">Discounted Price (£)</label>
+            <input type="number"
+                   name="discounted_price"
+                   step="0.01"
+                   placeholder="e.g. 20.00"
+                   class="w-full bg-gray-900 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-green-500">
+        </div>
 
         {{-- STOCK --}}
         <div>

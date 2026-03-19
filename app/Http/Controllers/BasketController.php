@@ -166,7 +166,31 @@ public function checkout(Request $request)
             'address_line_2' => $validated['address2'] ?? '',
             'postcode' => $validated['postcode'],
         ]);
-        $addressId = $address->id;
+
+
+        $products = $basket->basket_product;
+        $order = Order::create([
+            'user_id' => $user->id,
+            'address_id' => $address->id,
+            'order_date' => now(),
+            'status' => 'Pending',
+        ]);
+        $total = 0;
+        foreach($products as $product) {
+            $total += $product->price * $product->quantity;
+            $product->variant->stock -= $product->quantity;
+            $product->variant->reserved_stock += $product->quantity;
+            $product->variant->save();
+            $order -> products()->create([
+                'order_id' => $order->id,
+                'variant_id' => $product->variant_id,
+                'quantity' => $product->quantity,
+            ]);
+        }
+        $order -> total = $total;
+        $order -> save();
+        $basket->basket_product()->delete();
+        return view('checkout', compact('order', 'products', 'total'));
     }
 
     // 3. Create the Order

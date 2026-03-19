@@ -33,7 +33,7 @@
 
         <!--Heading-->
         <div class="hover-3d"> 
-            <div class="mb-4 mt-4 inline-flex items-center justify-center rounded-3xl bg-base-300 h-16 w-64">
+            <div class="mb-4 mt-4 inline-flex items-center justify-center rounded-3xl bg-base-300 h-16 px-2">
                 <h3 class="text-3xl text-neutral-content font-semibold">FAQ SECTION</h3>
             </div>
         </div>        
@@ -93,7 +93,7 @@
 
         <!--Heading-->
         <div class="hover-3d"> 
-            <div class="mb-4 mt-4 inline-flex items-center justify-center rounded-3xl bg-base-300 h-16 w-74">
+            <div class="mb-4 mt-4 inline-flex items-center justify-center rounded-3xl bg-base-300 h-16 px-2">
                 <h3 class="text-3xl text-neutral-content font-semibold">CONTACT FORM</h3>
             </div>
         </div>

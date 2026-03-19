@@ -10,6 +10,10 @@ class ProductVariant extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    public function scopeLowStock($query, $threshold = 7)
+    {
+        return $query->where('stock', '<', $threshold);
+    }
     protected $fillable = [
         'product_id',
         'variant_name',

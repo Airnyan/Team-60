@@ -111,8 +111,11 @@ const getChatbotResponse = (userInput) => {
     // Filter user message
     let text = userInput.toLowerCase().replace(/[^\w\s\d]/gi, "");
     // Response logic
-    if (text.includes("hello") || text.includes("hi") || text.includes("hola") || text.includes("hey") ) {
+    if (text.includes("hello") || /\bhi\b/.test(text) || text.includes("hola") || text.includes("hey") ) {
         return "Hi there!";
+    }
+    if (text.includes("bye") || text.includes("good bye") || text.includes("goodbye") || text.includes("stop") ) {
+        return "See you later :)";
     }
     if (text.includes("how are you") || text.includes("how are things")|| text.includes("how are u") ) {
         return "Pretty well, how are you?";
@@ -132,10 +135,7 @@ const getChatbotResponse = (userInput) => {
     if (text.includes("thanks") || text.includes("thank you")) {
         return "You're welcome";
     }
-    if (text.includes("bye") || text.includes("good bye") || text.includes("goodbye") || text.includes("stop") ) {
-        return "See you later :)";
-    }
-    if (text.includes("contact") || text.includes("form") || text.includes("human")|| text.includes("agent")|| text.includes("support")|| text.includes("customer")) {
+    if (text.includes("contact") || /\bform\b/.test(text) || text.includes("human")|| text.includes("agent")|| text.includes("support")|| text.includes("customer")) {
         return "Please head over to our <a class='link link-primary' href='/customerSupport'>Help page</a>, and use the contact form to reach our customer service team.";
     }
     if (text.includes("help") ) {
@@ -144,7 +144,7 @@ const getChatbotResponse = (userInput) => {
     if (text.includes("faq") || text.includes("question") || text.includes("common") ) {
         return "Please head over to our <a class='link link-primary' href='/customerSupport'>Help page</a>, the FAQ section covers most commonly asked questions!";
     }    
-    if (text.includes("about") || text.includes("history") || text.includes("motto") ) {
+    if (text.includes("about") || text.includes("company") || text.includes("business") || text.includes("motto") ) {
         return "Please head over to our <a class='link link-primary' href='/aboutUs'>About page</a>, to learn more about our company.";
     }
     if (text.includes("links") || text.includes("social") || text.includes("media") || text.includes("facebook")|| text.includes("tiktok")|| text.includes("instagram")) {
@@ -157,7 +157,7 @@ const getChatbotResponse = (userInput) => {
         return "To track the status of your order or view your full order history, please head to your <a class='link link-primary' href='/profile'>Account page</a>.";
     }
     if (text.includes("chudbot")) {
-        return "Don't day that man, it hurts my feelings 😭😭😭😭";
+        return "Don't say that man, it hurts my feelings 😭😭😭😭";
     }
     if (text.includes("product") || text.includes("item") || text.includes("clothes") || text.includes("buy") || text.includes("sell")) {
         return "To know about our products simply click on the shop page in the navbar and select the category of the product you desire. If unsure, simply go to the <a class='link link-primary' href='/shop'>main shopping page</a>.";
@@ -170,6 +170,9 @@ const getChatbotResponse = (userInput) => {
         return "Response Needed";
     }
     */ 
+       if (text.includes("information") || /\binfo\b/.test(text) ) {
+        return "Yes, I am can provide you with any information you need. <br><br> Please simply type a keyword related to your problem.";
+    }
     else {
         return "Sorry, I didn't quite understand that. <br><br> Please try typing a keyword related to your problem.<br><br>If you need additional support, please reach out to our <a class='link link-primary' href='/customerSupport'>customer support team</a>, and they will be able to help you.";
     }
