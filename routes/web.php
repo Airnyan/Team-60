@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminDashboardController;
 
 // Home page
 Route::get('/', function () {
@@ -78,9 +79,7 @@ Route::get('/orders', [OrderController::class, 'index'])
 
 Route::middleware('auth')->prefix('admin')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     /*
     | ORDERS (ADMIN + SUPER ADMIN)
