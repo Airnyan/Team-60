@@ -26,7 +26,6 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'address_id' => Address::factory()->create(),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
@@ -37,10 +36,8 @@ class UserFactory extends Factory
     }
     public function configure()
     {
-        return parent::configure()->afterMaking(function (User $user) {
-            if(!$user->address_id) {
-                $user->address_id = Address::factory()->create()->id;
-            }
+        return $this->afterCreating(function (User $user) {
+            Address::factory()->create(['user_id' => $user->id]);
         });
     }
 

@@ -26,12 +26,17 @@
         </div>
 
         <!--Heading-->
-        <h3 class="text-3xl text-neutral-content py-4 mb-2 font-semibold mt-8">WHO WE ARE!</h3>
+        <div class="hover-3d"> 
+            <div class="mb-4 mt-4 inline-flex items-center justify-center rounded-3xl bg-base-300 h-16 px-2">
+                <h3 class="text-3xl text-neutral-content font-semibold">WHO WE ARE!</h3>
+            </div>
+        </div>
 
+        
 
         <!--TextArea-->
         <div class="hover-3d">
-            <div class="bg-base-300 border border-base-300 shadow-sm px-10 py-10 rounded-2xl mb-2 text-neutral-content">
+            <div class="bg-base-300 border border-base-300 shadow-sm px-10 py-10 rounded-2xl mb-10 text-neutral-content">
                 <p class=" text-md">
                 Little Green Man! is a independent merchandise company based in Birmingham run managed by group of friends. We got started in 2025 with one goal in mind to sell kind of merchandise we want to own. Our merchandise are designed in house by our talented team of designers, mostly inspired by video games and anime. We sell tees, hoodies, sweatpants, trousers, and plenty more accessories.
                 </p>

@@ -73,6 +73,6 @@ class User extends Authenticatable
         return $this->hasOne(Basket::class);
     }
     public function address() {
-        return $this->belongsTo(Address::class);
+        return $this->hasMany(Address::class);
     }
 }

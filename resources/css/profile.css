@@ -4,13 +4,7 @@
 
 
 
-body{
-    background-color: #0f1115;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+
 
 .profile-page{
     max-width: 1200px;
@@ -40,13 +34,13 @@ body{
 /* FORM STYLING */
 /* ----------------------------- */
 
-label{
+.profile-page label {
     display: block;
     margin-top: 15px;
     margin-bottom: 5px;
 }
 
-input{
+.profile-page input {
     width: 100%;
     padding: 10px;
     border-radius: 6px;
@@ -55,7 +49,7 @@ input{
     color: white;
 }
 
-input:focus{
+.profile-page input:focus {
     outline: none;
     border-color: #00ff88;
 }
