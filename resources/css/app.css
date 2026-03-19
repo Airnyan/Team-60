@@ -6,7 +6,7 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'OpenDyslexic', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
     /* Daisyui Theme*/
@@ -78,13 +78,13 @@
 
 
     body {
-        font-family: 'Inter', sans-serif;
+        font-family:"OpenDyslexic" sans-serif;
     }
 
 
     /* Accessiblity Features */
     html.dyslexia-font * {
-    font-family: 'OpenDyslexic' !important;
+    font-family: "Inter" !important;
     }
 
     html.dyslexia-font .material-symbols-outlined {

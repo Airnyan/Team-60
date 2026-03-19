@@ -54,7 +54,7 @@
                     <div class="flex flex-wrap items-center gap-1">
                         <!--<img src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-8 w-auto" />-->
                         <a class="btn btn-primary btn-ghost text-xl" href="/">
-                            <span style="font-family: 'Exo 2';">LITTLE GREEN MAN</span>
+                            <span>LITTLE GREEN MAN</span>
                         </a>
                     </div>
                 </div>
@@ -266,7 +266,7 @@
                     <!--"has" css property can look into the child element-->
                     <label class="btn h-24 bg-base-300 has-checked:bg-primary has-checked:text-base-100 flex flex-col gap-2">
                         <span class="material-symbols-outlined">font_download</span>   
-                        Dyslexia Friendly Font
+                        Clear Font
                         <input id="fontChangeButton" type="checkbox" class="hidden" />
                     </label>
                     <!--"has" css property can look into the child element-->
