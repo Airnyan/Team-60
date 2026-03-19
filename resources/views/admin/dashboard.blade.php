@@ -5,9 +5,12 @@
 
     <div class="container mx-auto py-10 text-white">
 
-        <h1 class="text-3xl font-bold text-green-400 mb-8">
-            Admin Dashboard
-        </h1>
+        <!--Heading-->
+        <div class="hover-3d"> 
+            <div class=" mt-4 inline-flex items-center justify-center rounded-3xl bg-black h-16 px-2 mb-8">
+                <h3 class="text-3xl font-bold text-green-400">Admin Dashboard</h3>
+            </div>
+        </div>
 
         <p class="mb-10 text-green-300">
             Welcome back, {{ auth()->user()->name }}.  
