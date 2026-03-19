@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::where('user_id', Auth::id())
-            ->with(['products.product'])
+            ->with(['products.variant.product'])
             ->orderByDesc('order_date')
             ->get();
 
@@ -22,7 +22,7 @@ class OrderController extends Controller
     // ADMIN: View all orders
     public function adminIndex()
     {
-        $orders = Order::with(['user', 'products.product'])
+        $orders = Order::with(['user', 'products.variant.product'])
             ->orderByDesc('order_date')
             ->get();
 
