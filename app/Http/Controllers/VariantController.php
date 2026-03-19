@@ -19,6 +19,7 @@ class VariantController extends Controller
             'variant_name' => $product->product_name . ' - ' . $request->size,
             'size' => $request->size,
             'price' => $request->price,
+            'discounted_price' => $request->discounted_price,
             'stock' => $request->stock,
             'reserved_stock' => 0,
         ]);
