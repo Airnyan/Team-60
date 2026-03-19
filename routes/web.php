@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\VariantController;
 
 // Home page
 Route::get('/', function () {
@@ -19,6 +20,11 @@ Route::get('/', function () {
     $homepage = \App\Models\Product::all(); 
     return view('index', ['homepage' => $homepage]);
 });
+// VARIANTS
+Route::get('/admin/products/{product}/variants/create', [VariantController::class, 'create'])->name('admin.variants.create');
+Route::post('/admin/products/{product}/variants', [VariantController::class, 'store'])->name('admin.variants.store');
+
+Route::delete('/admin/variants/{variant}', [VariantController::class, 'destroy'])->name('admin.variants.destroy');
 
 // Static pages
 Route::get('aboutUs', function () {
