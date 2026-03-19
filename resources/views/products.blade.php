@@ -143,8 +143,9 @@
                                 <p class="product-name">{{ $product->name }}</p>
                                 <p class="product-price">£{{ number_format($product->price, 2) }}</p>
 
-                                <form action="{{ route('basket.add', $product) }}" method="POST">
+                                <form action="{{ route('basket.add') }}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="variant_id" value="{{ $product->id }}"/>
                                     <button type="submit" class="add-to-basket-button">
                                         Add to basket
                                     </button>

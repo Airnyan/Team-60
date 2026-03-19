@@ -8,6 +8,7 @@ use App\Models\BasketProduct;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\ProductVariant;
 use DateTime;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
@@ -38,40 +39,40 @@ class BasketController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::find(16); //Test Instance
-        //$user = Auth::user(); //grabs current user
+        // $user = User::find(16); //Test Instance
+        $user = Auth::user(); //grabs current user
         if(!$user) {
             return redirect()->route('login')->with('error', 'Please log in.');
         }
-        $product = Product::findOrfail($request->product_id);
 
+        $variant = ProductVariant::findOrfail($request->variant_id);
         $basket = Basket::where('user_id', $user->id)->first();
         if (! $basket) {
             $basket = Basket::create(['user_id' => $user->id]);
         }
 
-        $basketproduct = BasketProduct::where('basket_id', $basket->id)->where('product_id', $product->id)->first();
+        $basketproduct = BasketProduct::where('basket_id', $basket->id)->where('variant_id', $variant->id)->first();
 
         if(!$basketproduct) {
             BasketProduct::create([
             'basket_id' => $basket->id,
-            'product_id' => $product->id,
-            'quantity' => $request->quantity,
-            'price' => $product->price
+            'variant_id' => $variant->id,
+            // 'quantity' => $request->quantity, //Quantity should be editable in the shop menu, currently is not.  
+            'quantity' => 1,
+            'price' => $variant->price
             ]);
         }
         else {
             $basketproduct-> quantity += $request->quantity;
             $basketproduct->save();
         }
-
         return redirect()->back()->with('success', 'Added to basket.');
     }
 
     /**
      * Changes quantity of item in basket.
      */
-    public function update(Request $request, $product_id)
+    public function update(Request $request, $variant_id)
     {
         // $user = User::find(16); //Test Instance
         $user = Auth::user(); //grabs current user
@@ -81,8 +82,12 @@ class BasketController extends Controller
             $basket = Basket::create(['user_id' => $user->id]);
         }
         $change = (int) $request->input('change', 0);
-        $basketproduct = BasketProduct::where('basket_id', $basket->id)->where('product_id', $product_id)->first();
+        $basketproduct = BasketProduct::where('basket_id', $basket->id)->where('variant_id', $variant_id)->first();
         $basketproduct->quantity += $change;
+        if($basketproduct->quantity < 1) {
+            $basketproduct->delete();
+            return redirect()->back()->with('success', 'Product Deleted.');
+        }
         $basketproduct->save();
 
         return redirect()->back()->with('success', 'Quantity changed.');
@@ -91,7 +96,7 @@ class BasketController extends Controller
     /**
      * Removes requested item from basket.
      */
-    public function destroy($product_id)
+    public function destroy($variant_id)
     {
         // $user = User::find(16); //Test Instance
         $user = Auth::user(); //grabs current user
@@ -101,7 +106,7 @@ class BasketController extends Controller
             $basket = Basket::create(['user_id' => $user->id]);
         }
 
-        $basketproduct = BasketProduct::where('basket_id', $basket->id)->where('product_id', $product_id)->first();
+        $basketproduct = BasketProduct::where('basket_id', $basket->id)->where('variant_id', $variant_id)->first();
 
         $basketproduct->delete();
         
@@ -153,10 +158,12 @@ class BasketController extends Controller
             $total += $product->price * $product->quantity;
             $order -> products()->create([
                 'order_id' => $order->id,
-                'product_id' => $product->product_id,
+                'variant_id' => $product->variant_id,
                 'quantity' => $product->quantity,
             ]);
         }
+        $order -> total = $total;
+        $order -> save();
         $basket->basket_product()->delete();
         return view('checkout', compact('order', 'products', 'total'));
     }
