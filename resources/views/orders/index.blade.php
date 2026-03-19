@@ -28,8 +28,9 @@ Status: {{ $order->status }}
 
 @foreach($order->products as $line)
 <li>
-{{ $line->product->variant_name ?? 'Product' }}
-(Qty: {{ $line->quantity ?? 1 }})
+{{ $line->variant->product->product_name ?? 'Product' }}
+(Size: {{ $line->variant->size }})
+(Qty: {{ $line->quantity  }})
 </li>
 @endforeach
 
