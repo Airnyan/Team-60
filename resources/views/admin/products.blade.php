@@ -1,65 +1,94 @@
 <x-layout>
 
-<h1 class="text-2xl mb-4 text-green-400">Manage Products</h1>
+<div class="max-w-6xl mx-auto">
 
-<a href="{{ route('admin.products.create') }}" class="bg-green-500 px-4 py-2 rounded">
-    + Add Product
-</a>
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl text-green-400 font-bold">Manage Products</h1>
 
-<table class="w-full mt-6 border border-green-500">
-
-@foreach($products as $product)
-
-@php
-    $totalStock = $product->variants->sum('stock');
-    $reserved = $product->variants->sum('reserved_stock');
-@endphp
-
-<tr class="bg-black border-b border-green-500">
-    <td>{{ $product->product_name }}</td>
-    <td>Total: {{ $totalStock }}</td>
-    <td>Reserved: {{ $reserved }}</td>
-
-    <td>
-        <a href="{{ route('admin.products.edit', $product) }}">Edit</a>
-
-        <form method="POST" action="{{ route('admin.products.destroy', $product) }}">
-            @csrf
-            @method('DELETE')
-            <button>Delete</button>
-        </form>
-
-        <a href="{{ route('admin.variants.create', $product) }}">
-            + Variant
+        <a href="{{ route('admin.products.create') }}"
+           class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded">
+            + Add Product
         </a>
-    </td>
-</tr>
+    </div>
 
-{{-- VARIANTS --}}
-@foreach($product->variants as $variant)
+    @foreach($products as $product)
 
-<tr class="bg-gray-900 text-sm">
-    <td class="pl-6">
-        {{ $variant->size }}
-    </td>
+    @php
+        $totalStock = $product->variants->sum('stock');
+        $reserved = $product->variants->sum('reserved_stock');
+    @endphp
 
-    <td>Stock: {{ $variant->stock }}</td>
-    <td>Reserved: {{ $variant->reserved_stock }}</td>
-    <td>£{{ $variant->price }}</td>
+    <div class="bg-black border border-green-500 rounded-lg mb-6 p-5">
 
-    <td>
-        <form method="POST" action="{{ route('admin.variants.destroy', $variant) }}">
-            @csrf
-            @method('DELETE')
-            <button class="text-red-500">Delete</button>
-        </form>
-    </td>
-</tr>
+        {{-- PRODUCT HEADER --}}
+        <div class="flex justify-between items-center mb-3">
+            <div>
+                <h2 class="text-xl text-green-300 font-semibold">
+                    {{ $product->product_name }}
+                </h2>
 
-@endforeach
+                <p class="text-sm text-gray-400">
+                    Total: {{ $totalStock }} | Reserved: {{ $reserved }}
+                </p>
+            </div>
 
-@endforeach
+            <div class="flex gap-3 text-sm">
+                <a href="{{ route('admin.products.edit', $product) }}"
+                   class="text-blue-400 hover:underline">
+                    Edit
+                </a>
 
-</table>
+                <form method="POST" action="{{ route('admin.products.destroy', $product) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="text-red-500 hover:underline">
+                        Delete
+                    </button>
+                </form>
+
+                <a href="{{ route('admin.variants.create', $product) }}"
+                   class="text-green-400 hover:underline">
+                    + Variant
+                </a>
+            </div>
+        </div>
+
+        {{-- VARIANTS --}}
+        <div class="space-y-2 mt-4">
+
+            @forelse($product->variants as $variant)
+
+            <div class="flex justify-between items-center bg-gray-900 px-4 py-2 rounded">
+
+                <div class="flex gap-6 text-sm">
+                    <span class="text-white">Size: {{ $variant->size }}</span>
+                    <span>Stock: {{ $variant->stock }}</span>
+                    <span>Reserved: {{ $variant->reserved_stock }}</span>
+                    <span class="text-green-400 font-semibold">
+                        £{{ number_format($variant->price, 2) }}
+                    </span>
+                </div>
+
+                <form method="POST" action="{{ route('admin.variants.destroy', $variant) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="text-red-500 text-sm hover:underline">
+                        Delete
+                    </button>
+                </form>
+
+            </div>
+
+            @empty
+                <p class="text-gray-500 text-sm">No variants yet</p>
+            @endforelse
+
+        </div>
+
+    </div>
+
+    @endforeach
+
+</div>
 
 </x-layout>

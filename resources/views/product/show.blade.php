@@ -26,39 +26,50 @@
                         {{ $product->description }}
                     </p>
 
-                    <!-- ================= VARIANT SELECT ================= -->
+                    <!-- ================= FORM ================= -->
                     <form method="POST" action="{{ route('basket.add') }}">
                         @csrf
 
+                        <!-- VARIANT SELECT -->
                         <label class="block mb-2 font-semibold">Select Size</label>
 
                         <select id="variantSelect" name="variant_id"
                             class="w-full p-3 bg-black border border-green-500 rounded mb-4">
 
                             @foreach($product->variants as $variant)
-                                <option value="{{ $variant->id }}"
-                                        data-price="{{ $variant->price }}"
-                                        data-stock="{{ $variant->stock }}"
-                                        {{ $variant->stock <= 0 ? 'disabled' : '' }}>
+                                <option 
+                                    value="{{ $variant->id }}"
+                                    data-price="{{ $variant->price }}"
+                                    data-stock="{{ $variant->stock }}">
 
-                                    {{ $variant->size }}
-                                    - £{{ number_format($variant->price, 2) }}
-                                    ({{ $variant->stock > 0 ? $variant->stock . ' left' : 'Out of stock' }})
+                                    {{ $variant->size }} - £{{ number_format($variant->price, 2) }}
 
                                 </option>
                             @endforeach
 
                         </select>
 
-                        <!-- PRICE DISPLAY -->
+                        <!-- PRICE -->
                         <p class="text-xl font-bold text-green-300 mb-2">
                             Price: £<span id="priceDisplay">--</span>
                         </p>
 
-                        <!-- STOCK DISPLAY -->
+                        <!-- STOCK -->
                         <p id="stockDisplay" class="text-sm mb-4"></p>
 
-                        <!-- ADD TO BASKET -->
+                        <!-- QUANTITY -->
+                        <label class="block mb-2 font-semibold">Quantity</label>
+
+                        <select name="quantity"
+                            class="w-full mb-4 p-2 bg-black border border-green-500 text-green-300 rounded">
+
+                            @for($i = 1; $i <= 10; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+
+                        </select>
+
+                        <!-- BUTTON -->
                         <button id="addBtn"
                             class="bg-green-500 text-black px-6 py-3 rounded hover:bg-green-400 w-full">
                             Add to Basket
@@ -89,7 +100,7 @@
             // Update price
             priceDisplay.textContent = parseFloat(price).toFixed(2);
 
-            // Update stock text
+            // Update stock + button state
             if (stock <= 0) {
                 stockDisplay.textContent = "Out of stock";
                 stockDisplay.className = "text-red-500 mb-4";
@@ -108,7 +119,7 @@
             }
         }
 
-        // Run on load + change
+        // Init + change listener
         updateVariantUI();
         select.addEventListener('change', updateVariantUI);
     </script>

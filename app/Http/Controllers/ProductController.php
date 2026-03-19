@@ -9,11 +9,23 @@ class ProductController extends Controller
 {
     // ================= SHOP =================
     public function index(Request $request)
-    {
-        $products = Product::with('variants')->get();
+{
+    $query = Product::with('variants');
 
-        return view('shop', compact('products'));
+    // 🔥 CATEGORY FILTER
+    if ($request->category) {
+        $query->where('product_type_id', $request->category);
     }
+
+    // (optional) search
+    if ($request->search) {
+        $query->where('product_name', 'LIKE', '%' . $request->search . '%');
+    }
+
+    $products = $query->get();
+
+    return view('shop', compact('products'));
+}
 
     // ================= PRODUCT PAGE =================
     public function show($id)

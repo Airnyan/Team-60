@@ -21,27 +21,24 @@
 
                 <h2 class="text-green-400 text-xl mb-4">Items in your order</h2>
 
-                @foreach ($products as $item)
-                    <div class="basket-item-template">
+                @foreach($products as $product)
+    <div class="checkout-item flex items-center mb-4">
+        <div class="w-16 h-16 mr-4">
+            @if($product->image)
+                <img src="{{ asset($product->image) }}" class="rounded-lg object-cover">
+            @else
+                <div class="bg-gray-700 rounded-lg w-full h-full flex items-center justify-center text-xs">No Image</div>
+            @endif
+        </div>
 
-                        <div class="item-image">
-                            <img src="{{ asset('images/' . $item->variant->product->image) }}" 
-                                 style="width:100%; height:100%; object-fit:cover;">
-                        </div>
-
-                        <div class="item-details">
-                            <h3 class="item-name">{{ $item->variant->product->name }}</h3>
-                            <p class="item-size">Size: {{ $item->variant->size }}</p>
-                            <p class="item-quantity">Quantity: {{ $item->quantity }}</p>
-                            <p class="item-price">Price: £{{ $item->variant->price }}</p>
-                        </div>
-
-                        <div class="item-total">
-                            £{{ $item->quantity * $item->variant->price }}
-                        </div>
-
-                    </div>
-                @endforeach
+        <div>
+            <h4 class="font-bold text-white">{{ $product->name }}</h4>
+            
+            <p class="text-gray-400 text-sm">Qty: {{ $product->quantity }}</p>
+            <p class="text-green-500">£{{ number_format($product->price, 2) }}</p>
+        </div>
+    </div>
+@endforeach
 
             </div>
 

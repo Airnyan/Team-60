@@ -95,7 +95,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     */
     Route::middleware('can:isAdmin')->group(function () {
         Route::get('/orders', [OrderController::class, 'adminIndex'])->name('admin.orders');
-        Route::post('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.status');
+        Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.status');
     });
 
     /*
