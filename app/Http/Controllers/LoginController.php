@@ -7,13 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    // Show login page
     public function showLoginForm()
     {
         return view('login');
     }
 
-    // Handle login submission
     public function login(Request $request)
     {
         $request->validate([
@@ -21,22 +19,24 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
+        $credentials = $request->only('email', 'password');
+        $remember = $request->has('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
             if (Auth::user()->isAdmin()) {
-            return redirect()->route('admin.dashboard'); // Redirect to admin dashboard if user is admin
+                return redirect()->route('admin.dashboard');
+            }
 
-        }
-            return redirect('/'); // Redirect to HOME page after login
+            return redirect('/');
         }
 
         return back()->withErrors([
             'email' => 'Incorrect email or password.'
-        ]);
+        ])->withInput($request->only('email'));
     }
 
-    // Logout user
     public function logout(Request $request)
     {
         Auth::logout();
