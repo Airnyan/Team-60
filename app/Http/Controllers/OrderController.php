@@ -18,6 +18,23 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
+    // USER: Request return for an order
+    public function returnProduct(Order $order)
+    {
+        if ($order->user_id !== auth()->id()) {
+            return back()->with('error', 'Unauthorized action.');
+        }
+
+       if ($order->status !== 'Fufilled') {
+    return back()->with('error', 'Only fulfilled orders can be returned.');
+}
+
+        $order->status = 'Cancelled';
+        $order->save();
+
+        return back()->with('success', 'Return request submitted successfully.');
+    }
+
     // ADMIN: View all orders
     public function adminIndex()
     {
@@ -32,7 +49,7 @@ class OrderController extends Controller
     public function updateStatus(Request $request, Order $order)
     {
         $validated = $request->validate([
-            'status' => ['required', 'in:Pending,Processing,Shipped,Delivered,Cancelled,Returned'],
+            'status' => ['required', 'in:Pending,Awaiting Payment,Fufilled,Cancelled'],
         ]);
 
         $order->status = $validated['status'];

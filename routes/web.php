@@ -14,8 +14,7 @@ use App\Http\Controllers\ProfileController;
 
 // Home page
 Route::get('/', function () {
-    // Updated the route to fetch data first
-    $homepage = \App\Models\Product::all(); 
+    $homepage = \App\Models\Product::all();
     return view('index', ['homepage' => $homepage]);
 });
 
@@ -25,11 +24,8 @@ Route::get('aboutUs', function () {
 });
 
 Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
-
 Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.add');
-
 Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.checkout');
-
 Route::post('/basket/update/{product_id}', [BasketController::class, 'update'])->name('basket.update');
 
 Route::get('customerSupport', function () {
@@ -44,28 +40,22 @@ Route::get('register', function () {
 });
 
 Route::get('/signUp', [RegisterController::class, 'showForm'])->name('register.form');
-
 Route::post('/signUp', [RegisterController::class, 'register'])->name('register.submit');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
-
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/forgot-password', [PasswordResetController::class, 'showForgotForm'])->name('password.request');
-
 Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])->name('password.email');
 
 Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
-
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])->name('password.update');
 
 Route::post('/contact-submit', [ContactFormController::class, 'submit']);
 
 // Product Search Routes
 Route::get('/products', [ProductController::class, 'index'])->name('products');
-
 
 // ==========================
 // USER: Order History/Status
@@ -74,7 +64,9 @@ Route::get('/orders', [OrderController::class, 'index'])
     ->middleware('auth')
     ->name('orders.index');
 
-
+Route::post('/orders/{order}/return', [OrderController::class, 'returnProduct'])
+    ->middleware('auth')
+    ->name('orders.return');
 
 Route::middleware('auth')->prefix('admin')->group(function () {
 
@@ -123,7 +115,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 });
 
-
 // Profile Page
 Route::middleware(['auth'])->group(function () {
 
@@ -141,4 +132,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Homepage Items
-Route::get('homepage',[App\Http\Controllers\ProductController::class,'homepage']);
+Route::get('homepage', [App\Http\Controllers\ProductController::class, 'homepage']);
