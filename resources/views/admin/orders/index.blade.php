@@ -53,7 +53,6 @@ Current Status: {{ $order->status }}
 <select name="status" class="bg-white text-black p-2 rounded">
 
 <option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
-<option value="Processing" {{ $order->status == 'Processing' ? 'selected' : '' }}>Processing</option>
 <option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
 <option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
 <option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>

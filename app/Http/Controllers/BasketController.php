@@ -156,6 +156,9 @@ class BasketController extends Controller
         $total = 0;
         foreach($products as $product) {
             $total += $product->price * $product->quantity;
+            $product->variant->stock -= $product->quantity;
+            $product->variant->reserved_stock += $product->quantity;
+            $product->variant->save();
             $order -> products()->create([
                 'order_id' => $order->id,
                 'variant_id' => $product->variant_id,

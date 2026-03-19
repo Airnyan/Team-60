@@ -32,10 +32,47 @@ class OrderController extends Controller
     public function updateStatus(Request $request, Order $order)
     {
         $validated = $request->validate([
-            'status' => ['required', 'in:Pending,Processing,Shipped,Delivered,Cancelled,Returned'],
+            'status' => ['required', 'in:Pending,Shipped,Delivered,Cancelled,Returned'],
         ]);
 
-        $order->status = $validated['status'];
+        if($order->status === $validated['status']) {
+            return back()->with('info', 'Order status is already ' . $validated['status'] . '.');
+        }
+        
+        switch($validated['status']){
+            case 'Pending':
+                $order->status = 'Pending';
+                foreach($order->products as $orderProduct){
+                    $product = $orderProduct->product;
+                    $product->stock -= $orderProduct->quantity;
+                    $product->reserved_stock += $orderProduct->quantity;
+                    $product->save();
+                }
+                break;
+            case 'Shipped':
+                $order->status = 'Shipped';
+                foreach($order->products as $orderProduct){
+                    $product = $orderProduct->product;
+                    $product->reserved_stock -= $orderProduct->quantity;
+                    $product->save();
+                }
+                break;
+            case 'Delivered':
+                $order->status = 'Delivered';
+                break;
+            case 'Cancelled':
+                $order->status = 'Cancelled';
+
+                foreach($order->products as $orderProduct){
+                    $product = $orderProduct->product;
+                    $product->stock += $orderProduct->quantity;
+                    $product->save();
+                }
+                break;
+            case 'Returned':
+                $order->status = 'Returned';
+                break;
+        }
         $order->save();
 
         return back()->with('success', 'Order status updated.');

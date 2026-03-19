@@ -15,10 +15,17 @@
         </p>
 
         <!-- Alert For Ben-->
+        @foreach ($lowStock as $product)
         <div role="alert" class="alert alert-error mb-5">
             <span class="material-symbols-outlined">warning</span>
-            <span>Low Stock!!</span>
+        @if ($product->stock == 0)
+            <span>{{ $product->variant_name }} - Out of Stock!!</span>            
+        @else
+            <span>{{ $product->variant_name }} - Low Stock!!</span>
+        @endif
         </div>
+        @endforeach
+
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
