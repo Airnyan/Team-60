@@ -68,6 +68,13 @@
                         £{{ number_format($variant->price, 2) }}
                     </span>
                 </div>
+                <div class="flex gap-3 text-sm">
+
+                    <a href="{{ route('admin.variants.edit', $variant) }}"
+                       class="text-blue-400 hover:underline">
+                        Edit
+                    </a>
+                </div>
 
                 <form method="POST" action="{{ route('admin.variants.destroy', $variant) }}">
                     @csrf

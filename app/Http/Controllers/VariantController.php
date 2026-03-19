@@ -27,6 +27,21 @@ class VariantController extends Controller
         return redirect()->route('admin.products');
     }
 
+    public function edit(ProductVariant $variant)
+    {
+        return view('admin.variants.edit', compact('variant'));
+    }
+    public function update(Request $request, ProductVariant $variant)
+    {
+        $variant->update([
+            'size' => $request->size,
+            'price' => $request->price,
+            'discounted_price' => $request->discounted_price,
+            'stock' => $request->stock,
+        ]);
+
+        return redirect()->route('admin.products');
+    }
     public function destroy(ProductVariant $variant)
     {
         $variant->delete();

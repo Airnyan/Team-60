@@ -23,6 +23,8 @@ Route::get('/', function () {
 // VARIANTS
 Route::get('/admin/products/{product}/variants/create', [VariantController::class, 'create'])->name('admin.variants.create');
 Route::post('/admin/products/{product}/variants', [VariantController::class, 'store'])->name('admin.variants.store');
+Route::get('/admin/variants/{variant}/edit', [VariantController::class, 'edit'])->name('admin.variants.edit');
+Route::put('/admin/variants/{variant}', [VariantController::class, 'update'])->name('admin.variants.update');
 
 Route::delete('/admin/variants/{variant}', [VariantController::class, 'destroy'])->name('admin.variants.destroy');
 

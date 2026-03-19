@@ -4,31 +4,45 @@
 
 <h1 class="text-3xl font-bold mb-6 text-green-400">Manage Orders</h1>
 
+@if(session('success'))
+<div class="bg-green-500 text-black p-3 rounded mb-4">
+    {{ session('success') }}
+</div>
+@endif
+
 @forelse($orders as $order)
 
-<div class="border border-green-500 rounded-lg p-4 mb-4 bg-black">
+<div class="border border-green-500 rounded-lg p-4 mb-6 bg-black">
 
-<div class="flex justify-between mb-2">
+<div class="flex justify-between items-start mb-3">
 
 <div>
-<p class="font-semibold">Order #{{ $order->id }}</p>
+<p class="font-semibold text-lg">
+Order #{{ $order->id }}
+</p>
 
 <p class="text-sm text-gray-400">
 Customer: {{ $order->user->name ?? 'Unknown User' }}
 </p>
 
 <p class="text-sm text-gray-400">
-{{ $order->created_at }}
+{{ $order->created_at->format('d M Y H:i') }}
 </p>
 </div>
 
-<div class="text-green-300 font-bold">
-Current Status: {{ $order->status }}
+<div class="font-bold
+@if($order->status == 'Pending') text-yellow-400
+@elseif($order->status == 'Awaiting Payment') text-orange-400
+@elseif($order->status == 'Fulfilled') text-green-400
+@elseif($order->status == 'Cancelled') text-red-400
+@endif
+">
+Status: {{ $order->status }}
 </div>
 
 </div>
 
-<div class="mb-3">
+<div class="mb-4">
 <p class="font-semibold mb-1">Items:</p>
 
 <ul class="list-disc pl-6">
@@ -36,7 +50,8 @@ Current Status: {{ $order->status }}
 @foreach($order->products as $line)
 
 <li>
-{{ $line->product->variant_name ?? 'Product' }}
+{{ $line->variant->product->product_name ?? 'Product' }}
+(Size: {{ $line->variant->size ?? '-' }})
 (Qty: {{ $line->quantity ?? 1 }})
 </li>
 
@@ -52,17 +67,27 @@ Current Status: {{ $order->status }}
 
 <select name="status" class="bg-white text-black p-2 rounded">
 
-<option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
-<option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
-<option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
-<option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
-<option value="Returned" {{ $order->status == 'Returned' ? 'selected' : '' }}>Returned</option>
+<option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>
+Pending
+</option>
+
+<option value="Awaiting Payment" {{ $order->status == 'Awaiting Payment' ? 'selected' : '' }}>
+Awaiting Payment
+</option>
+
+<option value="Fufilled" {{ $order->status == 'Fufilled' ? 'selected' : '' }}>
+Fulfilled
+</option>
+
+<option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>
+Cancelled
+</option>
 
 </select>
 
 <button
 type="submit"
-class="bg-green-500 px-3 py-1 rounded text-black font-semibold">
+class="bg-green-500 px-4 py-2 rounded text-black font-semibold hover:bg-green-400">
 Update
 </button>
 
