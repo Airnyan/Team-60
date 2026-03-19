@@ -36,7 +36,10 @@
                 <ul class="list-disc pl-6">
                     @foreach($order->products as $line)
                         <li>
-                            {{ $line->product->product_name ?? 'Product' }}
+                            {{ $line->variant->product->product_name ?? ($line->product->product_name ?? 'Product') }}
+                            @if(isset($line->variant) && $line->variant->size)
+                                (Size: {{ $line->variant->size }})
+                            @endif
                             (Qty: {{ $line->quantity ?? 1 }})
                         </li>
                     @endforeach
@@ -67,34 +70,4 @@
 
 </div>
 
-<<<<<<< HEAD
 </x-layout>
-=======
-<div class="mt-3">
-<p class="font-semibold mb-2">Items:</p>
-
-<ul class="list-disc pl-6">
-
-@foreach($order->products as $line)
-<li>
-{{ $line->variant->product->product_name ?? 'Product' }}
-(Size: {{ $line->variant->size }})
-(Qty: {{ $line->quantity  }})
-</li>
-@endforeach
-
-</ul>
-</div>
-
-</div>
-
-@empty
-
-<p class="text-xl">You have no orders yet.</p>
-
-@endforelse
-
-</div>
-
-</x-components.layout>
->>>>>>> develop
