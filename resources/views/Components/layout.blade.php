@@ -47,7 +47,7 @@
     <!--Navbar-->
     <header id="nav-header" class="bg-base-100 text-neutral-content py-4 border-3 border-base-300 shadow-2xl">
         <div class="container mx-auto">
-            <div class="flex flex-wrap justify-center sm:justify-between">
+            <div class="flex flex-col lg:flex-row flex-wrap justify-center lg:justify-between items-center gap-4">
                 <!--nav items on the left-->
                 <div class="flex items-center">
                     <!--logo-->
@@ -59,8 +59,8 @@
                     </div>
                 </div>
                 <!--nav items on the right-->
-                <ul class="flex flex-wrap justify-center sm:justify-between items-center font-bold space-x-5 tracking-wide">
-                    <a class="btn btn-ghost text-lg hover:bg-base-300" href="/">HOME</a>
+                <ul class="flex flex-wrap justify-center items-center font-bold gap-2 lg:gap-4 tracking-wide">
+                    <a class="btn btn-ghost text-base lg:text-lg hover:bg-base-300" href="/">HOME</a>
                     <!--dropdown menu for shop page-->
                     <div class="dropdown">
                         <div tabindex="0" role="button" class="btn btn-ghost text-lg hover:bg-base-300 m-1">SHOP</div>
@@ -74,8 +74,8 @@
                             <li><a class="text-lg hover:bg-base-300 m-1" href="/shop?category=5">Poster</a></li>
                         </ul>
                     </div>
-                    <a class="btn btn-ghost text-lg hover:bg-base-300" href="/customerSupport">HELP</a>
-                    <a class="btn btn-ghost text-lg hover:bg-base-300" href="/aboutUs">ABOUT</a>
+                    <a class="btn btn-ghost text-base lg:text-lg hover:bg-base-300" href="/customerSupport">HELP</a>
+                    <a class="btn btn-ghost text-base lg:text-lg hover:bg-base-300" href="/aboutUs">ABOUT</a>
 
                     <!-- Admin Panel Icon — only visible for admin users -->
                     @auth

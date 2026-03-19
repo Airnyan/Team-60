@@ -94,7 +94,9 @@
 
     /* Fix Margin issues with Pages */
     @utility container {
+        width: 92%;
         max-width: 1280px; 
+        margin-inline: auto;
     }
 
 
