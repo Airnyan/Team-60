@@ -10,6 +10,7 @@ class Address extends Model
     /** @use HasFactory<\Database\Factories\AddressFactory> */
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'address_line_1',
         'address_line_2',
         'postcode',
