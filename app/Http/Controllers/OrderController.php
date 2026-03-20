@@ -36,20 +36,34 @@ class OrderController extends Controller
         'status' => 'required|in:Pending,Shipped,Delivered,Cancelled,Returned',
     ]);
 
+    if ($order->status === $request->status) {
+        return back()->with('success', 'Order status unchanged.');
+    }
+
     switch ($request->status) {
         case 'Pending':
             $order->status = 'Pending';
+
+            foreach ($order->products as $orderProduct) {
+                $variant = $orderProduct->variant;
+
+                if ($variant) {
+                    $variant->stock = max(0, $variant->stock - $orderProduct->quantity);
+                    $variant->reserved_stock += $orderProduct->quantity;
+                    $variant->save();
+                }
+            }
             break;
 
         case 'Shipped':
             $order->status = 'Shipped';
 
             foreach ($order->products as $orderProduct) {
-                $product = $orderProduct->product;
+                $variant = $orderProduct->variant;
 
-                if ($product) {
-                    $product->reserved_stock = max(0, $product->reserved_stock - $orderProduct->quantity);
-                    $product->save();
+                if ($variant) {
+                    $variant->reserved_stock = max(0, $variant->reserved_stock - $orderProduct->quantity);
+                    $variant->save();
                 }
             }
             break;
@@ -62,31 +76,23 @@ class OrderController extends Controller
             $order->status = 'Cancelled';
 
             foreach ($order->products as $orderProduct) {
-                $product = $orderProduct->product;
+                $variant = $orderProduct->variant;
 
-                if ($product) {
-                    $product->reserved_stock += $orderProduct->quantity;
-                    $product->save();
+                if ($variant) {
+                    $variant->stock += $orderProduct->quantity;
+                    $variant->reserved_stock = max(0, $variant->reserved_stock - $orderProduct->quantity);
+                    $variant->save();
                 }
             }
             break;
 
         case 'Returned':
             $order->status = 'Returned';
-
-            foreach ($order->products as $orderProduct) {
-                $product = $orderProduct->product;
-
-                if ($product) {
-                    $product->stock += $orderProduct->quantity;
-                    $product->save();
-                }
-            }
             break;
     }
 
     $order->save();
 
-    return redirect()->back()->with('success', 'Order status updated successfully.');
+    return back()->with('success', 'Order status updated successfully.');
 }
 }
