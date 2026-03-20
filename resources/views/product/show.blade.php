@@ -100,6 +100,18 @@
             // Update price
             priceDisplay.textContent = parseFloat(price).toFixed(2);
 
+            const quantitySelect = document.querySelector('select[name="quantity"]');
+
+            quantitySelect.innerHTML = "";
+
+            let max = Math.min(stock, 10);
+
+            for (let i = 1; i <= max; i++) {
+                let option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                quantitySelect.appendChild(option);
+            }
             // Update stock + button state
             if (stock <= 0) {
                 stockDisplay.textContent = "Out of stock";

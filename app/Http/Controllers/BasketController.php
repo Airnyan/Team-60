@@ -64,8 +64,8 @@ class BasketController extends Controller
             BasketProduct::create([
             'basket_id' => $basket->id,
             'variant_id' => $variant->id,
-            // 'quantity' => $request->quantity, //Quantity should be editable in the shop menu, currently is not.  
-            'quantity' => 1,
+            'quantity' => $request->quantity, //Quantity should be editable in the shop menu, currently is not.  
+            
             'price' => $variant->price
             ]);
         }
