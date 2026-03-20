@@ -31,51 +31,62 @@ class OrderController extends Controller
 
     // ADMIN: Update order status
     public function updateStatus(Request $request, Order $order)
-    {
-        $validated = $request->validate([
-            'status' => ['required', 'in:Pending,Shipped,Delivered,Cancelled,Returned'],
-        ]);
+{
+    $request->validate([
+        'status' => 'required|in:Pending,Shipped,Delivered,Cancelled,Returned',
+    ]);
 
-        if($order->status === $validated['status']) {
-            return back()->with('info', 'Order status is already ' . $validated['status'] . '.');
-        }
-        
-        switch($validated['status']){
-            case 'Pending':
-                $order->status = 'Pending';
-                foreach($order->products as $orderProduct){
-                    $product = $orderProduct->product;
-                    $product->stock -= $orderProduct->quantity;
+    switch ($request->status) {
+        case 'Pending':
+            $order->status = 'Pending';
+            break;
+
+        case 'Shipped':
+            $order->status = 'Shipped';
+
+            foreach ($order->products as $orderProduct) {
+                $product = $orderProduct->product;
+
+                if ($product) {
+                    $product->reserved_stock = max(0, $product->reserved_stock - $orderProduct->quantity);
+                    $product->save();
+                }
+            }
+            break;
+
+        case 'Delivered':
+            $order->status = 'Delivered';
+            break;
+
+        case 'Cancelled':
+            $order->status = 'Cancelled';
+
+            foreach ($order->products as $orderProduct) {
+                $product = $orderProduct->product;
+
+                if ($product) {
                     $product->reserved_stock += $orderProduct->quantity;
                     $product->save();
                 }
-                break;
-            case 'Shipped':
-                $order->status = 'Shipped';
-                foreach($order->products as $orderProduct){
-                    $product = $orderProduct->product;
-                    $product->reserved_stock -= $orderProduct->quantity;
-                    $product->save();
-                }
-                break;
-            case 'Delivered':
-                $order->status = 'Delivered';
-                break;
-            case 'Cancelled':
-                $order->status = 'Cancelled';
+            }
+            break;
 
-                foreach($order->products as $orderProduct){
-                    $product = $orderProduct->product;
+        case 'Returned':
+            $order->status = 'Returned';
+
+            foreach ($order->products as $orderProduct) {
+                $product = $orderProduct->product;
+
+                if ($product) {
                     $product->stock += $orderProduct->quantity;
                     $product->save();
                 }
-                break;
-            case 'Returned':
-                $order->status = 'Returned';
-                break;
-        }
-        $order->save();
-
-        return back()->with('success', 'Order status updated.');
+            }
+            break;
     }
+
+    $order->save();
+
+    return redirect()->back()->with('success', 'Order status updated successfully.');
+}
 }
