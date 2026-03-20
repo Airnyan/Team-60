@@ -22,15 +22,25 @@ class OrderController extends Controller
     // USER: Request return for an order
     public function returnProduct(Order $order)
     {
-        if ($order->user_id !== auth()->id()) {
+        if ($order->user_id !== Auth::id()) {
             return back()->with('error', 'Unauthorized action.');
         }
 
-       if ($order->status !== 'Fufilled') {
-    return back()->with('error', 'Only fulfilled orders can be returned.');
-}
+        if ($order->status !== 'Delivered') {
+            return back()->with('error', 'Only delivered orders can be returned.');
+        }
 
-        $order->status = 'Cancelled';
+        $order->status = 'Returned';
+
+        foreach ($order->products as $orderProduct) {
+            $variant = $orderProduct->variant;
+
+            if ($variant) {
+                $variant->stock += $orderProduct->quantity;
+                $variant->save();
+            }
+        }
+
         $order->save();
 
         return back()->with('success', 'Return request submitted successfully.');
@@ -50,12 +60,71 @@ class OrderController extends Controller
     public function updateStatus(Request $request, Order $order)
     {
         $validated = $request->validate([
-            'status' => ['required', 'in:Pending,Awaiting Payment,Fufilled,Cancelled'],
+            'status' => ['required', 'in:Pending,Shipped,Delivered,Cancelled,Returned'],
         ]);
 
-        $order->status = $validated['status'];
+        if ($order->status === $validated['status']) {
+            return back()->with('info', 'Order status is already ' . $validated['status'] . '.');
+        }
+
+        switch ($validated['status']) {
+            case 'Pending':
+                $order->status = 'Pending';
+                foreach ($order->products as $orderProduct) {
+                    $variant = $orderProduct->variant;
+
+                    if ($variant) {
+                        $variant->stock -= $orderProduct->quantity;
+                        $variant->reserved_stock += $orderProduct->quantity;
+                        $variant->save();
+                    }
+                }
+                break;
+
+            case 'Shipped':
+                $order->status = 'Shipped';
+                foreach ($order->products as $orderProduct) {
+                    $variant = $orderProduct->variant;
+
+                    if ($variant) {
+                        $variant->reserved_stock -= $orderProduct->quantity;
+                        $variant->save();
+                    }
+                }
+                break;
+
+            case 'Delivered':
+                $order->status = 'Delivered';
+                break;
+
+            case 'Cancelled':
+                $order->status = 'Cancelled';
+                foreach ($order->products as $orderProduct) {
+                    $variant = $orderProduct->variant;
+
+                    if ($variant) {
+                        $variant->stock += $orderProduct->quantity;
+                        $variant->reserved_stock = max(0, $variant->reserved_stock - $orderProduct->quantity);
+                        $variant->save();
+                    }
+                }
+                break;
+
+            case 'Returned':
+                $order->status = 'Returned';
+                foreach ($order->products as $orderProduct) {
+                    $variant = $orderProduct->variant;
+
+                    if ($variant) {
+                        $variant->stock += $orderProduct->quantity;
+                        $variant->save();
+                    }
+                }
+                break;
+        }
+
         $order->save();
 
-        return back()->with('success', 'Order status updated successfully.');
+        return back()->with('success', 'Order status updated.');
     }
 }

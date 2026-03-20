@@ -10,6 +10,12 @@
         </div>
     @endif
 
+    @if(session('info'))
+        <div class="bg-blue-500 text-white p-3 rounded mb-4">
+            {{ session('info') }}
+        </div>
+    @endif
+
     @forelse($orders as $order)
 
         <div class="border border-green-500 rounded-lg p-4 mb-6 bg-black">
@@ -32,9 +38,10 @@
 
                 <div class="font-bold
                     @if($order->status == 'Pending') text-yellow-400
-                    @elseif($order->status == 'Awaiting Payment') text-orange-400
-                    @elseif($order->status == 'Fulfilled' || $order->status == 'Fufilled') text-green-400
+                    @elseif($order->status == 'Shipped') text-blue-400
+                    @elseif($order->status == 'Delivered') text-green-400
                     @elseif($order->status == 'Cancelled') text-red-400
+                    @elseif($order->status == 'Returned') text-purple-400
                     @endif
                 ">
                     Status: {{ $order->status }}
@@ -48,8 +55,8 @@
                 <ul class="list-disc pl-6">
                     @foreach($order->products as $line)
                         <li>
-                            {{ $line->variant->product->product_name ?? 'Product' }}
-                            (Size: {{ $line->variant->size ?? '-' }})
+                            {{ $line->variant?->product?->product_name ?? 'Product' }}
+                            (Size: {{ $line->variant?->size ?? '-' }})
                             (Qty: {{ $line->quantity ?? 1 }})
                         </li>
                     @endforeach
@@ -58,21 +65,15 @@
 
             <form method="POST" action="{{ route('admin.orders.status', $order) }}">
                 @csrf
+                @method('PUT')
 
                 <div class="flex items-center gap-4">
                     <select name="status" class="bg-white text-black p-2 rounded">
-                        <option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>
-                            Pending
-                        </option>
-                        <option value="Awaiting Payment" {{ $order->status == 'Awaiting Payment' ? 'selected' : '' }}>
-                            Awaiting Payment
-                        </option>
-                        <option value="Fufilled" {{ $order->status == 'Fufilled' || $order->status == 'Fulfilled' ? 'selected' : '' }}>
-                            Fulfilled
-                        </option>
-                        <option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>
-                            Cancelled
-                        </option>
+                        <option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                        <option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
+                        <option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
+                        <option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+                        <option value="Returned" {{ $order->status == 'Returned' ? 'selected' : '' }}>Returned</option>
                     </select>
 
                     <button
@@ -81,15 +82,12 @@
                         Update
                     </button>
                 </div>
-
             </form>
 
         </div>
 
     @empty
-
         <p class="text-xl">No orders found.</p>
-
     @endforelse
 
 </div>

@@ -16,6 +16,12 @@
         </div>
     @endif
 
+    @if(session('info'))
+        <div class="bg-blue-600 text-white px-4 py-2 rounded mb-4">
+            {{ session('info') }}
+        </div>
+    @endif
+
     @forelse($orders as $order)
         <div class="border border-green-500 rounded-lg p-4 mb-4 bg-black">
 
@@ -26,7 +32,7 @@
                 </div>
 
                 <div class="text-green-300 font-bold">
-                    Status: {{ $order->status }}
+                    Status: {{ trim($order->status) }}
                 </div>
             </div>
 
@@ -36,29 +42,33 @@
                 <ul class="list-disc pl-6">
                     @foreach($order->products as $line)
                         <li>
-                            {{ $line->variant->product->product_name ?? ($line->product->product_name ?? 'Product') }}
-                            @if(isset($line->variant) && $line->variant->size)
-                                (Size: {{ $line->variant->size }})
-                            @endif
+                            {{ $line->variant?->product?->product_name ?? 'Product' }}
+                            (Size: {{ $line->variant?->size ?? '-' }})
                             (Qty: {{ $line->quantity ?? 1 }})
                         </li>
                     @endforeach
                 </ul>
             </div>
 
-            @if($order->status === 'Fulfilled' || $order->status === 'Fufilled')
+            @if(trim($order->status) == 'Delivered')
                 <div class="mt-4">
                     <form action="{{ route('orders.return', $order) }}" method="POST">
                         @csrf
-                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded font-semibold">
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded font-semibold inline-block">
                             Return Product
                         </button>
                     </form>
                 </div>
-            @elseif($order->status === 'Cancelled')
+            @elseif(trim($order->status) == 'Returned')
                 <div class="mt-4">
-                    <span class="bg-yellow-500 text-black px-4 py-2 rounded font-semibold">
-                        Returned / Cancelled
+                    <span class="bg-yellow-500 text-black px-4 py-2 rounded font-semibold inline-block">
+                        Return Submitted
+                    </span>
+                </div>
+            @elseif(trim($order->status) == 'Cancelled')
+                <div class="mt-4">
+                    <span class="bg-red-500 text-white px-4 py-2 rounded font-semibold inline-block">
+                        Cancelled
                     </span>
                 </div>
             @endif
