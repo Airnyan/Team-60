@@ -63,13 +63,14 @@
         <!--Grid-->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12 justify-items-center">
             <!--product-->
+            <a href="{{ route('product.show', $homepage[1]->id) }}">
             <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
                 <!--Container For 3D Effect-->
                 <div class="rounded-2xl bg-base-300">
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset( $homepage[1]->image) }}" alt="product"/> </a>
+                             <img src="{{ asset( $homepage[1]->image) }}" alt="product"/>
                         </figure>
                     </div>
                     <!--Body-->
@@ -92,15 +93,16 @@
                 <div></div><div></div><div></div><div></div>
                 <div></div><div></div><div></div><div></div>
             </div>        
-
+        </a>
             <!--product-->
+            <a href="{{ route('product.show', $homepage[6]->id) }}">
             <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
                 <!--Container For 3D Effect-->
                 <div class="rounded-2xl bg-base-300">
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset( $homepage[6]->image) }}" alt="product"/> </a>
+                             <img src="{{ asset( $homepage[6]->image) }}" alt="product"/>
                         </figure>
                     </div>
                     <!--Body-->
@@ -123,15 +125,16 @@
                 <div></div><div></div><div></div><div></div>
                 <div></div><div></div><div></div><div></div>
             </div>   
-
+        </a>
             <!--product-->
+            <a href="{{ route('product.show', $homepage[12]->id) }}">
             <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
                 <!--Container For 3D Effect-->
                 <div class="rounded-2xl bg-base-300">
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset( $homepage[12]->image) }}" alt="product"/> </a>
+                            <img src="{{ asset( $homepage[12]->image) }}" alt="product"/>
                         </figure>
                     </div>
                     <!--Body-->
@@ -154,15 +157,17 @@
                 <div></div><div></div><div></div><div></div>
                 <div></div><div></div><div></div><div></div>
             </div>  
+        </a>
 
             <!--product-->
+            <a href="{{ route('product.show', $homepage[18]->id) }}">
             <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
                 <!--Container For 3D Effect-->
                 <div class="rounded-2xl bg-base-300">
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset( $homepage[18]->image) }}" alt="product"/> </a>
+                            <img src="{{ asset( $homepage[18]->image) }}" alt="product"/>
                         </figure>
                     </div>
                     <!--Body-->
@@ -185,15 +190,17 @@
                 <div></div><div></div><div></div><div></div>
                 <div></div><div></div><div></div><div></div>
             </div>   
+        </a>
 
             <!--product-->
+            <a href="{{ route('product.show', $homepage[20]->id) }}">
             <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
                 <!--Container For 3D Effect-->
                 <div class="rounded-2xl bg-base-300">
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset( $homepage[20]->image) }}" alt="product"/> </a>
+                            <img src="{{ asset( $homepage[20]->image) }}" alt="product"/>
                         </figure>
                     </div>
                     <!--Body-->
@@ -217,7 +224,7 @@
                 <div></div><div></div><div></div><div></div>
             </div> 
         </div>
-        
+            </a>
 
         <!--Heading-->
         <div class="hover-3d"> 
@@ -229,13 +236,14 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12 justify-items-center">
             
             <!--product-->
+            <a href="{{ route('product.show', $homepage[20]->id) }}">
             <div class="cursor-pointer group hover-3d max-w-60 shadow-xl rounded-2xl relative">
                 <!--Container For 3D Effect-->
                 <div class="rounded-2xl bg-base-300">
                     <!--Image-->
                     <div class="rounded-t-2xl overflow-hidden">
                         <figure class="">
-                            <a href="/shop"> <img src="{{ asset( $homepage[10]->image) }}" alt="product"/> </a>
+                            <img src="{{ asset( $homepage[10]->image) }}" alt="product"/>
                         </figure>
                     </div>
                     <!--Body-->
@@ -261,6 +269,7 @@
                 <div></div><div></div><div></div><div></div>
                 <div></div><div></div><div></div><div></div>
             </div>
+            </a>
 
 
             
