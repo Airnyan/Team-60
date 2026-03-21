@@ -15,10 +15,17 @@
         </p>
 
         <!-- Alert For Ben-->
+        @foreach ($lowStock as $product)
         <div role="alert" class="alert alert-error mb-5">
             <span class="material-symbols-outlined">warning</span>
-            <span>Low Stock!!</span>
+        @if ($product->stock == 0)
+            <span>{{ $product->variant_name }} - Out of Stock!!</span>            
+        @else
+            <span>{{ $product->variant_name }} - Low Stock!!</span>
+        @endif
         </div>
+        @endforeach
+
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
@@ -60,6 +67,20 @@
             </a>
             </div>
 
+            <!-- Reports-->
+            <div class="hover-3d">
+            <a href="{{ route('admin.reports') }}"
+               class="bg-black border border-green-500 rounded-lg p-6 hover:bg-gray-900 transition">
+                <h2 class="text-xl font-bold text-green-400 mb-2">
+                    Report
+                </h2>
+                <p class="text-green-300">
+                    View and generate reports.
+                </p>
+            </a>
+            </div>
+
+
             <!-- Super Admin Only -->
             @if(auth()->user()->role === 'super_admin')
             <div class="hover-3d">
@@ -83,6 +104,8 @@
                 </p>
             </div>
             @endif
+
+
 
         </div>
 
