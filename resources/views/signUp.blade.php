@@ -56,23 +56,23 @@
             @error('password')
                 <p style="color:#ff8080;">{{ $message }}</p>
             @enderror
-            <p style="font-size:12px; color: #aaa;">
+            <p class="mt-2" style="font-size:12px; color: #aaa;">
                 Must include uppercase, lowercase, number and special character
             </p>
         </div>
 
         <div class="input-box">
-            <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
+            <input class="mt-8" type="password" name="password_confirmation" placeholder="Confirm Password" required>
             <i class='bx bx-lock-alt'></i>
             @error('password_confirmation')
                 <p style="color:#ff8080;">{{ $message }}</p>
             @enderror
         </div>
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn mt-8">Register</button>
 
         <div class="register-link">
-            <a href="/login">Already have an account?</a>
+            <a class="mt-6" href="/login">Already have an account?</a>
         </div>
     </form>
 </div>
