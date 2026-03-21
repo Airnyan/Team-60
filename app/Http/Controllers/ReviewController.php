@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 class ReviewController extends Controller
 {
     // Show review page
 public function showReview()
 {
-    $reviews = \App\Models\Review::latest()->get();
+    $reviews = Review::latest()->get();
     return view('review', compact('reviews'));
 }
 
@@ -21,9 +22,9 @@ public function showReview()
         'review' => 'required|min:5',
     ]);
 
-    \App\Models\Review::create([
+    Review::create([
         'product_id' => $request->input('product_id'),
-        'user_id'    => auth()->id(),
+        'user_id'    => Auth::id(),
         'review'     => $request->input('review'),
         'rating'     => $request->input('rating'),
     ]);

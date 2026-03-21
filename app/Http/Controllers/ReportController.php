@@ -13,6 +13,6 @@ class ReportController extends Controller
         $products = ProductVariant::all();
         $orders = Order::whereIn('status', ['Pending', 'Shipped'])->get();
 
-        return view('report', compact('products', 'orders'));
+        return view('admin.reports', compact('products', 'orders'));
     }
 }
