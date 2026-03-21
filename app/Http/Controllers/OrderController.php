@@ -87,7 +87,7 @@ class OrderController extends Controller
                     $variant = $orderProduct->variant;
 
                     if ($variant) {
-                        $variant->reserved_stock -= $orderProduct->quantity;
+                        $variant->reserved_stock = max(0, $variant->reserved_stock - $orderProduct->quantity);
                         $variant->save();
                     }
                 }
@@ -125,6 +125,6 @@ class OrderController extends Controller
 
         $order->save();
 
-        return back()->with('success', 'Order status updated.');
+        return redirect()->back()->with('success', 'Order status updated successfully.');
     }
 }
