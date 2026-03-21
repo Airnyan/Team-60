@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductType;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     // ================= SHOP =================
     public function index(Request $request)
     {
-        $query = Product::with(['variants', 'product_type']);
+        $categories = ProductType::orderBy('id')->get();
+
+        $query = Product::with([
+            'variants' => function ($query) {
+                $query->orderBy('id');
+            },
+            'product_type',
+        ]);
 
         if ($request->filled('category')) {
             $query->where('product_type_id', $request->category);
@@ -22,15 +30,22 @@ class ProductController extends Controller
 
         $products = $query->get();
 
-        return view('products', compact('products'));
+        return view('products', compact('products', 'categories'));
     }
 
     // ================= PRODUCT PAGE =================
-    public function show($id)
+    public function show(Product $product)
     {
-        $product = Product::with(['variants', 'product_type'])->findOrFail($id);
+        $product->load([
+            'variants' => function ($query) {
+                $query->orderBy('id');
+            },
+            'product_type',
+        ]);
 
-        return view('product.show', compact('product'));
+        $defaultVariant = $product->variants->firstWhere('stock', '>', 0) ?? $product->variants->first();
+
+        return view('product.show', compact('product', 'defaultVariant'));
     }
 
     // ================= ADMIN LIST =================
