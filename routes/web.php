@@ -11,109 +11,87 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\VariantController;
 
 // Home page
 Route::get('/', function () {
-    $homepage = \App\Models\Product::all();
+    // Updated the route to fetch data first
+    $homepage = \App\Models\Product::all(); 
     return view('index', ['homepage' => $homepage]);
 });
 
-// ==========================
-// VARIANTS
-// ==========================
-Route::get('/admin/products/{product}/variants/create', [VariantController::class, 'create'])->name('admin.variants.create');
-Route::post('/admin/products/{product}/variants', [VariantController::class, 'store'])->name('admin.variants.store');
-Route::get('/admin/variants/{variant}/edit', [VariantController::class, 'edit'])->name('admin.variants.edit');
-Route::put('/admin/variants/{variant}', [VariantController::class, 'update'])->name('admin.variants.update');
-Route::delete('/admin/variants/{variant}', [VariantController::class, 'destroy'])->name('admin.variants.destroy');
-
-// ==========================
-// STATIC PAGES
-// ==========================
+// Static pages
 Route::get('aboutUs', function () {
     return view('aboutUs');
 });
+
+Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
+
+Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.add');
+
+Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.checkout');
+
+Route::post('/basket/update/{product_id}', [BasketController::class, 'update'])->name('basket.update');
 
 Route::get('customerSupport', function () {
     return view('customerSupport');
 });
 
-// ==========================
-// BASKET
-// ==========================
-Route::get('basket', [BasketController::class, 'index'])->name('basket.index');
-Route::post('/basket/add', [BasketController::class, 'store'])->name('basket.add');
-Route::post('/checkout', [BasketController::class, 'checkout'])->name('basket.checkout');
-Route::post('/basket/update/{product_id}', [BasketController::class, 'update'])->name('basket.update');
-
-// ==========================
-// SHOP
-// ==========================
 Route::get('shop', [ProductController::class, 'index'])->name('shop');
-Route::get('/products', [ProductController::class, 'index'])->name('products');
 
-// ==========================
-// AUTH
-// ==========================
+// Authentication Routes
 Route::get('register', function () {
     return view('register');
 });
 
 Route::get('/signUp', [RegisterController::class, 'showForm'])->name('register.form');
+
 Route::post('/signUp', [RegisterController::class, 'register'])->name('register.submit');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// ==========================
-// PASSWORD RESET
-// ==========================
 Route::get('/forgot-password', [PasswordResetController::class, 'showForgotForm'])->name('password.request');
+
 Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])->name('password.email');
 
 Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])->name('password.update');
 
-// ==========================
-// CONTACT
-// ==========================
 Route::post('/contact-submit', [ContactFormController::class, 'submit']);
 
+// Product Search Routes
+Route::get('/products', [ProductController::class, 'index'])->name('products');
+
+
 // ==========================
-// USER ORDERS
+// USER: Order History/Status
 // ==========================
 Route::get('/orders', [OrderController::class, 'index'])
     ->middleware('auth')
     ->name('orders.index');
 
-Route::post('/orders/{order}/return', [OrderController::class, 'returnProduct'])
-    ->middleware('auth')
-    ->name('orders.return');
 
-// ==========================
-// ADMIN ROUTES
-// ==========================
+
 Route::middleware('auth')->prefix('admin')->group(function () {
 
-    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
 
     /*
-    | ORDERS (ADMIN)
+    | ORDERS (ADMIN + SUPER ADMIN)
     */
     Route::middleware('can:isAdmin')->group(function () {
-
         Route::get('/orders', [OrderController::class, 'adminIndex'])->name('admin.orders');
-
-        // ✅ FIXED: PUT (NOT POST)
-        Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])
-            ->name('admin.orders.status');
+        Route::post('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.status');
     });
 
     /*
-    | PRODUCTS (ADMIN)
+    | PRODUCTS (ADMIN + SUPER ADMIN)
     */
     Route::middleware('can:isAdmin')->group(function () {
         Route::get('/products', [ProductController::class, 'adminIndex'])->name('admin.products');
@@ -125,7 +103,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     });
 
     /*
-    | USERS (SUPER ADMIN)
+    | USERS (SUPER ADMIN ONLY)
     */
     Route::middleware('can:isSuperAdmin')->group(function () {
         Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
@@ -143,27 +121,24 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/users/index', [AdminUserController::class, 'indexUser'])->name('admin.users.indexuser');
     });
 
-    /*
-    | REPORTS
-    */
-    Route::get('/reports', [AdminDashboardController::class, 'reports'])->name('admin.reports');
 });
 
-// ==========================
-// PROFILE
-// ==========================
+
+// Profile Page
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/update', [ProfileController::class, 'update'])
+        ->name('profile.update');
 
-    Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.delete');
+    Route::delete('/profile/delete', [ProfileController::class, 'destroy'])
+        ->name('profile.delete');
 
-    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])
+        ->name('profile.password.update');
+
 });
 
-// ==========================
-// HOMEPAGE
-// ==========================
-Route::get('homepage', [App\Http\Controllers\ProductController::class, 'homepage']);
+// Homepage Items
+Route::get('homepage',[App\Http\Controllers\ProductController::class,'homepage']);

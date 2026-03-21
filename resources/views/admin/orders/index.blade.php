@@ -2,93 +2,82 @@
 
 <div class="container mx-auto py-10 text-white">
 
-    <h1 class="text-3xl font-bold mb-6 text-green-400">Manage Orders</h1>
+<h1 class="text-3xl font-bold mb-6 text-green-400">Manage Orders</h1>
 
-    @if(session('success'))
-        <div class="bg-green-500 text-black p-3 rounded mb-4">
-            {{ session('success') }}
-        </div>
-    @endif
+@forelse($orders as $order)
 
-    @if(session('info'))
-        <div class="bg-blue-500 text-white p-3 rounded mb-4">
-            {{ session('info') }}
-        </div>
-    @endif
+<div class="border border-green-500 rounded-lg p-4 mb-4 bg-black">
 
-    @forelse($orders as $order)
+<div class="flex justify-between mb-2">
 
-        <div class="border border-green-500 rounded-lg p-4 mb-6 bg-black">
+<div>
+<p class="font-semibold">Order #{{ $order->id }}</p>
 
-            <div class="flex justify-between items-start mb-3">
+<p class="text-sm text-gray-400">
+Customer: {{ $order->user->name ?? 'Unknown User' }}
+</p>
 
-                <div>
-                    <p class="font-semibold text-lg">
-                        Order #{{ $order->id }}
-                    </p>
+<p class="text-sm text-gray-400">
+{{ $order->created_at }}
+</p>
+</div>
 
-                    <p class="text-sm text-gray-400">
-                        Customer: {{ $order->user->name ?? 'Unknown User' }}
-                    </p>
+<div class="text-green-300 font-bold">
+Current Status: {{ $order->status }}
+</div>
 
-                    <p class="text-sm text-gray-400">
-                        {{ $order->created_at->format('d M Y H:i') }}
-                    </p>
-                </div>
+</div>
 
-                <div class="font-bold
-                    @if($order->status == 'Pending') text-yellow-400
-                    @elseif($order->status == 'Shipped') text-blue-400
-                    @elseif($order->status == 'Delivered') text-green-400
-                    @elseif($order->status == 'Cancelled') text-red-400
-                    @elseif($order->status == 'Returned') text-purple-400
-                    @endif
-                ">
-                    Status: {{ $order->status }}
-                </div>
+<div class="mb-3">
+<p class="font-semibold mb-1">Items:</p>
 
-            </div>
+<ul class="list-disc pl-6">
 
-            <div class="mb-4">
-                <p class="font-semibold mb-1">Items:</p>
+@foreach($order->products as $line)
 
-                <ul class="list-disc pl-6">
-                    @foreach($order->products as $line)
-                        <li>
-                            {{ $line->variant?->product?->product_name ?? 'Product' }}
-                            (Size: {{ $line->variant?->size ?? '-' }})
-                            (Qty: {{ $line->quantity ?? 1 }})
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+<li>
+{{ $line->product->variant_name ?? 'Product' }}
+(Qty: {{ $line->quantity ?? 1 }})
+</li>
 
-            <form method="POST" action="{{ route('admin.orders.status', $order) }}">
-                @csrf
-                @method('PUT')
+@endforeach
 
-                <div class="flex items-center gap-4">
-                    <select name="status" class="bg-white text-black p-2 rounded">
-                        <option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
-                        <option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
-                        <option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
-                        <option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
-                        <option value="Returned" {{ $order->status == 'Returned' ? 'selected' : '' }}>Returned</option>
-                    </select>
+</ul>
+</div>
 
-                    <button
-                        type="submit"
-                        class="bg-green-500 px-4 py-2 rounded text-black font-semibold hover:bg-green-400">
-                        Update
-                    </button>
-                </div>
-            </form>
+<form method="POST" action="{{ route('admin.orders.status', $order) }}">
+@csrf
 
-        </div>
+<div class="flex items-center gap-4">
 
-    @empty
-        <p class="text-xl">No orders found.</p>
-    @endforelse
+<select name="status" class="bg-white text-black p-2 rounded">
+
+<option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+<option value="Processing" {{ $order->status == 'Processing' ? 'selected' : '' }}>Processing</option>
+<option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
+<option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
+<option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+<option value="Returned" {{ $order->status == 'Returned' ? 'selected' : '' }}>Returned</option>
+
+</select>
+
+<button
+type="submit"
+class="bg-green-500 px-3 py-1 rounded text-black font-semibold">
+Update
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+@empty
+
+<p class="text-xl">No orders found.</p>
+
+@endforelse
 
 </div>
 
