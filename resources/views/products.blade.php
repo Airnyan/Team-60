@@ -5,6 +5,55 @@
 
     @vite('resources/css/styles.css')
 
+    @php
+        $allCategories = $products
+            ->map(fn($product) => optional($product->product_type)->type_name)
+            ->filter()
+            ->unique()
+            ->sort()
+            ->values();
+
+        $allSizes = $products
+            ->flatMap(function ($product) {
+                $variantSizes = $product->variants->pluck('size')->filter();
+
+                if ($variantSizes->isNotEmpty()) {
+                    return $variantSizes;
+                }
+
+                return collect([$product->size])->filter();
+            })
+            ->unique()
+            ->sort()
+            ->values();
+
+        $allColors = $products
+            ->map(function ($product) {
+                preg_match('/\((.*?)\)/', $product->product_name ?? '', $matches);
+                return $matches[1] ?? null;
+            })
+            ->filter()
+            ->unique()
+            ->sort()
+            ->values();
+
+        $allPrices = $products
+            ->map(function ($product) {
+                $defaultVariant = $product->variants->where('stock', '>', 0)->sortBy('id')->first()
+                    ?? $product->variants->sortBy('id')->first();
+
+                if ($defaultVariant) {
+                    return $defaultVariant->discounted_price ?? $defaultVariant->price;
+                }
+
+                return $product->discounted_price ?? $product->price;
+            })
+            ->filter();
+
+        $maxPrice = $allPrices->isNotEmpty() ? (int) ceil($allPrices->max()) : 500;
+        $maxPrice = $maxPrice > 0 ? $maxPrice : 500;
+    @endphp
+
     <div class="page">
         <header class="page-header">
             <div>
@@ -37,38 +86,18 @@
                         <span class="chevron">⌃</span>
                     </button>
                     <div class="filter-body">
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="category-filter" value="T shirts" />
-                            <span>T shirts</span>
-                        </label>
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="category-filter" value="Hoodies" />
-                            <span>Hoodies</span>
-                        </label>
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="category-filter" value="Tracksuits" />
-                            <span>Tracksuits</span>
-                        </label>
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="category-filter" value="Caps" />
-                            <span>Caps</span>
-                        </label>
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="category-filter" value="Hats" />
-                            <span>Hats</span>
-                        </label>
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="category-filter" value="Posters" />
-                            <span>Posters</span>
-                        </label>
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="category-filter" value="Stickers" />
-                            <span>Stickers</span>
-                        </label>
-                        <label class="checkbox-row">
-                            <input type="checkbox" class="category-filter" value="Sun glasses" />
-                            <span>Sun glasses</span>
-                        </label>
+                        @forelse($allCategories as $category)
+                            <label class="checkbox-row">
+                                <input
+                                    type="checkbox"
+                                    class="category-filter"
+                                    value="{{ $category }}"
+                                />
+                                <span>{{ $category }}</span>
+                            </label>
+                        @empty
+                            <p>No categories available.</p>
+                        @endforelse
                     </div>
                 </section>
 
@@ -80,10 +109,16 @@
                     <div class="filter-body">
                         <div class="price-row">
                             <span>£0</span>
-                            <span>£500</span>
+                            <span>£{{ $maxPrice }}</span>
                         </div>
-                        <input id="priceRange" type="range" min="0" max="500" value="500" />
-                        <div class="price-value">Up to <span id="priceValue">£500</span></div>
+                        <input
+                            id="priceRange"
+                            type="range"
+                            min="0"
+                            max="{{ $maxPrice }}"
+                            value="{{ $maxPrice }}"
+                        />
+                        <div class="price-value">Up to <span id="priceValue">£{{ $maxPrice }}</span></div>
                     </div>
                 </section>
 
@@ -93,63 +128,109 @@
                         <span class="chevron">⌃</span>
                     </button>
                     <div class="filter-body size-grid">
-                        <button type="button" class="size-pill" data-size="XS">XS</button>
-                        <button type="button" class="size-pill" data-size="S">S</button>
-                        <button type="button" class="size-pill" data-size="M">M</button>
-                        <button type="button" class="size-pill" data-size="L">L</button>
-                        <button type="button" class="size-pill" data-size="XL">XL</button>
+                        @forelse($allSizes as $size)
+                            <button type="button" class="size-pill" data-size="{{ $size }}">{{ $size }}</button>
+                        @empty
+                            <p>No sizes available.</p>
+                        @endforelse
                     </div>
                 </section>
 
-                <section class="filter-group">
-                    <button class="filter-toggle" type="button">
-                        <span>Color</span>
-                    </button>
-                    <div class="filter-body color-grid">
-                        <button type="button" class="color-pill" data-color="Neutral">Neutral</button>
-                        <button type="button" class="color-pill" data-color="Black">Black</button>
-                        <button type="button" class="color-pill" data-color="White">White</button>
-                        <button type="button" class="color-pill" data-color="Denim">Denim</button>
-                    </div>
-                </section>
+                @if($allColors->count())
+                    <section class="filter-group">
+                        <button class="filter-toggle" type="button">
+                            <span>Color</span>
+                            <span class="chevron">⌃</span>
+                        </button>
+                        <div class="filter-body color-grid">
+                            @foreach($allColors as $color)
+                                <button type="button" class="color-pill" data-color="{{ $color }}">{{ $color }}</button>
+                            @endforeach
+                        </div>
+                    </section>
+                @endif
             </aside>
 
             <section class="products-section">
                 <div id="productsGrid" class="products-grid" aria-live="polite">
                     @foreach($products as $product)
                         @php
-                            $sizes = is_array($product->sizes) ? $product->sizes : json_decode($product->sizes ?? '[]', true);
-                            $colors = is_array($product->colors) ? $product->colors : json_decode($product->colors ?? '[]', true);
-                            $image = $product->image_url ? asset($product->image_url) : asset('images/grid1.png');
+                            $defaultVariant = $product->variants->where('stock', '>', 0)->sortBy('id')->first()
+                                ?? $product->variants->sortBy('id')->first();
+
+                            $sizes = $product->variants->pluck('size')->filter()->unique()->values();
+                            if ($sizes->isEmpty() && !empty($product->size)) {
+                                $sizes = collect([$product->size]);
+                            }
+
+                            preg_match('/\((.*?)\)/', $product->product_name ?? '', $matches);
+                            $color = $matches[1] ?? null;
+                            $colors = $color ? collect([$color]) : collect([]);
+
+                            $currentPrice = $defaultVariant
+                                ? ($defaultVariant->discounted_price ?? $defaultVariant->price)
+                                : ($product->discounted_price ?? $product->price);
+
+                            $originalPrice = $defaultVariant
+                                ? $defaultVariant->price
+                                : $product->price;
+
+                            $image = !empty($product->image)
+                                ? asset($product->image)
+                                : asset('images/grid1.png');
+
+                            $category = optional($product->product_type)->type_name ?? 'Uncategorised';
+                            $name = $product->product_name ?? 'Unnamed Product';
+                            $slug = \Illuminate\Support\Str::slug($name);
+                            $isNew = $product->created_at && $product->created_at->gt(now()->subDays(30));
                         @endphp
 
                         <article
                             class="product-card"
-                            data-name="{{ strtolower($product->name) }}"
-                            data-slug="{{ strtolower($product->slug) }}"
-                            data-category="{{ $product->category }}"
-                            data-price="{{ $product->price }}"
-                            data-sizes='@json($sizes)'
-                            data-colors='@json($colors)'
+                            data-name="{{ strtolower($name) }}"
+                            data-slug="{{ strtolower($slug) }}"
+                            data-category="{{ $category }}"
+                            data-price="{{ $currentPrice }}"
+                            data-sizes='@json($sizes->values())'
+                            data-colors='@json($colors->values())'
                         >
                             <div class="product-media">
-                                <img src="{{ $image }}" alt="{{ $product->name }}" />
-                                @if($product->is_new)
+                                <img src="{{ $image }}" alt="{{ $name }}" />
+                                @if($isNew)
                                     <div class="badge">NEW ARRIVAL</div>
                                 @endif
                             </div>
 
                             <div class="product-info">
-                                <p class="product-name">{{ $product->name }}</p>
-                                <p class="product-price">£{{ number_format($product->price, 2) }}</p>
+                                <p class="product-name">{{ $name }}</p>
 
-                                <form action="{{ route('basket.add') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="variant_id" value="{{ $product->id }}"/>
-                                    <button type="submit" class="add-to-basket-button">
-                                        Add to basket
+                                @if(!empty($product->description))
+                                    <p class="product-description">{{ $product->description }}</p>
+                                @endif
+
+                                <p class="product-price">
+                                    £{{ number_format((float) $currentPrice, 2) }}
+                                    @if($originalPrice && (float) $originalPrice > (float) $currentPrice)
+                                        <span style="text-decoration: line-through; opacity: 0.7; margin-left: 8px;">
+                                            £{{ number_format((float) $originalPrice, 2) }}
+                                        </span>
+                                    @endif
+                                </p>
+
+                                @if($defaultVariant)
+                                    <form action="{{ route('basket.add') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="variant_id" value="{{ $defaultVariant->id }}">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button type="submit" class="add-to-basket-button">
+                                            Add to basket
+                                        </button>
+                                    </form>
+                                @else
+                                    <button type="button" class="add-to-basket-button" disabled>
+                                        Unavailable
                                     </button>
-                                </form>
+                                @endif
                             </div>
                         </article>
                     @endforeach
@@ -161,10 +242,15 @@
     </div>
 
     <script>
-        const state = { search: "", categories: new Set(), maxPrice: 500, size: null, color: null };
+        const state = {
+            search: "",
+            categories: new Set(),
+            maxPrice: {{ $maxPrice }},
+            size: null,
+            color: null
+        };
 
         const searchInput = document.getElementById("searchInput");
-        const productsGrid = document.getElementById("productsGrid");
         const priceRange = document.getElementById("priceRange");
         const priceValue = document.getElementById("priceValue");
         const clearAllButton = document.getElementById("clearAll");
@@ -172,12 +258,12 @@
 
         const productNodes = [...document.querySelectorAll(".product-card")].map(card => ({
             el: card,
-            name: card.dataset.name,
-            slug: card.dataset.slug,
-            category: card.dataset.category,
-            price: Number(card.dataset.price),
-            sizes: JSON.parse(card.dataset.sizes),
-            colors: JSON.parse(card.dataset.colors)
+            name: card.dataset.name || "",
+            slug: card.dataset.slug || "",
+            category: card.dataset.category || "",
+            price: Number(card.dataset.price || 0),
+            sizes: JSON.parse(card.dataset.sizes || "[]"),
+            colors: JSON.parse(card.dataset.colors || "[]")
         }));
 
         function applyFilters() {
@@ -188,23 +274,36 @@
 
                 if (state.search) {
                     const t = state.search.toLowerCase();
-                    if (!p.name.includes(t) && !p.slug.includes(t)) show = false;
+                    if (!p.name.includes(t) && !p.slug.includes(t)) {
+                        show = false;
+                    }
                 }
 
-                if (show && state.categories.size && !state.categories.has(p.category)) show = false;
+                if (show && state.categories.size && !state.categories.has(p.category)) {
+                    show = false;
+                }
 
-                if (show && p.price > state.maxPrice) show = false;
+                if (show && p.price > state.maxPrice) {
+                    show = false;
+                }
 
                 if (show && state.size) {
-                    if (!p.sizes.includes(state.size)) show = false;
+                    if (!p.sizes.includes(state.size)) {
+                        show = false;
+                    }
                 }
 
                 if (show && state.color) {
-                    if (!p.colors.includes(state.color)) show = false;
+                    if (!p.colors.includes(state.color)) {
+                        show = false;
+                    }
                 }
 
                 p.el.style.display = show ? "" : "none";
-                if (show) visibleCount++;
+
+                if (show) {
+                    visibleCount++;
+                }
             });
 
             noResults.hidden = visibleCount !== 0;
@@ -223,8 +322,11 @@
 
         document.querySelectorAll(".category-filter").forEach(cb => {
             cb.addEventListener("change", e => {
-                if (e.target.checked) state.categories.add(e.target.value);
-                else state.categories.delete(e.target.value);
+                if (e.target.checked) {
+                    state.categories.add(e.target.value);
+                } else {
+                    state.categories.delete(e.target.value);
+                }
                 applyFilters();
             });
         });
@@ -232,6 +334,7 @@
         document.querySelectorAll(".size-pill").forEach(btn => {
             btn.addEventListener("click", () => {
                 const s = btn.dataset.size;
+
                 if (state.size === s) {
                     state.size = null;
                     btn.classList.remove("is-active");
@@ -240,6 +343,7 @@
                     document.querySelectorAll(".size-pill").forEach(b => b.classList.remove("is-active"));
                     btn.classList.add("is-active");
                 }
+
                 applyFilters();
             });
         });
@@ -247,6 +351,7 @@
         document.querySelectorAll(".color-pill").forEach(btn => {
             btn.addEventListener("click", () => {
                 const c = btn.dataset.color;
+
                 if (state.color === c) {
                     state.color = null;
                     btn.classList.remove("is-active");
@@ -255,6 +360,7 @@
                     document.querySelectorAll(".color-pill").forEach(b => b.classList.remove("is-active"));
                     btn.classList.add("is-active");
                 }
+
                 applyFilters();
             });
         });
@@ -262,13 +368,13 @@
         clearAllButton.addEventListener("click", () => {
             state.search = "";
             state.categories.clear();
-            state.maxPrice = 500;
+            state.maxPrice = {{ $maxPrice }};
             state.size = null;
             state.color = null;
 
             searchInput.value = "";
-            priceRange.value = 500;
-            priceValue.textContent = "£500";
+            priceRange.value = {{ $maxPrice }};
+            priceValue.textContent = "£{{ $maxPrice }}";
 
             document.querySelectorAll(".category-filter").forEach(cb => cb.checked = false);
             document.querySelectorAll(".size-pill").forEach(b => b.classList.remove("is-active"));
