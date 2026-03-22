@@ -10,14 +10,19 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@test.com',
-            'phone' => '07123456789',
-            'password' => Hash::make('password123'),
-            'role' => 'admin',
-        ]);
+        User::firstOrCreate(
+            ['email' => 'admin@test.com'], // Search criteria
+            [
+                'name' => 'Admin User',
+                'phone' => '07123456789',
+                'password' => Hash::make('password123'),
+                'role' => 'admin',
+            ]
+        );
 
-        User::factory()->count(5)->create();
+
+        if (User::count() <= 1) {
+            User::factory()->count(5)->create();
+        }
     }
 }
