@@ -59,5 +59,5 @@ A high-performance, dark-themed e-commerce platform built for the **Team-60** un
 * `app/Http/Controllers/ProductController.php`: Handles product catalog logic and individual item views.
 * `resources/views/product/show.blade.php`: The primary interactive product interface.
 
-## 👥 Team 60
+## Team 60
 Built as a collaborative effort for the Team-60 university project.
