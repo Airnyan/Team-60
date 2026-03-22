@@ -125,15 +125,77 @@
                 </div>
             </div>
 
-            <section class="mt-10 rounded-3xl border border-zinc-800 bg-zinc-950 p-6 shadow-2xl">
-                <h2 class="text-2xl font-bold text-white">Ratings & Reviews</h2>
-                <div class="mt-4 rounded-2xl border border-dashed border-zinc-700 bg-zinc-900/70 p-8 text-zinc-400">
-                    Section left for Mishan.
+<div class="mt-16 flex flex-col items-center">
+    
+    <div class="hover-3d w-full max-w-[800px] mb-12">
+        <div class="bg-zinc-900 border border-zinc-800 shadow-2xl px-10 py-10 rounded-3xl text-white">
+            <h1 class="text-3xl font-bold mb-6">Leave a review!</h1>
+            
+            <form action="/submit-review" method="POST">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                
+                <div class="form-group mb-6">
+                    <label class="block mb-3 text-sm font-semibold uppercase tracking-wider text-zinc-400">Your Rating:</label>
+                    <div class="rating rating-lg gap-1">
+                        <input type="radio" name="rating" value="1" class="mask mask-star-2 bg-green-500" />
+                        <input type="radio" name="rating" value="2" class="mask mask-star-2 bg-green-500" />
+                        <input type="radio" name="rating" value="3" class="mask mask-star-2 bg-green-500" />
+                        <input type="radio" name="rating" value="4" class="mask mask-star-2 bg-green-500" checked />
+                        <input type="radio" name="rating" value="5" class="mask mask-star-2 bg-green-500" />
+                    </div>
+                    
+                    <textarea 
+                        id="review_text" 
+                        name="review" 
+                        class="form-control mt-6 w-full rounded-2xl p-4 text-white bg-black/40 border border-zinc-800 focus:border-green-500 focus:ring-1 focus:ring-green-500 outline-none transition" 
+                        rows="5" 
+                        placeholder="Write your thoughts here..."
+                    ></textarea>
                 </div>
-            </section>
-        </div>
-    </div>
 
+                @auth
+                    <button type="submit" class="w-full rounded-2xl bg-green-500 px-5 py-4 text-base font-bold text-black transition hover:bg-green-400">
+                        Submit Review
+                    </button>
+                @endauth
+                
+                @guest
+                    <a href="{{ route('login') }}" class="inline-block w-full rounded-2xl border border-zinc-700 bg-zinc-800 px-5 py-4 text-center text-base font-bold text-white transition hover:bg-zinc-700">
+                        Log in to review
+                    </a>
+                @endguest
+            </form>
+        </div>
+    </div>   
+
+    <div class="reviews-list w-full max-w-[800px]">
+        <h2 class="text-2xl font-bold mb-6 text-white text-center">Customer Reviews</h2>
+        
+        @if($reviews->isEmpty())
+            <p class="text-center text-zinc-500 py-10 border border-dashed border-zinc-800 rounded-3xl">No reviews yet. Be the first to share your thoughts!</p>
+        @else
+            @foreach($reviews as $review)
+                <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl mb-6 shadow-lg">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="font-bold text-green-400 text-xl block">{{ $review->user->name }}</span>
+                            <span class="text-xs text-zinc-500 uppercase tracking-widest">{{ $review->created_at->diffForHumans() }}</span>
+                        </div>
+                        
+                        <div class="rating rating-sm">
+                            @for($i = 1; $i <= 5; $i++)
+                                <div class="mask mask-star-2 {{ $review->rating >= $i ? 'bg-green-500' : 'bg-zinc-700' }} w-4 h-4"></div>
+                            @endfor
+                        </div>
+                    </div>
+                    
+                    <p class="text-zinc-300 leading-relaxed">{{ $review->review }}</p>
+                </div>
+            @endforeach
+        @endif
+    </div>
+</div>
     <script>
         const productDetail = document.getElementById('productDetail');
 
