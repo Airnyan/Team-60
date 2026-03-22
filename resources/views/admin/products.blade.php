@@ -46,20 +46,36 @@
     <div class="bg-black border border-green-500 rounded-lg mb-6 p-5">
 
         {{-- PRODUCT HEADER --}}
-        <div class="flex justify-between items-center mb-3">
-            <div>
-                <h2 class="text-xl text-green-300 font-semibold">
-                    {{ $product->product_name }}
-                </h2>
+        <div class="flex justify-between items-start mb-3">
+            <div class="flex gap-4 items-start">
+                <img
+                    src="{{ asset($product->image) }}"
+                    alt="{{ $product->product_name }}"
+                    class="w-24 h-24 object-cover rounded-lg border border-green-500 bg-gray-900"
+                >
 
-                <p class="text-sm text-gray-400">
-                    Total: {{ $totalStock }} | Reserved: {{ $reserved }}
-                </p>
+                <div>
+                    <h2 class="text-xl text-green-300 font-semibold">
+                        {{ $product->product_name }}
+                    </h2>
+
+                    <p class="text-sm text-gray-400">
+                        Total: {{ $totalStock }} | Reserved: {{ $reserved }}
+                    </p>
+
+                    @if($totalStock <= 0)
+                        <p class="text-sm text-red-500">Out of stock</p>
+                    @elseif($totalStock <= 10)
+                        <p class="text-sm text-yellow-400">Low stock</p>
+                    @else
+                        <p class="text-sm text-green-400">In stock</p>
+                    @endif
+                </div>
             </div>
 
             <div class="flex gap-3 text-sm">
                 <a href="{{ route('admin.products.edit', $product) }}"
-                   class="text-blue-400 hover:underline">
+                class="text-blue-400 hover:underline">
                     Edit
                 </a>
 
@@ -72,7 +88,7 @@
                 </form>
 
                 <a href="{{ route('admin.variants.create', $product) }}"
-                   class="text-green-400 hover:underline">
+                class="text-green-400 hover:underline">
                     + Variant
                 </a>
             </div>
