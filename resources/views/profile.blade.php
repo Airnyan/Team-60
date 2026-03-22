@@ -31,14 +31,10 @@
                 <label>Email</label>
                 <input type="email" name="email" value="{{ $user->email }}" required>
 
-                <label>Address Line 1</label>
-                <input type="text" name="address_line_1" value="{{ $user->address_line_1 }}" required>
-
-                <label>Address Line 2</label>
-                <input type="text" name="address_line_2" value="{{ $user->address_line_2 }}">
-
-                <label>Postcode</label>
-                <input type="text" name="postcode" value="{{ $user->postcode }}" required>
+                <label>Address</label>
+                <input type="text" name="address1" value="{{ old('address1', $address->address_line_1 ?? '') }}" placeholder="Address Line 1">
+                <input type="text" name="address2" value="{{ old('address2', $address->address_line_2 ?? '') }}" placeholder="Address Line 2">
+                <input type="text" name="postcode" value="{{ old('postcode', $address->postcode ?? '') }}" placeholder="Postcode">
 
                 <label>Phone</label>
                 <input type="text" name="phone" value="{{ $user->phone }}" required>

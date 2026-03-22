@@ -44,16 +44,40 @@ public function update(Request $request, User $user)
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email,' . $user->id,
         'phone' => 'nullable|string|max:20',
+        'address_line_1' => 'nullable|string|max:255',
+        'address_line_2' => 'nullable|string|max:255',
+        'postcode' => 'nullable|string|max:20',
         'password' => 'nullable|min:8|confirmed',
     ]);
 
-    $data = $request->only(['name', 'email', 'phone']);
+    $userData = $request->only(['name', 'email', 'phone']);
 
     if ($request->filled('password')) {
-        $data['password'] = Hash::make($request->password);
+        $userData['password'] = Hash::make($request->password);
     }
 
-    $user->update($data);
+    $user->update($userData);
+
+    $address = $user->address()->latest()->first();
+
+    if ($address) {
+        $address->update([
+            'address_line_1' => $request->address_line_1 ?? '',
+            'address_line_2' => $request->address_line_2 ?? '',
+            'postcode' => $request->postcode ?? '',
+        ]);
+    } elseif (
+        $request->filled('address_line_1') ||
+        $request->filled('address_line_2') ||
+        $request->filled('postcode')
+    ) {
+        \App\Models\Address::create([
+            'user_id' => $user->id,
+            'address_line_1' => $request->address_line_1 ?? '',
+            'address_line_2' => $request->address_line_2 ?? '',
+            'postcode' => $request->postcode ?? '',
+        ]);
+    }
 
     return redirect()->route('admin.users.indexuser')->with('success', 'User updated successfully');
 }
