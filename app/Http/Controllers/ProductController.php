@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    // ================= SHOP =================
+    
     public function index(Request $request)
     {
         $categories = ProductType::orderBy('id')->get();
@@ -33,7 +33,7 @@ class ProductController extends Controller
         return view('products', compact('products', 'categories'));
     }
 
-    // ================= PRODUCT PAGE =================
+    
     public function show(Product $product)
     {
         $product->load([
@@ -48,7 +48,7 @@ class ProductController extends Controller
         return view('product.show', compact('product', 'defaultVariant'));
     }
 
-    // ================= ADMIN LIST =================
+    
     public function adminIndex()
     {
         $products = Product::with(['variants', 'product_type'])->get();
@@ -56,7 +56,7 @@ class ProductController extends Controller
         return view('admin.products', compact('products'));
     }
 
-    // ================= CREATE PRODUCT =================
+    
     public function create()
     {
         return view('admin.products.create');
@@ -73,7 +73,7 @@ class ProductController extends Controller
         return redirect()->route('admin.products');
     }
 
-    // ================= EDIT PRODUCT =================
+    
     public function edit(Product $product)
     {
         $product->load(['variants', 'product_type']);
@@ -92,7 +92,7 @@ class ProductController extends Controller
         return back();
     }
 
-    // ================= DELETE PRODUCT =================
+    
     public function destroy(Product $product)
     {
         $product->variants()->delete();

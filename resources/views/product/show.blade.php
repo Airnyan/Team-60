@@ -128,7 +128,7 @@
             <section class="mt-10 rounded-3xl border border-zinc-800 bg-zinc-950 p-6 shadow-2xl">
                 <h2 class="text-2xl font-bold text-white">Ratings & Reviews</h2>
                 <div class="mt-4 rounded-2xl border border-dashed border-zinc-700 bg-zinc-900/70 p-8 text-zinc-400">
-                    This section has intentionally been left blank so the Ratings & Reviews work can be added here later.
+                    Section left for Mishan.
                 </div>
             </section>
         </div>

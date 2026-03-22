@@ -41,9 +41,6 @@
                     <div>
                         <p class="mb-2 text-sm font-semibold uppercase tracking-[0.35em] text-green-400">Little Green Man</p>
                         <h1 class="text-3xl font-bold sm:text-4xl">Shop All Products</h1>
-                        <p class="mt-3 max-w-2xl text-sm text-zinc-300 sm:text-base">
-                            This page now pulls product names, prices, images, categories and variant sizes directly from the database.
-                        </p>
                     </div>
 
                     <div class="w-full lg:max-w-md">
