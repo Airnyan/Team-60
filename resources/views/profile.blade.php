@@ -31,8 +31,14 @@
                 <label>Email</label>
                 <input type="email" name="email" value="{{ $user->email }}" required>
 
-                <label>Address</label>
-                <input type="text" name="address" value="{{ $user->address }}" required>
+                <label>Address Line 1</label>
+                <input type="text" name="address_line_1" value="{{ $user->address_line_1 }}" required>
+
+                <label>Address Line 2</label>
+                <input type="text" name="address_line_2" value="{{ $user->address_line_2 }}">
+
+                <label>Postcode</label>
+                <input type="text" name="postcode" value="{{ $user->postcode }}" required>
 
                 <label>Phone</label>
                 <input type="text" name="phone" value="{{ $user->phone }}" required>
