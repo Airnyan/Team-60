@@ -16,7 +16,7 @@ A high-performance, dark-themed e-commerce platform built for the **Team-60** un
 * **Authentication Gates**: Smart logic that handles guest vs. authenticated user views for submitting reviews and accessing the basket.
 * **Admin Dashboard**: Dedicated tools for product creation, category management, and inventory tracking.
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 * **Framework**: Laravel 12.x
 * **Styling**: Tailwind CSS & DaisyUI
