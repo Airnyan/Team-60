@@ -22,7 +22,9 @@ class ProfileController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'address' => 'required|string|max:255',
+            'address_line_1' => 'required|string|max:255',
+            'address_line_2' => 'nullable|string|max:255',
+            'postcode' => 'required|string|max:20',
             'phone' => 'required|string|max:20'
         ]);
 
