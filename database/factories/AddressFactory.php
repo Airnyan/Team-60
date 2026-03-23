@@ -19,6 +19,7 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
             'address_line_1' => fake()->streetAddress(),
             'address_line_2' => fake()->city(),
             'postcode' => fake()->postcode(),

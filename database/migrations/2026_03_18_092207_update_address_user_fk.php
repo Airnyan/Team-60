@@ -9,19 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['address_id']);
-            $table->dropColumn('address_id');
-        });
 
-        Schema::table('addresses', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->nullable()->after('id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-        });
-
-    }
+    /**
+    *public function up(): void
+    *{
+    *    Schema::table('users', function (Blueprint $table) {
+    *        $table->dropForeign(['address_id']);
+    *        $table->dropColumn('address_id');
+    *    });
+    *
+    *    Schema::table('addresses', function (Blueprint $table) {
+    *        $table->unsignedBigInteger('user_id')->nullable()->after('id');
+    *       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+    *     });
+    *
+   * }
+    */
 
     /**
      * Reverse the migrations.

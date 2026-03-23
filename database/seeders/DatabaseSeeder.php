@@ -34,14 +34,14 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1,
             'product_id' => 1,
             'rating' => 5,
-            'comment' => 'Great product!',
+            'review' => 'Great product!',
             ]);
 
             \App\Models\Review::create([
             'user_id' => 1,
             'product_id' => 2,
             'rating' => 4,
-            'comment' => 'Really liked the quality.',
+            'review' => 'Really liked the quality.',
             ]);
     }
 }
