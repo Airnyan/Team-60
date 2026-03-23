@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ProductTypeSeeder::class,
             ProductSeeder::class,
             AddressSeeder::class,
+            ReviewSeeder::class,
             //BasketSeeder::class,
             //OrderSeeder::class
         ]);
@@ -28,5 +29,19 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+         
+        \App\Models\Review::create([
+            'user_id' => 1,
+            'product_id' => 1,
+            'rating' => 5,
+            'comment' => 'Great product!',
+            ]);
+
+            \App\Models\Review::create([
+            'user_id' => 1,
+            'product_id' => 2,
+            'rating' => 4,
+            'comment' => 'Really liked the quality.',
+            ]);
     }
 }

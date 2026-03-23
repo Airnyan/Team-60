@@ -52,12 +52,10 @@ Route::post('/basket/update/{product_id}', [BasketController::class, 'update'])-
 // ==========================
 // SHOP
 // ==========================
-// ==========================
-// SHOP
-// ==========================
 Route::get('shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
 // ==========================
 // AUTH
 // ==========================

@@ -35,10 +35,10 @@
                         <div class="item-image"><img src="{{$basket_product->variant->product->image}}"></div>
 
                         <div class="item-details">
-                        <h3 class="item-name">{{$basket_product->variant->product->product_name}}</h3>
-                        <p class="item-size">Size: {{$basket_product->variant->size}}</p>
+                        <h3 class="variant-name">{{$basket_product->variant->product->product_name}}</h3>
+                        <p class="size">Size: {{$basket_product->variant->size}}</p>
                         {{-- <p class="item-quantity">Quantity: {{$basket_product->quantity}}</p> --}}
-                        <p class="item-price">Price: £{{$basket_product->variant->price}}</p>
+                        <p class="price">Price: £{{$basket_product->variant->price}}</p>
 
                         <!-- Quantity controls -->
                             <div class="quantity-controls">
@@ -68,7 +68,7 @@
 
             <div class="summary-line">
                 <span>Subtotal</span>
-                <span id="subtotal">£0.00</span>
+                <span id="total">£{{ number_format($total, 2) }}</span>
             </div>
 
             <div class="summary-line">
@@ -78,17 +78,42 @@
 
             <div class="summary-line total">
                 <span>Total</span>
-                <span id="total">£0.00</span>
+                <span id="total">£{{ number_format($total, 2) }}</span>
             </div>
-            <h3>Shipping Address</h3>
-            <form action="{{ route('basket.checkout') }}" method="POST">
-                @csrf
+            
+            @if(session('error'))
+            <div class="bg-red-600 text-white p-3 rounded mb-4">
+            {{ session('error') }}
+        </div>
+        @endif
 
-                    <input type="text" name="address1" placeholder="Address Line 1" value="{{ old('address1')}}" required>
-                    <input type="text" name="address2" placeholder="Address Line 2" value="{{ old('address2')}}"required>
-                    <input type="text" name="postcode" placeholder="Postcode / ZIP" value="{{ old('postcode')}}"required>
-                <button class="checkout-btn" type = "submit">Checkout</button>
-            </form>
+        <h3>Shipping Address</h3>
+        <form action="{{ route('basket.checkout') }}" method="POST">
+        @csrf
+                
+                @if($savedAddresses->count() > 0)
+                <div class="form-group mb-4">
+                    <label class="block mb-2">Choose a saved address:</label>
+                    <select name="address_id" class="select select-bordered w-full">
+                        <option value="">-- Use a new address --</option>
+                        @foreach($savedAddresses as $addr)
+                            <option value="{{ $addr->id }}">
+                                {{ $addr->address_line_1 }}, {{ $addr->postcode }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+    @endif
+
+    <div id="new-address-fields">
+        <p class="text-sm mb-2 italic">Or enter new details:</p>
+        <input type="text" name="address1" placeholder="Address Line 1" class="input input-bordered w-full mb-2">
+        <input type="text" name="address2" placeholder="Address Line 2" class="input input-bordered w-full mb-2">
+        <input type="text" name="postcode" placeholder="Postcode" class="input input-bordered w-full mb-4">
+    </div>
+
+    <button type="submit" class="btn btn-primary w-full">Place Order</button>
+</form>
         </div>
 
         </div>
