@@ -1,5 +1,8 @@
 <x-layout>
 <x-slot:title>Edit User</x-slot:title>
+@php
+    $address = $user->address->last();
+@endphp
 
 <div class="p-6 max-w-xl mx-auto">
 
@@ -32,6 +35,24 @@
 <div class="mb-4">
     <label class="text-green-300">Phone</label>
     <input type="text" name="phone" value="{{ $user->phone }}"
+        class="w-full bg-gray-900 border border-green-700 text-green-200 p-2 rounded">
+</div>
+
+<div class="mb-4">
+    <label class="text-green-300">Address Line 1</label>
+    <input type="text" name="address_line_1" value="{{ $address->address_line_1 ?? '' }}"
+        class="w-full bg-gray-900 border border-green-700 text-green-200 p-2 rounded">
+</div>
+
+<div class="mb-4">
+    <label class="text-green-300">Address Line 2</label>
+    <input type="text" name="address_line_2" value="{{ $address->address_line_2 ?? '' }}"
+        class="w-full bg-gray-900 border border-green-700 text-green-200 p-2 rounded">
+</div>
+
+<div class="mb-4">
+    <label class="text-green-300">Postcode</label>
+    <input type="text" name="postcode" value="{{ $address->postcode ?? '' }}"
         class="w-full bg-gray-900 border border-green-700 text-green-200 p-2 rounded">
 </div>
 

@@ -80,8 +80,8 @@
                             <!--Rating-->
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="2 star" aria-current="true"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="3 star"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
                             </div>
@@ -104,17 +104,17 @@
                         </figure>
                     </div>
                     <!--Body-->
-                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">{{$homepage[6]->product_name}}</h2>
+                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl gap-5">
+                        <h2 class="text-base-content">{{$homepage[6]->product_name}}</h2>
                         <div class="flex justify-between items-center">
                             <p class="text-base-content font-semibold mt-1">£{{$homepage[6]->price}}</p>
                             <!--Rating-->
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="3 star"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="5 star"aria-current="true"></div>
                             </div>
                         </div>
                     </div>
@@ -135,16 +135,16 @@
                         </figure>
                     </div>
                     <!--Body-->
-                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">{{$homepage[12]->product_name}}</h2>
+                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl gap-5">
+                        <h2 class="text-base-content">{{$homepage[12]->product_name}}</h2>
                         <div class="flex justify-between items-center">
                             <p class="text-base-content font-semibold mt-1">£{{$homepage[12]->price}}</p>
                             <!--Rating-->
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="3 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="4 star" aria-current="true"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
                             </div>
                         </div>
@@ -166,17 +166,17 @@
                         </figure>
                     </div>
                     <!--Body-->
-                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">{{$homepage[18]->product_name}}</h2>
+                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl gap-5">
+                        <h2 class="text-base-content">{{$homepage[18]->product_name}}</h2>
                         <div class="flex justify-between items-center">
                             <p class="text-base-content font-semibold mt-1">£{{$homepage[18]->price}}</p>
                             <!--Rating-->
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" ></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="5 star"aria-current="true"></div>
                             </div>
                         </div>
                     </div>
@@ -198,15 +198,15 @@
                     </div>
                     <!--Body-->
                     <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">{{$homepage[20]->product_name}}</h2>
+                        <h2 class="text-base-content">{{$homepage[20]->product_name}}</h2>
                         <div class="flex justify-between items-center">
                             <p class="text-base-content font-semibold mt-1">£{{$homepage[20]->price}}</p>
                             <!--Rating-->
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" ></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="4 star"aria-current="true"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
                             </div>
                         </div>
@@ -239,8 +239,8 @@
                         </figure>
                     </div>
                     <!--Body-->
-                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl">
-                        <h2 class="text-base-content ">{{$homepage[10]->product_name}}</h2>
+                    <div class="flex flex-col mt-1 px-3 pt-1 pb-1.5 h-auto rounded-2xl gap-5">
+                        <h2 class="text-base-content">{{$homepage[10]->product_name}}</h2>
                         <div class="flex justify-between items-center">
                             <div class="flex gap-2">
                             <p class="text-base-content font-semibold mt-1 line-through">£{{$homepage[10]->price}}</p>
@@ -250,8 +250,8 @@
                             <div class="rating rating-xs">
                                 <div class="mask mask-star-2 bg-primary" aria-label="1 star"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="2 star"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="3 star" aria-current="true"></div>
-                                <div class="mask mask-star-2 bg-primary" aria-label="4 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="3 star"></div>
+                                <div class="mask mask-star-2 bg-primary" aria-label="4 star" aria-current="true"></div>
                                 <div class="mask mask-star-2 bg-primary" aria-label="5 star"></div>
                             </div>
                         </div>

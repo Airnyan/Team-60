@@ -1,117 +1,142 @@
 <x-layout>
-<x-slot:title>
-    Admin - Manage Products
-</x-slot:title>
 
-<div class="container mx-auto py-10 text-white">
+<div class="max-w-6xl mx-auto">
 
-    <h1 class="text-3xl font-bold mb-6 text-green-400">
-        Admin – Manage Products
-    </h1>
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl text-green-400 font-bold">Manage Products</h1>
 
-    <a href="{{ route('admin.products.create') }}"
-   class="bg-green-500 hover:bg-green-600 text-black px-5 py-2 rounded font-bold mb-4 inline-block">
-    + Create Product
-</a>
-
-    {{-- Search --}}
-    <form method="GET" action="{{ route('admin.products') }}" class="mb-6 flex gap-3">
-        <input 
-            type="text" 
-            name="search" 
-            value="{{ $search ?? '' }}" 
-            placeholder="Search products..."
-            class="px-4 py-2 rounded bg-black border border-green-500 
-                   text-green-300 w-1/3 placeholder-green-400"
+        <a href="{{ route('admin.products.create') }}"
+           class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded">
+            + Add Product
+        </a>
+    </div>
+    <form method="GET" action="{{ route('admin.products') }}" class="mb-6 flex gap-4 flex-wrap">
+        <input
+            type="text"
+            name="search"
+            value="{{ request('search') }}"
+            placeholder="Search product name..."
+            class="bg-gray-900 border border-green-500 text-white px-4 py-2 rounded w-64"
         >
-        <button class="bg-green-500 hover:bg-green-600 text-black font-bold px-5 py-2 rounded">
-            Search
+
+        <select name="stock_filter" class="bg-gray-900 border border-green-500 text-white px-4 py-2 rounded">
+            <option value="">All Stock</option>
+            <option value="in_stock" {{ request('stock_filter') == 'in_stock' ? 'selected' : '' }}>In Stock</option>
+            <option value="low_stock" {{ request('stock_filter') == 'low_stock' ? 'selected' : '' }}>Low Stock</option>
+            <option value="out_of_stock" {{ request('stock_filter') == 'out_of_stock' ? 'selected' : '' }}>Out of Stock</option>
+        </select>
+
+        <button type="submit" class="bg-green-500 hover:bg-green-600 text-black px-4 py-2 rounded">
+            Filter
         </button>
+
+        <a href="{{ route('admin.products') }}" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded">
+            Reset
+        </a>
     </form>
 
-    {{-- Success message --}}
-    @if(session('success'))
-        <div class="bg-green-500 text-black p-3 rounded mb-4">
-            {{ session('success') }}
-        </div>
-    @endif
+    @foreach($products as $product)
+    
 
-    {{-- Products Table --}}
-    <table class="w-full border border-green-500 bg-black text-white rounded-lg overflow-hidden">
+    @php
+        $totalStock = $product->variants->sum('stock');
+        $reserved = $product->variants->sum('reserved_stock');
+    @endphp
 
-        <thead class="bg-green-600 text-black text-lg font-semibold">
-            <tr>
-                <th class="p-3 border border-green-500">Image</th>
-                <th class="p-3 border border-green-500">ID</th>
-                <th class="p-3 border border-green-500">Name</th>
-                <th class="p-3 border border-green-500">Price</th>
-                <th class="p-3 border border-green-500">Actions</th>
-            </tr>
-        </thead>
+    <div class="bg-black border border-green-500 rounded-lg mb-6 p-5">
 
-        <tbody>
-            @forelse ($products as $product)
-                <tr class="hover:bg-gray-900 transition duration-150">
+        {{-- PRODUCT HEADER --}}
+        <div class="flex justify-between items-start mb-3">
+            <div class="flex gap-4 items-start">
+                <img
+                    src="{{ asset($product->image) }}"
+                    alt="{{ $product->product_name }}"
+                    class="w-24 h-24 object-cover rounded-lg border border-green-500 bg-gray-900"
+                >
 
-                    {{-- Image --}}
-                    <td class="p-3 border border-green-500">
-                        <img 
-                            src="{{ asset($product->image) }}"
-                            alt="{{ $product->product_name }}"
-                            class="w-[70px] h-[70px] object-cover rounded"
-                        >
-                    </td>
-
-                    {{-- ID --}}
-                    <td class="p-3 border border-green-500">
-                        {{ $product->id }}
-                    </td>
-
-                    {{-- Name --}}
-                    <td class="p-3 border border-green-500 text-green-400 font-bold">
+                <div>
+                    <h2 class="text-xl text-green-300 font-semibold">
                         {{ $product->product_name }}
-                    </td>
+                    </h2>
 
-                    {{-- Price --}}
-                    <td class="p-3 border border-green-500 text-green-400 font-bold">
-                        £{{ $product->price }}
-                    </td>
+                    <p class="text-sm text-gray-400">
+                        Total: {{ $totalStock }} | Reserved: {{ $reserved }}
+                    </p>
 
-                    {{-- Actions --}}
-                    <td class="p-3 border border-green-500 flex gap-2">
+                    @if($totalStock <= 0)
+                        <p class="text-sm text-red-500">Out of stock</p>
+                    @elseif($totalStock <= 10)
+                        <p class="text-sm text-yellow-400">Low stock</p>
+                    @else
+                        <p class="text-sm text-green-400">In stock</p>
+                    @endif
+                </div>
+            </div>
 
-                        {{-- Edit --}}
-                        <a href="{{ route('admin.products.edit', $product) }}"
-                           class="bg-green-500 hover:bg-green-600 text-black px-3 py-1 rounded font-bold">
-                            Edit
-                        </a>
+            <div class="flex gap-3 text-sm">
+                <a href="{{ route('admin.products.edit', $product) }}"
+                class="text-blue-400 hover:underline">
+                    Edit
+                </a>
 
-                        {{-- Delete --}}
-                        <form method="POST"
-                              action="{{ route('admin.products.destroy', $product) }}"
-                              onsubmit="return confirm('Delete this product?')">
-                            @csrf
-                            @method('DELETE')
+                <form method="POST" action="{{ route('admin.products.destroy', $product) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="text-red-500 hover:underline">
+                        Delete
+                    </button>
+                </form>
 
-                            <button
-                                class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded font-bold">
-                                Delete
-                            </button>
-                        </form>
+                <a href="{{ route('admin.variants.create', $product) }}"
+                class="text-green-400 hover:underline">
+                    + Variant
+                </a>
+            </div>
+        </div>
 
-                    </td>
+        {{-- VARIANTS --}}
+        <div class="space-y-2 mt-4">
 
-                </tr>
+            @forelse($product->variants as $variant)
+
+            <div class="flex justify-between items-center bg-gray-900 px-4 py-2 rounded">
+
+                <div class="flex gap-6 text-sm">
+                    <span class="text-white">Size: {{ $variant->size }}</span>
+                    <span>Stock: {{ $variant->stock }}</span>
+                    <span>Reserved: {{ $variant->reserved_stock }}</span>
+                    <span class="text-green-400 font-semibold">
+                        £{{ number_format($variant->price, 2) }}
+                    </span>
+                </div>
+                <div class="flex gap-3 text-sm">
+
+                    <a href="{{ route('admin.variants.edit', $variant) }}"
+                       class="text-blue-400 hover:underline">
+                        Edit
+                    </a>
+                </div>
+
+                <form method="POST" action="{{ route('admin.variants.destroy', $variant) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="text-red-500 text-sm hover:underline">
+                        Delete
+                    </button>
+                </form>
+
+            </div>
+
             @empty
-                <tr>
-                    <td colspan="5" class="p-4 text-center text-gray-400">
-                        No products found.
-                    </td>
-                </tr>
+                <p class="text-gray-500 text-sm">No variants yet</p>
             @endforelse
-        </tbody>
 
-    </table>
+        </div>
+
+    </div>
+
+    @endforeach
 
 </div>
+
 </x-layout>

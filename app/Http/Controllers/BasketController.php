@@ -133,6 +133,9 @@ class BasketController extends Controller
 
         $basket = Basket::where('user_id', $user->id)->first();
 
+        if (!$basket || $basket->basket_product->isEmpty()) {
+            return redirect()->route('basket.index')->with('error', 'Your basket is empty.');
+        }
         $validated = request()->validate([
             'address1' => 'required|string|max:255',
             'address2' => 'required|string|max:255',
@@ -156,6 +159,9 @@ class BasketController extends Controller
         $total = 0;
         foreach($products as $product) {
             $total += $product->price * $product->quantity;
+            $product->variant->stock -= $product->quantity;
+            $product->variant->reserved_stock += $product->quantity;
+            $product->variant->save();
             $order -> products()->create([
                 'order_id' => $order->id,
                 'variant_id' => $product->variant_id,

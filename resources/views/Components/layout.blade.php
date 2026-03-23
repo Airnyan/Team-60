@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:wght@300;400;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">    <!--link to tailwind files-->
-    @vite(['resources/css/app.css', 'resources/js/response.js', 'resources/js/app.js','resources/js/chatbot.js', 'resources/js/accessibility.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js','resources/js/chatbot.js', 'resources/js/accessibility.js','resources/css/styles.css'])
     <!--css code for the accessiblity mouse-->
     <style>
         html.big-cursor * {
@@ -36,7 +36,7 @@
         }
         @font-face {
             font-family: 'OpenDyslexic';
-            src: url("fonts/OpenDyslexic-Regular.otf") format('opentype');
+            src: url("/fonts/OpenDyslexic-Regular.otf") format('opentype');
             font-weight: normal;
             font-style: normal;
         }
