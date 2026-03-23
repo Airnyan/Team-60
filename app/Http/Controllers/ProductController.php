@@ -9,30 +9,42 @@ class ProductController extends Controller
 {
     // ================= SHOP =================
     public function index(Request $request)
-{
-    $query = Product::with('variants');
-
-    // 🔥 CATEGORY FILTER
-    if ($request->category) {
-        $query->where('product_type_id', $request->category);
-    }
-
-    // (optional) search
-    if ($request->search) {
-        $query->where('product_name', 'LIKE', '%' . $request->search . '%');
-    }
-
-    $products = $query->get();
-
-    return view('products', compact('products'));
-}
-
-    // ================= PRODUCT PAGE =================
-    public function show($id)
     {
-        $product = Product::with('variants')->findOrFail($id);
+        $categories = ProductType::orderBy('id')->get();
 
-        return view('product.show', compact('product'));
+        $query = Product::with([
+            'variants' => function ($query) {
+                $query->orderBy('id');
+            },
+            'product_type',
+        ]);
+
+        if ($request->filled('category')) {
+            $query->where('product_type_id', $request->category);
+        }
+
+        if ($request->filled('search')) {
+            $query->where('product_name', 'LIKE', '%' . $request->search . '%');
+        }
+
+        $products = $query->get();
+
+        return view('products', compact('products', 'categories'));
+    }
+
+    
+    public function show(Product $product)
+    {
+        $product->load([
+            'variants' => function ($query) {
+                $query->orderBy('id');
+            },
+            'product_type',
+        ]);
+
+        $defaultVariant = $product->variants->firstWhere('stock', '>', 0) ?? $product->variants->first();
+
+        return view('product.show', compact('product', 'defaultVariant'));
     }
 
     // ================= ADMIN LIST =================
