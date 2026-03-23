@@ -133,6 +133,9 @@ class BasketController extends Controller
 
         $basket = Basket::where('user_id', $user->id)->first();
 
+        if (!$basket || $basket->basket_product->isEmpty()) {
+            return redirect()->route('basket.index')->with('error', 'Your basket is empty.');
+        }
         $validated = request()->validate([
             'address1' => 'required|string|max:255',
             'address2' => 'required|string|max:255',
