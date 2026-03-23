@@ -2,9 +2,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Models\ProductType;
+use App\Models\Review;
 
 class ProductController extends Controller
 {
@@ -33,7 +35,6 @@ class ProductController extends Controller
         return view('products', compact('products', 'categories'));
     }
 
-    
     public function show(Product $product)
     {
         $product->load([
@@ -43,9 +44,33 @@ class ProductController extends Controller
             'product_type',
         ]);
 
+        // Fetch reviews for this specific product to fix the "Undefined variable $reviews" error
+        $reviews = Review::where('product_id', $product->id)
+            ->with('user')
+            ->latest()
+            ->get();
+
         $defaultVariant = $product->variants->firstWhere('stock', '>', 0) ?? $product->variants->first();
 
-        return view('product.show', compact('product', 'defaultVariant'));
+        return view('product.show', compact('product', 'defaultVariant', 'reviews'));
+    }
+
+    public function storeReview(Request $request)
+    {
+        $request->validate([
+            'review' => 'required|min:5',
+            'rating' => 'required|integer|min:1|max:5',
+            'product_id' => 'required|exists:products,id'
+        ]);
+
+        Review::create([
+            'product_id' => $request->input('product_id'),
+            'user_id'    => Auth::id(),
+            'review'     => $request->input('review'),
+            'rating'     => $request->input('rating'),
+        ]);
+
+        return redirect()->back()->with('success', 'Review submitted successfully!');
     }
 
     // ================= ADMIN LIST =================
