@@ -3,7 +3,7 @@
   </a>
 </p>
 
-# Alien Matrix | Team-60 E-Commerce
+# Little Green Men | Team-60 E-Commerce
 
 A high-performance, dark-themed e-commerce platform built for the **Team-60** university project. This application features a custom-built product variant system and a dynamic user review module, all wrapped in a sleek "Alien Matrix" aesthetic.
 
