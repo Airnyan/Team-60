@@ -10,29 +10,21 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('addresses', function (Blueprint $table) {
-            $table->id();
+{
+    Schema::create('addresses', function (Blueprint $table) {
+        $table->id();
+        // This adds the user_id column and connects it to the users table
+        $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        
+        $table->string('address_line_1');
+        $table->string('address_line_2')->nullable(); // Good practice to make line 2 optional
+        $table->string('postcode', 12);
+        $table->timestamps();
+    });
+}
 
-            $table->string('address_line_1');
-            $table->string('address_line_2');
-            $table->string('postcode',12);
-            $table->timestamps();
-        });
-
-        Schema::table('users', function(Blueprint $table) {
-            $table->foreign('address_id')->references('id')->on('addresses');
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('addresses');
-        Schema::table('users', function(Blueprint $table) {
-            $table->dropForeign('address_id');
-        });
-    }
+public function down(): void
+{
+    Schema::dropIfExists('addresses');
+}
 };
